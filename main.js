@@ -1006,6 +1006,7 @@ function getSelectedDevice(deviceData) {
             if (tmp_dev && tmp_dev.val !== '') {
                 deviceData.lastActiveDeviceId = tmp_dev.val;
             }
+            adapter.log.debug('getSelectedDevice: lastActive: ' + deviceData.lastActiveDeviceId);
             return deviceData.lastActiveDeviceId;
         } else {
             return deviceData.lastActiveDeviceId;
@@ -1768,11 +1769,15 @@ function transferPlayback(dev_id){
     if (!isEmpty(dev_id)){
         let send = {
             device_ids: [dev_id],
-            play: true
+            play: false
         };
+        adapter.log.debug('transferPlayback gestartet');
+        clearTimeout(application.statusInternalTimer);
         return sendRequest('/v1/me/player', 'PUT', JSON.stringify(send), true)
             .catch(err => adapter.log.error('transferPlayback could not execute command: ' + err + ' device_id: ' + dev_id))
             .then(() => setTimeout(pollStatusApi, 1000, true));
+    } else {
+        adapter.log.debug('transferPlayback: dev_id is empty');
     }
 }
 
@@ -1828,7 +1833,7 @@ function listenOnPlay() {
     let dev_id = cache.getValue('player.device.id').val;
     //aktiviere letztes Device wenn vorhanden
     if (dev_id && !dev_isActive && !isEmpty(dev_id)){
-        return transferPlayback(dev_id);
+        transferPlayback(dev_id);
     }
     let query = {
         device_id: getSelectedDevice(deviceData)
