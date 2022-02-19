@@ -126,7 +126,8 @@
     "compact": true,
     "connectionType": "cloud",
     "dataSource": "poll",
-    "tier": 3
+    "tier": 3,
+    "installedFrom": "iobroker-community-adapters/ioBroker.spotify-premium"
   },
   "native": {
     "client_id": "",
@@ -480,7 +481,6 @@
         "type": "string",
         "read": true,
         "write": true,
-        "states": "{\"off\": \"no repeat\",\"context\": \"context, e.g. playlist\",\"track\": \"one track\"}",
         "icon": "icons/repeat_black.png"
       },
       "native": {}
@@ -578,8 +578,7 @@
         "type": "string",
         "read": true,
         "write": true,
-        "icon": "icons/shuffle_black.png",
-        "states": "{\"on\": \"On\",\"off\": \"Off\"}"
+        "icon": "icons/shuffle_black.png"
       },
       "native": {}
     },
@@ -773,8 +772,7 @@
         "name": "context type",
         "type": "string",
         "read": true,
-        "write": false,
-        "states": "{\"album\": \"Album\",\"artist\": \"Artist\",\"playlist\": \"Playlist\",\"track\": \"Track\"}"
+        "write": false
       },
       "native": {}
     },
@@ -904,7 +902,7 @@
       "common": {
         "role": "value",
         "name": "number of songs",
-        "type": "string",
+        "type": "number",
         "read": true,
         "write": false
       },
@@ -1074,8 +1072,7 @@
         "name": "device type",
         "type": "string",
         "read": true,
-        "write": false,
-        "states": "{\"Computer\": \"Computer\",\"Smartphone\": \"Smartphone\",\"Speaker\": \"Speaker\"}"
+        "write": false
       },
       "native": {}
     },
