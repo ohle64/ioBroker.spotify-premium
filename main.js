@@ -1764,12 +1764,12 @@ function listenOnUseForPlayback(obj) {
         .catch(err => adapter.log.error('useforPlayback could not execute command: ' + err));
 }
 
-//Funktion zum Reaktivieren des letzten Device ohne play
+//Funktion zum Reaktivieren des letzten Device mit play
 function transferPlayback(dev_id){
     if (!isEmpty(dev_id)){
         let send = {
             device_ids: [dev_id],
-            play: false
+            play: true
         };
         adapter.log.debug('transferPlayback gestartet');
         clearTimeout(application.statusInternalTimer);
@@ -1829,21 +1829,23 @@ function listenOnPlayUri(obj) {
 }
 
 function listenOnPlay() {
-    let dev_isActive = cache.getValue('player.device.isActive').val;
-    let dev_id = cache.getValue('player.device.id').val;
-    //aktiviere letztes Device wenn vorhanden
-    if (dev_id && !dev_isActive && !isEmpty(dev_id)){
-        transferPlayback(dev_id);
+    let dev_isActive = cache.getValue('player.device.isActive');
+    let dev_id = cache.getValue('player.device.id');
+    //aktiviere letztes Device wenn vorhanden und starte play
+    if (dev_id && dev_isActive && !dev_isActive.val && !isEmpty(dev_id.val)){
+        transferPlayback(dev_id.val);
+    } else {
+        //normaler play wenn device.isActive
+        let query = {
+            device_id: getSelectedDevice(deviceData)
+        };
+        adapter.log.debug('lastSelect: ' + deviceData.lastSelectDeviceId + ' lastActive: ' + deviceData.lastActiveDeviceId);
+        clearTimeout(application.statusInternalTimer);
+        sendRequest('/v1/me/player/play?' + querystring.stringify(query), 'PUT', '', true)
+            .catch(err => adapter.log.error('play could not execute command: ' + err))
+            .then(() => setTimeout(pollStatusApi, 1000));
     }
-    let query = {
-        device_id: getSelectedDevice(deviceData)
-    };
     adapter.log.debug('play device_id: ' + getSelectedDevice(deviceData));
-    adapter.log.debug('lastSelect: ' + deviceData.lastSelectDeviceId + ' lastActive: ' + deviceData.lastActiveDeviceId);
-    clearTimeout(application.statusInternalTimer);
-    sendRequest('/v1/me/player/play?' + querystring.stringify(query), 'PUT', '', true)
-        .catch(err => adapter.log.error('play could not execute command: ' + err))
-        .then(() => setTimeout(pollStatusApi, 1000));
 }
 
 function listenOnPause() {
