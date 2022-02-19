@@ -1057,8 +1057,8 @@ function getPlaylistTracks(owner, id, offset, playlistObject) {
                 let artistArray = getArtistArrayOrDefault(item, 'track.artists');
                 let trackName = loadOrDefault(item, 'track.name', '');
                 let trackDuration = loadOrDefault(item, 'track.duration_ms', '');
-                let addedAt = loadOrDefault(item, 'addedAt', '');
-                let addedBy = loadOrDefault(item, 'addedBy', '');
+                let addedAt = loadOrDefault(item, 'added_at', '');
+                let addedBy = loadOrDefault(item, 'added_by', '');
                 let trackAlbumId = loadOrDefault(item, 'track.album.id', '');
                 let trackAlbumName = loadOrDefault(item, 'track.album.name', '');
                 let trackDiscNumber = loadOrDefault(item, 'track.disc_number', 1);
