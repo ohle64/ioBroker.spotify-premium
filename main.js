@@ -457,7 +457,7 @@ function setObjectStatesIfChanged(id, states) {
                 name: '',
                 type: 'string',
                 role: 'value',
-                //states: null,
+                states: null,
                 read: true,
                 write: true
             },
@@ -999,20 +999,21 @@ function getUsersPlaylist(offset, addedList) {
 }
 
 function getSelectedDevice(deviceData) {
-    if (deviceData.lastSelectDeviceId === '') {
-        if (deviceData.lastActiveDeviceId === '') {
-            //nutze letze deviceID vom player wenn vorhanden (nach Adapter-Neustart)
-            let tmp_dev = cache.getValue('player.device.id');
-            if (tmp_dev && tmp_dev.val !== '') {
-                deviceData.lastActiveDeviceId = tmp_dev.val;
-            }
-            adapter.log.debug('getSelectedDevice: lastActive: ' + deviceData.lastActiveDeviceId);
-            return deviceData.lastActiveDeviceId;
-        } else {
-            return deviceData.lastActiveDeviceId;
+
+    if (deviceData.lastActiveDeviceId === '') {
+        //nutze letze deviceID vom player wenn vorhanden (nach Adapter-Neustart)
+        let tmp_dev = cache.getValue('player.device.id');
+        if (tmp_dev && tmp_dev.val !== '') {
+            deviceData.lastActiveDeviceId = tmp_dev.val;
+        } else if (deviceData.lastSelectDeviceId !== ''){
+            adapter.log.debug('getSelectedDevice: lastSelect: ' + deviceData.lastSelectDeviceId);
+            return deviceData.lastSelectDeviceId;
         }
+            
+        adapter.log.debug('getSelectedDevice: lastActive: ' + deviceData.lastActiveDeviceId);
+        return deviceData.lastActiveDeviceId;
     } else {
-        return deviceData.lastSelectDeviceId;
+        return deviceData.lastActiveDeviceId;
     }
 }
 
@@ -1831,9 +1832,21 @@ function listenOnPlayUri(obj) {
 function listenOnPlay() {
     let dev_isActive = cache.getValue('player.device.isActive');
     let dev_id = cache.getValue('player.device.id');
+
     //aktiviere letztes Device wenn vorhanden und starte play
     if (dev_id && dev_isActive && !dev_isActive.val && !isEmpty(dev_id.val)){
-        transferPlayback(dev_id.val);
+        let devs = cache.getValue('devices.availableDeviceListIds');
+        if (devs && devs.val){
+            let dev_lst = devs.val.split(';');
+            if (dev_lst && dev_lst.length > 0 && dev_lst.indexOf(dev_id.val) > 0){
+                transferPlayback(dev_id.val);
+            } else {
+                adapter.log.warn('listenOnPlay device: '+ dev_id.val + ' not available');
+                cache.setValue('player.device.isAvailable', false);
+                return;
+            }
+        }
+
     } else {
         //normaler play wenn device.isActive
         let query = {
