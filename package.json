@@ -1,11 +1,33 @@
 {
-  "name": "iobroker.spotify-premium",
-  "version": "1.2.1",
-  "description": "ioBroker spotify-premium Adapter",
+  "_from": "github:ohle64/ioBroker.spotify-premium#f38e6da5a96e3302edff0a263887fe40e35e821c",
+  "_id": "iobroker.spotify-premium@1.2.1",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/iobroker.spotify-premium",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "ohle64/ioBroker.spotify-premium#f38e6da5a96e3302edff0a263887fe40e35e821c",
+    "rawSpec": "ohle64/ioBroker.spotify-premium#f38e6da5a96e3302edff0a263887fe40e35e821c",
+    "saveSpec": "github:ohle64/ioBroker.spotify-premium#f38e6da5a96e3302edff0a263887fe40e35e821c",
+    "fetchSpec": null,
+    "gitCommittish": "f38e6da5a96e3302edff0a263887fe40e35e821c"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "github:ohle64/ioBroker.spotify-premium#f38e6da5a96e3302edff0a263887fe40e35e821c",
+  "_spec": "ohle64/ioBroker.spotify-premium#f38e6da5a96e3302edff0a263887fe40e35e821c",
+  "_where": "/opt/iobroker",
   "author": {
     "name": "twonky4",
     "email": "twonky4@gmx.de"
   },
+  "bugs": {
+    "url": "https://github.com/ohle64/ioBroker.spotify-premium/issues"
+  },
+  "bundleDependencies": false,
   "contributors": [
     {
       "name": "Lucky"
@@ -15,33 +37,22 @@
       "email": "twonky4@gmx.de"
     }
   ],
-  "homepage": "https://github.com/ohle64/ioBroker.spotify-premium",
-  "license": "MIT",
-  "keywords": [
-    "ioBroker",
-    "spotify-premium",
-    "Smart Home",
-    "home automation"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ohle64/ioBroker.spotify-premium"
-  },
   "dependencies": {
     "@iobroker/adapter-core": "^2.6.0",
     "request": "^2.88.2"
   },
+  "deprecated": false,
+  "description": "ioBroker spotify-premium Adapter",
   "devDependencies": {
     "@alcalzone/release-script": "^3.5.9",
     "@alcalzone/release-script-plugin-iobroker": "^3.5.9",
     "@alcalzone/release-script-plugin-license": "^3.5.9",
-    "gulp": "^4.0.2",
-    "mocha": "^9.2.2",
-    "chai": "^4.3.6",
     "@iobroker/testing": "^2.6.0",
-    "axios": "^0.27.2"
+    "axios": "^0.27.2",
+    "chai": "^4.3.6",
+    "gulp": "^4.0.2",
+    "mocha": "^9.2.2"
   },
-  "main": "main.js",
   "files": [
     "admin/",
     "!admin/i18n/",
@@ -53,18 +64,29 @@
     "LICENSE",
     "main.js"
   ],
+  "homepage": "https://github.com/ohle64/ioBroker.spotify-premium",
+  "keywords": [
+    "ioBroker",
+    "spotify-premium",
+    "Smart Home",
+    "home automation"
+  ],
+  "license": "MIT",
+  "main": "main.js",
+  "name": "iobroker.spotify-premium",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ohle64/ioBroker.spotify-premium.git"
+  },
   "scripts": {
-    "test": "npm run test:package && npm run test:unit",
-    "test:package": "mocha test/package --exit",
-    "test:unit": "mocha test/unit --exit",
-    "test:integration": "mocha test/integration --exit",
     "release": "release-script",
-    "release-patch": "release-script patch --yes",
+    "release-major": "release-script major --yes",
     "release-minor": "release-script minor --yes",
-    "release-major": "release-script major --yes"
+    "release-patch": "release-script patch --yes",
+    "test": "npm run test:package && npm run test:unit",
+    "test:integration": "mocha test/integration --exit",
+    "test:package": "mocha test/package --exit",
+    "test:unit": "mocha test/unit --exit"
   },
-  "bugs": {
-    "url": "https://github.com/ohle64/ioBroker.spotify-premium/issues"
-  },
-  "readmeFilename": "README.md"
+  "version": "1.2.1"
 }
