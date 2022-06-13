@@ -1,8 +1,32 @@
 {
   "common": {
     "name": "spotify-premium",
-    "version": "1.1.9",
+    "version": "1.2.1",
     "news": {
+      "1.2.1": {
+        "en": "Prevent js-controller warnings",
+        "de": "js-controller-Warnungen verhindern",
+        "ru": "Предотвратить предупреждения js-контроллера",
+        "pt": "Impedir avisos do controlador js",
+        "nl": "Voorkom js-controller-waarschuwingen",
+        "fr": "Empêcher les avertissements js-controller",
+        "it": "Impedisci gli avvisi del controller js",
+        "es": "Prevenir las advertencias del controlador js",
+        "pl": "Zapobiegaj ostrzeżeniom kontrolera js",
+        "zh-cn": "防止 js-controller 警告"
+      },
+      "1.2.0": {
+        "en": "Fix tracklist request issues\nFix several potential crash cases and object warnings\nAdd Sentry for crash reporting",
+        "de": "Beheben Sie Probleme mit Tracklist-Anforderungen\nBeheben Sie mehrere potenzielle Absturzfälle und Objektwarnungen\nFügen Sie Sentry für Absturzberichte hinzu",
+        "ru": "Исправить проблемы с запросом треклиста\nИсправлено несколько возможных случаев сбоя и предупреждений об объектах.\nДобавьте Sentry для отчетов о сбоях",
+        "pt": "Corrigir problemas de solicitação de lista de faixas\nCorrigir vários casos de falha em potencial e avisos de objetos\nAdicionar Sentinela para relatórios de falhas",
+        "nl": "Problemen met tracklijstverzoeken oplossen\nVerschillende mogelijke crashgevallen en objectwaarschuwingen oplossen\nSentry toevoegen voor crashrapportage",
+        "fr": "Résoudre les problèmes de demande de liste de pistes\nCorrection de plusieurs cas de plantage potentiels et avertissements d'objet\nAjouter Sentry pour les rapports de plantage",
+        "it": "Risolti i problemi di richiesta della tracklist\nRisolvi diversi potenziali casi di arresto anomalo e avvisi sugli oggetti\nAggiungi Sentinella per la segnalazione degli arresti anomali",
+        "es": "Solucionar problemas de solicitud de lista de canciones\nSolucione varios posibles casos de bloqueo y advertencias de objetos\nAgregar Sentry para informes de fallas",
+        "pl": "Napraw problemy z żądaniami listy utworów\nNapraw kilka potencjalnych przypadków awarii i ostrzeżeń o obiektach\nDodaj Sentry do zgłaszania awarii",
+        "zh-cn": "修复曲目列表请求问题\n修复几个潜在的崩溃案例和对象警告\n添加 Sentry 以进行崩溃报告"
+      },
       "1.1.9": {
         "en": "Tried to catch 403 error",
         "de": "Versucht, den Fehler 403 abzufangen",
@@ -62,35 +86,20 @@
         "es": "Se permite establecer el valor aleatorio predeterminado",
         "pl": "Umożliwiono ustawienie domyślnej wartości odtwarzania losowego",
         "zh-cn": "允许设置默认的shuffle值"
-      },
-      "1.1.4": {
-        "en": "Fix errors\n",
-        "de": "Fehler beheben\n",
-        "ru": "Исправить ошибки\n",
-        "pt": "Corrigir erros\n",
-        "nl": "Fouten verbeteren\n",
-        "fr": "Corriger les erreurs\n",
-        "it": "Correggere errori\n",
-        "es": "Corregir errores\n",
-        "pl": "Naprawić błędy\n",
-        "zh-cn": "修正错误\n"
-      },
-      "1.1.3": {
-        "en": "Improved authorization process",
-        "de": "Verbesserter Autorisierungsprozess",
-        "ru": "Улучшенный процесс авторизации",
-        "pt": "Processo de autorização aprimorado",
-        "nl": "Verbeterd autorisatieproces",
-        "fr": "Processus d'autorisation amélioré",
-        "it": "Processo di autorizzazione migliorato",
-        "es": "Proceso de autorización mejorado",
-        "pl": "Ulepszony proces autoryzacji",
-        "zh-cn": "改进的授权流程"
       }
     },
     "title": "Spotify (Premium)",
     "titleLang": {
-      "en": "Spotify (Premium)"
+      "en": "Spotify (Premium)",
+      "de": "Spotify (Premium)",
+      "ru": "Спотифай (Премиум)",
+      "pt": "Spotify (Premium)",
+      "nl": "Spotify (Premium)",
+      "fr": "Spotify (Premium)",
+      "it": "Spotify (Premium)",
+      "es": "Spotify (premium)",
+      "pl": "Spotify (Premium)",
+      "zh-cn": "Spotify（高级）"
     },
     "desc": {
       "en": "control spotify devices",
@@ -126,8 +135,17 @@
     "compact": true,
     "connectionType": "cloud",
     "dataSource": "poll",
-    "tier": 3,
-    "installedFrom": "iobroker-community-adapters/ioBroker.spotify-premium"
+    "tier": 2,
+    "plugins": {
+      "sentry": {
+        "dsn": "https://df92a91a757f4325ab1ff04a0d17d4a4@sentry.iobroker.net/195"
+      }
+    },
+    "dependencies": [
+      {
+        "js-controller": ">=2.0.0"
+      }
+    ]
   },
   "native": {
     "client_id": "",
@@ -138,7 +156,8 @@
     "status_interval": 10,
     "device_interval": 5,
     "playlist_interval": 15,
-    "defaultShuffle": "on"
+    "defaultShuffle": "on",
+    "defaultRepeat": "context"
   },
   "objects": [],
   "instanceObjects": [
@@ -481,6 +500,11 @@
         "type": "string",
         "read": true,
         "write": true,
+        "states": {
+          "off": "no repeat",
+          "context": "context, e.g. playlist",
+          "track": "one track"
+        },
         "icon": "icons/repeat_black.png"
       },
       "native": {}
@@ -578,7 +602,11 @@
         "type": "string",
         "read": true,
         "write": true,
-        "icon": "icons/shuffle_black.png"
+        "icon": "icons/shuffle_black.png",
+        "states": {
+          "on": "On",
+          "off": "Off"
+        }
       },
       "native": {}
     },
@@ -772,7 +800,13 @@
         "name": "context type",
         "type": "string",
         "read": true,
-        "write": false
+        "write": false,
+        "states": {
+          "album": "Album",
+          "artist": "Artist",
+          "playlist": "Playlist",
+          "track": "Track"
+        }
       },
       "native": {}
     },
@@ -903,6 +937,18 @@
         "role": "value",
         "name": "number of songs",
         "type": "number",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.playlist.snapshot_id",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Snapshot ID",
+        "type": "string",
         "read": true,
         "write": false
       },
@@ -1072,7 +1118,12 @@
         "name": "device type",
         "type": "string",
         "read": true,
-        "write": false
+        "write": false,
+        "states": {
+          "Computer": "Computer",
+          "Smartphone": "Smartphone",
+          "Speaker": "Speaker"
+        }
       },
       "native": {}
     },
