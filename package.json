@@ -1,6 +1,6 @@
 {
   "_from": "github:ohle64/ioBroker.spotify-premium#f38e6da5a96e3302edff0a263887fe40e35e821c",
-  "_id": "iobroker.spotify-premium@1.2.1",
+  "_id": "iobroker.spotify-premium@1.2.2",
   "_inBundle": false,
   "_integrity": "",
   "_location": "/iobroker.spotify-premium",
@@ -79,14 +79,14 @@
     "url": "git+https://github.com/ohle64/ioBroker.spotify-premium.git"
   },
   "scripts": {
-    "release": "release-script",
-    "release-major": "release-script major --yes",
-    "release-minor": "release-script minor --yes",
-    "release-patch": "release-script patch --yes",
     "test": "npm run test:package && npm run test:unit",
-    "test:integration": "mocha test/integration --exit",
     "test:package": "mocha test/package --exit",
-    "test:unit": "mocha test/unit --exit"
+    "test:unit": "mocha test/unit --exit",
+    "test:integration": "mocha test/integration --exit",
+    "release": "release-script",
+    "release-patch": "release-script patch --yes",
+    "release-minor": "release-script minor --yes",
+    "release-major": "release-script major --yes"
   },
-  "version": "1.2.1"
+  "version": "1.2.2"
 }
