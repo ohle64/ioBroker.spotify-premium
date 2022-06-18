@@ -1590,7 +1590,7 @@ function increaseTime(durationMs, progressMs, startDate, count) {
 
 function scheduleStatusInternalTimer(durationMs, progressMs, startDate, count) {
     clearTimeout(application.statusInternalTimer);
-    application.statusInternalTimer = setTimeout(() =>  !stopped && increaseTime(durationMs, progressMs, startDate, count), 1000);
+    application.statusInternalTimer = setTimeout(() => !stopped && increaseTime(durationMs, progressMs, startDate, count), 1000);
 }
 
 function scheduleStatusPolling() {
