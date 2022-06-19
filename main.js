@@ -917,7 +917,7 @@ function createPlaylists(parseJson, autoContinue, addedList) {
             createOrDefault(item, 'owner.id', prefix + '.owner', '', 'playlist owner', 'string'),
             createOrDefault(item, 'name', prefix + '.name', '', 'playlist name', 'string'),
             createOrDefault(item, 'snapshot_id', prefix + '.snapshot_id', '', 'snapshot_id', 'string'),
-            createOrDefault(item, 'tracks.total', prefix + '.tracksTotal', '', 'number of songs', 'number'),
+            createOrDefault(item, 'tracks.total', prefix + '.tracksTotal', 0, 'number of songs', 'number'),
             createOrDefault(item, 'images[0].url', prefix + '.imageUrl', '', 'image url', 'string')
         ])
             .then(() => getPlaylistTracks(ownerId, playlistId))
@@ -1064,8 +1064,8 @@ async function getPlaylistTracks(owner, id) {
         offset: offset,
         market: 'DE'
         };
-    try {
-        const data = await sendRequest(`/v1/users/${regParam}?${querystring.stringify(query)}`, 'GET', '');
+        try {
+            const data = await sendRequest(`/v1/users/${regParam}?${querystring.stringify(query)}`, 'GET', '');
             let i = offset;
             let no = i.toString();
             data.items.forEach(item => {
@@ -1301,11 +1301,13 @@ function refreshPlaylistList() {
             name: states[key].val,
             your: application.userId === owner ? owner.val : ''
         });
-
     };
 
     return Promise.all(keys.map(fn))
         .then(() => {
+            a.sort(function (l, u){
+                return l['name'].toLowerCase().localeCompare(u['name'].toLowerCase());
+            });
             let stateList = {};
             let listIds = '';
             let listString = '';
@@ -1718,8 +1720,9 @@ function startPlaylist(playlist, owner, trackNo, keepTrack) {
                     position: trackNo
                 }
             };
-            return sendRequest('/v1/me/player/play', 'PUT', JSON.stringify(send), true)
-                .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000, true))
+            let d_Id = getSelectedDevice(deviceData);
+            return sendRequest('/v1/me/player/play?device_id=' + d_Id, 'PUT', JSON.stringify(send), true)
+                .then(() => setTimeout(() => !stopped && pollStatusApi(true), 1000))
                 .catch(err => adapter.log.error(`could not start playlist ${playlist} of user ${owner}; error: ${err}`));
         })
         .then(() => {
@@ -1729,6 +1732,11 @@ function startPlaylist(playlist, owner, trackNo, keepTrack) {
                 } else {
                     return listenOnShuffleOn();
                 }
+            }
+            if (adapter.config.defaultRepeat === 'context') {
+                return listenOnRepeatContext();
+            } else {
+                return listenOnRepeatOff();
             }
         });
 }
@@ -1794,7 +1802,7 @@ function listenOnUseForPlayback(obj) {
         play: true
     };
     return sendRequest('/v1/me/player', 'PUT', JSON.stringify(send), true)
-        .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000, true))
+        .then(() => setTimeout(() => !stopped && pollStatusApi(true), 1000))
         .catch(err => adapter.log.error('could not execute command: ' + err));
 }
 
@@ -1813,7 +1821,7 @@ function transferPlayback(dev_id){
         };
         adapter.log.debug('transferPlayback gestartet');
         return sendRequest('/v1/me/player', 'PUT', JSON.stringify(send), true)
-            .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000, true))
+            .then(() => setTimeout(() => !stopped && pollStatusApi(true), 1000))
             .catch(err => adapter.log.error('transferPlayback could not execute command: ' + err + ' device_id: ' + dev_id));  
     } else {
         adapter.log.debug('transferPlayback: dev_id is empty');
