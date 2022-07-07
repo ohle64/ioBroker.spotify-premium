@@ -157,6 +157,8 @@
     "status_interval": 10,
     "device_interval": 5,
     "playlist_interval": 15,
+    "album_interval": 15,
+    "show_interval": 15,
     "defaultShuffle": "on",
     "defaultRepeat": "context"
   },
@@ -180,6 +182,30 @@
       "type": "channel",
       "common": {
         "name": "Playlists"
+      },
+      "native": {}
+    },
+    {
+      "_id": "shows",
+      "type": "channel",
+      "common": {
+        "name": "Shows"
+      },
+      "native": {}
+    },
+    {
+      "_id": "albums",
+      "type": "channel",
+      "common": {
+        "name": "Albums"
+      },
+      "native": {}
+    },
+    {
+      "_id": "collections",
+      "type": "channel",
+      "common": {
+        "name": "Collections"
       },
       "native": {}
     },
@@ -216,6 +242,32 @@
       "native": {}
     },
     {
+      "_id": "player.show",
+      "type": "channel",
+      "common": {
+        "name": "Commands to control playback related to the show"
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.album",
+      "type": "channel",
+      "common": {
+        "name": "Commands to control playback related to the album",
+        "type": "string"
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.collection",
+      "type": "channel",
+      "common": {
+        "name": "Commands to control playback related to the favorite collection",
+        "type": "string"
+      },
+      "native": {}
+    },
+    {
       "_id": "player.device",
       "type": "device",
       "common": {
@@ -229,6 +281,126 @@
       "type": "channel",
       "common": {
         "name": "Authorization functionality"
+      },
+      "native": {}
+    },
+    {
+      "_id": "collections.collectionList",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Available collection saved in common part. Change this value to a collectionId to start this collection.",
+        "type": "string",
+        "read": true,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "collections.collectionListIds",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "contains list of collection ids as string, pattern: collectionId;collectionId;collectionId;...",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "collections.collectionListString",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "contains list of collections as string, patter: name;name;name;...",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "shows.showList",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Available show saved in common part. Change this value to a showId to start this show.",
+        "type": "string",
+        "read": true,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "shows.showListIds",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "contains list of playlist ids as string, pattern: showId;showId;showId;...",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "shows.showListString",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "contains list of shows as string, patter: name;name;name;...",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "albums.albumList",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Available album saved in common part. Change this value to a albumId to start this album.",
+        "type": "string",
+        "read": true,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "albums.albumListIds",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "contains list of albums ids as string, pattern: albumId;albumId;albumId;...",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "albums.albumListString",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "contains list of albums as string, patter: name;name;name;...",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "albums.artistList",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "contains list of artists as string, patter: name;name;name;...",
+        "type": "string",
+        "read": true,
+        "write": false
       },
       "native": {}
     },
@@ -402,6 +574,42 @@
       "native": {}
     },
     {
+      "_id": "player.addFavorite",
+      "type": "state",
+      "common": {
+        "role": "button",
+        "name": "addFavorite",
+        "type": "boolean",
+        "read": false,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.delFavorite",
+      "type": "state",
+      "common": {
+        "role": "button",
+        "name": "delFavorite",
+        "type": "boolean",
+        "read": false,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.trackIsFavorite",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "track is in Collection",
+        "type": "boolean",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
       "_id": "player.playUri",
       "type": "state",
       "common": {
@@ -543,6 +751,102 @@
         "type": "number",
         "read": true,
         "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.show.episodeNo",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "set episode no of show to play this episode",
+        "type": "number",
+        "read": true,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.show.id",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "set show id to play",
+        "type": "string",
+        "read": true,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.album.trackNo",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "set trackNo no of album to play this track",
+        "type": "number",
+        "read": true,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.album.id",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "set album id to play",
+        "type": "string",
+        "read": true,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.album.artistName",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "artist of the album",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.collection.trackNo",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "set trackNo no of collection to play this track",
+        "type": "number",
+        "read": true,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.collection.id",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "set collection id to play",
+        "type": "string",
+        "read": true,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.collection.artistName",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "artist of the collection",
+        "type": "string",
+        "read": true,
+        "write": false
       },
       "native": {}
     },
@@ -746,6 +1050,42 @@
       "native": {}
     },
     {
+      "_id": "requestCount",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "count of Requests/minute",
+        "type": "number",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "pl_found",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "count of found snapshot_ids for playlistpolling",
+        "type": "number",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "pl_notFound",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "count of not found snapshot_ids for last playlistpolling",
+        "type": "number",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
       "_id": "getPlaylists",
       "type": "state",
       "common": {
@@ -758,11 +1098,83 @@
       "native": {}
     },
     {
+      "_id": "getCurrentPlaylist",
+      "type": "state",
+      "common": {
+        "role": "button",
+        "name": "get currently playing playlist owned by authorized user",
+        "type": "boolean",
+        "read": false,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "checkTrackInCollection",
+      "type": "state",
+      "common": {
+        "role": "button",
+        "name": "check current track for Favorite-Collection owned by authorized user",
+        "type": "boolean",
+        "read": false,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "getShows",
+      "type": "state",
+      "common": {
+        "role": "button",
+        "name": "get shows owned by authorized user",
+        "type": "boolean",
+        "read": false,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "getAlbums",
+      "type": "state",
+      "common": {
+        "role": "button",
+        "name": "get albums owned by authorized user",
+        "type": "boolean",
+        "read": false,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "getCollection",
+      "type": "state",
+      "common": {
+        "role": "button",
+        "name": "get favorite collection of tracks owned by authorized user",
+        "type": "boolean",
+        "read": false,
+        "write": true
+      },
+      "native": {}
+    },
+    {
       "_id": "getPlaybackInfo",
       "type": "state",
       "common": {
         "role": "button",
         "name": "refresh playback info",
+        "type": "boolean",
+        "read": false,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "loadPlaylistCache",
+      "type": "state",
+      "common": {
+        "role": "button",
+        "name": "refresh playlistAppCache",
         "type": "boolean",
         "read": false,
         "write": true
@@ -801,12 +1213,14 @@
         "name": "context type",
         "type": "string",
         "read": true,
-        "write": false,
+        "write": true,
         "states": {
           "album": "Album",
           "artist": "Artist",
           "playlist": "Playlist",
-          "track": "Track"
+          "collection": "Collection",
+          "track": "Track",
+          "episode": "Episode"
         }
       },
       "native": {}
@@ -877,6 +1291,438 @@
       "common": {
         "role": "value",
         "name": "album image url",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.episodeName",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "episode name",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.episodeId",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "episode id",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.albumId",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "album id",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.popularity",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "album popularity",
+        "type": "number",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.show.name",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "show name",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.show.episodesTotal",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "number of episodes",
+        "type": "number",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.show.imageUrl",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "show image url",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.show.publisher",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "publisher of the show",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.show.episodeList",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Episodes of the show saved in common part. Change this value to a episode position number to start this show with this episode.",
+        "type": "mixed",
+        "read": true,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.show.episodeListNumber",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "contains list of episodes as string, patter: 0;1;2;...",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.show.episodeListString",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "contains list of episodes as string, patter: episode;episode;episode;...",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.show.episodeListStates",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "contains list of episodes as string with position, pattern: 0:episode;1:episode;2:episode;...",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.show.episodeListIdMap",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "contains list of episode ids as string with position, pattern: 0:id;1:id;2:id;...",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.show.episodeListIds",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "contains list of episode ids as string, pattern: id;id;id;...",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.show.episodeListArray",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "contains list of episodes as array object, pattern: [{id: \"id\", Name: \"Name\", ...}, ...]",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.album.name",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "album name",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.album.popularity",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "album popularity",
+        "type": "number",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.album.tracksTotal",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "number of tracks",
+        "type": "number",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.album.imageUrl",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "album image url",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.album.trackList",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Tracks of the album saved in common part. Change this value to a track position number to start this album with this track.",
+        "type": "mixed",
+        "read": true,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.album.trackListNumber",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "contains list of tracks as string, patter: 0;1;2;...",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.album.trackListString",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "contains list of tracks as string, patter: track;track;track;...",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.album.trackListStates",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "contains list of tracks as string with position, pattern: 0:track;1:track;2:track;...",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.album.trackListIdMap",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "contains list of track ids as string with position, pattern: 0:id;1:id;2:id;...",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.album.trackListIds",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "contains list of track ids as string, pattern: id;id;id;...",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.album.trackListArray",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "contains list of tracks as array object, pattern: [{id: \"id\", Name: \"Name\", {id: \"artistId\", name: \"artistName\"}, ...], name: \"albumName\"}, durationMs: 253844, duration: 4:13, discNumber: 1, explicit: false}, ...]",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.collection.trackListArray",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "contains list of tracks as array object, pattern: [{id: \"id\", Name: \"Name\", {id: \"artistId\", name: \"artistName\"}, ...], name: \"albumName\"}, durationMs: 253844, duration: 4:13, discNumber: 1, explicit: false}, ...]",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.collection.name",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "collection name",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.collection.tracksTotal",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "number of tracks",
+        "type": "number",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.collection.imageUrl",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "collection image url",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.collection.trackList",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Tracks of the collection saved in common part. Change this value to a track position number to start this collection with this track.",
+        "type": "mixed",
+        "read": true,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.collection.trackListNumber",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "contains list of tracks as string, patter: 0;1;2;...",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.collection.trackListString",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "contains list of tracks as string, patter: track;track;track;...",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.collection.trackListStates",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "contains list of tracks as string with position, pattern: 0:track;1:track;2:track;...",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.collection.trackListIdMap",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "contains list of track ids as string with position, pattern: 0:id;1:id;2:id;...",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.collection.trackListIds",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "contains list of track ids as string, pattern: id;id;id;...",
         "type": "string",
         "read": true,
         "write": false
