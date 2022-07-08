@@ -603,6 +603,7 @@ function createShowInfo(data){
     if (isEmpty(data)) {
         data = {};
     }
+    /*
     let deviceId = loadOrDefault(data, 'device.id', '');
     let isDeviceActive = loadOrDefault(data, 'device.is_active', false);
     let isDeviceRestricted = loadOrDefault(data, 'device.is_restricted', false);
@@ -758,7 +759,7 @@ function createShowInfo(data){
                 native: {}
             })
         ])
-    })
+    }) */
 }
 
 function createPlaybackInfo(data) {
@@ -1436,7 +1437,6 @@ function createPlaybackInfo(data) {
                     }
                 }
             })       
-            //alter platz für playlistdaten
             .then(() => Promise.all([
                 cache.setValue('player.contextImageUrl', contextImage),
                 cache.setValue('player.contextDescription', contextDescription)
@@ -1766,7 +1766,7 @@ function findPlaylistSnapshotId(owner, playlistId, snapIdToFind) {
         let prefix = owner + '-' + playlistId;
         let snapId = '';
         for (let i = 0; i < playlistAppCache.length; i++) {
-            if (playlistAppCache[i].appId == prefix) {
+            if (playlistAppCache[i].appId === prefix) {
                 x = i;
                 break;
             }
@@ -1783,8 +1783,8 @@ function findPlaylistSnapshotId(owner, playlistId, snapIdToFind) {
                 _snapIdToFind10 = snapIdToFind.substring(0, 9);
                 _snapId = snapId.substring(14);
                 _snapIdToFind = snapIdToFind.substring(14);
-                if (_snapId10 == _snapIdToFind10) {
-                    if (_snapId == _snapIdToFind) {
+                if (_snapId10 === _snapIdToFind10) {
+                    if (_snapId === _snapIdToFind) {
                         pl_foundCount += 1;
                         return true;
                     } else {
@@ -1796,7 +1796,7 @@ function findPlaylistSnapshotId(owner, playlistId, snapIdToFind) {
                     return false;
                 }
             }
-            if (snapId == snapIdToFind){
+            if (snapId === snapIdToFind){
                 adapter.log.debug('x: ' + x + ' id: ' + prefix + ' snapCache: ' + snapId + ' snap-spoti: ' + snapIdToFind);
                 pl_foundCount += 1;
                 return true;
@@ -3755,7 +3755,7 @@ function listenOnGetAuthorization() {
         response_type: 'code',
         redirect_uri: application.redirect_uri,
         state: state,
-        scope: 'user-modify-playback-state user-read-playback-state user-read-currently-playing playlist-read-private'
+        scope: 'user-modify-playback-state user-read-playback-state user-read-currently-playing playlist-read-private user-library-read user-library-modify'
     };
 
     let options = {
