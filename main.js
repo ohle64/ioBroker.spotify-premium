@@ -837,6 +837,7 @@ function createPlaybackInfo(data) {
     }
     let shuffle = loadOrDefault(data, 'shuffle_state', false);
     let trackId = loadOrDefault(data, 'item.id', '');
+    
     //Abfrage ob player isPlaying
     if (isPlaying) {
         return Promise.all([
@@ -909,6 +910,7 @@ function createPlaybackInfo(data) {
                 }
             })
             .then(() => {
+
                 //abfrage nach type ergänzt episode separat (anderer Datenstruktur)
                 if (type === 'track' || type === 'playlist' || type === 'album' || type === 'artist' || type === 'collection') {
                     //prüfe trackInFavorite (1x abfragen/trackid-wechsel ! err 429 !)
@@ -3366,11 +3368,11 @@ function pollStatusApi(noReschedule) {
         .then(data => {
             if (!isEmpty(data)) {
                 createPlaybackInfo(data);
-                if (!noReschedule) {
-                    scheduleStatusPolling();
-                }
             }
-
+            // statusPolling auch starten wenn data is empty
+            if (!noReschedule) {
+                scheduleStatusPolling();
+            }
         })
         .catch(err => {
             if (err !== 202) {
