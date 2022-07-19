@@ -154,7 +154,8 @@
     "delete_devices": false,
     "delete_playlists": false,
     "keep_shuffle_state": false,
-    "status_interval": 10,
+    "status_play_interval": 10,
+    "status_interval": 30,
     "device_interval": 5,
     "playlist_interval": 15,
     "album_interval": 15,
@@ -398,6 +399,18 @@
       "common": {
         "role": "value",
         "name": "contains list of artists as string, patter: name;name;name;...",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "albums.artistAlbumList",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "contains list of artist | album as string, patter: name;name;name;...",
         "type": "string",
         "read": true,
         "write": false
@@ -1617,7 +1630,7 @@
         "name": "contains list of tracks as array object, pattern: [{id: \"id\", Name: \"Name\", {id: \"artistId\", name: \"artistName\"}, ...], name: \"albumName\"}, durationMs: 253844, duration: 4:13, discNumber: 1, explicit: false}, ...]",
         "type": "string",
         "read": true,
-        "write": false
+        "write": true
       },
       "native": {}
     },

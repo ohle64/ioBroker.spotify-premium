@@ -54,7 +54,8 @@ let application = {
     statusInternalTimer: null,
     requestPollingHandle: null,
     statusPollingHandle: null,
-    statusPollingDelaySeconds: 5,
+    statusPlayPollingDelaySeconds: 5,
+    statusPollingDelaySeconds: 30,
     devicePollingHandle: null,
     devicePollingDelaySeconds: 300,
     playlistPollingHandle: null,
@@ -87,6 +88,7 @@ let pl_notFoundCount = 0;
 let isAuth = false;
 let trackIsFav = false;
 let lastTrackId = '';
+let isPlaying = false;
 
 function startAdapter(options) {
     options = options || {};
@@ -206,6 +208,7 @@ function main() {
     application.deleteDevices = adapter.config.delete_devices;
     application.deletePlaylists = adapter.config.delete_playlists;
     application.statusPollingDelaySeconds = adapter.config.status_interval;
+    application.statusPlayPollingDelaySeconds = adapter.config.status_play_interval;
     application.keepShuffleState = adapter.config.keep_shuffle_state;
     let deviceInterval = adapter.config.device_interval;
     let playlistInterval = adapter.config.playlist_interval;
@@ -226,10 +229,20 @@ function main() {
     if (isEmpty(application.keepShuffleState)) {
         application.keepShuffleState = false;
     }
-    if (isEmpty(application.statusPollingDelaySeconds)) {
-        application.statusPollingDelaySeconds = 5;
-    } else if (application.statusPollingDelaySeconds < 1 && application.statusPollingDelaySeconds) {
+    if (isEmpty(application.statusPlayPollingDelaySeconds)) {
+        application.statusPlayPollingDelaySeconds = 5;
+    } else if ((application.statusPollingDelaySeconds < 1 && application.statusPollingDelaySeconds) || (application.statusPlayPollingDelaySeconds < 1 && 
+            application.statusPlayPollingDelaySeconds)) {
         application.statusPollingDelaySeconds = 0;
+        application.statusPlayPollingDelaySeconds = 0;
+    }
+    //wenn statusPolling oder statusPlayPolling deaktiviert beide auf 0 setzen
+    if (isEmpty(application.statusPollingDelaySeconds)) {
+        application.statusPollingDelaySeconds = 30;
+    } else if ((application.statusPollingDelaySeconds < 1 && application.statusPollingDelaySeconds) || (application.statusPlayPollingDelaySeconds < 1 && 
+            application.statusPlayPollingDelaySeconds)) {
+        application.statusPollingDelaySeconds = 0;
+        application.statusPlayPollingDelaySeconds = 0;
     }
     if (isEmpty(deviceInterval)) {
         deviceInterval = 0;
@@ -599,167 +612,39 @@ function copyObjectStates(src, dst) {
     }
 }
 
-function createShowInfo(data){
-    if (isEmpty(data)) {
-        data = {};
-    }
-    /*
-    let deviceId = loadOrDefault(data, 'device.id', '');
-    let isDeviceActive = loadOrDefault(data, 'device.is_active', false);
-    let isDeviceRestricted = loadOrDefault(data, 'device.is_restricted', false);
-    let deviceName = loadOrDefault(data, 'device.name', '');
-    let deviceType = loadOrDefault(data, 'device.type', '');
-    let deviceVolume = loadOrDefault(data, 'device.volume_percent', 100);
-    let isPlaying = loadOrDefault(data, 'is_playing', false);
-    let shuffle = loadOrDefault(data, 'shuffle_state', false);
-    let type = loadOrDefault(data, 'currently_playing_type', '');
-    let showId = lastPlayingShow.lastShowId;
-    let epiName = cache.getValue('shows.' + showId + '.episodeListString');
-    let episodeName = '';
-    if (epiName && epiName.val){
-        let epiLst = epiName.val.split(';');
-        if (epiLst && epiLst.length > 0 && lastPlayingShow.lastEpisodeNo <= epiLst.length){
-            episodeName = epiLst[lastPlayingShow.lastEpisodeNo];
+async function getCurrentlyPlayingType(playType) {
+    //Ergänzung zu createPlaybackInfo speziell für episode
+    const retObj = {
+        showId: '',
+        episodeId: '',
+        durationMs: 0,
+        name: '',
+        publisher: '',
+        description: '',
+        total_episodes: 0
+    };
+    if (!isEmpty(playType)) {
+        let query = {
+            additional_types: playType
+        }
+        try {
+            const data = await sendRequest(`/v1/me/player/currently-playing?${querystring.stringify(query)}`, 'GET', '');
+            if (!isEmpty(data)) {
+                //adapter.log.warn('data: ' + JSON.stringify(data));
+                retObj.description = loadOrDefault(data, 'item.show.description', '');
+                retObj.durationMs = loadOrDefault(data, 'item.duration_ms', 0);
+                retObj.episodeId = loadOrDefault(data, 'item.id', '');
+                retObj.name = loadOrDefault(data, 'item.show.name', '');
+                retObj.publisher = loadOrDefault(data,'item.show.publisher', '');
+                retObj.showId = loadOrDefault(data, 'item.show.id', '');
+                retObj.total_episodes = loadOrDefault(data, 'item.show.total_episodes', 0);
+            }
+        } catch(err) {
+            adapter.log.warn('getCurrentlyPlayingType err: ' + err);
         }
     }
-    let duration = 0;
-    //abfrage nach duration
-    if (isPlaying) {
-        showStarted = true;
-    } else {
-        showStarted = false;
-    }
-    if (showStarted) {
-        //duration = cache.getValue('player.durationMs').val;
-        duration = lastPlayingShow.lastEpisodeDuration_ms;
-    }
-    let progress = loadOrDefault(data, 'progress_ms', 0);
-    let progressPercentage = 0;
-    if (duration > 0) {
-        progressPercentage = Math.floor(progress / duration * 100);
-    }
-
-    //Werte speichern
-    return Promise.all([
-        cache.setValue('player.device.id', deviceId),
-        cache.setValue('player.device.isActive', isDeviceActive),
-        cache.setValue('player.device.isRestricted', isDeviceRestricted),
-        cache.setValue('player.device.name', deviceName),
-        cache.setValue('player.device.type', deviceType),
-        cache.setValue('player.device.volume', {val: deviceVolume, ack: true}),
-        cache.setValue('player.device.isAvailable', !isEmpty(deviceName)),
-        cache.setValue('player.device', null, {
-            type: 'device',
-            common: {
-                name: (isEmpty(deviceName) ? 'Commands to control playback related to the current active device' : deviceName),
-                icon: getIconByType(deviceType)
-            },
-            native: {}
-        }),
-        cache.setValue('player.isPlaying', isPlaying),
-        //setOrDefault(data, 'item.id', 'player.episodeId', ''),
-        //setOrDefault(data, 'item.name', 'player.episodeName', ''),
-        cache.setValue('player.episodeId', lastPlayingShow.lastEpisodeId),
-        cache.setValue('player.episodeName', episodeName),
-        cache.setValue('player.durationMs', duration),
-        cache.setValue('player.duration', convertToDigiClock(duration)),
-        cache.setValue('player.type', type),
-        cache.setValue('player.progressMs', progress),
-        cache.setValue('player.progressPercentage', progressPercentage),
-        cache.setValue('player.progress', convertToDigiClock(progress)),
-        cache.setValue('player.shuffle', (shuffle ? 'on' : 'off')),
-        setOrDefault(data, 'repeat_state', 'player.repeat', adapter.config.defaultRepeat),
-        setOrDefault(data, 'device.volume_percent', 'player.device.volume', 100),
-    ])
-    .then(() => {
-        if (deviceName) {
-            deviceData.lastActiveDeviceId = deviceId;
-            let states = cache.getValue('devices.*');
-
-            let keys = Object.keys(states);
-            let fn = function (key) {
-                if (!key.endsWith('.isActive')) {
-                    return;
-                }
-                key = removeNameSpace(key);
-                let name = '';
-                if (deviceId != null) {
-                    name = shrinkStateName(deviceId);
-                } else {
-                    name = shrinkStateName(deviceName);
-                }
-                if (key !== `devices.${name}.isActive`) {
-                    return cache.setValue(key, false);
-                }
-            };
-            return Promise.all(keys.map(fn))
-                .then(() => createDevices({
-                        devices: [{
-                            id: deviceId,
-                            is_active: isDeviceActive,
-                            is_restricted: isDeviceRestricted,
-                            name: deviceName,
-                            type: deviceType,
-                            volume_percent: deviceVolume
-                        }]
-                    }))
-                .then(() => refreshDeviceList());
-        } else {
-            let states = cache.getValue('devices.*');
-            let keys = Object.keys(states);
-            let fn = function (key) {
-                if (!key.endsWith('.isActive')) {
-                    return;
-                }
-                key = removeNameSpace(key);
-                return cache.setValue(key, false);
-            };
-            return Promise.all(keys.map(fn));
-        }
-    })
-    .then(() => {
-        if (progress && isPlaying && application.statusPollingDelaySeconds > 0) {
-            scheduleStatusInternalTimer(duration, progress, Date.now(), application.statusPollingDelaySeconds - 1);
-        }
-    })
-    .then(() => {
-        const promises = [
-            copyState(`shows.${showId}.episodeListNumber`, 'player.show.episodeListNumber'),
-            copyState(`shows.${showId}.episodeListString`, 'player.show.episodeListString'),
-            copyState(`shows.${showId}.episodeListStates`, 'player.show.episodeListStates'),
-            copyObjectStates(`shows.${showId}.episodeList`, 'player.show.episodeList'),
-            copyState(`shows.${showId}.episodeListIdMap`, 'player.show.episodeListIdMap'),
-            copyState(`shows.${showId}.episodeListIds`, 'player.show.episodeListIds'),
-            copyState(`shows.${showId}.episodeListArray`, 'player.show.episodeListArray')
-        ];
-        return Promise.all(promises);
-    })
-    .then(() => {
-        return Promise.all([
-            cache.setValue('player.playlist.id', ''),
-            cache.setValue('player.playlist.name', ''),
-            cache.setValue('player.playlist.owner', ''),
-            cache.setValue('player.playlist.tracksTotal', 0),
-            cache.setValue('player.playlist.snapshot_id', ''),
-            cache.setValue('player.playlist.imageUrl', ''),
-            cache.setValue('player.playlist.trackList', ''),
-            cache.setValue('player.playlist.trackListNumber', ''),
-            cache.setValue('player.playlist.trackListString', ''),
-            cache.setValue('player.playlist.trackListStates', ''),
-            cache.setValue('player.playlist.trackListIdMap', ''),
-            cache.setValue('player.playlist.trackListIds', ''),
-            cache.setValue('player.playlist.trackListArray', ''),
-            cache.setValue('player.playlist.trackNo', 0),
-            cache.setValue('playlists.playlistList', ''),
-            cache.setValue('player.playlist', null, {
-                type: 'channel',
-                common: {
-                    name: 'Commands to control playback related to the playlist'
-                },
-                native: {}
-            })
-        ])
-    }) */
+    //adapter.log.warn('return: ' + ret);
+    return retObj;
 }
 
 function createPlaybackInfo(data) {
@@ -773,7 +658,7 @@ function createPlaybackInfo(data) {
     let deviceName = loadOrDefault(data, 'device.name', '');
     let deviceType = loadOrDefault(data, 'device.type', '');
     let deviceVolume = loadOrDefault(data, 'device.volume_percent', 100);
-    let isPlaying = loadOrDefault(data, 'is_playing', false);
+    isPlaying = loadOrDefault(data, 'is_playing', false);
     let duration = loadOrDefault(data, 'item.duration_ms', 0);
     let type = '';
     let ctype = loadOrDefault(data, 'context.type', '');
@@ -783,17 +668,19 @@ function createPlaybackInfo(data) {
     if (!isPlaying) {
         showStarted = false;
     }
-    if (!isEmpty(ctype)){
+    if (ctype && !isEmpty(ctype)){
         type = ctype;
-    } else if (isEmpty(ctype) && !isEmpty(itype)) {
+    } else if (itype && isEmpty(ctype) && !isEmpty(itype)) {
         type = itype;
     } else if (isEmpty(itype) && !isEmpty(currently_playing_type)) {
         type = currently_playing_type;
     }
     if (isEmpty(type) && !isEmpty(currentPlayingType)) {
         type = currentPlayingType;
-    } else {
-        currentPlayingType = type;
+    }
+    if (!isEmpty(currentPlayingType) && (currentPlayingType === 'episode' || currentPlayingType === 'show')) {
+        type = currentPlayingType;
+        cache.setValue('player.type', type);
     }
     //adapter.log.warn('playbackInfo type: ' + type);
     let progress = loadOrDefault(data, 'progress_ms', 0);
@@ -806,9 +693,13 @@ function createPlaybackInfo(data) {
     let albumUrl = loadOrDefault(data, 'item.album.images[0].url', '');
     let artist = getArtistNamesOrDefault(data, 'item.artists');
     let albumArtistName = loadOrDefault(data, 'item.album.artists[0].name','');
+    let shuffle = loadOrDefault(data, 'shuffle_state', false);
+    let repeat = loadOrDefault(data, 'repeat_state', adapter.config.defaultRepeat);
+    let trackId = loadOrDefault(data, 'item.id', '');
     let showId = '';
     let episodeId = '';
-    let episodeNo = ''; 
+    let episodeNo = 0; 
+
     if (type === 'album') {
         contextDescription = 'Album: ' + album;
         contextImage = albumUrl;
@@ -821,25 +712,17 @@ function createPlaybackInfo(data) {
     } else if ( type === 'collection') {
         contextDescription = 'favorite Songs';
         contextImage = albumUrl;
-    } else if ( type === 'episode') {
+    } else if ( type === 'episode' || type === 'show') {
         //episode has no images
         let stateImg = cache.getValue('player.show.imageUrl');      
         contextImage = loadOrDefault(stateImg, 'val', '');
-        if (showStarted) {
-            showId = lastPlayingShow.lastShowId;
-            episodeId = lastPlayingShow.lastEpisodeId;
-            episodeNo = lastPlayingShow.lastEpisodeNo;
-            duration = lastPlayingShow.lastEpisodeDuration_ms;
-        }
     }
     if (duration > 0) {
         progressPercentage = Math.floor(progress / duration * 100);
     }
-    let shuffle = loadOrDefault(data, 'shuffle_state', false);
-    let trackId = loadOrDefault(data, 'item.id', '');
-    
-    //Abfrage ob player isPlaying
+    //Abfrage ob player isPlaying, sonst isPlaying schreiben und raus aus function
     if (isPlaying) {
+        //adapter.log.warn('device wird geschrieben');
         return Promise.all([
             cache.setValue('player.device.id', deviceId),
             cache.setValue('player.device.isActive', isDeviceActive),
@@ -857,595 +740,558 @@ function createPlaybackInfo(data) {
                 native: {}
             })
         ])
-            .then(() => {
-                if (deviceName) {
-                    deviceData.lastActiveDeviceId = deviceId;
-                    let states = cache.getValue('devices.*');
+        .then(() => {
+            if (deviceName) {
+                deviceData.lastActiveDeviceId = deviceId;
+                let states = cache.getValue('devices.*');
 
-                    let keys = Object.keys(states);
-                    let fn = function (key) {
-                        if (!key.endsWith('.isActive')) {
-                            return;
-                        }
-                        key = removeNameSpace(key);
-                        let name = '';
-                        if (deviceId != null) {
-                            name = shrinkStateName(deviceId);
-                        } else {
-                            name = shrinkStateName(deviceName);
-                        }
-                        if (key !== `devices.${name}.isActive`) {
-                            return cache.setValue(key, false);
-                        }
-                    };
-                    return Promise.all(keys.map(fn))
-                        .then(() => createDevices({
-                                devices: [{
-                                    id: deviceId,
-                                    is_active: isDeviceActive,
-                                    is_restricted: isDeviceRestricted,
-                                    name: deviceName,
-                                    type: deviceType,
-                                    volume_percent: deviceVolume
-                                }]
-                            }))
-                        .then(() => refreshDeviceList());
-                } else {
-                    let states = cache.getValue('devices.*');
-                    let keys = Object.keys(states);
-                    let fn = function (key) {
-                        if (!key.endsWith('.isActive')) {
-                            return;
-                        }
-                        key = removeNameSpace(key);
+                let keys = Object.keys(states);
+                let fn = function (key) {
+                    if (!key.endsWith('.isActive')) {
+                        return;
+                    }
+                    key = removeNameSpace(key);
+                    let name = '';
+                    if (deviceId != null) {
+                        name = shrinkStateName(deviceId);
+                    } else {
+                        name = shrinkStateName(deviceName);
+                    }
+                    if (key !== `devices.${name}.isActive`) {
                         return cache.setValue(key, false);
-                    };
-                    return Promise.all(keys.map(fn));
-                }
-            })
-            
-            .then(() => {
-                if (progress && isPlaying && application.statusPollingDelaySeconds > 0) {
-                    scheduleStatusInternalTimer(duration, progress, Date.now(), application.statusPollingDelaySeconds - 1);
-                }
-            })
-            .then(() => {
-
-                //abfrage nach type ergänzt episode separat (anderer Datenstruktur)
-                if (type === 'track' || type === 'playlist' || type === 'album' || type === 'artist' || type === 'collection') {
-                    //prüfe trackInFavorite (1x abfragen/trackid-wechsel ! err 429 !)
-                    if (!isEmpty(trackId) && (lastTrackId === '' || lastTrackId !== trackId)) {
-                        checkTrackInCollection(trackId);
-                        lastTrackId = trackId;
                     }
-                    //allgemein artists generieren
-                    let artists = [];
-                    for (let i = 0; i < 100; i++) {
-                        let id = loadOrDefault(data, `item.artists[${i}].id`, '');
-                        if (isEmpty(id)) {
-                            break;
-                        } else {
-                            artists.push(id);
-                        }
+                };
+                return Promise.all(keys.map(fn))
+                    .then(() => createDevices({
+                            devices: [{
+                                id: deviceId,
+                                is_active: isDeviceActive,
+                                is_restricted: isDeviceRestricted,
+                                name: deviceName,
+                                type: deviceType,
+                                volume_percent: deviceVolume
+                            }]
+                        }))
+                    .then(() => refreshDeviceList());
+            } else {
+                let states = cache.getValue('devices.*');
+                let keys = Object.keys(states);
+                let fn = function (key) {
+                    if (!key.endsWith('.isActive')) {
+                        return;
                     }
-                    let urls = [];
-                    let fn = function (artist) {
-                        if (artistImageUrlCache.hasOwnProperty(artist)) {
-                            urls.push(artistImageUrlCache[artist]);
-                        } else {
-                            return sendRequest('/v1/artists/' + artist,
-                                'GET', '')
-                                .then(parseJson => {
-                                    let url = loadOrDefault(parseJson, 'images[0].url', '');
-                                    if (!isEmpty(url)) {
-                                        artistImageUrlCache[artist] = url;
-                                        urls.push(url);
-                                    }
-                                });
-                        }
-                    };
-                    return Promise.all(artists.map(fn))
-                        .then(() => {
-                            let set = '';
-                            if (urls.length !== 0) {
-                                set = urls[0];
-                            }
-                            if (type === 'artist') {
-                                contextImage = set;
-                            }
-                            return cache.setValue('player.artistImageUrl', set);
-                        })
+                    key = removeNameSpace(key);
+                    return cache.setValue(key, false);
+                };
+                return Promise.all(keys.map(fn));
+            }
+        })
+        .then(() => {
+            //abfrage nach type ergänzt episode separat (anderer Datenstruktur)
+            if (type === 'track' || type === 'playlist' || type === 'album' || type === 'artist' || type === 'collection') {
+                //prüfe trackInFavorite (1x abfragen/trackid-wechsel ! err 429 !)
+                if (!isEmpty(trackId) && (lastTrackId === '' || lastTrackId !== trackId)) {
+                    adapter.log.debug('ceckTrackInCollection-Aufruf');
+                    checkTrackInCollection(trackId);
+                    lastTrackId = trackId;
+                }
+                //allgemein artists generieren
+                let artists = [];
+                for (let i = 0; i < 100; i++) {
+                    let id = loadOrDefault(data, `item.artists[${i}].id`, '');
+                    if (isEmpty(id)) {
+                        break;
+                    } else {
+                        artists.push(id);
+                    }
+                }
+                let urls = [];
+                let fn = function (artist) {
+                    if (artistImageUrlCache.hasOwnProperty(artist)) {
+                        urls.push(artistImageUrlCache[artist]);
+                    } else {
+                        return sendRequest('/v1/artists/' + artist,
+                            'GET', '')
+                            .then(parseJson => {
+                                let url = loadOrDefault(parseJson, 'images[0].url', '');
+                                if (!isEmpty(url)) {
+                                    artistImageUrlCache[artist] = url;
+                                    urls.push(url);
+                                }
+                            });
+                    }
+                };
+                return Promise.all(artists.map(fn))
                     .then(() => {
-                        //allgemeine Player-Infos bei track, album, playlist, collection, artist
-                        return Promise.all([
-                            cache.setValue('player.albumId', albumId),
-                            cache.setValue('player.isPlaying', isPlaying),
-                            setOrDefault(data, 'item.id', 'player.trackId', ''),
-                            cache.setValue('player.artistName', artist),
-                            //cache.setValue('player.album', album),
-                            cache.setValue('player.albumImageUrl', albumUrl),
-                            setOrDefault(data, 'item.name', 'player.trackName', ''),
-                            cache.setValue('player.durationMs', duration),
-                            cache.setValue('player.duration', convertToDigiClock(duration)),
-                            cache.setValue('player.type', type),
-                            cache.setValue('player.progressMs', progress),
-                            cache.setValue('player.progressPercentage', progressPercentage),
-                            cache.setValue('player.progress', convertToDigiClock(progress)),
-                            cache.setValue('player.shuffle', (shuffle ? 'on' : 'off')),
-                            cache.setValue('player.trackIsFavorite', trackIsFav),
-                            setOrDefault(data, 'repeat_state', 'player.repeat', adapter.config.defaultRepeat),
-                            setOrDefault(data, 'device.volume_percent', 'player.device.volume', 100)
-                        ])
+                        let set = '';
+                        if (urls.length !== 0) {
+                            set = urls[0];
+                        }
+                        if (type === 'artist') {
+                            contextImage = set;
+                        }
+                        return cache.setValue('player.artistImageUrl', set);
                     })
-                    .then(() => {
-                        //spezielle Info's nach type
-                        if (type === 'playlist') {
-                            playlistInfoCache = {};
-                            let uri = loadOrDefault(data, 'context.uri', '');
-                            if (!isEmpty(uri) || !isPlaying) {
-                                let indexOfUser = uri.indexOf('user:');
-                                if (indexOfUser >= 0) {
-                                    indexOfUser = indexOfUser + 5;
+                .then(() => {
+                    //allgemeine Player-Infos bei track, album, playlist, collection, artist
+                    return Promise.all([
+                        cache.setValue('player.albumId', albumId),
+                        cache.setValue('player.isPlaying', isPlaying),
+                        setOrDefault(data, 'item.id', 'player.trackId', ''),
+                        cache.setValue('player.artistName', artist),
+                        cache.setValue('player.albumImageUrl', albumUrl),
+                        setOrDefault(data, 'item.name', 'player.trackName', ''),
+                        cache.setValue('player.durationMs', duration),
+                        cache.setValue('player.duration', convertToDigiClock(duration)),
+                        cache.setValue('player.type', type),
+                        cache.setValue('player.progressMs', progress),
+                        cache.setValue('player.progressPercentage', progressPercentage),
+                        cache.setValue('player.progress', convertToDigiClock(progress)),
+                        cache.setValue('player.shuffle', (shuffle ? 'on' : 'off')),
+                        cache.setValue('player.trackIsFavorite', trackIsFav),
+                        setOrDefault(data, 'repeat_state', 'player.repeat', adapter.config.defaultRepeat),
+                        setOrDefault(data, 'device.volume_percent', 'player.device.volume', 100)
+                    ])
+                })
+                .then(() => {
+                    //spezielle Info's nach type
+                    if (type === 'playlist') {
+                        playlistInfoCache = {};
+                        let uri = loadOrDefault(data, 'context.uri', '');
+                        if (!isEmpty(uri) || !isPlaying) {
+                            let indexOfUser = uri.indexOf('user:');
+                            if (indexOfUser >= 0) {
+                                indexOfUser = indexOfUser + 5;
+                            }
+                            let endIndexOfUser = uri.indexOf(':', indexOfUser);
+                            let indexOfPlaylistId = uri.indexOf('playlist:');
+                            if (indexOfPlaylistId >= 0) {
+                                indexOfPlaylistId = indexOfPlaylistId + 9;
+                            }
+                            let playlistId = uri.substring(indexOfPlaylistId);
+                            //adapter.log.warn('ermittelt playlistId: ' + playlistId);
+                            let ownerId = uri.substring(indexOfUser, endIndexOfUser);
+                            // !!!--> bei (playlistOwner)user !== spotify kein user: in uri <--!!!
+                            if (indexOfUser < 0){
+                                let idLst = loadOrDefault(cache.getValue('playlists.playlistListIds'), 'val', '').split(';');
+                                for (let i = 0; i < idLst.length; i++){
+                                    let _idOwner = idLst[i].split('-');
+                                    if (_idOwner[1] === playlistId) {
+                                        ownerId = _idOwner[0];
+                                        break;
+                                    } 
                                 }
-                                let endIndexOfUser = uri.indexOf(':', indexOfUser);
-                                let indexOfPlaylistId = uri.indexOf('playlist:');
-                                if (indexOfPlaylistId >= 0) {
-                                    indexOfPlaylistId = indexOfPlaylistId + 9;
-                                }
-                                let playlistId = uri.substring(indexOfPlaylistId);
-                                //adapter.log.warn('ermittelt playlistId: ' + playlistId);
-                                let ownerId = uri.substring(indexOfUser, endIndexOfUser);
-                                // !!!--> bei (playlistOwner)user !== spotify kein user: in uri <--!!!
-                                if (indexOfUser < 0){
-                                    let idLst = loadOrDefault(cache.getValue('playlists.playlistListIds'), 'val', '').split(';');
-                                    for (let i = 0; i < idLst.length; i++){
-                                        let _idOwner = idLst[i].split('-');
-                                        if (_idOwner[1] === playlistId) {
-                                            ownerId = _idOwner[0];
-                                            break;
-                                        } 
-                                    }
-                                    //adapter.log.warn('ermittelt ownerId: ' + ownerId);
-                                }
-                                //adapter.log.warn('getPlaylistCacheItem erreicht owner: ' + ownerId + ' plId: '+ playlistId);
-                                let pl_ix = getPlaylistCacheItem(ownerId, playlistId);
-                                let plCacheItem = playlistAppCache[pl_ix];
-                                let Pl_ListId = loadOrDefault(cache.getValue('playlists.playlistListIds'), 'val', '');
-                                //adapter.log.warn('playlistItemCache.len: ' + plCacheItem);
-                                if (plCacheItem) {
-                                    playlistInfoCache[ownerId + '-' + playlistId] = {
-                                        id: playlistId,
-                                        name: plCacheItem.name,
-                                        snapshot_id: plCacheItem.snapshot_id,
-                                        images: [{url: plCacheItem.image}],
-                                        owner: {id: plCacheItem.owner},
-                                        tracks: {total: plCacheItem.tracksTotal}
-                                    };
-                                } else {
-                                    //alle 10s !
-                                    if (Pl_ListId.length > 0 && !plAppCacheReload){
-                                        //versuche nachladen playlistAppCache
-                                        //kann vorkommen wenn spotify-play schon aktiv während adapter-start
-                                        loadPlaylistAppCache();
-                                        plAppCacheReload = true; // nur 1x alle 15min (pollPlaylistApi)
-                                    } else {
-                                        adapter.log.debug('no playlist in playlistAppCache or playlist not found');
-                                    }
-                                }
-                            
-                                let playlistName = loadOrDefault(playlistInfoCache[ownerId + '-' + playlistId], 'name', '');
-                                contextDescription = 'Playlist: ' + playlistName;
-                                let playlistImage = loadOrDefault(playlistInfoCache[ownerId + '-' + playlistId], 'images[0].url', '');
-                                contextImage = playlistImage;
-                                let pl_ownerId = loadOrDefault(playlistInfoCache[ownerId + '-' + playlistId], 'owner.id', '');
-                                let trackCount = loadOrDefault(playlistInfoCache[ownerId + '-' + playlistId], 'tracks.total', '');
-                                let snapshot_id = loadOrDefault(playlistInfoCache[ownerId + '-' + playlistId], 'snapshot_id', '');
-                                let prefix = shrinkStateName(ownerId + '-' + playlistId);
-                                if (isEmpty(ownerId)) {
-                                    if (!isEmpty(pl_ownerId)) {
-                                        ownerId = pl_ownerId;
-                                    }
-                                }
-                                //adapter.log.warn('erstelle playlistInfoCache ownerId ' + ownerId + ' plId: ' + playlistId);
-                                const trackList = cache.getValue(`playlists.${prefix}.trackList`);
-
-                                return Promise.all([
-                                    cache.setValue('player.playlist.id', playlistId),
-                                    cache.setValue('player.albumId', albumId),
-                                    cache.setValue('player.popularity', popularity),
-                                    cache.setValue('player.playlist.owner', ownerId),
-                                    cache.setValue('player.playlist.tracksTotal', parseInt(trackCount, 10)),
-                                    cache.setValue('player.playlist.imageUrl', playlistImage),
-                                    cache.setValue('player.playlist.name', playlistName),
-                                    cache.setValue('player.playlist.snapshot_id', snapshot_id),
-                                    cache.setValue('player.playlist', null, {
-                                        type: 'channel',
-                                        common: {
-                                            name: (isEmpty(playlistName) ? 'Commands to control playback related to the playlist' : playlistName),
-                                            type: 'string'
-                                        },
-                                        native: {}
-                                    })
-                                ])
-                                .then(() => {
-                                    // neu anpassen Abfrage der playlists abhängig von snapshot_id !!!
-                                    let trackListIdLen = loadOrDefault(cache.getValue(`playlists.${prefix}.trackListIds`), 'val', '').length;
-                                    let trackListIdPlayerLen = loadOrDefault(cache.getValue('player.playlist.trackListIds'), 'val', '').length;
-                                    if (!isEmpty(trackListIdLen) && !isEmpty(trackListIdPlayerLen) && trackListIdLen !== trackListIdPlayerLen) {
-                                        return createPlaylists({
-                                            items: [
-                                                playlistInfoCache[ownerId + '-' + playlistId]
-                                            ]
-                                        });
-                                    } else {
-                                        return refreshPlaylistList();
-                                    }
-                                })
-                                .then(() => {
-                                    //Listen nach player.playlist kopieren
-                                    const promises = [
-                                        copyState(`playlists.${prefix}.trackListNumber`, 'player.playlist.trackListNumber'),
-                                        copyState(`playlists.${prefix}.trackListString`, 'player.playlist.trackListString'),
-                                        copyState(`playlists.${prefix}.trackListStates`, 'player.playlist.trackListStates'),
-                                        copyObjectStates(`playlists.${prefix}.trackList`, 'player.playlist.trackList'),
-                                        copyState(`playlists.${prefix}.trackListIdMap`, 'player.playlist.trackListIdMap'),
-                                        copyState(`playlists.${prefix}.trackListIds`, 'player.playlist.trackListIds'),
-                                        copyState(`playlists.${prefix}.trackListArray`, 'player.playlist.trackListArray')
-                                    ];
-                                    if (trackList && trackList.val) {
-                                        adapter.log.debug('TrackList.val: ' + parseInt(trackList.val, 10));
-                                        promises.push(cache.setValue('player.playlist.trackNo', (parseInt(trackList.val, 10) + 1)));
-                                    }
-                                    return Promise.all(promises);
-                                })
-                                .then(() => {
-                                    //setzen der TrackNo
-                                    let idLststate = cache.getValue(`playlists.${prefix}.trackListIdMap`);
-                                    let stateNumbers = cache.getValue(`playlists.${prefix}.trackListNumber`);
-                                    let stateSongId = cache.getValue('player.trackId');
-                                    let ids = loadOrDefault(idLststate, 'val', '');
-                                    let num = loadOrDefault(stateNumbers, 'val', '');
-                                    let songId = loadOrDefault(stateSongId, 'val', '');
-                                    if (isEmpty(trackId) && !isEmpty(songId)) {
-                                        trackId = songId;
-                                    }
-                                    if (!isEmpty(ids) && !isEmpty(num) && !isEmpty(trackId)) {
-                                        let stateName = ids.split(';');
-                                        let stateNr = num.split(';');
-                                        let nr = stateName.indexOf(trackId);
-                                        if (nr >= 0) {
-                                            let no = parseInt(stateNr[nr], 10);
-                                            adapter.log.debug('TrackNo: ' + (no + 1));
-                                            return Promise.all([
-                                                cache.setValue('player.playlist.trackNo', (no + 1)),
-                                                cache.setValue(`playlists.${prefix}.trackList`, no),
-                                                cache.setValue('player.playlist.trackList', no)
-                                            ]);
-                                        }
-                                    } else {
-                                        adapter.log.warn('getPlaybackInfo(playlist) ids or num or trackid is empty');
-                                    }
-                                });
+                                //adapter.log.warn('ermittelt ownerId: ' + ownerId);
+                            }
+                            //adapter.log.warn('getPlaylistCacheItem erreicht owner: ' + ownerId + ' plId: '+ playlistId);
+                            let pl_ix = getPlaylistCacheItem(ownerId, playlistId);
+                            let plCacheItem = playlistAppCache[pl_ix];
+                            let Pl_ListId = loadOrDefault(cache.getValue('playlists.playlistListIds'), 'val', '');
+                            //adapter.log.warn('playlistItemCache.len: ' + plCacheItem);
+                            if (plCacheItem) {
+                                playlistInfoCache[ownerId + '-' + playlistId] = {
+                                    id: playlistId,
+                                    name: plCacheItem.name,
+                                    snapshot_id: plCacheItem.snapshot_id,
+                                    images: [{url: plCacheItem.image}],
+                                    owner: {id: plCacheItem.owner},
+                                    tracks: {total: plCacheItem.tracksTotal}
+                                };
                             } else {
-                                // uri isEmpty | isPlaying false
-                                //playlist daten löschen ??
-                                //adapter.log.warn(`löschen player.playlist daten context type: "${type}"`);  
+                                //alle 10s !
+                                if (Pl_ListId.length > 0 && !plAppCacheReload){
+                                    //versuche nachladen playlistAppCache
+                                    //kann vorkommen wenn spotify-play schon aktiv während adapter-start
+                                    loadPlaylistAppCache();
+                                    plAppCacheReload = true; // nur 1x alle 15min (pollPlaylistApi)
+                                } else {
+                                    adapter.log.debug('no playlist in playlistAppCache or playlist not found');
+                                }
                             }
-        
-                        } else if (type === 'album') {
-                            //Album-Daten einfügen
-                            let AlbumName = loadOrDefault(data, 'item.album.name', '');
-                            if (isEmpty(AlbumName)) {
-                                AlbumName = album;
+                        
+                            let playlistName = loadOrDefault(playlistInfoCache[ownerId + '-' + playlistId], 'name', '');
+                            contextDescription = 'Playlist: ' + playlistName;
+                            let playlistImage = loadOrDefault(playlistInfoCache[ownerId + '-' + playlistId], 'images[0].url', '');
+                            contextImage = playlistImage;
+                            let pl_ownerId = loadOrDefault(playlistInfoCache[ownerId + '-' + playlistId], 'owner.id', '');
+                            let trackCount = loadOrDefault(playlistInfoCache[ownerId + '-' + playlistId], 'tracks.total', '');
+                            let snapshot_id = loadOrDefault(playlistInfoCache[ownerId + '-' + playlistId], 'snapshot_id', '');
+                            let prefix = shrinkStateName(ownerId + '-' + playlistId);
+                            if (isEmpty(ownerId)) {
+                                if (!isEmpty(pl_ownerId)) {
+                                    ownerId = pl_ownerId;
+                                }
                             }
-                            contextDescription = 'Album: ' + AlbumName;
-                            let albumImage = loadOrDefault(data, 'item.album.images[0].url', '');
-                            contextImage = albumImage;
-                            let trackCount = loadOrDefault(data, 'item.album.total_tracks', '');
-                            albumCache[albumId] = {
-                                album: {
-                                    id: albumId,
-                                    name: AlbumName,
-                                    images: [{url: albumImage}]
-                                },
-                                total: trackCount
-                            };
-                            const trackList = cache.getValue(`albums.${albumId}.trackList`);
+                            //adapter.log.warn('erstelle playlistInfoCache ownerId ' + ownerId + ' plId: ' + playlistId);
+                            const trackList = cache.getValue(`playlists.${prefix}.trackList`);
+
                             return Promise.all([
+                                cache.setValue('player.playlist.id', playlistId),
                                 cache.setValue('player.albumId', albumId),
                                 cache.setValue('player.popularity', popularity),
-                                cache.setValue('player.album.id', albumId),
-                                cache.setValue('player.album.popularity', popularity),
-                                cache.setValue('player.album.tracksTotal', parseInt(trackCount, 10)),
-                                cache.setValue('player.album.imageUrl', albumImage),
-                                cache.setValue('player.album.name', AlbumName),
-                                cache.setValue('player.album.artistName', albumArtistName),
-                                cache.setValue('player.album', null, {
+                                cache.setValue('player.playlist.owner', ownerId),
+                                cache.setValue('player.playlist.tracksTotal', parseInt(trackCount, 10)),
+                                cache.setValue('player.playlist.imageUrl', playlistImage),
+                                cache.setValue('player.playlist.name', playlistName),
+                                cache.setValue('player.playlist.snapshot_id', snapshot_id),
+                                cache.setValue('player.playlist', null, {
                                     type: 'channel',
                                     common: {
-                                        name: (isEmpty(AlbumName) ? 'Commands to control playback related to the album' : AlbumName),
+                                        name: (isEmpty(playlistName) ? 'Commands to control playback related to the playlist' : playlistName),
                                         type: 'string'
                                     },
                                     native: {}
                                 })
                             ])
-                                .then(() => { //error --> parseJson nicht definiert!!!
-                                    let trackListIdLen = loadOrDefault(cache.getValue(`albums.${albumId}.trackListIds`), 'val', '').length;
-                                    let trackListIdPlayerLen = loadOrDefault(cache.getValue('player.album.trackListIds'), 'val', '').length;
-                                    if (!isEmpty(trackListIdLen) && !isEmpty(trackListIdPlayerLen) && trackListIdLen !== trackListIdPlayerLen){
-                                    //if (cache.getValue(`albums.${prefix}.trackListIds`) === null) {
-                                        return createAlbums({
-                                            items: [
-                                                albumCache[albumId]
-                                            ]
-                                        });
-                                    } else {
-                                        return refreshAlbumList();
+                            .then(() => {
+                                // neu anpassen Abfrage der playlists abhängig von snapshot_id !!!
+                                let trackListIdLen = loadOrDefault(cache.getValue(`playlists.${prefix}.trackListIds`), 'val', '').length;
+                                let trackListIdPlayerLen = loadOrDefault(cache.getValue('player.playlist.trackListIds'), 'val', '').length;
+                                if (!isEmpty(trackListIdLen) && !isEmpty(trackListIdPlayerLen) && trackListIdLen !== trackListIdPlayerLen) {
+                                    return createPlaylists({
+                                        items: [
+                                            playlistInfoCache[ownerId + '-' + playlistId]
+                                        ]
+                                    });
+                                } else {
+                                    return refreshPlaylistList();
+                                }
+                            })
+                            .then(() => {
+                                //Listen nach player.playlist kopieren
+                                const promises = [
+                                    copyState(`playlists.${prefix}.trackListNumber`, 'player.playlist.trackListNumber'),
+                                    copyState(`playlists.${prefix}.trackListString`, 'player.playlist.trackListString'),
+                                    copyState(`playlists.${prefix}.trackListStates`, 'player.playlist.trackListStates'),
+                                    copyObjectStates(`playlists.${prefix}.trackList`, 'player.playlist.trackList'),
+                                    copyState(`playlists.${prefix}.trackListIdMap`, 'player.playlist.trackListIdMap'),
+                                    copyState(`playlists.${prefix}.trackListIds`, 'player.playlist.trackListIds'),
+                                    copyState(`playlists.${prefix}.trackListArray`, 'player.playlist.trackListArray')
+                                ];
+                                if (trackList && trackList.val) {
+                                    //adapter.log.debug('TrackList.val: ' + parseInt(trackList.val, 10));
+                                    promises.push(cache.setValue('player.playlist.trackNo', (parseInt(trackList.val, 10) + 1)));
+                                }
+                                return Promise.all(promises);
+                            })
+                            .then(() => {
+                                //setzen der TrackNo
+                                let idLststate = cache.getValue(`playlists.${prefix}.trackListIdMap`);
+                                let stateNumbers = cache.getValue(`playlists.${prefix}.trackListNumber`);
+                                let stateSongId = cache.getValue('player.trackId');
+                                let ids = loadOrDefault(idLststate, 'val', '');
+                                let num = loadOrDefault(stateNumbers, 'val', '');
+                                let songId = loadOrDefault(stateSongId, 'val', '');
+                                if (isEmpty(trackId) && !isEmpty(songId)) {
+                                    trackId = songId;
+                                }
+                                if (!isEmpty(ids) && !isEmpty(num) && !isEmpty(trackId)) {
+                                    let stateName = ids.split(';');
+                                    let stateNr = num.split(';');
+                                    let nr = stateName.indexOf(trackId);
+                                    if (nr >= 0) {
+                                        let no = parseInt(stateNr[nr], 10);
+                                        //adapter.log.debug('TrackNo: ' + (no + 1));
+                                        return Promise.all([
+                                            cache.setValue('player.playlist.trackNo', (no + 1)),
+                                            cache.setValue(`playlists.${prefix}.trackList`, no),
+                                            cache.setValue('player.playlist.trackList', no)
+                                        ]);
                                     }
-                                })
-                                .then(() => {
-                                    const promises = [
-                                        copyState(`albums.${albumId}.trackListNumber`, 'player.album.trackListNumber'),
-                                        copyState(`albums.${albumId}.trackListString`, 'player.album.trackListString'),
-                                        copyState(`albums.${albumId}.trackListStates`, 'player.album.trackListStates'),
-                                        copyObjectStates(`albums.${albumId}.trackList`, 'player.album.trackList'),
-                                        copyState(`albums.${albumId}.trackListIdMap`, 'player.album.trackListIdMap'),
-                                        copyState(`albums.${albumId}.trackListIds`, 'player.album.trackListIds'),
-                                        copyState(`albums.${albumId}.trackListArray`, 'player.album.trackListArray')
-                                    ];
-                                    if (trackList) {
-                                        promises.push(cache.setValue('player.album.trackNo', (parseInt(trackList.val, 10) + 1)));
-                                    }
-                                    return Promise.all(promises);
-                                })
-                                .then(() => {
-                                    //setzen der TrackNo
-                                    let state = cache.getValue(`albums.${albumId}.trackListIdMap`);
-                                    let stateNumbers = cache.getValue(`albums.${albumId}.trackListNumber`);
-                                    let stateSongId = cache.getValue('player.trackId');
-                                    let ids = loadOrDefault(state, 'val', '');
-                                    let num = loadOrDefault(stateNumbers, 'val', '');
-                                    let songId = loadOrDefault(stateSongId, 'val', '');
-                                    if (isEmpty(trackId) && !isEmpty(songId)) {
-                                        trackId = songId;
-                                    }
-                                    if (!isEmpty(ids) && !isEmpty(num) && !isEmpty(trackId)) {
-                                        let stateName = ids.split(';');
-                                        let stateNr = num.split(';');
-                                        let nr = stateName.indexOf(trackId);
-                                        if (nr >= 0) {
-                                            let no = parseInt(stateNr[nr], 10);
-                                            //adapter.log.warn('TrackNo: ' + (no + 1));
-                                            return Promise.all([
-                                                cache.setValue(`albums.${albumId}.trackList`, no),
-                                                cache.setValue('player.album.trackList', no),
-                                                cache.setValue('player.album.trackNo', (no + 1))
-                                            ]);
-                                        }
-                                    }
-                                })
-                                .catch(err => adapter.log.warn('createPlaybackInfo album error: ' + err));                 
-                            //}
-                            //});
-                            /*.then(() => {
+                                } else {
+                                    adapter.log.warn('getPlaybackInfo(playlist) ids or num or trackid is empty');
+                                }
+                            });
+                        } else {
+                            // uri isEmpty | isPlaying false
+                            //playlist daten löschen ??
+                            //adapter.log.warn(`löschen player.playlist daten context type: "${type}"`);  
+                        }
+    
+                    } else if (type === 'album') {
+                        //Album-Daten einfügen
+                        let AlbumName = loadOrDefault(data, 'item.album.name', '');
+                        if (isEmpty(AlbumName)) {
+                            AlbumName = album;
+                        }
+                        contextDescription = 'Album: ' + AlbumName;
+                        let albumImage = loadOrDefault(data, 'item.album.images[0].url', '');
+                        contextImage = albumImage;
+                        let trackCount = loadOrDefault(data, 'item.album.total_tracks', '');
+                        if (isEmpty(albumArtistName) && !isEmpty(artist)) {
+                            albumArtistName = artist;
+                        }
+                        albumCache[albumId] = {
+                            album: {
+                                id: albumId,
+                                artists: [{name: albumArtistName}],
+                                name: AlbumName,
+                                images: [{url: albumImage}]
+                            },
+                            total: trackCount
+                        };
+                        const trackList = cache.getValue(`albums.${albumId}.trackList`);
                         return Promise.all([
-                            cache.setValue('player.playlist.id', ''),
-                            cache.setValue('player.playlist.name', ''),
-                            cache.setValue('player.playlist.owner', ''),
-                            cache.setValue('player.playlist.tracksTotal', 0),
-                            cache.setValue('player.playlist.snapshot_id', ''),
-                            cache.setValue('player.playlist.imageUrl', ''),
-                            cache.setValue('player.playlist.trackList', ''),
-                            cache.setValue('player.playlist.trackListNumber', ''),
-                            cache.setValue('player.playlist.trackListString', ''),
-                            cache.setValue('player.playlist.trackListStates', ''),
-                            cache.setValue('player.playlist.trackListIdMap', ''),
-                            cache.setValue('player.playlist.trackListIds', ''),
-                            cache.setValue('player.playlist.trackListArray', ''),
-                            cache.setValue('player.playlist.trackNo', 0),
-                            cache.setValue('playlists.playlistList', ''),
-                            cache.setValue('player.playlist', null, {
+                            cache.setValue('player.albumId', albumId),
+                            cache.setValue('player.popularity', popularity),
+                            cache.setValue('player.album.id', albumId),
+                            cache.setValue('player.album.popularity', popularity),
+                            cache.setValue('player.album.tracksTotal', parseInt(trackCount, 10)),
+                            cache.setValue('player.album.imageUrl', albumImage),
+                            cache.setValue('player.album.name', AlbumName),
+                            cache.setValue('player.album.artistName', albumArtistName),
+                            cache.setValue('player.album', null, {
                                 type: 'channel',
                                 common: {
-                                    name: 'Commands to control playback related to the playlist'
+                                    name: (isEmpty(AlbumName) ? 'Commands to control playback related to the album' : AlbumName),
+                                    type: 'string'
                                 },
                                 native: {}
                             })
                         ])
-                        .then(() => Promise.all([
-                            listenOnHtmlPlaylists(),
-                            listenOnHtmlTracklist()
-                        ]));
-                    });*/
-                        } else if (type === 'collection') {
-                            //Album-Daten einfügen
-                            let AlbumName = loadOrDefault(data, 'item.album.name', '');
-                            contextDescription = 'Collection-Album: ' + AlbumName;
-                            let albumImage = loadOrDefault(data, 'item.album.images[0].url', '');
-                            contextImage = albumImage;
-                            let trackCount = loadOrDefault(cache.getValue('player.collection.tracksTotal'), 'val', 0); //<--anpassen gibt es nicht aus collections holen?
-                            let collectionName = 'favorite Collection';
-                            let collectionId = 'myFavoriteCollection';
-                            const trackList = cache.getValue(`collections.${collectionId}.trackList`);
+                            .then(() => {
+                                let trackListIdLen = loadOrDefault(cache.getValue(`albums.${albumId}.trackListIds`), 'val', '').length;
+                                let trackListIdPlayerLen = loadOrDefault(cache.getValue('player.album.trackListIds'), 'val', '').length;
+                                if (!isEmpty(trackListIdLen) && !isEmpty(trackListIdPlayerLen) && trackListIdLen !== trackListIdPlayerLen) {
+                                    return createAlbums({
+                                        items: [
+                                            albumCache[albumId]
+                                        ]
+                                    });
+                                } else {
+                                    return refreshAlbumList();
+                                }
+                            })
+                            .then(() => {
+                                const promises = [
+                                    copyState(`albums.${albumId}.trackListNumber`, 'player.album.trackListNumber'),
+                                    copyState(`albums.${albumId}.trackListString`, 'player.album.trackListString'),
+                                    copyState(`albums.${albumId}.trackListStates`, 'player.album.trackListStates'),
+                                    copyObjectStates(`albums.${albumId}.trackList`, 'player.album.trackList'),
+                                    copyState(`albums.${albumId}.trackListIdMap`, 'player.album.trackListIdMap'),
+                                    copyState(`albums.${albumId}.trackListIds`, 'player.album.trackListIds'),
+                                    copyState(`albums.${albumId}.trackListArray`, 'player.album.trackListArray')
+                                ];
+                                if (trackList) {
+                                    promises.push(cache.setValue('player.album.trackNo', (parseInt(trackList.val, 10) + 1)));
+                                }
+                                return Promise.all(promises);
+                            })
+                            .then(() => {
+                                //setzen der TrackNo
+                                let state = cache.getValue(`albums.${albumId}.trackListIdMap`);
+                                let stateNumbers = cache.getValue(`albums.${albumId}.trackListNumber`);
+                                let stateSongId = cache.getValue('player.trackId');
+                                let ids = loadOrDefault(state, 'val', '');
+                                let num = loadOrDefault(stateNumbers, 'val', '');
+                                let songId = loadOrDefault(stateSongId, 'val', '');
+                                if (isEmpty(trackId) && !isEmpty(songId)) {
+                                    trackId = songId;
+                                }
+                                if (!isEmpty(ids) && !isEmpty(num) && !isEmpty(trackId)) {
+                                    let stateName = ids.split(';');
+                                    let stateNr = num.split(';');
+                                    let nr = stateName.indexOf(trackId);
+                                    if (nr >= 0) {
+                                        let no = parseInt(stateNr[nr], 10);
+                                        //adapter.log.warn('TrackNo: ' + (no + 1));
+                                        return Promise.all([
+                                            cache.setValue(`albums.${albumId}.trackList`, no),
+                                            cache.setValue('player.album.trackList', no),
+                                            cache.setValue('player.album.trackNo', (no + 1))
+                                        ]);
+                                    }
+                                }
+                            })
+                            .catch(err => adapter.log.warn('createPlaybackInfo album error: ' + err));
+                        /*.then(() => {
                             return Promise.all([
-                                cache.setValue('player.albumId', albumId),
-                                cache.setValue('player.popularity', popularity),
-                                cache.setValue('player.collection.id', albumId),
-                                cache.setValue('player.collection.tracksTotal', parseInt(trackCount, 10)),
-                                cache.setValue('player.collection.imageUrl', albumImage),
-                                cache.setValue('player.collection.name', AlbumName),
-                                cache.setValue('player.collection.artistName', albumArtistName),
-                                cache.setValue('player.collection', null, {
-                                    type: 'channel',
-                                    common: {
-                                        name: (isEmpty(collectionName) ? 'Commands to control playback related to the collection' : collectionName),
-                                        type: 'string'
-                                    },
-                                    native: {}
-                                })
+                                listenOnHtmlPlaylists(),
+                                listenOnHtmlTracklist()
                             ])
+                        });*/
+                    } else if (type === 'collection') {
+                        //Album-Daten einfügen
+                        let AlbumName = loadOrDefault(data, 'item.album.name', '');
+                        contextDescription = 'Collection-Album: ' + AlbumName;
+                        let albumImage = loadOrDefault(data, 'item.album.images[0].url', '');
+                        contextImage = albumImage;
+                        let trackCount = loadOrDefault(cache.getValue('player.collection.tracksTotal'), 'val', 0); //<--anpassen gibt es nicht aus collections holen?
+                        let collectionName = 'favorite Collection';
+                        let collectionId = 'myFavoriteCollection';
+                        const trackList = cache.getValue(`collections.${collectionId}.trackList`);
+                        return Promise.all([
+                            cache.setValue('player.albumId', albumId),
+                            cache.setValue('player.popularity', popularity),
+                            cache.setValue('player.collection.id', albumId),
+                            cache.setValue('player.collection.tracksTotal', parseInt(trackCount, 10)),
+                            cache.setValue('player.collection.imageUrl', albumImage),
+                            cache.setValue('player.collection.name', AlbumName),
+                            cache.setValue('player.collection.artistName', albumArtistName),
+                            cache.setValue('player.collection', null, {
+                                type: 'channel',
+                                common: {
+                                    name: (isEmpty(collectionName) ? 'Commands to control playback related to the collection' : collectionName),
+                                    type: 'string'
+                                },
+                                native: {}
+                            })
+                        ])
+                            .then(() => {
+                                let trackListIdLen = loadOrDefault(cache.getValue(`collections.${collectionId}.trackListIds`), 'val', '').length;
+                                let trackListIdPlayerLen = loadOrDefault(cache.getValue('player.collection.trackListIds'), 'val', '').length;
+                                if (!isEmpty(trackListIdLen) && !isEmpty(trackListIdPlayerLen) && trackListIdLen !== trackListIdPlayerLen) {
+                                    return createCollections();
+                                } else {
+                                    //return refreshCollectionList(); //<<-- anpassen prüfen - nur 1x liste noch kein bedarf
+                                    return;
+                                }
+                            })
+                            .then(() => {
+                                const promises = [
+                                    copyState(`collections.${collectionId}.tracksTotal`, 'player.collection.tracksTotal'),
+                                    copyState(`collections.${collectionId}.trackListNumber`, 'player.collection.trackListNumber'),
+                                    copyState(`collections.${collectionId}.trackListString`, 'player.collection.trackListString'),
+                                    copyState(`collections.${collectionId}.trackListStates`, 'player.collection.trackListStates'),
+                                    copyObjectStates(`collections.${collectionId}.trackList`, 'player.collection.trackList'),
+                                    copyState(`collections.${collectionId}.trackListIdMap`, 'player.collection.trackListIdMap'),
+                                    copyState(`collections.${collectionId}.trackListIds`, 'player.collection.trackListIds'),
+                                    copyState(`collections.${collectionId}.trackListArray`, 'player.collection.trackListArray')
+                                ];
+                                if (trackList) {
+                                    promises.push(cache.setValue('player.collection.trackNo', (parseInt(trackList.val, 10) + 1)));
+                                }
+                                return Promise.all(promises);
+                            })
+                            .then(() => {
+                                //setzen der TrackNo
+                                let state = cache.getValue(`collections.${collectionId}.trackListIdMap`);
+                                let stateNumbers = cache.getValue(`collections.${collectionId}.trackListNumber`);
+                                let stateSongId = cache.getValue('player.trackId');
+                                let ids = loadOrDefault(state, 'val', '');
+                                let num = loadOrDefault(stateNumbers, 'val', '');
+                                let songId = loadOrDefault(stateSongId, 'val', '');
+                                if (isEmpty(trackId) && !isEmpty(songId)) {
+                                    trackId = songId;
+                                }
+                                if (!isEmpty(ids) && !isEmpty(num) && !isEmpty(trackId)) {
+                                    let stateName = ids.split(';');
+                                    let stateNr = num.split(';');
+                                    let nr = stateName.indexOf(trackId);
+                                    if (nr >= 0) {
+                                        let no = parseInt(stateNr[nr], 10);
+                                        //adapter.log.warn('TrackNo: ' + (no + 1));
+                                        return Promise.all([
+                                            cache.setValue(`collections.${collectionId}.trackList`, no),
+                                            cache.setValue('player.collection.trackList', no),
+                                            cache.setValue('player.collection.trackNo', (no + 1))
+                                        ]);
+                                    }
+                                }
+                            });
+                    }
+                })
+                .catch(err => adapter.log.warn('createPlaybackInfo error: ' + err));
+            } else if (type === 'episode' || type === 'show'){
+                //adapter.log.warn('episodeId: ' + episodeId + ' und lastEpisodeId: ' + lastPlayingShow.lastEpisodeId);
+                if (isEmpty(episodeId) || lastPlayingShow.lastEpisodeId != episodeId) {
+                    // code für currently playing types einfügen (nur 1x ausführen - 10s!)    
+                    //adapter.log.warn('vor getCurrentlyPlaying');
+                    return getCurrentlyPlayingType('episode')
+                    .then((retObj) => {
+                        //adapter.log.warn('retObj: ' + JSON.stringify(retObj));
+                        if (!isEmpty(retObj)) {
+                            //adapter.log.warn('retObj nicht leer nach getCurrentlyPlaying');
+                            episodeId = retObj.episodeId;
+                            duration = retObj.durationMs;
+                            showId = retObj.showId;
+                            lastPlayingShow.lastShowId = showId;
+                            lastPlayingShow.lastEpisodeId = episodeId;
+                            lastPlayingShow.lastEpisodeDuration_ms = duration;
+                            let epiIdLst = loadOrDefault(cache.getValue('shows.' + showId + '.episodeListIdMap'),'val', '').split(';');
+                            if (epiIdLst && epiIdLst.length > 0) {
+                                let epi_ix = epiIdLst.indexOf(episodeId);
+                                if (epi_ix >= 0) {
+                                    lastPlayingShow.lastEpisodeNo = epi_ix;
+                                    episodeNo = epi_ix;
+                                }
+                            }
+                            //adapter.log.warn('epitype: ' + type);
+                            if (!isEmpty(showId)){
+                                let publisherState = cache.getValue('shows.' + showId + '.publisher');
+                                let publisher = loadOrDefault(publisherState, 'val', '');
+                                let showStateName = cache.getValue('shows.' + showId + '.name');
+                                let showImageUrlState = cache.getValue('shows.' + showId + '.imageUrl');
+                                let total_epiState = cache.getValue('shows.' + showId + '.episodesTotal');
+                                let showName = loadOrDefault(showStateName, 'val', '');
+                                let imageUrl = loadOrDefault(showImageUrlState, 'val', '');
+                                let total_episodes = loadOrDefault(total_epiState, 'val', 0);
+                                let epiLstState = cache.getValue('shows.' + showId + '.episodeListString');
+                                let epiLst = loadOrDefault(epiLstState, 'val', '').split(';');
+                                contextDescription = 'Show: ' + showName;
+                                //einfügen code für episodeNo ermitteln, wenn das mal möglich wird
+                                let epiName = '';
+                                let eno = 0;
+                                if (epiLst && epiLst.length > 0) {
+                                    eno = episodeNo;
+                                    epiName = epiLst[eno];
+                                }
+                                const promises = [
+                                    copyState(`shows.${showId}.episodeListNumber`, 'player.show.episodeListNumber'),
+                                    copyState(`shows.${showId}.episodeListString`, 'player.show.episodeListString'),
+                                    copyState(`shows.${showId}.episodeListStates`, 'player.show.episodeListStates'),
+                                    copyObjectStates(`shows.${showId}.episodeList`, 'player.show.episodeList'),
+                                    copyState(`shows.${showId}.episodeListIdMap`, 'player.show.episodeListIdMap'),
+                                    copyState(`shows.${showId}.episodeListIds`, 'player.show.episodeListIds'),
+                                    copyState(`shows.${showId}.episodeListArray`, 'player.show.episodeListArray'),
+                                ];
+                                return Promise.all(promises)
                                 .then(() => {
-                                    //if (cache.getValue(`collections.${collectionId}.trackListIds`) === null) {
-                                    let trackListIdLen = loadOrDefault(cache.getValue(`collections.${collectionId}.trackListIds`), 'val', '').length;
-                                    let trackListIdPlayerLen = loadOrDefault(cache.getValue('player.collection.trackListIds'), 'val', '').length;
-                                    if (!isEmpty(trackListIdLen) && !isEmpty(trackListIdPlayerLen) && trackListIdLen !== trackListIdPlayerLen) {
-                                        return createCollections();
-                                    } else {
-                                        //return refreshCollectionList(); //<<-- anpassen prüfen function
-                                        return;
-                                    }
-                                })
-                                .then(() => {
-                                    const promises = [
-                                        copyState(`collections.${collectionId}.tracksTotal`, 'player.collection.tracksTotal'),
-                                        copyState(`collections.${collectionId}.trackListNumber`, 'player.collection.trackListNumber'),
-                                        copyState(`collections.${collectionId}.trackListString`, 'player.collection.trackListString'),
-                                        copyState(`collections.${collectionId}.trackListStates`, 'player.collection.trackListStates'),
-                                        copyObjectStates(`collections.${collectionId}.trackList`, 'player.collection.trackList'),
-                                        copyState(`collections.${collectionId}.trackListIdMap`, 'player.collection.trackListIdMap'),
-                                        copyState(`collections.${collectionId}.trackListIds`, 'player.collection.trackListIds'),
-                                        copyState(`collections.${collectionId}.trackListArray`, 'player.collection.trackListArray')
-                                    ];
-                                    if (trackList) {
-                                        promises.push(cache.setValue('player.collection.trackNo', (parseInt(trackList.val, 10) + 1)));
-                                    }
-                                    return Promise.all(promises);
-                                })
-                                .then(() => {
-                                    //setzen der TrackNo
-                                    let state = cache.getValue(`collections.${collectionId}.trackListIdMap`);
-                                    let stateNumbers = cache.getValue(`collections.${collectionId}.trackListNumber`);
-                                    let stateSongId = cache.getValue('player.trackId');
-                                    let ids = loadOrDefault(state, 'val', '');
-                                    let num = loadOrDefault(stateNumbers, 'val', '');
-                                    let songId = loadOrDefault(stateSongId, 'val', '');
-                                    if (isEmpty(trackId) && !isEmpty(songId)) {
-                                        trackId = songId;
-                                    }
-                                    if (!isEmpty(ids) && !isEmpty(num) && !isEmpty(trackId)) {
-                                        let stateName = ids.split(';');
-                                        let stateNr = num.split(';');
-                                        let nr = stateName.indexOf(trackId);
-                                        if (nr >= 0) {
-                                            let no = parseInt(stateNr[nr], 10);
-                                            //adapter.log.warn('TrackNo: ' + (no + 1));
-                                            return Promise.all([
-                                                cache.setValue(`collections.${collectionId}.trackList`, no),
-                                                cache.setValue('player.collection.trackList', no),
-                                                cache.setValue('player.collection.trackNo', (no + 1))
-                                            ]);
-                                        }
-                                    }
-                                });
+                                    //adapter.log.warn('write player data');
+                                    return Promise.all([
+                                        cache.setValue('player.isPlaying', isPlaying),
+                                        cache.setValue(`shows.${showId}.episodeList`, eno),
+                                        cache.setValue('player.show.episodeList', eno),
+                                        cache.setValue('player.episodeId', episodeId),
+                                        cache.setValue('player.episodeName',epiName),
+                                        cache.setValue('player.show.name', showName),
+                                        cache.setValue('player.show.id', showId),
+                                        cache.setValue('player.show.imageUrl', imageUrl),
+                                        cache.setValue('player.show.episodesTotal', total_episodes),
+                                        cache.setValue('player.show.publisher', publisher),
+                                        cache.setValue('player.show.episodeNo', eno),
+                                        cache.setValue('player.durationMs', duration),
+                                        cache.setValue('player.duration', convertToDigiClock(duration)),
+                                        cache.setValue('player.type', type),
+                                        cache.setValue('player.progressMs', progress),
+                                        cache.setValue('player.progressPercentage', progressPercentage),
+                                        cache.setValue('player.progress', convertToDigiClock(progress)),
+                                        cache.setValue('player.shuffle', (shuffle ? 'on' : 'off')),
+                                        cache.setValue('player.repeat', repeat),
+                                        //setOrDefault(data, 'repeat_state', 'player.repeat', adapter.config.defaultRepeat),
+                                        setOrDefault(data, 'device.volume_percent', 'player.device.volume', 100)
+                                    ])
+                                })  
+                            }
                         }
                     })
-                    .catch(err => adapter.log.warn('createPlaybackInfo error: ' + err));
-
-                } else if (type === 'episode') {
-                    //type = episode player.show -Daten laden
-                    if (!isEmpty(showId)){
-                        let publisherState = cache.getValue('shows.' + showId + '.publisher');
-                        let publisher = loadOrDefault(publisherState, 'val', '');
-                        let showStateName = cache.getValue('shows.' + showId + '.name');
-                        let showImageUrlState = cache.getValue('shows.' + showId + '.imageUrl');
-                        let total_epiState = cache.getValue('shows.' + showId + '.episodesTotal');
-                        let showName = loadOrDefault(showStateName, 'val', '');
-                        let imageUrl = loadOrDefault(showImageUrlState, 'val', '');
-                        let total_episodes = loadOrDefault(total_epiState, 'val', '');
-                        let epiLstState = cache.getValue('shows.' + showId + '.episodeListString');
-                        let epiLst = loadOrDefault(epiLstState, 'val', '').split(';');
-                        contextDescription = 'Show: ' + showName;
-                        //einfügen code für episodeNo ermitteln, wenn das mal möglich wird
-                        let epiName = '';
-                        let eno = 0;
-                        if (epiLst && epiLst.length > 0) {
-                            eno = parseInt(episodeNo, 10);
-                            epiName = epiLst[eno];
-                        }
-                        const promises = [
-                            cache.setValue('player.episodeId', episodeId),
-                            cache.setValue('player.episodeName',epiName),
-                            cache.setValue('player.show.name', showName),
-                            cache.setValue('player.show.id', showId),
-                            cache.setValue('player.show.imageUrl', imageUrl),
-                            cache.setValue('player.show.episodesTotal', total_episodes),
-                            cache.setValue('player.show.publisher', publisher),
-                            cache.setValue('player.show.episodeNo',episodeNo),
-                            copyState(`shows.${showId}.episodeListNumber`, 'player.show.episodeListNumber'),
-                            copyState(`shows.${showId}.episodeListString`, 'player.show.episodeListString'),
-                            copyState(`shows.${showId}.episodeListStates`, 'player.show.episodeListStates'),
-                            copyObjectStates(`shows.${showId}.episodeList`, 'player.show.episodeList'),
-                            copyState(`shows.${showId}.episodeListIdMap`, 'player.show.episodeListIdMap'),
-                            copyState(`shows.${showId}.episodeListIds`, 'player.show.episodeListIds'),
-                            copyState(`shows.${showId}.episodeListArray`, 'player.show.episodeListArray')
-                        ];
-                        return Promise.all(promises)
-                            /*.then(() => {
-                                return Promise.all([
-                                    cache.setValue('player.playlist.id', ''),
-                                    cache.setValue('player.playlist.name', ''),
-                                    cache.setValue('player.playlist.owner', ''),
-                                    cache.setValue('player.playlist.tracksTotal', 0),
-                                    cache.setValue('player.playlist.snapshot_id', ''),
-                                    cache.setValue('player.playlist.imageUrl', ''),
-                                    cache.setValue('player.playlist.trackList', ''),
-                                    cache.setValue('player.playlist.trackListNumber', ''),
-                                    cache.setValue('player.playlist.trackListString', ''),
-                                    cache.setValue('player.playlist.trackListStates', ''),
-                                    cache.setValue('player.playlist.trackListIdMap', ''),
-                                    cache.setValue('player.playlist.trackListIds', ''),
-                                    cache.setValue('player.playlist.trackListArray', ''),
-                                    cache.setValue('player.playlist.trackNo', 0),
-                                    cache.setValue('playlists.playlistList', ''),
-                                    cache.setValue('player.playlist', null, {
-                                        type: 'channel',
-                                        common: {
-                                            name: 'Commands to control playback related to the playlist'
-                                        },
-                                        native: {}
-                                    })
-                                ])
-                                .then(() => Promise.all([
-                                    listenOnHtmlPlaylists(),
-                                    listenOnHtmlTracklist()
-                                ]))
-                                .then(() => {
-                                    return Promise.all([
-                                        cache.setValue('player.album.id', ''),
-                                        cache.setValue('player.album.name', ''),
-                                        cache.setValue('player.album.artistName', ''),
-                                        cache.setValue('player.album.popularity', 0),
-                                        cache.setValue('player.album.tracksTotal', 0),
-                                        cache.setValue('player.album.imageUrl', ''),
-                                        cache.setValue('player.album.trackList', ''),
-                                        cache.setValue('player.album.trackListNumber', ''),
-                                        cache.setValue('player.album.trackListString', ''),
-                                        cache.setValue('player.album.trackListStates', ''),
-                                        cache.setValue('player.album.trackListIdMap', ''),
-                                        cache.setValue('player.album.trackListIds', ''),
-                                        cache.setValue('player.album.trackListArray', ''),
-                                        cache.setValue('player.album.trackNo', 0),
-                                        cache.setValue('albums.albumList', ''),
-                                        cache.setValue('player.album', null, {
-                                            type: 'channel',
-                                            common: {
-                                                name: 'Commands to control playback related to the album'
-                                            },
-                                            native: {}
-                                        })
-                                    ]);
-                                });
-                            });*/
-                    }
+                    .catch(err => adapter.log.warn('createPlaybackInfo warning ' + err));
                 }
-            })       
-            .then(() => Promise.all([
-                cache.setValue('player.contextImageUrl', contextImage),
-                cache.setValue('player.contextDescription', contextDescription)
-            ]))
-            .catch(err => adapter.log.warn('createPlaybackInfo error: ' + err));
+            }
+        })           
+        .then(() => Promise.all([
+            cache.setValue('player.contextImageUrl', contextImage),
+            cache.setValue('player.contextDescription', contextDescription)
+        ]))
+        .then(() => {
+            if (progress && isPlaying && application.statusPlayPollingDelaySeconds > 0) {
+                scheduleStatusInternalTimer(duration, progress, Date.now(), application.statusPlayPollingDelaySeconds - 1);
+            }
+        })
+        .catch(err => adapter.log.warn('createPlaybackInfo error: ' + err));
     } else {
         cache.setValue('player.isPlaying', isPlaying);
+        cache.setValue('player.type', type);
     }
 }
 
@@ -1472,11 +1318,11 @@ function setUserInformation(data) {
 
 /*einzelne Playlist+Tracklist aktualisieren wenn isPlaying true*/ 
 function getCurrentPlaylist() {
-    let isPlaying = cache.getValue('player.isPlaying').val;
+    let isPlay = loadOrDefault(cache.getValue('player.isPlaying'), 'val', false);
     let userId = application.userId;
     let playlistStateId = loadOrDefault(cache.getValue('player.playlist.id'), 'val', '');
     doNotTestSnapshotId = true;
-    if (isPlaying && !isEmpty(userId) && !isEmpty(playlistStateId)) {
+    if (isPlay && !isEmpty(userId) && !isEmpty(playlistStateId)) {
         return sendRequest(`/v1/users/${userId}/playlists/${playlistStateId}`, 'GET', '')
             .then(data => createPlaylists({ items: [data]}))
             .then(() => {
@@ -1574,7 +1420,9 @@ function deleteUsersAlbums(addedList) {
         if (!found &&
             key !== 'albums.albumList' &&
             key !== 'albums.albumListIds' &&
-            key !== 'albums.albumListString'
+            key !== 'albums.albumListString' &&
+            key !== 'albums.artistAlbumList' &&
+            key !== 'albums.artistList'
         ) {
             return cache.delObject(key)
                 .then(() => {
@@ -1683,8 +1531,8 @@ function createShows(parseJson, autoContinue, addedList) {
                     let currentShowId = loadOrDefault(statecurrSID, 'val', '');
                     let stateEpisodeId = cache.getValue('player.episodeId');
                     let episodesId = loadOrDefault(stateEpisodeId, 'val', '');
-
-                    if (`${episodesId}` === `${currentShowId}`) {
+                    let prefix = 'shows.' + `${showId}`;
+                    if (`${showId}` === `${currentShowId}`) {
                         let stateName = showObject.episodeIds.split(';');
                         let stateArr = [];
                         for (let i = 0; i < stateName.length; i++) {
@@ -1695,8 +1543,7 @@ function createShows(parseJson, autoContinue, addedList) {
                             episodesListValue = stateArr[episodesId];
                         }
                     }
-
-                    const stateObj = {};
+                    const stateObj = {};                    
                     const states = loadOrDefault(showObject, 'stateString', '').split(';');
                     states.forEach(state => {
                         let el = state.split(':');
@@ -1704,6 +1551,7 @@ function createShows(parseJson, autoContinue, addedList) {
                             stateObj[el[0]] = el[1];
                         }
                     });
+                    
                     return Promise.all([
                         cache.setValue(prefix + '.episodeList', episodesListValue, {
                             type: 'state',
@@ -1840,7 +1688,7 @@ function createPlaylists(parseJson, autoContinue, addedList) {
             addedList.push(prefix);
             //snapshot selection
             if (doNotTestSnapshotId || !findPlaylistSnapshotId(ownerId, playlistId, snapshot_id)) {
-                //nur ausführen wenn snapshotId aus playlistAppCache <> snapshot_id aus Datensatz od. id nicht gefunden
+                //nur ausführen wenn snapshotId aus playlistAppCache != snapshot_id aus Datensatz od. id nicht gefunden
                 adapter.log.debug('current snapshot_id not found: (' + ownerId + '-' + playlistId + ') - load new playlist data from spotify');
                 return Promise.all([
                     cache.setValue(prefix, null, {
@@ -1931,7 +1779,7 @@ function createPlaylists(parseJson, autoContinue, addedList) {
                         }
                     });
             } else {
-                adapter.log.debug('found: (' + ownerId + '-' + playlistId + ') current snapshot_id - continue next playlist');
+                //adapter.log.debug('found: (' + ownerId + '-' + playlistId + ') current snapshot_id - continue next playlist');
             }
         //} else {
         //    return Promise.reject('empty playlist name');
@@ -1967,9 +1815,9 @@ function createAlbums(parseJson, autoContinue, addedList) {
             return Promise.reject('empty album name');
         }
         let artistName = loadOrDefault(item.album, 'artists[0].name', '');
-        albumName = artistName + '-' + albumName;
+        albumName = (!isEmpty(artistName)) ? artistName + ' | ' + albumName : albumName;
         let albumId = loadOrDefault(item.album, 'id', '');
-        let trackCount = loadOrDefault(item.album, 'tracks_total', '');
+        let trackCount = loadOrDefault(item.album, 'tracks_total', 0);
         let imageUrl = loadOrDefault(item.album, 'images[0].url', '');
         let popularity = loadOrDefault(item.album, 'popularity', 0);
         
@@ -2005,7 +1853,7 @@ function createAlbums(parseJson, autoContinue, addedList) {
             createOrDefault(item.album, 'id', prefix + '.id', '', 'album id', 'string'),
             createOrDefault(item.album, 'name', prefix + '.name', '', 'album name', 'string'),
             createOrDefault(item.album, 'artists[0].name', prefix + '.artistName', '', 'artist name', 'string'),
-            createOrDefault(item.album, 'popularity', prefix + '.popularity', '', 'album popularity', 'number'),
+            createOrDefault(item.album, 'popularity', prefix + '.popularity', 0, 'album popularity', 'number'),
             createOrDefault(item.album, 'total_tracks', prefix + '.tracksTotal', 0, 'number of songs', 'number'),
             createOrDefault(item.album, 'images[0].url', prefix + '.imageUrl', '', 'image url', 'string')
         ])
@@ -2052,7 +1900,7 @@ function createAlbums(parseJson, autoContinue, addedList) {
                             native: {}
                         }),
 
-                        createOrDefault(albumObject, 'listNumber', prefix + '.trackListNumber', '',
+                        createOrDefault(albumObject, 'listNumber', prefix + '.trackListNumber', 0,
                             'contains list of tracks as string, patter: 0;1;2;...',
                             'string'),
                         createOrDefault(albumObject, 'listString', prefix + '.trackListString', '',
@@ -2429,7 +2277,7 @@ async function getShowEpisodes(showid) {
         try {
             const data = await sendRequest(`/v1/shows/${showid}?${querystring.stringify(query)}`, 'GET', ''); 
             let i = offset;
-            let no = i.toString();
+            let no = i;
             if (!isEmpty(data)) {
                 let showDescription = loadOrDefault(data, 'description', '');
                 let showExplicit = loadOrDefault(data, 'explicit', false);
@@ -2439,10 +2287,11 @@ async function getShowEpisodes(showid) {
                 let showTotal_episodes = loadOrDefault(data, 'total_episodes', 0);
                 let showType = loadOrDefault(data, 'type', '');
                 let showUri = loadOrDefault(data, 'uri', '');
-                if (!isEmpty(data.episodes) && data.episodes.items.length > 0) {
+                //adapter.log.warn('count item: ' + data.episodes.items.length);
+                if (data.episodes && data.episodes.items && data.episodes.items.length > 0) {
                     data.episodes.items.forEach(item => {
                         let episodesId = loadOrDefault(item, 'id', ''); 
-                        no = i.toString();
+                        no = i;
                         if (isEmpty(episodesId)) {
                             return adapter.log.debug(
                                 `There was a show episode ignored because of missing id; episodesId: ${episodesId}; no: ${no}`);
@@ -2529,11 +2378,11 @@ async function getPlaylistTracks(owner, id) {
         try {
             const data = await sendRequest(`/v1/users/${regParam}?${querystring.stringify(query)}`, 'GET', '');
             let i = offset;
-            let no = i.toString();
+            let no = i;
             if (!isEmpty(data) && !isEmpty(data.items) && data.items.length > 0) {
                 data.items.forEach(item => {
                     let trackId = loadOrDefault(item, 'track.id', ''); 
-                    no = i.toString();
+                    no = i;
                     if (isEmpty(trackId)) {
                         return adapter.log.debug(
                             `There was a playlist track ignored because of missing id; playlist: ${id}; track no: ${no}`);
@@ -2541,7 +2390,7 @@ async function getPlaylistTracks(owner, id) {
                     let artist = getArtistNamesOrDefault(item, 'track.artists');
                     let artistArray = getArtistArrayOrDefault(item, 'track.artists');
                     let trackName = loadOrDefault(item, 'track.name', '');
-                    let trackDuration = loadOrDefault(item, 'track.duration_ms', '');
+                    let trackDuration = loadOrDefault(item, 'track.duration_ms', 0);
                     let addedAt = loadOrDefault(item, 'addedAt', '');
                     let addedBy = loadOrDefault(item, 'addedBy', '');
                     let trackAlbumId = loadOrDefault(item, 'track.album.id', '');
@@ -2620,12 +2469,12 @@ async function getAlbumTracks(albumId) {
         try {
             const data = await sendRequest(`/v1/albums/${albumId}/tracks?${querystring.stringify(query)}`, 'GET', '');
             let i = offset;
-            let no = i.toString();
+            let no = i;
             //adapter.log.warn('trackData: ' + querystring.stringify(data.items));
             if (data && data.items && data.items.length > 0) {
                 data.items.forEach(item => {
                     let trackId = loadOrDefault(item, 'id', ''); 
-                    no = i.toString();
+                    no = i;
                     if (isEmpty(trackId)) {
                         return adapter.log.debug(
                             `There was a album track ignored because of missing id; album: ${albumId}; track no: ${no}`);
@@ -2634,10 +2483,10 @@ async function getAlbumTracks(albumId) {
                     let artist = getArtistNamesOrDefault(item, 'artists');
                     let artistArray = getArtistArrayOrDefault(item, 'artists');
                     let trackName = loadOrDefault(item, 'name', '');
-                    let trackDuration = loadOrDefault(item, 'duration_ms', '');
+                    let trackDuration = loadOrDefault(item, 'duration_ms', 0);
                     let trackDiscNumber = loadOrDefault(item, 'disc_number', 1);
                     let trackExplicit = loadOrDefault(item, 'explicit', false);
-                    let track_number = loadOrDefault(item, 'track_number', '');
+                    let track_number = loadOrDefault(item, 'track_number', 0);
                     if (albumObject.songs.length > 0) {
                         albumObject.stateString += ';';
                         albumObject.listString += ';';
@@ -2703,13 +2552,13 @@ async function getCollectionTracks() {
         try {
             const data = await sendRequest(`/v1/me/tracks?${querystring.stringify(query)}`, 'GET', '');
             let i = offset;
-            let no = i.toString();
+            let no = i;
             //adapter.log.warn('trackData: ' + querystring.stringify(data.items));
             if (data && data.items && data.items.length > 0) {
                 trackCount = loadOrDefault(data, 'total', 0);
                 data.items.forEach(item => {
                     let trackId = loadOrDefault(item.track, 'id', ''); 
-                    no = i.toString();
+                    no = i;
                     if (isEmpty(trackId)) {
                         return adapter.log.warn(
                             `There was a collection track ignored because of missing id; track no: ${no}`);
@@ -2718,11 +2567,11 @@ async function getCollectionTracks() {
                     let artist = getArtistNamesOrDefault(item.track, 'artists');
                     let artistArray = getArtistArrayOrDefault(item.track, 'artists');
                     let trackName = loadOrDefault(item.track, 'name', '');
-                    let trackDuration = loadOrDefault(item.track, 'duration_ms', '');
+                    let trackDuration = loadOrDefault(item.track, 'duration_ms', 0);
                     let trackDiscNumber = loadOrDefault(item.track, 'disc_number', 1);
                     let trackExplicit = loadOrDefault(item.track, 'explicit', false);
                     let trackPopularity = loadOrDefault(item.track, 'popularity',0);
-                    let track_number = loadOrDefault(item.track, 'track_number', '');
+                    let track_number = loadOrDefault(item.track, 'track_number', 0);
                     if (collectionObject.songs.length > 0) {
                         collectionObject.stateString += ';';
                         collectionObject.listString += ';';
@@ -2930,7 +2779,7 @@ function refreshShowsList() {
             return;
         }
         let normKey = removeNameSpace(key);
-        let id = normKey.substring(10, normKey.length - 5);
+        let id = normKey.substring(6, normKey.length - 5);
         a.push({
             id: id,
             name: states[key].val
@@ -3048,8 +2897,10 @@ function refreshAlbumList() {
         let id = normKey.substring(7, normKey.length - 5);
         let stateArtist = cache.getValue('albums.' + id + '.artistName');
         let artist = loadOrDefault(stateArtist, 'val', '');
+        let tmpStates = (!isEmpty(artist)) ? artist + ' | ' + states[key].val : states[key].val;
         a.push({
             id: id,
+            fullname: tmpStates,
             name: states[key].val,
             artist: artist
         });
@@ -3058,30 +2909,35 @@ function refreshAlbumList() {
     return Promise.all(keys.map(fn))
         .then(() => {
             a.sort(function (l, u){
-                return l['name'].toLowerCase().localeCompare(u['name'].toLowerCase());
+                return l['fullname'].toLowerCase().localeCompare(u['fullname'].toLowerCase());
             });
             let stateList = {};
             let listIds = '';
             let listString = '';
             let listArtist = '';
+            let listFullname = '';
             for (let i = 0, len = a.length; i < len; i++) {
                 let normId = a[i].id;
                 let normName = cleanState(a[i].name);
                 let normArtist = a[i].artist;
+                let normFullname = cleanState(a[i].fullname);
                 if (listIds.length > 0) {
                     listIds += ';';
                     listString += ';';
                     listArtist += ';';
+                    listFullname += ';';
                 }
-                stateList[normId] = normName;
+                stateList[normId] = normFullname;
                 listIds += normId;
                 listString += normName;
                 listArtist += normArtist;
+                listFullname += normFullname;
             }
             return Promise.all([
                 setObjectStatesIfChanged('albums.albumList', stateList),
                 cache.setValue('albums.albumListIds', listIds),
                 cache.setValue('albums.albumListString', listString),
+                cache.setValue('albums.artistAlbumList', listFullname),
                 cache.setValue('albums.artistList', listArtist)
             ]);
         })
@@ -3341,9 +3197,11 @@ function scheduleStatusInternalTimer(durationMs, progressMs, startDate, count) {
 function pollRequestCount() {
     clearTimeout(application.requestPollingHandle);
     //ausgabe der werte
-    cache.setValue('requestCount',RequestCount);
-    RequestCount = 0;
-    scheduleRequestPolling();
+    return cache.setValue('requestCount',RequestCount)
+    .then(() => {
+        RequestCount = 0;
+        scheduleRequestPolling();
+    });
 }
 
 function scheduleRequestPolling() {
@@ -3353,7 +3211,12 @@ function scheduleRequestPolling() {
 
 function scheduleStatusPolling() {
     clearTimeout(application.statusPollingHandle);
-    if (application.statusPollingDelaySeconds > 0) {
+    if (isPlaying) {
+        //bei isPlaying Statusabfrage alle statusPlayPolling(10s) wenn nicht default = 0
+        if (application.statusPlayPollingDelaySeconds > 0) {
+            application.statusPollingHandle = setTimeout(() => !stopped && pollStatusApi(), application.statusPlayPollingDelaySeconds * 1000);
+        }
+    } else if (application.statusPollingDelaySeconds > 0) {
         application.statusPollingHandle = setTimeout(() => !stopped && pollStatusApi(), application.statusPollingDelaySeconds * 1000);
     }
 }
@@ -3428,6 +3291,7 @@ function pollDeviceApi() {
 function schedulePlaylistPolling() {
     clearTimeout(application.playlistPollingHandle);
     if (application.playlistPollingDelaySeconds > 0) {
+        adapter.log.debug('call schedulePlaylistPolling');
         application.playlistPollingHandle = setTimeout(() => !stopped && pollPlaylistApi(), application.playlistPollingDelaySeconds *
             1000);
     }
@@ -3436,6 +3300,7 @@ function schedulePlaylistPolling() {
 function scheduleAlbumPolling() {
     clearTimeout(application.albumPollingHandle);
     if (application.albumPollingDelaySeconds > 0) {
+        adapter.log.debug('call scheduleAlbumPolling');
         application.albumPollingHandle = setTimeout(() => !stopped && pollAlbumApi(), application.albumPollingDelaySeconds *
             1000);
     }
@@ -3444,6 +3309,7 @@ function scheduleAlbumPolling() {
 function scheduleShowPolling() {
     clearTimeout(application.showPollingHandle);
     if (application.showPollingDelaySeconds > 0) {
+        adapter.log.debug('call scheduleShowPolling');
         application.showPollingHandle = setTimeout(() => !stopped && pollShowApi(), application.showPollingDelaySeconds *
             1000);
     }
@@ -3455,14 +3321,20 @@ function pollPlaylistApi() {
     clearTimeout(application.playlistPollingHandle);
     loadPlaylistAppCache();
     reloadUsersPlaylist();
-    cache.setValue('pl_found', pl_foundCount);
-    cache.setValue('pl_notFound', pl_notFoundCount);
-    pl_foundCount = 0;
-    pl_notFoundCount = 0;
-    adapter.log.debug('call playlist polling');
-    loadPlaylistAppCache();
-    getUsersCollection();
-    schedulePlaylistPolling();
+    return Promise.all([
+        cache.setValue('pl_found', pl_foundCount),
+        cache.setValue('pl_notFound', pl_notFoundCount)
+    ])
+    .then(() => {
+        adapter.log.debug('write playlist foundCount');
+        pl_foundCount = 0;
+        pl_notFoundCount = 0;
+        adapter.log.debug('call playlist polling');
+        loadPlaylistAppCache();
+        getUsersCollection();
+        schedulePlaylistPolling();
+    })
+    .catch(err =>adapter.log.error('pollPlaylistApi error: ' + err));
 }
 
 function pollShowApi() {
@@ -3536,8 +3408,8 @@ function startShow(showId, episodeNo, keepTrack){
             return sendRequest('/v1/me/player/play?device_id=' + d_Id, 'PUT', JSON.stringify(send), true)
                 .then(() => setTimeout(() => !stopped && pollStatusApi(true), 1000))
                 .catch(err => adapter.log.error(`could not start show ${showId}; error: ${err}`));
-        })
-        .then(() => {
+        });
+        /*.then(() => {
             if (application.keepShuffleState && resetShuffle) {
                 if (adapter.config.defaultShuffle === 'off') {
                     return listenOnShuffleOff();
@@ -3550,7 +3422,7 @@ function startShow(showId, episodeNo, keepTrack){
             } else {
                 return listenOnRepeatOff();
             }
-        });
+        });*/
     }
 
 function startPlaylist(playlist, owner, trackNo, keepTrack) {
@@ -3882,7 +3754,7 @@ function listenOnEpisodeList(obj) {
                         }
                         
                     }
-                    listenOnEpisodeId(episodeId);
+                    listenOnEpisodeIdStr(episodeId);
                 }
             }
         }
@@ -4039,8 +3911,7 @@ function listenOnPlay() {
                 transferPlayback(dev_id.val);
             } else {
                 adapter.log.warn('listenOnPlay device: '+ dev_id.val + ' not available');
-                cache.setValue('player.device.isAvailable', false);
-                return;
+                return cache.setValue('player.device.isAvailable', false);
             }
         }
 
@@ -4244,6 +4115,19 @@ function listenOnEpisodeId(obj) {
     }
 }
 
+function listenOnEpisodeIdStr(episodeIdStr) {
+    if (!isEmpty(episodeIdStr)) {
+        let d_Id = getSelectedDevice(deviceData);
+        let send = {
+            uri: ['spotify:episode:' + episodeIdStr]
+        };
+        clearTimeout(application.statusInternalTimer);
+        sendRequest('/v1/me/player/play?device_id=' + d_Id, 'PUT', JSON.stringify(send), true)
+            .catch(err => adapter.log.error('listenOnEpisodeStrId could not execute command: ' + err))
+            .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000));
+    }
+}
+
 function listenOnPlaylistId(obj) {
     const ownerState = cache.getValue('player.playlist.owner');
     if (!ownerState) {
@@ -4303,7 +4187,7 @@ function listenOnShowTrackNo(obj) {
 }
 
 function listenOnGetPlaybackInfo() {
-    return pollStatusApi(true);
+    return pollStatusApi(false);
 }
 
 function listenOnGetDevices() {
