@@ -139,12 +139,13 @@ function startAdapter(options) {
             cache.on('loadPlaylistCache', loadPlaylistAppCache);
             cache.on('getShows', reloadUsersShows);
             cache.on('getAlbums', reloadUsersAlbums);
-            cache.on('getPlaylists', reloadUsersPlaylist);
+            cache.on('getPlaylists', reloadUsersPlaylistNoTest); //get UsersPlaylists without testing snapshotId
             cache.on('getCollection', getUsersCollection);
             cache.on('checkTrackInCollection', checkForTrackInCollection);
             cache.on('getCurrentPlaylist', getCurrentPlaylist); //get currently playing playlist
             cache.on('getPlaybackInfo', listenOnGetPlaybackInfo);
             cache.on('getDevices', listenOnGetDevices);
+            cache.on('activateLastDevice', transferPlaybackNoPlay);
             cache.on(['playlists.playlistList', 'playlists.playlistListIds', 'playlists.playlistListString'], listenOnHtmlPlaylists);
             cache.on(['player.playlist.trackList', 'player.playlist.trackListArray'], listenOnHtmlTracklist);
             cache.on(['devices.deviceList', 'devices.deviceListIds', 'devices.availableDeviceListString'], listenOnHtmlDevices);
@@ -1335,6 +1336,22 @@ function getCurrentPlaylist() {
     }
 }
 
+function reloadUsersPlaylistNoTest() {
+    doNotTestSnapshotId = true;
+    return getUsersPlaylist(0)
+    .then(addedList => {
+        if (application.deletePlaylists) {
+            return deleteUsersPlaylist(addedList);
+        }
+    })
+    .then(() => {
+        refreshPlaylistList();
+        loadPlaylistAppCache();
+        plAppCacheReload = false;
+        doNotTestSnapshotId = false;        
+    });
+}
+
 /*default run all 15 min from pollPlaylistApi()*/
 function reloadUsersPlaylist() {
     return getUsersPlaylist(0)
@@ -1635,23 +1652,23 @@ function findPlaylistSnapshotId(owner, playlistId, snapIdToFind) {
                 _snapIdToFind = snapIdToFind.substring(14);
                 if (_snapId10 === _snapIdToFind10) {
                     if (_snapId === _snapIdToFind) {
-                        pl_foundCount += 1;
+                        pl_foundCount++;
                         return true;
                     } else {
-                        pl_notFoundCount += 1;
+                        pl_notFoundCount++;
                         return false;
                     }
                 } else {
-                    pl_notFoundCount += 1;
+                    pl_notFoundCount++;
                     return false;
                 }
             }
             if (snapId === snapIdToFind){
                 adapter.log.debug('x: ' + x + ' id: ' + prefix + ' snapCache: ' + snapId + ' snap-spoti: ' + snapIdToFind);
-                pl_foundCount += 1;
+                pl_foundCount++;
                 return true;
             } else {
-                pl_notFoundCount += 1;
+                pl_notFoundCount++;
             }
         }
     }
@@ -1686,8 +1703,9 @@ function createPlaylists(parseJson, autoContinue, addedList) {
             let prefix = 'playlists.' + shrinkStateName(ownerId + '-' + playlistId);
             addedList = addedList || [];
             addedList.push(prefix);
+            let findPlSnap = findPlaylistSnapshotId(ownerId, playlistId, snapshot_id);
             //snapshot selection
-            if (doNotTestSnapshotId || !findPlaylistSnapshotId(ownerId, playlistId, snapshot_id)) {
+            if (doNotTestSnapshotId || !findPlSnap) {
                 //nur ausführen wenn snapshotId aus playlistAppCache != snapshot_id aus Datensatz od. id nicht gefunden
                 adapter.log.debug('current snapshot_id not found: (' + ownerId + '-' + playlistId + ') - load new playlist data from spotify');
                 return Promise.all([
@@ -1796,6 +1814,8 @@ function createPlaylists(parseJson, autoContinue, addedList) {
         if (autoContinue && parseJson.items.length !== 0 && (parseJson['next'] !== null)) {
             return getUsersPlaylist(parseJson.offset + parseJson.limit, addedList);
         } else {
+            cache.setValue('pl_found', pl_foundCount);
+            cache.setValue('pl_notFound', pl_notFoundCount);
             return addedList;
         }
     });
@@ -2082,12 +2102,15 @@ function loadPlaylistAppCache() {
                 let prefix = 'playlists.' + Pl_ListIds[i];
                 let appId = Pl_ListIds[i];
                 let plId = loadOrDefault(cache.getValue(prefix + '.id'), 'val','');
-                let plName = loadOrDefault(cache.getValue(prefix + '.name'), 'val','empty');
+                let plName = loadOrDefault(cache.getValue(prefix + '.name'), 'val','');
                 let snapshot_id = loadOrDefault(cache.getValue(prefix + '.snapshot_id'),'val', '');
                 let plImage = loadOrDefault(cache.getValue(prefix + '.imageUrl'), 'val', '');
                 let owner = loadOrDefault(cache.getValue(prefix + '.owner'), 'val', '');
                 let trackCount = loadOrDefault(cache.getValue(prefix + '.tracksTotal'), 'val', '');
                 let songs = loadOrDefault(cache.getValue(prefix + '.trackListArray'), 'val', []);     
+                if (isEmpty(plId) || isEmpty(plName)) {
+                    continue;
+                }
                 let plAppCache = {
                     appId: appId,
                     id: plId,
@@ -2446,6 +2469,7 @@ async function getPlaylistTracks(owner, id) {
             break;
         }
     }
+    adapter.log.debug('PlaylistFound: ' + pl_foundCount + ' playlistNotFound: ' + pl_notFoundCount + ' /Track-Daten geladen für playlist: ' + owner + '-' + id);
     return playlistObject;
 }
 
@@ -3319,22 +3343,22 @@ function scheduleShowPolling() {
 function pollPlaylistApi() {
     //clearTimeout(application.playlistInternalTimer);
     clearTimeout(application.playlistPollingHandle);
+    adapter.log.debug('call playlist polling');
     loadPlaylistAppCache();
+    pl_foundCount = 0;
+    pl_notFoundCount = 0;
     reloadUsersPlaylist();
-    return Promise.all([
+    //loadPlaylistAppCache();
+    getUsersCollection();
+    schedulePlaylistPolling();
+    /*return Promise.all([
         cache.setValue('pl_found', pl_foundCount),
         cache.setValue('pl_notFound', pl_notFoundCount)
     ])
     .then(() => {
-        adapter.log.debug('write playlist foundCount');
-        pl_foundCount = 0;
-        pl_notFoundCount = 0;
-        adapter.log.debug('call playlist polling');
-        loadPlaylistAppCache();
-        getUsersCollection();
-        schedulePlaylistPolling();
+        adapter.log.debug('write playlist foundCount');   
     })
-    .catch(err =>adapter.log.error('pollPlaylistApi error: ' + err));
+    .catch(err =>adapter.log.error('pollPlaylistApi error: ' + err));*/
 }
 
 function pollShowApi() {
@@ -3360,8 +3384,12 @@ function startShow(showId, episodeNo, keepTrack){
     }
     lastPlayingShow.lastShowId = showId;
     lastPlayingShow.lastEpisodeNo = episodeNo;
-    let episodeLst = cache.getValue('shows.' + showId + '.episodeListIdMap').val.split(';');
+    let episodeLst = '';
     let dur_msLst = cache.getValue('shows.' + showId + '.episodeDuration_msList');
+    let episodeListState = cache.getValue('shows.' + showId + '.episodeListIdMap');
+    if (episodeListState && episodeListState.val) {
+        episodeLst = episodeListState.val.split(';');
+    }
     if (episodeLst && episodeLst.length > 0) {
         lastPlayingShow.lastEpisodeId = episodeLst[episodeNo];  
         if (dur_msLst && dur_msLst.val) {
@@ -3482,6 +3510,7 @@ function startPlaylist(playlist, owner, trackNo, keepTrack) {
                     return listenOnShuffleOn();
                 }
             }
+            //löst error 404 aus !!!
             /*if (adapter.config.defaultRepeat === 'context') {
                 return listenOnRepeatContext();
             } else {
@@ -3540,11 +3569,12 @@ function startAlbum(albumId, trackNo, keepTrack) {
                     return listenOnShuffleOn();
                 }
             }
-            if (adapter.config.defaultRepeat === 'context') {
+            //löst error 404 aus !!!
+            /*if (adapter.config.defaultRepeat === 'context') {
                 return listenOnRepeatContext();
             } else {
                 return listenOnRepeatOff();
-            }
+            }*/
         });
 }
 
@@ -3595,11 +3625,12 @@ function startCollection(trackId, trackNo, keepTrack) {
                     return listenOnShuffleOn();
                 }
             }
-            if (adapter.config.defaultRepeat === 'context') {
+            //löst error 404 aus!!!
+            /*if (adapter.config.defaultRepeat === 'context') {
                 return listenOnRepeatContext();
             } else {
                 return listenOnRepeatOff();
-            }
+            }*/
         });
 }
 
@@ -3734,27 +3765,43 @@ function listenOnTrackList(obj) {
 function listenOnEpisodeList(obj) {
     if (obj.state.val >= 0) {
         let showid = cache.getValue(obj.id.slice(0, obj.id.lastIndexOf('.')) + '.id');
+        
         if (showid && !isEmpty(showid.val)){
+            let maxEpisodes =  0;
+            let maxEpisodesState = cache.getValue('shows.' + showid.val + '.episodesTotal');
+            if (maxEpisodesState && maxEpisodesState.val) {
+                maxEpisodes = maxEpisodesState.val;
+            }
             let eid = cache.getValue('shows.' + showid.val + '.episodeListIdMap');
+            let eix = obj.state.val;
+            let curEpiIx = 0;
+            if (maxEpisodes > 1 && maxEpisodes > eix) {
+                curEpiIx = maxEpisodes - (eix + 1);
+            } else {
+                curEpiIx = eix;
+            }
             if (eid && eid.val && !isEmpty(eid.val)){
                 let ixList = eid.val.split(';');
-                let episodeId = ixList[obj.state.val];
+                let episodeId = ixList[eix];
                 if (episodeId && !isEmpty(episodeId)){
                     //adapter.log.warn('listenOnEpisodeList obj.slice... obj.state.val: ' + obj.state.val + ' episodeId: ' + episodeId);
-                    lastPlayingShow.lastShowId = showid;
+                    lastPlayingShow.lastShowId = showid.val;
                     lastPlayingShow.lastEpisodeNo = obj.state.val;
                     lastPlayingShow.lastEpisodeId = episodeId;
-                    let dur_msLst = cache.getValue('shows.' + showid + '.episodeDuration_msList');
+                    let dur_msLst = cache.getValue('shows.' + showid.val + '.episodeDuration_msList');
                     if (dur_msLst && dur_msLst.val) {
                         let durLst = dur_msLst.val.split(';');
                         if (durLst.length > 0){
-                            lastPlayingShow.lastEpisodeDuration_ms = durLst[obj.state.val];
+                            lastPlayingShow.lastEpisodeDuration_ms = durLst[eix];
                         } else {
                             lastPlayingShow.lastEpisodeDuration_ms = dur_msLst.val;
                         }
                         
                     }
-                    listenOnEpisodeIdStr(episodeId);
+                    //listenOnEpisodeIdStr(episodeId);
+                    // episode kann noch nicht direkt gestartet werden, play läuft immer vom alten zum neuen 99,98,97....
+                    // curEpiIx = total(100) - (eix + 1) 0-basis
+                    startShow(showid.val, curEpiIx);
                 }
             }
         }
@@ -3775,6 +3822,18 @@ function transferPlayback(dev_id){
     } else {
         adapter.log.debug('transferPlayback: dev_id is empty');
     }
+}
+
+function transferPlaybackNoPlay(){
+    let dev_id = getSelectedDevice(deviceData);
+    let send = {
+        device_ids: [dev_id],
+        play: false
+    };
+    adapter.log.debug('transferPlaybackNoPlay gestartet');
+    return sendRequest('/v1/me/player', 'PUT', JSON.stringify(send), true)
+        .then(() => setTimeout(() => !stopped && pollStatusApi(true), 1000))
+        .catch(err => adapter.log.error('transferPlayback could not execute command: ' + err + ' device_id: ' + dev_id));  
 }
 
 function listenOnAddFavorite() {
@@ -4103,6 +4162,7 @@ function listenOnShowId(obj) {
 }
 
 function listenOnEpisodeId(obj) {
+    //geht nicht mit Episoden
     if (obj && obj.state && obj.state.val) {
         let d_Id = getSelectedDevice(deviceData);
         let send = {
@@ -4179,11 +4239,21 @@ function listenOnShowTrackNo(obj) {
     if (!showIdState) {
         return;
     }
+    let maxEpiState = cache.getValue('player.show.episodesTotal');
+    let maxEpi = 0;
+    if (maxEpiState && maxEpiState.val) {
+        maxEpi = maxEpiState.val;
+    }
     let id = showIdState.val;
     let o = obj.state.val;
     o = parseInt(o, 10) || 1;
-
-    return startShow(id, o - 1, true);
+    let nr = 0;
+    if (maxEpi > 1 && o > 0) {
+        nr = maxEpi - o;
+    } else {
+        nr = o - 1;
+    }
+    return startShow(id, nr, true);
 }
 
 function listenOnGetPlaybackInfo() {
