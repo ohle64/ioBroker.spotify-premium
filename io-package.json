@@ -636,6 +636,19 @@
       "native": {}
     },
     {
+      "_id": "player.setUriToQueue",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Set an uri based on spotify uri to play next in queue. Set a string like: spotify:track:5gbklxUvGMER1qaDcz5Gkz or: spotify:episode:1UL6k021atCKpzp4LvfZ2E. Only track or episode possible. For more infos look at: https://developer.spotify.com/documentation/web-api/reference/#/operations/add-to-queue",
+        "type": "string",
+        "read": false,
+        "write": true,
+        "icon": "icons/play_black.png"
+      },
+      "native": {}
+    },
+    {
       "_id": "player.pause",
       "type": "state",
       "common": {
@@ -1796,6 +1809,30 @@
       "common": {
         "role": "value",
         "name": "playlist name",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.playlist.albumName",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "playlist album name",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.playlist.albumId",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "playlist album id",
         "type": "string",
         "read": true,
         "write": false

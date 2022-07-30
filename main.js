@@ -51,9 +51,9 @@ let application = {
     token: '',
     refreshToken: '',
     code: '',
-    statusInternalTimer: null,
+    statusInternalTimer: null, //progress and duration refresh between statusPoll-interval
     requestPollingHandle: null,
-    statusPollingHandle: null,
+    statusPollingHandle: null, //status-Info 5s or 30s
     statusPlayPollingDelaySeconds: 5,
     statusPollingDelaySeconds: 30,
     devicePollingHandle: null,
@@ -115,6 +115,7 @@ function startAdapter(options) {
             cache.on('player.addFavorite', listenOnAddFavorite);
             cache.on('player.delFavorite', listenOnDelFavorite);
             cache.on('player.playUri', listenOnPlayUri);
+            cache.on('player.setUriToQueue', listenOnUriToQueue);
             cache.on('player.pause', listenOnPause);
             cache.on('player.skipPlus', listenOnSkipPlus);
             cache.on('player.skipMinus', listenOnSkipMinus);
@@ -257,18 +258,7 @@ function main() {
     if (isEmpty(showInterval)) {
         showInterval = 0;
     }
-    /*if (deviceInterval < 1 && deviceInterval) {
-        deviceInterval = 1;
-    }
-    if (playlistInterval < 1 && playlistInterval) {
-        playlistInterval = 1;
-    }
-    if (albumInterval < 1 && albumInterval) {
-        albumInterval = 1;
-    }
-    if (showInterval < 1 && showInterval) {
-        showInterval = 1;
-    }*/
+
     application.devicePollingDelaySeconds = deviceInterval * 60;
     application.playlistPollingDelaySeconds = playlistInterval * 60;
     application.albumPollingDelaySeconds = albumInterval * 60;
@@ -395,6 +385,8 @@ function sendRequest(endpoint, method, sendBody, delayAccepted) {
                 // GatewayTimeout
                 case 404:
                 // Not Found
+                case 408:
+                //current geographical location missmatch
                 case 502:
                     // Bad Gateway
                     ret = Promise.reject(response.statusCode);
@@ -524,6 +516,9 @@ function setOrDefault(obj, name, state, defaultVal) {
 }
 
 function shrinkStateName(v) {
+    if (isEmpty(v)) {
+        return 'onlySpecialCharacters';
+    }
     let n = v.replace(/[\s."`'*,\\?<>[\];:]+/g, '');
     if (isEmpty(n)) {
         n = 'onlySpecialCharacters';
@@ -929,6 +924,8 @@ function createPlaybackInfo(data) {
                             return Promise.all([
                                 cache.setValue('player.playlist.id', playlistId),
                                 cache.setValue('player.albumId', albumId),
+                                cache.setValue('player.playlist.albumId', albumId),
+                                cache.setValue('player.playlist.albumName', album),
                                 cache.setValue('player.popularity', popularity),
                                 cache.setValue('player.playlist.owner', ownerId),
                                 cache.setValue('player.playlist.tracksTotal', parseInt(trackCount, 10)),
@@ -1291,6 +1288,7 @@ function createPlaybackInfo(data) {
         })
         .catch(err => adapter.log.warn('createPlaybackInfo error: ' + err));
     } else {
+        clearTimeout(application.statusInternalTimer);
         cache.setValue('player.isPlaying', isPlaying);
         cache.setValue('player.type', type);
     }
@@ -1327,7 +1325,14 @@ function getCurrentPlaylist() {
         return sendRequest(`/v1/users/${userId}/playlists/${playlistStateId}`, 'GET', '')
             .then(data => createPlaylists({ items: [data]}))
             .then(() => {
-                    copyState('playlists.'+ playlistStateId + '.trackListArray', 'player.playlist.trackListArray');
+                    copyState('playlists.' + playlistStateId + '.trackListArray', 'player.playlist.trackListArray');
+                    copyState('playlists.' + playlistStateId + '.snapshot_id', 'player.playlist.snapshot_id');
+                    copyState('playlists.' + playlistStateId + '.trackListNumber', 'player.playlist.trackListNumber');
+                    copyState('playlists.' + playlistStateId + '.trackListString', 'player.playlist.trackListString');
+                    copyState('playlists.' + playlistStateId + '.trackListStates', 'player.playlist.trackListStates');
+                    copyObjectStates('playlists.' + playlistStateId + '.trackList', 'player.playlist.trackList');
+                    copyState('playlists.' + playlistStateId + '.trackListIdMap', 'player.playlist.trackListIdMap');
+                    copyState('playlists.' + playlistStateId + '.trackListIds', 'player.playlist.trackListIds');
                     doNotTestSnapshotId = false;
             })
             .catch(err => adapter.log.warn('error in getCurrentPlaylist: ' + err));      
@@ -1593,13 +1598,13 @@ function createShows(parseJson, autoContinue, addedList) {
                             'contains list of episode as string with position, pattern: 0:episode;1:episode;2:episode;...',
                             'string'),
                         createOrDefault(showObject, 'episodeIdMap', prefix + '.episodeListIdMap', '',
-                            'contains list of episode ids as string with position, pattern: 0:id;1:id;2:id;...',
+                            'contains list of episode ids as string with position, pattern: id;id;id;...',
                             'string'),
                         createOrDefault(showObject, 'episodeDuration_msList', prefix + '.episodeDuration_msList', '',
                             'contains list of episode duration_ms as string, pattern: duration_ms;duration_ms;duration_ms...',
                             'string'),
                         createOrDefault(showObject, 'episodeIds', prefix + '.episodeListIds', '',
-                            'contains list of episode ids as string, pattern: id;id;id;...',
+                            'contains list of episode ids as string, pattern: 0:id;1:id;2:id;...',
                             'string'),
                         createOrDefault(showObject, 'episodes', prefix + '.episodeListArray', '',
                             'contains list of episodes as array object...[id: id, episodeName: text, publisher: Der Spiegel, description: description, duration: xx, explicit: explicit, is_playable: true', 'object')
@@ -2395,8 +2400,7 @@ async function getPlaylistTracks(owner, id) {
     while (true) {
         const query = {
         limit: 50,
-        offset: offset,
-        market: 'DE'
+        offset: offset
         };
         try {
             const data = await sendRequest(`/v1/users/${regParam}?${querystring.stringify(query)}`, 'GET', '');
@@ -3266,7 +3270,7 @@ function pollStatusApi(noReschedule) {
                 application.error202shown = false;
             }
             //if (err === 202 || err === 401 || err === 502) {
-            if (err === 202 || err === 401 || err === 500 || err === 502 || err === 503 || err === 504) {
+            if (err === 202 || err === 401 || err === 408 || err === 500 || err === 502 || err === 503 || err === 504) {
                 if (err === 202) {
                     if (!application.error202shown) {
                         adapter.log.debug(
@@ -3558,7 +3562,7 @@ function startAlbum(albumId, trackNo, keepTrack) {
             };
             let d_Id = getSelectedDevice(deviceData);
             return sendRequest('/v1/me/player/play?device_id=' + d_Id, 'PUT', JSON.stringify(send), true)
-                .then(() => setTimeout(() => !stopped && pollStatusApi(true), 1000))
+                .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000))
                 .catch(err => adapter.log.error(`could not start album ${albumId}; error: ${err}`));
         })
         .then(() => {
@@ -3614,7 +3618,7 @@ function startCollection(trackId, trackNo, keepTrack) {
             };
             let d_Id = getSelectedDevice(deviceData);
             return sendRequest('/v1/me/player/play?device_id=' + d_Id, 'PUT', JSON.stringify(send), true)
-                .then(() => setTimeout(() => !stopped && pollStatusApi(true), 1000))
+                .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000))
                 .catch(err => adapter.log.error(`could not start collection trackId: ${trackId} and trackNo: ${trackNo} --> error: ${err}`));
         })
         .then(() => {
@@ -3951,10 +3955,26 @@ function listenOnPlayUri(obj) {
         delete send['device_id'];
     }
 
-    clearTimeout(application.statusInternalTimer);
+    clearTimeout(application.statusPollingHandle);
     sendRequest('/v1/me/player/play?' + querystring.stringify(query), 'PUT', send, true)
         .catch(err => adapter.log.error('listenOnPlayUri could not execute command: ' + err))
         .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000));
+}
+
+function listenOnUriToQueue(obj) {
+    if (obj && obj.state && obj.state.val && isPlaying) {
+        let uri_tmp = obj.state.val;
+        let uri = uri_tmp.replace(/:/g, '%3A');
+        let dev_id = getSelectedDevice(deviceData);    
+
+        clearTimeout(application.statusPollingHandle);
+        adapter.log.warn('uri: ' + uri + ' dev_id: ' + dev_id);
+        sendRequest('/v1/me/player/queue?uri=' + uri + '&device_id=' + dev_id, 'POST', '', true)
+            .catch(err => adapter.log.error('listenOnUriToQueue could not execute command: ' + err))
+            .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000));
+    } else {
+        adapter.log.warn('listenOnUriToQueue: no uri or not playing');
+    }
 }
 
 function listenOnPlay() {
@@ -3980,7 +4000,7 @@ function listenOnPlay() {
             device_id: getSelectedDevice(deviceData)
         };
         adapter.log.debug('lastSelect: ' + deviceData.lastSelectDeviceId + ' lastActive: ' + deviceData.lastActiveDeviceId);
-        clearTimeout(application.statusInternalTimer);
+        clearTimeout(application.statusPollingHandle);
         sendRequest('/v1/me/player/play?' + querystring.stringify(query), 'PUT', '', true)
             .catch(err => adapter.log.error('listenOnPlay could not execute command: ' + err))
             .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000));
@@ -3994,7 +4014,7 @@ function listenOnPause() {
     };
     adapter.log.debug('pause device_id: ' + getSelectedDevice(deviceData));
     adapter.log.debug('lastSelect: ' + deviceData.lastSelectDeviceId + ' lastActive: ' + deviceData.lastActiveDeviceId);
-    clearTimeout(application.statusInternalTimer);
+    clearTimeout(application.statusPollingHandle);
     sendRequest('/v1/me/player/pause?' + querystring.stringify(query), 'PUT', '', true)
         .catch(err => adapter.log.error('listenOnPause could not execute command: ' + err))
         .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000));
@@ -4004,7 +4024,7 @@ function listenOnSkipPlus() {
     let query = {
         device_id: getSelectedDevice(deviceData)
     };
-    clearTimeout(application.statusInternalTimer);
+    clearTimeout(application.statusPollingHandle);
     sendRequest('/v1/me/player/next?' + querystring.stringify(query), 'POST', '', true)
         .catch(err => adapter.log.error('listenOnSkipPlus could not execute command: ' + err))
         .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000));
@@ -4014,7 +4034,7 @@ function listenOnSkipMinus() {
     let query = {
         device_id: getSelectedDevice(deviceData)
     };
-    clearTimeout(application.statusInternalTimer);
+    clearTimeout(application.statusPollingHandle);
     sendRequest('/v1/me/player/previous?' + querystring.stringify(query), 'POST', '', true)
         .catch(err => adapter.log.error('listenOnSkipMinus could not execute command: ' + err))
         .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000));
@@ -4022,7 +4042,7 @@ function listenOnSkipMinus() {
 
 function listenOnRepeat(obj) {
     if (['track', 'context', 'off'].indexOf(obj.state.val) >= 0) {
-        clearTimeout(application.statusInternalTimer);
+        clearTimeout(application.statusPollingHandle);
         sendRequest('/v1/me/player/repeat?state=' + obj.state.val, 'PUT', '', true)
             .catch(err => adapter.log.error('listenOnRepeat could not execute command: ' + err))
             .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000));
@@ -4057,7 +4077,7 @@ function listenOnVolume(obj) {
     let is_play = cache.getValue('player.isPlaying');
     let d_Id = getSelectedDevice(deviceData);
     if (is_play && is_play.val) {
-        clearTimeout(application.statusInternalTimer);
+        clearTimeout(application.statusPollingHandle);
         sendRequest('/v1/me/player/volume?volume_percent=' + obj.state.val + '&device_id=' + d_Id, 'PUT', '', true)
             .catch(err => adapter.log.error('could not execute volume-command: ' + err))
             .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000));
@@ -4084,7 +4104,7 @@ function listenOnProgressMs(obj) {
         }
     })
         .catch(err => adapter.log.error('could not execute command: ' + err))
-        .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000));
+        .then(() => setTimeout(() => !stopped && scheduleStatusInternalTimer(duration, progress, Date.now(), application.statusPlayPollingDelaySeconds - 1), 1000));
 }
 
 function listenOnProgressPercentage(obj) {
@@ -4105,13 +4125,13 @@ function listenOnProgressPercentage(obj) {
                     cache.setValue('player.progressPercentage', progressPercentage)
                 ]))
                 .catch(err => adapter.log.error('could not execute command: ' + err))
-                .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000));
+                .then(() => setTimeout(() => !stopped && scheduleStatusInternalTimer(duration, progress, Date.now(), application.statusPlayPollingDelaySeconds - 1), 1000));
         }
     }
 }
 
 function listenOnShuffle(obj) {
-    clearTimeout(application.statusInternalTimer);
+    clearTimeout(application.statusPollingHandle);
     return sendRequest('/v1/me/player/shuffle?state=' + (obj.state.val === 'on' ? 'true' : 'false'), 'PUT', '', true)
         .catch(err => adapter.log.error('could not execute command: ' + err))
         .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000));
@@ -4142,7 +4162,7 @@ function listenOnTrackId(obj) {
             position: 0
         }
     };
-    clearTimeout(application.statusInternalTimer);
+    clearTimeout(application.statusPollingHandle);
     sendRequest('/v1/me/player/play', 'PUT', JSON.stringify(send), true)
         .catch(err => adapter.log.error('listenOnTrackId could not execute command: ' + err))
         .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000));
@@ -4154,7 +4174,7 @@ function listenOnShowId(obj) {
         let send = {
             context_uri: ['spotify:show:' + obj.state.val]
         };
-        clearTimeout(application.statusInternalTimer);
+        clearTimeout(application.statusPollingHandle);
         sendRequest('/v1/me/player/play?device_id=' + d_Id, 'PUT', JSON.stringify(send), true)
             .catch(err => adapter.log.error('listenOnShowId could not execute command: ' + err))
             .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000));
@@ -4168,7 +4188,7 @@ function listenOnEpisodeId(obj) {
         let send = {
             uri: ['spotify:episode:' + obj.state.val]
         };
-        clearTimeout(application.statusInternalTimer);
+        clearTimeout(application.statusPollingHandle);
         sendRequest('/v1/me/player/play?device_id=' + d_Id, 'PUT', JSON.stringify(send), true)
             .catch(err => adapter.log.error('listenOnEpisodeId could not execute command: ' + err))
             .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000));
@@ -4181,7 +4201,7 @@ function listenOnEpisodeIdStr(episodeIdStr) {
         let send = {
             uri: ['spotify:episode:' + episodeIdStr]
         };
-        clearTimeout(application.statusInternalTimer);
+        clearTimeout(application.statusPollingHandle);
         sendRequest('/v1/me/player/play?device_id=' + d_Id, 'PUT', JSON.stringify(send), true)
             .catch(err => adapter.log.error('listenOnEpisodeStrId could not execute command: ' + err))
             .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000));
