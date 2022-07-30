@@ -89,6 +89,14 @@ Click for widget source.
 	### __WORK IN PROGRESS__
 -->
 ## Changelog
+### 1.2.2 (2022-07-30)
+* (ohle64) many changes with playlist, album, shows(episodes), collection (like tracks)
+* (ohle64) prevent to many requests - use snapshot_id for playlist-refresh
+* (ohle64) repair timer-functions (add play-polling, non-play-polling to prevent request)
+* (ohle64) add some buttons: refresh current playlist(only currently playing), getShows, getAlbums, getCollection, check Track in collection, refresh application cache for playlists
+* (ohle64) visualisation of playlist_found, playlist_notFound, requests/min
+* (ohle64) catch err 408 geo location
+
 ### 1.2.1 (2022-05-12)
 * (Apollon77) Prevent js-controller warnings
 
