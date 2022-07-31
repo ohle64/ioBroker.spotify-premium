@@ -974,7 +974,7 @@ function createPlaybackInfo(data) {
                             })
                             .then(() => {
                                 //setzen der TrackNo
-                                let idLststate = cache.getValue(`playlists.${prefix}.trackListIdMap`);
+                                let idLststate = cache.getValue(`playlists.${prefix}.trackListIds`);
                                 let stateNumbers = cache.getValue(`playlists.${prefix}.trackListNumber`);
                                 let stateSongId = cache.getValue('player.trackId');
                                 let ids = loadOrDefault(idLststate, 'val', '');
@@ -1077,7 +1077,7 @@ function createPlaybackInfo(data) {
                             })
                             .then(() => {
                                 //setzen der TrackNo
-                                let state = cache.getValue(`albums.${albumId}.trackListIdMap`);
+                                let state = cache.getValue(`albums.${albumId}.trackListIds`);
                                 let stateNumbers = cache.getValue(`albums.${albumId}.trackListNumber`);
                                 let stateSongId = cache.getValue('player.trackId');
                                 let ids = loadOrDefault(state, 'val', '');
@@ -1163,7 +1163,7 @@ function createPlaybackInfo(data) {
                             })
                             .then(() => {
                                 //setzen der TrackNo
-                                let state = cache.getValue(`collections.${collectionId}.trackListIdMap`);
+                                let state = cache.getValue(`collections.${collectionId}.trackListIds`);
                                 let stateNumbers = cache.getValue(`collections.${collectionId}.trackListNumber`);
                                 let stateSongId = cache.getValue('player.trackId');
                                 let ids = loadOrDefault(state, 'val', '');
@@ -1206,7 +1206,7 @@ function createPlaybackInfo(data) {
                             lastPlayingShow.lastShowId = showId;
                             lastPlayingShow.lastEpisodeId = episodeId;
                             lastPlayingShow.lastEpisodeDuration_ms = duration;
-                            let epiIdLst = loadOrDefault(cache.getValue('shows.' + showId + '.episodeListIdMap'),'val', '').split(';');
+                            let epiIdLst = loadOrDefault(cache.getValue('shows.' + showId + '.episodeListIds'),'val', '').split(';');
                             if (epiIdLst && epiIdLst.length > 0) {
                                 let epi_ix = epiIdLst.indexOf(episodeId);
                                 if (epi_ix >= 0) {
@@ -1598,13 +1598,13 @@ function createShows(parseJson, autoContinue, addedList) {
                             'contains list of episode as string with position, pattern: 0:episode;1:episode;2:episode;...',
                             'string'),
                         createOrDefault(showObject, 'episodeIdMap', prefix + '.episodeListIdMap', '',
-                            'contains list of episode ids as string with position, pattern: id;id;id;...',
+                            'contains list of episode ids as string with position, pattern: 0:id;1:id;2:id;...',
                             'string'),
                         createOrDefault(showObject, 'episodeDuration_msList', prefix + '.episodeDuration_msList', '',
                             'contains list of episode duration_ms as string, pattern: duration_ms;duration_ms;duration_ms...',
                             'string'),
                         createOrDefault(showObject, 'episodeIds', prefix + '.episodeListIds', '',
-                            'contains list of episode ids as string, pattern: 0:id;1:id;2:id;...',
+                            'contains list of episode ids as string, pattern: id;id;id;...',
                             'string'),
                         createOrDefault(showObject, 'episodes', prefix + '.episodeListArray', '',
                             'contains list of episodes as array object...[id: id, episodeName: text, publisher: Der Spiegel, description: description, duration: xx, explicit: explicit, is_playable: true', 'object')
@@ -2345,12 +2345,12 @@ async function getShowEpisodes(showid) {
                             showObject.listNumber += ';';
                         }
                         let tmpstate = no + ':' + name;
+                        let tmpids = no + ':' + episodesId;
                         showObject.stateString += tmpstate;
                         showObject.listString += name;
-                        showObject.episodeIdMap += episodesId;
+                        showObject.episodeIdMap += tmpids;
                         showObject.episodeDuration_msList += duration_ms;
-                        let tmpids = no + ':' + episodesId;
-                        showObject.episodeIds += tmpids;
+                        showObject.episodeIds += episodesId;
                         showObject.listNumber += no;
                         let a = {
                             id: episodesId,
@@ -2414,6 +2414,18 @@ async function getPlaylistTracks(owner, id) {
                         return adapter.log.debug(
                             `There was a playlist track ignored because of missing id; playlist: ${id}; track no: ${no}`);
                     }
+                    let favoriteLstState = cache.getValue('myFavoriteCollection.trackListIds');
+                    let fav_ix = -1;
+                    let isFavorite = false;
+                    if (favoriteLstState && favoriteLstState.val) {
+                        let favLst = favoriteLstState.val.split(';');
+                        if (favLst && favLst.length > 0) {
+                            fav_ix = favLst.indexOf(trackId);
+                        }
+                        if (fav_ix >= 0) {
+                            isFavorite = true;
+                        }
+                    }
                     let artist = getArtistNamesOrDefault(item, 'track.artists');
                     let artistArray = getArtistArrayOrDefault(item, 'track.artists');
                     let trackName = loadOrDefault(item, 'track.name', '');
@@ -2436,8 +2448,8 @@ async function getPlaylistTracks(owner, id) {
                     }
                     playlistObject.stateString += no +':' + trackName + '-' + artist;
                     playlistObject.listString += trackName + '-' + artist;
-                    playlistObject.trackIdMap += trackId;
-                    playlistObject.trackIds += no + ':' + trackId;
+                    playlistObject.trackIdMap += no + ':' + trackId;
+                    playlistObject.trackIds += trackId;
                     playlistObject.listNumber += no;
                     let a = {
                         id: trackId,
@@ -2453,6 +2465,7 @@ async function getPlaylistTracks(owner, id) {
                         episode: trackEpisode,
                         explicit: trackExplicit,
                         popularity: trackPopularity,
+                        isFavorite: isFavorite,
                         is_playable: trackIsPlayable
                     };
                     playlistObject.songs.push(a);
@@ -2523,11 +2536,10 @@ async function getAlbumTracks(albumId) {
                         albumObject.listNumber += ';';
                     }
                     let tmpStr = no + ':' + trackName + '-' + artist;
-                    let tmpTrk = no + ':' + trackId;
                     albumObject.stateString += tmpStr;
                     albumObject.listString += trackName + '-' + artist;
-                    albumObject.trackIdMap += trackId;
-                    albumObject.trackIds += tmpTrk;
+                    albumObject.trackIdMap += no + ':' + trackId;
+                    albumObject.trackIds += trackId;
                     albumObject.listNumber += no;
                     let a = {
                         id: trackId,
@@ -2608,11 +2620,10 @@ async function getCollectionTracks() {
                         collectionObject.listNumber += ';';
                     }
                     let tmpStr = no + ':' + trackName + '-' + artist;
-                    let tmpTrk = no + ':' + trackId;
                     collectionObject.stateString += tmpStr;
                     collectionObject.listString += trackName + '-' + artist;
-                    collectionObject.trackIdMap += trackId;
-                    collectionObject.trackIds += tmpTrk;
+                    collectionObject.trackIdMap += no + ':' + trackId;
+                    collectionObject.trackIds += trackId;
                     collectionObject.listNumber += no;
                     let a = {
                         id: trackId,
@@ -3390,7 +3401,7 @@ function startShow(showId, episodeNo, keepTrack){
     lastPlayingShow.lastEpisodeNo = episodeNo;
     let episodeLst = '';
     let dur_msLst = cache.getValue('shows.' + showId + '.episodeDuration_msList');
-    let episodeListState = cache.getValue('shows.' + showId + '.episodeListIdMap');
+    let episodeListState = cache.getValue('shows.' + showId + '.episodeListIds');
     if (episodeListState && episodeListState.val) {
         episodeLst = episodeListState.val.split(';');
     }
@@ -3776,7 +3787,7 @@ function listenOnEpisodeList(obj) {
             if (maxEpisodesState && maxEpisodesState.val) {
                 maxEpisodes = maxEpisodesState.val;
             }
-            let eid = cache.getValue('shows.' + showid.val + '.episodeListIdMap');
+            let eid = cache.getValue('shows.' + showid.val + '.episodeListIds');
             let eix = obj.state.val;
             let curEpiIx = 0;
             if (maxEpisodes > 1 && maxEpisodes > eix) {
