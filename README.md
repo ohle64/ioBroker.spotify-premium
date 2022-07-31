@@ -96,6 +96,9 @@ Click for widget source.
 * (ohle64) add some buttons: refresh current playlist(only currently playing), getShows, getAlbums, getCollection, check Track in collection, refresh application cache for playlists
 * (ohle64) visualisation of playlist_found, playlist_notFound, requests/min
 * (ohle64) catch err 408 geo location
+### 1.2.2 (2022-06-17)
+* (Apollon77) Fix potential crash cases reported by Sentry
+* (Apollon77) Optimize adapter stop behaviour
 
 ### 1.2.1 (2022-05-12)
 * (Apollon77) Prevent js-controller warnings
