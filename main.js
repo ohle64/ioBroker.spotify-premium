@@ -879,13 +879,14 @@ function createPlaybackInfo(data) {
                                 }
                                 //adapter.log.warn('ermittelt ownerId: ' + ownerId);
                             }
+                            let clearPrefix = shrinkStateName(ownerId + '-' + playlistId);
                             //adapter.log.warn('getPlaylistCacheItem erreicht owner: ' + ownerId + ' plId: '+ playlistId);
                             let pl_ix = getPlaylistCacheItem(ownerId, playlistId);
                             let plCacheItem = playlistAppCache[pl_ix];
                             let Pl_ListId = loadOrDefault(cache.getValue('playlists.playlistListIds'), 'val', '');
                             //adapter.log.warn('playlistItemCache.len: ' + plCacheItem);
                             if (plCacheItem) {
-                                playlistInfoCache[ownerId + '-' + playlistId] = {
+                                playlistInfoCache[clearPrefix] = {
                                     id: playlistId,
                                     name: plCacheItem.name,
                                     snapshot_id: plCacheItem.snapshot_id,
@@ -905,21 +906,20 @@ function createPlaybackInfo(data) {
                                 }
                             }
                         
-                            let playlistName = loadOrDefault(playlistInfoCache[ownerId + '-' + playlistId], 'name', '');
+                            let playlistName = loadOrDefault(playlistInfoCache[clearPrefix], 'name', '');
                             contextDescription = 'Playlist: ' + playlistName;
-                            let playlistImage = loadOrDefault(playlistInfoCache[ownerId + '-' + playlistId], 'images[0].url', '');
+                            let playlistImage = loadOrDefault(playlistInfoCache[clearPrefix], 'images[0].url', '');
                             contextImage = playlistImage;
-                            let pl_ownerId = loadOrDefault(playlistInfoCache[ownerId + '-' + playlistId], 'owner.id', '');
-                            let trackCount = loadOrDefault(playlistInfoCache[ownerId + '-' + playlistId], 'tracks.total', '');
-                            let snapshot_id = loadOrDefault(playlistInfoCache[ownerId + '-' + playlistId], 'snapshot_id', '');
-                            let prefix = shrinkStateName(ownerId + '-' + playlistId);
+                            let pl_ownerId = loadOrDefault(playlistInfoCache[clearPrefix], 'owner.id', '');
+                            let trackCount = loadOrDefault(playlistInfoCache[clearPrefix], 'tracks.total', '');
+                            let snapshot_id = loadOrDefault(playlistInfoCache[clearPrefix], 'snapshot_id', '');
                             if (isEmpty(ownerId)) {
                                 if (!isEmpty(pl_ownerId)) {
                                     ownerId = pl_ownerId;
                                 }
                             }
                             //adapter.log.warn('erstelle playlistInfoCache ownerId ' + ownerId + ' plId: ' + playlistId);
-                            const trackList = cache.getValue(`playlists.${prefix}.trackList`);
+                            const trackList = cache.getValue(`playlists.${clearPrefix}.trackList`);
 
                             return Promise.all([
                                 cache.setValue('player.playlist.id', playlistId),
@@ -943,12 +943,12 @@ function createPlaybackInfo(data) {
                             ])
                             .then(() => {
                                 // neu anpassen Abfrage der playlists abhängig von snapshot_id !!!
-                                let trackListIdLen = loadOrDefault(cache.getValue(`playlists.${prefix}.trackListIds`), 'val', '').length;
+                                let trackListIdLen = loadOrDefault(cache.getValue(`playlists.${clearPrefix}.trackListIds`), 'val', '').length;
                                 let trackListIdPlayerLen = loadOrDefault(cache.getValue('player.playlist.trackListIds'), 'val', '').length;
                                 if (!isEmpty(trackListIdLen) && !isEmpty(trackListIdPlayerLen) && trackListIdLen !== trackListIdPlayerLen) {
                                     return createPlaylists({
                                         items: [
-                                            playlistInfoCache[ownerId + '-' + playlistId]
+                                            playlistInfoCache[clearPrefix]
                                         ]
                                     });
                                 } else {
@@ -958,13 +958,13 @@ function createPlaybackInfo(data) {
                             .then(() => {
                                 //Listen nach player.playlist kopieren
                                 const promises = [
-                                    copyState(`playlists.${prefix}.trackListNumber`, 'player.playlist.trackListNumber'),
-                                    copyState(`playlists.${prefix}.trackListString`, 'player.playlist.trackListString'),
-                                    copyState(`playlists.${prefix}.trackListStates`, 'player.playlist.trackListStates'),
-                                    copyObjectStates(`playlists.${prefix}.trackList`, 'player.playlist.trackList'),
-                                    copyState(`playlists.${prefix}.trackListIdMap`, 'player.playlist.trackListIdMap'),
-                                    copyState(`playlists.${prefix}.trackListIds`, 'player.playlist.trackListIds'),
-                                    copyState(`playlists.${prefix}.trackListArray`, 'player.playlist.trackListArray')
+                                    copyState(`playlists.${clearPrefix}.trackListNumber`, 'player.playlist.trackListNumber'),
+                                    copyState(`playlists.${clearPrefix}.trackListString`, 'player.playlist.trackListString'),
+                                    copyState(`playlists.${clearPrefix}.trackListStates`, 'player.playlist.trackListStates'),
+                                    copyObjectStates(`playlists.${clearPrefix}.trackList`, 'player.playlist.trackList'),
+                                    copyState(`playlists.${clearPrefix}.trackListIdMap`, 'player.playlist.trackListIdMap'),
+                                    copyState(`playlists.${clearPrefix}.trackListIds`, 'player.playlist.trackListIds'),
+                                    copyState(`playlists.${clearPrefix}.trackListArray`, 'player.playlist.trackListArray')
                                 ];
                                 if (trackList && trackList.val) {
                                     //adapter.log.debug('TrackList.val: ' + parseInt(trackList.val, 10));
@@ -974,8 +974,8 @@ function createPlaybackInfo(data) {
                             })
                             .then(() => {
                                 //setzen der TrackNo
-                                let idLststate = cache.getValue(`playlists.${prefix}.trackListIds`);
-                                let stateNumbers = cache.getValue(`playlists.${prefix}.trackListNumber`);
+                                let idLststate = cache.getValue(`playlists.${clearPrefix}.trackListIds`);
+                                let stateNumbers = cache.getValue(`playlists.${clearPrefix}.trackListNumber`);
                                 let stateSongId = cache.getValue('player.trackId');
                                 let ids = loadOrDefault(idLststate, 'val', '');
                                 let num = loadOrDefault(stateNumbers, 'val', '');
@@ -992,7 +992,7 @@ function createPlaybackInfo(data) {
                                         //adapter.log.debug('TrackNo: ' + (no + 1));
                                         return Promise.all([
                                             cache.setValue('player.playlist.trackNo', (no + 1)),
-                                            cache.setValue(`playlists.${prefix}.trackList`, no),
+                                            cache.setValue(`playlists.${clearPrefix}.trackList`, no),
                                             cache.setValue('player.playlist.trackList', no)
                                         ]);
                                     }
@@ -1015,7 +1015,8 @@ function createPlaybackInfo(data) {
                         contextDescription = 'Album: ' + AlbumName;
                         let albumImage = loadOrDefault(data, 'item.album.images[0].url', '');
                         contextImage = albumImage;
-                        let trackCount = loadOrDefault(data, 'item.album.total_tracks', '');
+                        let trackCount = loadOrDefault(data, 'item.album.total_tracks', 0);
+                        let release_date = loadOrDefault(data,'item.album.release_date', '');
                         if (isEmpty(albumArtistName) && !isEmpty(artist)) {
                             albumArtistName = artist;
                         }
@@ -1024,6 +1025,8 @@ function createPlaybackInfo(data) {
                                 id: albumId,
                                 artists: [{name: albumArtistName}],
                                 name: AlbumName,
+                                total_tracks: trackCount,
+                                release_date: release_date,
                                 images: [{url: albumImage}]
                             },
                             total: trackCount
@@ -1033,6 +1036,7 @@ function createPlaybackInfo(data) {
                             cache.setValue('player.albumId', albumId),
                             cache.setValue('player.popularity', popularity),
                             cache.setValue('player.album.id', albumId),
+                            cache.setValue('player.album.release_date', release_date),
                             cache.setValue('player.album.popularity', popularity),
                             cache.setValue('player.album.tracksTotal', parseInt(trackCount, 10)),
                             cache.setValue('player.album.imageUrl', albumImage),
@@ -1635,7 +1639,7 @@ function findPlaylistSnapshotId(owner, playlistId, snapIdToFind) {
     if (!isEmpty(owner) && !isEmpty(playlistId) && !isEmpty(snapIdToFind) && playlistAppCache.length > 0) {
         //suche snapshotId für playlistId
         let x = -1;
-        let prefix = owner + '-' + playlistId;
+        let prefix = shrinkStateName(owner + '-' + playlistId);
         let snapId = '';
         for (let i = 0; i < playlistAppCache.length; i++) {
             if (playlistAppCache[i].appId === prefix) {
@@ -1843,12 +1847,14 @@ function createAlbums(parseJson, autoContinue, addedList) {
         albumName = (!isEmpty(artistName)) ? artistName + ' | ' + albumName : albumName;
         let albumId = loadOrDefault(item.album, 'id', '');
         let trackCount = loadOrDefault(item.album, 'tracks_total', 0);
+        let release_date = loadOrDefault(item.album, 'release_date', '');
         let imageUrl = loadOrDefault(item.album, 'images[0].url', '');
         let popularity = loadOrDefault(item.album, 'popularity', 0);
         
         albumCache[albumId] = {
             id: albumId,
             name: albumName,
+            release_date: release_date,
             images: [{url: imageUrl}],
             tracks: {total: trackCount}
         };
@@ -1878,6 +1884,7 @@ function createAlbums(parseJson, autoContinue, addedList) {
             createOrDefault(item.album, 'id', prefix + '.id', '', 'album id', 'string'),
             createOrDefault(item.album, 'name', prefix + '.name', '', 'album name', 'string'),
             createOrDefault(item.album, 'artists[0].name', prefix + '.artistName', '', 'artist name', 'string'),
+            createOrDefault(item.album, 'release_date', prefix + '.release_date', 0, 'album release date', 'string'),
             createOrDefault(item.album, 'popularity', prefix + '.popularity', 0, 'album popularity', 'number'),
             createOrDefault(item.album, 'total_tracks', prefix + '.tracksTotal', 0, 'number of songs', 'number'),
             createOrDefault(item.album, 'images[0].url', prefix + '.imageUrl', '', 'image url', 'string')
@@ -2139,7 +2146,7 @@ function loadPlaylistAppCache() {
 
 function getPlaylistCacheItem(owner, playlistId) {
     if (!isEmpty(owner) && !isEmpty(playlistId) && playlistAppCache.length > 0) {
-        let toFindId = owner + '-' + playlistId;
+        let toFindId = shrinkStateName(owner + '-' + playlistId);
         let x = -1;
         for (let i = 0; i < playlistAppCache.length; i++){
             if (playlistAppCache[i].appId === toFindId) {
@@ -2149,7 +2156,6 @@ function getPlaylistCacheItem(owner, playlistId) {
         }
         //adapter.log.warn('x: ' + x + ' playlistCache: ' + playlistAppCache.length);
         if (x >= 0) {
-            
             return x;
         } else {
             return -1;
@@ -2414,14 +2420,16 @@ async function getPlaylistTracks(owner, id) {
                         return adapter.log.debug(
                             `There was a playlist track ignored because of missing id; playlist: ${id}; track no: ${no}`);
                     }
-                    let favoriteLstState = cache.getValue('myFavoriteCollection.trackListIds');
+                    let favoriteLstState = cache.getValue('collections.myFavoriteCollection.trackListIds');
                     let fav_ix = -1;
                     let isFavorite = false;
                     if (favoriteLstState && favoriteLstState.val) {
                         let favLst = favoriteLstState.val.split(';');
-                        if (favLst && favLst.length > 0) {
+                        //adapter.log.warn('favLst: '+ favLst.length + ' trackId: ' + trackId);
+                        if (favLst.length > 0) {
                             fav_ix = favLst.indexOf(trackId);
                         }
+                        //adapter.log.warn('fav_ix: ' + fav_ix);
                         if (fav_ix >= 0) {
                             isFavorite = true;
                         }
@@ -2520,7 +2528,18 @@ async function getAlbumTracks(albumId) {
                         return adapter.log.debug(
                             `There was a album track ignored because of missing id; album: ${albumId}; track no: ${no}`);
                     }
-                    
+                    let favoriteLstState = cache.getValue('collections.myFavoriteCollection.trackListIds');
+                    let fav_ix = -1;
+                    let isFavorite = false;
+                    if (favoriteLstState && favoriteLstState.val) {
+                        let favLst = favoriteLstState.val.split(';');
+                        if (favLst.length > 0) {
+                            fav_ix = favLst.indexOf(trackId);
+                        }
+                        if (fav_ix >= 0) {
+                            isFavorite = true;
+                        }
+                    }
                     let artist = getArtistNamesOrDefault(item, 'artists');
                     let artistArray = getArtistArrayOrDefault(item, 'artists');
                     let trackName = loadOrDefault(item, 'name', '');
@@ -2550,6 +2569,7 @@ async function getAlbumTracks(albumId) {
                         duration: convertToDigiClock(trackDuration),
                         discNumber: trackDiscNumber,
                         explicit: trackExplicit,
+                        isFavorite: isFavorite,
                         track_number: track_number
                     };
                     albumObject.songs.push(a);
@@ -3979,7 +3999,7 @@ function listenOnUriToQueue(obj) {
         let dev_id = getSelectedDevice(deviceData);    
 
         clearTimeout(application.statusPollingHandle);
-        adapter.log.warn('uri: ' + uri + ' dev_id: ' + dev_id);
+        adapter.log.debug('uri: ' + uri + ' dev_id: ' + dev_id);
         sendRequest('/v1/me/player/queue?uri=' + uri + '&device_id=' + dev_id, 'POST', '', true)
             .catch(err => adapter.log.error('listenOnUriToQueue could not execute command: ' + err))
             .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000));

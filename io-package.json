@@ -841,6 +841,18 @@
       "native": {}
     },
     {
+      "_id": "player.album.release_date",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "release date of the album",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
       "_id": "player.collection.trackNo",
       "type": "state",
       "common": {
