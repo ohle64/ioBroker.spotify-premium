@@ -869,22 +869,26 @@ function createPlaybackInfo(data) {
                             let ownerId = uri.substring(indexOfUser, endIndexOfUser);
                             // !!!--> bei (playlistOwner)user !== spotify kein user: in uri <--!!!
                             if (indexOfUser < 0){
-                                let idLst = loadOrDefault(cache.getValue('playlists.playlistListIds'), 'val', '').split(';');
-                                for (let i = 0; i < idLst.length; i++){
-                                    let _idOwner = idLst[i].split('-');
-                                    if (_idOwner[1] === playlistId) {
-                                        ownerId = _idOwner[0];
-                                        break;
-                                    } 
+                                //suche owner erst in playlistListIds dann unter playlists.*.owner auslesen (kann sonderzeichen enthalten!)
+                                let idLstState = cache.getValue('playlists.playlistListIds');
+                                if (idLstState && idLstState.val) {
+                                    let idLst = idLstState.val.split(';');
+                                    for (let i = 0; i < idLst.length; i++){
+                                        let _idOwner = idLst[i].split('-');
+                                        if (_idOwner[1] === playlistId) {
+                                            let pl_tmpState = cache.getValue('playlists.' + idLst[i] + '.owner');
+                                            if (pl_tmpState && pl_tmpState.val) {
+                                                ownerId = pl_tmpState.val;
+                                            }
+                                            break;
+                                        } 
+                                    }
                                 }
-                                //adapter.log.warn('ermittelt ownerId: ' + ownerId);
                             }
                             let clearPrefix = shrinkStateName(ownerId + '-' + playlistId);
                             //adapter.log.warn('getPlaylistCacheItem erreicht owner: ' + ownerId + ' plId: '+ playlistId);
                             let pl_ix = getPlaylistCacheItem(ownerId, playlistId);
                             let plCacheItem = playlistAppCache[pl_ix];
-                            let Pl_ListId = loadOrDefault(cache.getValue('playlists.playlistListIds'), 'val', '');
-                            //adapter.log.warn('playlistItemCache.len: ' + plCacheItem);
                             if (plCacheItem) {
                                 playlistInfoCache[clearPrefix] = {
                                     id: playlistId,
@@ -896,7 +900,7 @@ function createPlaybackInfo(data) {
                                 };
                             } else {
                                 //alle 10s !
-                                if (Pl_ListId.length > 0 && !plAppCacheReload){
+                                if (idLstState && idLstState.val && idLstState.val.length > 0 && !plAppCacheReload){
                                     //versuche nachladen playlistAppCache
                                     //kann vorkommen wenn spotify-play schon aktiv während adapter-start
                                     loadPlaylistAppCache();
