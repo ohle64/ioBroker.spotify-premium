@@ -591,7 +591,7 @@
       "type": "state",
       "common": {
         "role": "button",
-        "name": "addFavorite",
+        "name": "add current track to Favorite ",
         "type": "boolean",
         "read": false,
         "write": true
@@ -603,7 +603,7 @@
       "type": "state",
       "common": {
         "role": "button",
-        "name": "delFavorite",
+        "name": "del current track from Favorite",
         "type": "boolean",
         "read": false,
         "write": true
@@ -645,6 +645,18 @@
         "read": false,
         "write": true,
         "icon": "icons/play_black.png"
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.albumImageUrl64",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "album image url for 64px",
+        "type": "string",
+        "read": true,
+        "write": false
       },
       "native": {}
     },
@@ -805,6 +817,18 @@
       "native": {}
     },
     {
+      "_id": "player.show.imageUrl64",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "image url for 64px",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
       "_id": "player.album.trackNo",
       "type": "state",
       "common": {
@@ -834,6 +858,18 @@
       "common": {
         "role": "value",
         "name": "artist of the album",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.album.imageUrl64",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "image url for 64px",
         "type": "string",
         "read": true,
         "write": false
@@ -992,6 +1028,66 @@
       "native": {}
     },
     {
+      "_id": "refreshPlaylistList",
+      "type": "state",
+      "common": {
+        "role": "button",
+        "name": "refresh playlistList (playlists summery)",
+        "type": "boolean",
+        "read": false,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "refreshAlbumList",
+      "type": "state",
+      "common": {
+        "role": "button",
+        "name": "refresh AlbumList",
+        "type": "boolean",
+        "read": false,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "refreshShowList",
+      "type": "state",
+      "common": {
+        "role": "button",
+        "name": "refresh ShowList",
+        "type": "boolean",
+        "read": false,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "refreshDeviceList",
+      "type": "state",
+      "common": {
+        "role": "button",
+        "name": "refresh DeviceList",
+        "type": "boolean",
+        "read": false,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "loadQueue",
+      "type": "state",
+      "common": {
+        "role": "button",
+        "name": "reload QueueList",
+        "type": "boolean",
+        "read": false,
+        "write": true
+      },
+      "native": {}
+    },
+    {
       "_id": "authorization.getAuthorization",
       "type": "state",
       "common": {
@@ -1120,6 +1216,138 @@
         "type": "number",
         "read": true,
         "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "lastLoadAlbum",
+      "type": "state",
+      "common": {
+        "role": "value.time",
+        "name": "last loaded Album data",
+        "type": "number",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "lastLoadPlaylist",
+      "type": "state",
+      "common": {
+        "role": "value.time",
+        "name": "last loaded Playlist data",
+        "type": "number",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "lastLoadShow",
+      "type": "state",
+      "common": {
+        "role": "value.time",
+        "name": "last loaded Shows data",
+        "type": "number",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "lastLoadCollection",
+      "type": "state",
+      "common": {
+        "role": "value.time",
+        "name": "last loaded Collection data",
+        "type": "number",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "unfollowPlaylistId",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "insert a playlistId or user-playlistId to unfollow and delete this playlist",
+        "type": "string",
+        "read": true,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "unfollowAlbumId",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "insert a albumId to unfollow and delete this album",
+        "type": "string",
+        "read": true,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "unfollowShowId",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "insert a showId to unfollow and delete this show",
+        "type": "string",
+        "read": true,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "clearCache",
+      "type": "state",
+      "common": {
+        "role": "button",
+        "name": "clear adapter's cache",
+        "type": "boolean",
+        "read": false,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "setToFavorite",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "insert a trackId to set track to favorite songs",
+        "type": "string",
+        "read": true,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "unsetFromFavorite",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "insert a trackId to unset track from favorite songs",
+        "type": "string",
+        "read": true,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "refreshThisPlaylist",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "insert a complete playlist id (like owner-playlistId) to refresh this playlist",
+        "type": "string",
+        "read": true,
+        "write": true
       },
       "native": {}
     },
@@ -1660,6 +1888,18 @@
       "native": {}
     },
     {
+      "_id": "player.queueArray",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "contains list of tracks as array object, pattern: [{id: \"id\", Name: \"Name\", {id: \"artistId\", name: \"artistName\"}, ...], name: \"albumName\"}, durationMs: 253844, duration: 4:13, discNumber: 1, explicit: false}, ...]",
+        "type": "string",
+        "read": true,
+        "write": true
+      },
+      "native": {}
+    },
+    {
       "_id": "player.collection.trackListArray",
       "type": "state",
       "common": {
@@ -1809,6 +2049,18 @@
       "common": {
         "role": "value",
         "name": "duration in format 03:50; Mi:SS",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.artistImgUrlArray",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Array of Artist Image Urls",
         "type": "string",
         "read": true,
         "write": false

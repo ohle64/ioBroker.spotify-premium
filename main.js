@@ -1,3 +1,4 @@
+// @ts-nocheck
 /* jshint -W097 */
 /* jshint strict: false */
 /* jslint node: true */
@@ -9,6 +10,7 @@ const ownUtils = require('./lib/utils');
 const querystring = require('querystring');
 const _request = require('request');
 const { time } = require('console');
+const { format } = require('path');
 
 function request(options) {
     return new Promise((resolve, reject) =>
@@ -22,20 +24,6 @@ let removeNameSpace = ownUtils.removeNameSpace;
 let artistImageUrlCache = {};
 let playlistInfoCache = {};
 let playlistAppCache = [];
-let playlistCache = [{ //TODO Abfrage der Playlist-Daten über cache
-    plc_Id: '',
-    plc_owner: '',
-    plc_name: '',
-    plc_description: '',
-    plc_snapshotId: '',
-    plc_type: '',
-    plc_uri: '',
-    plc_image0url: '',
-    plc_collaborative: false,
-    plc_public: false,
-    plc_tracksTotal: 0,
-    plc_refreshTime: 0
-}];
 let plAppCacheReload = false; //nur 1x alle 15min (pollPlaylistApi)
 let albumCache = {};
 
@@ -83,8 +71,12 @@ let lastPlayingShow = {
 let currentPlayingType = ''; //enthält aktuellen Play-type playlist, album...
 let RequestCount = 0; //Zähler für Requests /min (too many Request error)
 let doNotTestSnapshotId = false; //für getCurrentPlaylist Abfrage der Playlist/PlayTrack-Daten bei play=true (nur button)
+let doNotTestAlbum = false; //für Abfrage durch getAlbums-button - keine Prüfung der alten Werte (alle daten neu laden)
 let pl_foundCount = 0;
 let pl_notFoundCount = 0;
+let playlistComplete = false; //verhindert das löschen der playlists bei fehlerhaften request-Daten
+let albumComplete = false;
+let showComplete = false;
 let isAuth = false;
 let trackIsFav = false;
 let lastTrackId = '';
@@ -100,7 +92,7 @@ function startAdapter(options) {
             cache.on('authorization.authorizationReturnUri', listenOnAuthorizationReturnUri, true);
             cache.on('authorization.getAuthorization', listenOnGetAuthorization);
             cache.on('authorization.authorized', listenOnAuthorized);
-            cache.on(/\.useForPlayback$/, listenOnUseForPlayback);
+            cache.on(/\.useForPlayback$/, listenOnUseForPlayback, true);
             cache.on(/\.trackList$/, listenOnTrackList, true);
             cache.on(/\.playThisShow$/, listenOnPlayThisShow);
             cache.on(/\.playThisList$/, listenOnPlayThisList);
@@ -139,14 +131,26 @@ function startAdapter(options) {
             cache.on('player.show.episodeNo', listenOnShowTrackNo, true);
             cache.on('loadPlaylistCache', loadPlaylistAppCache);
             cache.on('getShows', reloadUsersShows);
-            cache.on('getAlbums', reloadUsersAlbums);
+            cache.on('getAlbums', reloadUsersAlbumBtn);
             cache.on('getPlaylists', reloadUsersPlaylistNoTest); //get UsersPlaylists without testing snapshotId
             cache.on('getCollection', getUsersCollection);
             cache.on('checkTrackInCollection', checkForTrackInCollection);
             cache.on('getCurrentPlaylist', getCurrentPlaylist); //get currently playing playlist
             cache.on('getPlaybackInfo', listenOnGetPlaybackInfo);
             cache.on('getDevices', listenOnGetDevices);
+            cache.on('loadQueue', btnLoadQueue);
+            cache.on('clearCache', btnClearCache);
+            cache.on('refreshPlaylistList', btnRefreshPlaylistList); //clear lists first
+            cache.on('refreshDeviceList', btnRefreshDeviceList); //clear list first
+            cache.on('refreshAlbumList', btnRefreshAlbumList); //clear list first
+            cache.on('refreshShowList', btnRefreshShowList); //clear list first
             cache.on('activateLastDevice', transferPlaybackNoPlay);
+            cache.on('unfollowPlaylistId', listenOnUnfollowPlaylist, true);
+            cache.on('unfollowAlbumId', listenOnUnfollowAlbum, true);
+            cache.on('unfollowShowId', listenOnUnfollowShow, true);
+            cache.on('setToFavorite', listenOnSetToFavorite, true);
+            cache.on('unsetFromFavorite', listenOnUnsetFromFavorite, true);
+            cache.on('refreshThisPlaylist', refreshThisPlaylist, true);
             cache.on(['playlists.playlistList', 'playlists.playlistListIds', 'playlists.playlistListString'], listenOnHtmlPlaylists);
             cache.on(['player.playlist.trackList', 'player.playlist.trackListArray'], listenOnHtmlTracklist);
             cache.on(['devices.deviceList', 'devices.deviceListIds', 'devices.availableDeviceListString'], listenOnHtmlDevices);
@@ -592,7 +596,7 @@ function copyState(src, dst) {
     if (tmp_src) {
         return cache.setValue(dst, tmp_src.val);
     } else {
-        adapter.log.debug("bei copyState: fehlerhafte Playlists-Daten src");
+        adapter.log.debug("copyState: wrong data src");
         return;
     }
 }
@@ -603,7 +607,7 @@ function copyObjectStates(src, dst) {
     if (tmp_src && tmp_src.common) {
         return setObjectStatesIfChanged(dst, tmp_src.common.states);
     } else {
-        adapter.log.debug("bei copyObjectStates: fehlerhafte Playlists-Daten src");
+        adapter.log.debug("copyObjectStates: wrong data src");
         return;
     }
 }
@@ -622,7 +626,7 @@ async function getCurrentlyPlayingType(playType) {
     if (!isEmpty(playType)) {
         let query = {
             additional_types: playType
-        }
+        };
         try {
             const data = await sendRequest(`/v1/me/player/currently-playing?${querystring.stringify(query)}`, 'GET', '');
             if (!isEmpty(data)) {
@@ -687,6 +691,7 @@ function createPlaybackInfo(data) {
     let album = loadOrDefault(data, 'item.album.name', '');
     let albumId = loadOrDefault(data, 'item.album.id', '');
     let albumUrl = loadOrDefault(data, 'item.album.images[0].url', '');
+    let albumUrl64 = loadOrDefault(data, 'item.album.images[2].url', '');
     let artist = getArtistNamesOrDefault(data, 'item.artists');
     let albumArtistName = loadOrDefault(data, 'item.album.artists[0].name','');
     let shuffle = loadOrDefault(data, 'shuffle_state', false);
@@ -787,7 +792,7 @@ function createPlaybackInfo(data) {
             if (type === 'track' || type === 'playlist' || type === 'album' || type === 'artist' || type === 'collection') {
                 //prüfe trackInFavorite (1x abfragen/trackid-wechsel ! err 429 !)
                 if (!isEmpty(trackId) && (lastTrackId === '' || lastTrackId !== trackId)) {
-                    adapter.log.debug('ceckTrackInCollection-Aufruf');
+                    adapter.log.debug('createPlaybackInfo->checkTrackInCollection');
                     checkTrackInCollection(trackId);
                     lastTrackId = trackId;
                 }
@@ -806,8 +811,7 @@ function createPlaybackInfo(data) {
                     if (artistImageUrlCache.hasOwnProperty(artist)) {
                         urls.push(artistImageUrlCache[artist]);
                     } else {
-                        return sendRequest('/v1/artists/' + artist,
-                            'GET', '')
+                        return sendRequest('/v1/artists/' + artist, 'GET', '')
                             .then(parseJson => {
                                 let url = loadOrDefault(parseJson, 'images[0].url', '');
                                 if (!isEmpty(url)) {
@@ -835,7 +839,9 @@ function createPlaybackInfo(data) {
                         cache.setValue('player.isPlaying', isPlaying),
                         setOrDefault(data, 'item.id', 'player.trackId', ''),
                         cache.setValue('player.artistName', artist),
+                        cache.setValue('player.artistImgUrlArray', urls),
                         cache.setValue('player.albumImageUrl', albumUrl),
+                        cache.setValue('player.albumImageUrl64', albumUrl64),
                         setOrDefault(data, 'item.name', 'player.trackName', ''),
                         cache.setValue('player.durationMs', duration),
                         cache.setValue('player.duration', convertToDigiClock(duration)),
@@ -847,7 +853,7 @@ function createPlaybackInfo(data) {
                         cache.setValue('player.trackIsFavorite', trackIsFav),
                         setOrDefault(data, 'repeat_state', 'player.repeat', adapter.config.defaultRepeat),
                         setOrDefault(data, 'device.volume_percent', 'player.device.volume', 100)
-                    ])
+                    ]);
                 })
                 .then(() => {
                     //spezielle Info's nach type
@@ -868,10 +874,10 @@ function createPlaybackInfo(data) {
                             //adapter.log.warn('ermittelt playlistId: ' + playlistId);
                             let ownerId = uri.substring(indexOfUser, endIndexOfUser);
                             // !!!--> bei (playlistOwner)user !== spotify kein user: in uri <--!!!
+                            let idLstState = cache.getValue('playlists.playlistListIds');
                             if (indexOfUser < 0){
                                 //suche owner erst in playlistListIds dann unter playlists.*.owner auslesen (kann sonderzeichen enthalten!)
-                                let idLstState = cache.getValue('playlists.playlistListIds');
-                                if (idLstState && idLstState.val) {
+                                if (idLstState && idLstState.val && !isEmpty(idLstState.val)) {
                                     let idLst = idLstState.val.split(';');
                                     for (let i = 0; i < idLst.length; i++){
                                         let _idOwner = idLst[i].split('-');
@@ -894,7 +900,7 @@ function createPlaybackInfo(data) {
                                     id: playlistId,
                                     name: plCacheItem.name,
                                     snapshot_id: plCacheItem.snapshot_id,
-                                    images: [{url: plCacheItem.image}],
+                                    images: [{url: plCacheItem.image}, {}, {url: plCacheItem.image64}],
                                     owner: {id: plCacheItem.owner},
                                     tracks: {total: plCacheItem.tracksTotal}
                                 };
@@ -956,7 +962,7 @@ function createPlaybackInfo(data) {
                                         ]
                                     });
                                 } else {
-                                    return refreshPlaylistList();
+                                    //return refreshPlaylistList();
                                 }
                             })
                             .then(() => {
@@ -978,10 +984,10 @@ function createPlaybackInfo(data) {
                             })
                             .then(() => {
                                 //setzen der TrackNo
-                                let idLststate = cache.getValue(`playlists.${clearPrefix}.trackListIds`);
+                                let idLstst = cache.getValue(`playlists.${clearPrefix}.trackListIds`);
                                 let stateNumbers = cache.getValue(`playlists.${clearPrefix}.trackListNumber`);
                                 let stateSongId = cache.getValue('player.trackId');
-                                let ids = loadOrDefault(idLststate, 'val', '');
+                                let ids = loadOrDefault(idLstst, 'val', '');
                                 let num = loadOrDefault(stateNumbers, 'val', '');
                                 let songId = loadOrDefault(stateSongId, 'val', '');
                                 if (isEmpty(trackId) && !isEmpty(songId)) {
@@ -1018,6 +1024,8 @@ function createPlaybackInfo(data) {
                         }
                         contextDescription = 'Album: ' + AlbumName;
                         let albumImage = loadOrDefault(data, 'item.album.images[0].url', '');
+                        let imageUrl64 = loadOrDefault(data, 'item.album.images[2].url', '');
+                        let imageUrl300 = loadOrDefault(data, 'item.album.images[1].url', '');
                         contextImage = albumImage;
                         let trackCount = loadOrDefault(data, 'item.album.total_tracks', 0);
                         let release_date = loadOrDefault(data,'item.album.release_date', '');
@@ -1031,7 +1039,7 @@ function createPlaybackInfo(data) {
                                 name: AlbumName,
                                 total_tracks: trackCount,
                                 release_date: release_date,
-                                images: [{url: albumImage}]
+                                images: [{url: albumImage}, {url: imageUrl300}, {url: imageUrl64}]
                             },
                             total: trackCount
                         };
@@ -1044,6 +1052,7 @@ function createPlaybackInfo(data) {
                             cache.setValue('player.album.popularity', popularity),
                             cache.setValue('player.album.tracksTotal', parseInt(trackCount, 10)),
                             cache.setValue('player.album.imageUrl', albumImage),
+                            cache.setValue('player.album.imageUrl64', imageUrl64),
                             cache.setValue('player.album.name', AlbumName),
                             cache.setValue('player.album.artistName', albumArtistName),
                             cache.setValue('player.album', null, {
@@ -1122,9 +1131,10 @@ function createPlaybackInfo(data) {
                         contextDescription = 'Collection-Album: ' + AlbumName;
                         let albumImage = loadOrDefault(data, 'item.album.images[0].url', '');
                         contextImage = albumImage;
-                        let trackCount = loadOrDefault(cache.getValue('player.collection.tracksTotal'), 'val', 0); //<--anpassen gibt es nicht aus collections holen?
+                        //<--anpassen gibt es nicht aus collections holen
                         let collectionName = 'favorite Collection';
                         let collectionId = 'myFavoriteCollection';
+                        let trackCount = loadOrDefault(cache.getValue(`collections.${collectionId}.tracksTotal`), 'val', 0); 
                         const trackList = cache.getValue(`collections.${collectionId}.trackList`);
                         return Promise.all([
                             cache.setValue('player.albumId', albumId),
@@ -1228,9 +1238,13 @@ function createPlaybackInfo(data) {
                                 let publisher = loadOrDefault(publisherState, 'val', '');
                                 let showStateName = cache.getValue('shows.' + showId + '.name');
                                 let showImageUrlState = cache.getValue('shows.' + showId + '.imageUrl');
+                                let imageUrl300State = cache.getValue('shows.' + showId + '.imageUrl300');
+                                let imageUrl64State = cache.getValue('shows.' + showId + '.imageUrl64'); 
                                 let total_epiState = cache.getValue('shows.' + showId + '.episodesTotal');
                                 let showName = loadOrDefault(showStateName, 'val', '');
                                 let imageUrl = loadOrDefault(showImageUrlState, 'val', '');
+                                let imageUrl64 = loadOrDefault(imageUrl64State, 'val', '');
+                                let imageUrl300 = loadOrDefault(imageUrl300State, 'val', '');
                                 let total_episodes = loadOrDefault(total_epiState, 'val', 0);
                                 let epiLstState = cache.getValue('shows.' + showId + '.episodeListString');
                                 let epiLst = loadOrDefault(epiLstState, 'val', '').split(';');
@@ -1263,6 +1277,7 @@ function createPlaybackInfo(data) {
                                         cache.setValue('player.show.name', showName),
                                         cache.setValue('player.show.id', showId),
                                         cache.setValue('player.show.imageUrl', imageUrl),
+                                        cache.setValue('player.show.imageUrl64', imageUrl64),
                                         cache.setValue('player.show.episodesTotal', total_episodes),
                                         cache.setValue('player.show.publisher', publisher),
                                         cache.setValue('player.show.episodeNo', eno),
@@ -1299,6 +1314,9 @@ function createPlaybackInfo(data) {
         clearTimeout(application.statusInternalTimer);
         cache.setValue('player.isPlaying', isPlaying);
         cache.setValue('player.type', type);
+        if (application.statusPollingDelaySeconds > 0){
+            scheduleStatusPolling();
+        }
     }
 }
 
@@ -1325,40 +1343,79 @@ function setUserInformation(data) {
 
 /*einzelne Playlist+Tracklist aktualisieren wenn isPlaying true*/ 
 function getCurrentPlaylist() {
-    let isPlay = loadOrDefault(cache.getValue('player.isPlaying'), 'val', false);
     let userId = application.userId;
     let playlistStateId = loadOrDefault(cache.getValue('player.playlist.id'), 'val', '');
+    let playlistOwner = loadOrDefault(cache.getValue('player.playlist.owner'), 'val', '');
+    let prefix = shrinkStateName(playlistOwner + '-' + playlistStateId);
     doNotTestSnapshotId = true;
-    if (isPlay && !isEmpty(userId) && !isEmpty(playlistStateId)) {
+    if (isPlaying && !isEmpty(userId) && !isEmpty(playlistStateId)) {
         return sendRequest(`/v1/users/${userId}/playlists/${playlistStateId}`, 'GET', '')
             .then(data => createPlaylists({ items: [data]}))
             .then(() => {
-                    copyState('playlists.' + playlistStateId + '.trackListArray', 'player.playlist.trackListArray');
-                    copyState('playlists.' + playlistStateId + '.snapshot_id', 'player.playlist.snapshot_id');
-                    copyState('playlists.' + playlistStateId + '.trackListNumber', 'player.playlist.trackListNumber');
-                    copyState('playlists.' + playlistStateId + '.trackListString', 'player.playlist.trackListString');
-                    copyState('playlists.' + playlistStateId + '.trackListStates', 'player.playlist.trackListStates');
-                    copyObjectStates('playlists.' + playlistStateId + '.trackList', 'player.playlist.trackList');
-                    copyState('playlists.' + playlistStateId + '.trackListIdMap', 'player.playlist.trackListIdMap');
-                    copyState('playlists.' + playlistStateId + '.trackListIds', 'player.playlist.trackListIds');
+                    copyState('playlists.' + prefix + '.trackListArray', 'player.playlist.trackListArray');
+                    copyState('playlists.' + prefix + '.snapshot_id', 'player.playlist.snapshot_id');
+                    copyState('playlists.' + prefix + '.trackListNumber', 'player.playlist.trackListNumber');
+                    copyState('playlists.' + prefix + '.trackListString', 'player.playlist.trackListString');
+                    copyState('playlists.' + prefix + '.trackListStates', 'player.playlist.trackListStates');
+                    copyObjectStates('playlists.' + prefix + '.trackList', 'player.playlist.trackList');
+                    copyState('playlists.' + prefix + '.trackListIdMap', 'player.playlist.trackListIdMap');
+                    copyState('playlists.' + prefix + '.trackListIds', 'player.playlist.trackListIds');
                     doNotTestSnapshotId = false;
+                    cache.setValue('getCurrentPlaylist', {val: false, ack: true});
             })
-            .catch(err => adapter.log.warn('error in getCurrentPlaylist: ' + err));      
+            .catch(err => {
+                doNotTestSnapshotId = false;
+                adapter.log.warn('error in getCurrentPlaylist: ' + err);
+                });
+    }
+}
+
+function refreshThisPlaylist(obj) {
+    if (obj && obj.state && obj.state.val){
+        let userId = application.userId;
+        doNotTestSnapshotId = true;
+        let owner = loadOrDefault(cache.getValue('playlists.' + obj.state.val + '.owner'), 'val', '');
+        let playlistId = loadOrDefault(cache.getValue('playlists.' + obj.state.val + '.id', 'val', ''));
+        let prefix = shrinkStateName(owner + '-' + playlistId);
+        if (!isEmpty(userId) && !isEmpty(playlistId)) {
+            return sendRequest(`/v1/users/${userId}/playlists/${playlistId}`, 'GET', '')
+                .then(data => createPlaylists({ items: [data]}))
+                .then(() => {
+                        copyState('playlists.' + prefix + '.trackListArray', 'player.playlist.trackListArray');
+                        copyState('playlists.' + prefix + '.snapshot_id', 'player.playlist.snapshot_id');
+                        copyState('playlists.' + prefix + '.trackListNumber', 'player.playlist.trackListNumber');
+                        copyState('playlists.' + prefix + '.trackListString', 'player.playlist.trackListString');
+                        copyState('playlists.' + prefix + '.trackListStates', 'player.playlist.trackListStates');
+                        copyObjectStates('playlists.' + prefix + '.trackList', 'player.playlist.trackList');
+                        copyState('playlists.' + prefix + '.trackListIdMap', 'player.playlist.trackListIdMap');
+                        copyState('playlists.' + prefix + '.trackListIds', 'player.playlist.trackListIds');
+                        doNotTestSnapshotId = false;
+                })
+                .catch(err => {
+                    doNotTestSnapshotId = false;
+                    adapter.log.warn('error in refreshThisPlaylist: ' + err);
+                });
+        }
     } else {
-        reloadUsersPlaylist();
+        adapter.log.warn('error in refreshThisPlaylist - no object');
     }
 }
 
 function reloadUsersPlaylistNoTest() {
+    playlistComplete = false;
     doNotTestSnapshotId = true;
     return getUsersPlaylist(0)
     .then(addedList => {
-        if (application.deletePlaylists) {
+        if (application.deletePlaylists && addedList && playlistComplete) {
             return deleteUsersPlaylist(addedList);
         }
     })
     .then(() => {
-        refreshPlaylistList();
+        //refreshPlaylistList();
+        btnRefreshPlaylistList();
+        if (playlistComplete) {
+            cache.setValue('getPlaylists', {val: false, ack: true});
+        }
         loadPlaylistAppCache();
         plAppCacheReload = false;
         doNotTestSnapshotId = false;        
@@ -1367,14 +1424,20 @@ function reloadUsersPlaylistNoTest() {
 
 /*default run all 15 min from pollPlaylistApi()*/
 function reloadUsersPlaylist() {
+    playlistComplete = false;
     return getUsersPlaylist(0)
         .then(addedList => {
-            if (application.deletePlaylists) {
+            if (application.deletePlaylists && addedList && playlistComplete) {
                 return deleteUsersPlaylist(addedList);
             }
         })
         .then(() => {
             refreshPlaylistList();
+            //btnRefreshPlaylistList();
+            cache.setValue('lastLoadPlaylist', Date.now());
+            if (playlistComplete) {
+                cache.setValue('getPlaylists', {val: false, ack: true});
+            }
             loadPlaylistAppCache();
             plAppCacheReload = false;
             
@@ -1382,23 +1445,45 @@ function reloadUsersPlaylist() {
 }
 
 function reloadUsersShows() {
+    showComplete = false;
     return getUsersShows(0)
         .then(addedList => {
-            if (application.deletePlaylists) {
+            if (application.deletePlaylists && addedList && showComplete) {
                 return deleteUsersShows(addedList);
             }
         })
-        .then(() => refreshShowsList());
+        .then(() => {
+            refreshShowsList();
+            //btnRefreshShowList();
+            cache.setValue('lastLoadShow', Date.now());
+            if (showComplete) {
+                cache.setValue('getShows', {val: false, ack: true});
+            }
+        });
 }
 
 function reloadUsersAlbums() {
+    albumComplete = false;
     return getUsersAlbum(0)
         .then(addedList => {
-            if (application.deletePlaylists) {
+            if (application.deletePlaylists && addedList && albumComplete) {
                 return deleteUsersAlbums(addedList);
             }
         })
-        .then(() => refreshAlbumList());
+        .then(() => {
+            doNotTestAlbum = false;
+            refreshAlbumList();
+            //btnRefreshAlbumList();
+            cache.setValue('lastLoadAlbum', Date.now());
+            if (albumComplete) {
+                cache.setValue('getAlbums', {val: false, ack: true});
+            }
+        });
+}
+
+function reloadUsersAlbumBtn() {
+    doNotTestAlbum = true;
+    reloadUsersAlbums();
 }
 
 function deleteUsersShows(addedList) {
@@ -1550,7 +1635,9 @@ function createShows(parseJson, autoContinue, addedList) {
                 createOrDefault(item.show, 'description', prefix + '.description', '', 'show description', 'string'),
                 createOrDefault(item.show, 'uri', prefix + '.uri', '', 'show uri', 'string'),
                 createOrDefault(item.show, 'total_episodes', prefix + '.episodesTotal', 0, 'number of episodes', 'number'),
-                createOrDefault(item.show, 'images[0].url', prefix + '.imageUrl', '', 'image url', 'string')
+                createOrDefault(item.show, 'images[0].url', prefix + '.imageUrl', '', 'image url', 'string'),
+                createOrDefault(item.show, 'images[1].url', prefix + '.imageUrl300', '', 'image url 300px', 'string'),
+                createOrDefault(item.show, 'images[2].url', prefix + '.imageUrl64', '', 'image url 64px', 'string')
             ])
             .then(() => getShowEpisodes(showId))
             .then(showObject => {
@@ -1614,6 +1701,9 @@ function createShows(parseJson, autoContinue, addedList) {
                         createOrDefault(showObject, 'episodeIds', prefix + '.episodeListIds', '',
                             'contains list of episode ids as string, pattern: id;id;id;...',
                             'string'),
+                        createOrDefault(showObject, 'episodeImageUrl64', prefix + '.episodeImageUrl64List', '',
+                            'contains list of episode imageUrl64 as string, pattern: url;url;url;...',
+                            'string'),
                         createOrDefault(showObject, 'episodes', prefix + '.episodeListArray', '',
                             'contains list of episodes as array object...[id: id, episodeName: text, publisher: Der Spiegel, description: description, duration: xx, explicit: explicit, is_playable: true', 'object')
                     ]);      
@@ -1629,12 +1719,15 @@ function createShows(parseJson, autoContinue, addedList) {
 
         return p.then(() => {
             if (autoContinue && parseJson.items.length !== 0 && (parseJson['next'] !== null)) {
+                showComplete = false;
                 return getUsersShows(parseJson.offset + parseJson.limit, addedList);
             } else {
+                showComplete = true;
                 return addedList;
             }
         });
     } catch(err) {
+        showComplete = false;
         adapter.log.warn('error on createShows: ' + err);
     }
 }
@@ -1653,17 +1746,18 @@ function findPlaylistSnapshotId(owner, playlistId, snapIdToFind) {
         }
         if ( x >= 0) {
             snapId = playlistAppCache[x].snapshot_id;
-            //verkürzte snapshotId prüfen (10 Zeichen + 4 Zeichen) Rest prüfen
-            let _snapId = '';
-            let _snapId10 = '';
-            let _snapIdToFind10 = '';
-            let _snapIdToFind = '';
+            //decodierte snapshotId prüfen
+            let buff = new Buffer.from(snapId, 'base64');
+            let buffToFind = new Buffer.from(snapIdToFind, 'base64');
+            let _snapIdStr = buff.toString('ascii').split(',');
+            let _snapIdTs = _snapIdStr[0];
+            let _snapId = _snapIdStr[1];
+            let _snapToFindStr = buffToFind.toString('ascii').split(',');
+            let _snapToFindTs = _snapToFindStr[0];
+            let _snapIdToFind = _snapToFindStr[1];
             if ((snapId.length > 15) && (snapIdToFind.length > 15)) {
-                _snapId10 = snapId.substring(0, 9);
-                _snapIdToFind10 = snapIdToFind.substring(0, 9);
-                _snapId = snapId.substring(14);
-                _snapIdToFind = snapIdToFind.substring(14);
-                if (_snapId10 === _snapIdToFind10) {
+                //timestamp prüfen
+                if (_snapIdTs === _snapToFindTs) {
                     if (_snapId === _snapIdToFind) {
                         pl_foundCount++;
                         return true;
@@ -1671,21 +1765,22 @@ function findPlaylistSnapshotId(owner, playlistId, snapIdToFind) {
                         pl_notFoundCount++;
                         return false;
                     }
-                } else {
+                } else{
                     pl_notFoundCount++;
                     return false;
                 }
-            }
-            if (snapId === snapIdToFind){
-                adapter.log.debug('x: ' + x + ' id: ' + prefix + ' snapCache: ' + snapId + ' snap-spoti: ' + snapIdToFind);
-                pl_foundCount++;
-                return true;
             } else {
                 pl_notFoundCount++;
+                return false;
             }
+        } else {
+            pl_notFoundCount++;
+            return false;
         }
+    } else {
+        pl_notFoundCount++;
+        return false;
     }
-    return false;
 }
 
 function createPlaylists(parseJson, autoContinue, addedList) {
@@ -1704,7 +1799,8 @@ function createPlaylists(parseJson, autoContinue, addedList) {
             let trackCount = loadOrDefault(item, 'tracks.total', '');
             let snapshot_id = loadOrDefault(item, 'snapshot_id', '');
             let imageUrl = loadOrDefault(item, 'images[0].url', '');
-            playlistInfoCache[ownerId + '-' + playlistId] = {
+            let clearPrefix = shrinkStateName(ownerId + '-' + playlistId);
+            playlistInfoCache[clearPrefix] = {
                 id: playlistId,
                 name: playlistName,
                 snapshot_id: snapshot_id,
@@ -1716,11 +1812,11 @@ function createPlaylists(parseJson, autoContinue, addedList) {
             let prefix = 'playlists.' + shrinkStateName(ownerId + '-' + playlistId);
             addedList = addedList || [];
             addedList.push(prefix);
-            let findPlSnap = findPlaylistSnapshotId(ownerId, playlistId, snapshot_id);
+            //let findPlSnap = findPlaylistSnapshotId(ownerId, playlistId, snapshot_id);
             //snapshot selection
-            if (doNotTestSnapshotId || !findPlSnap) {
+            if (doNotTestSnapshotId || !findPlaylistSnapshotId(ownerId, playlistId, snapshot_id)) {
                 //nur ausführen wenn snapshotId aus playlistAppCache != snapshot_id aus Datensatz od. id nicht gefunden
-                adapter.log.debug('current snapshot_id not found: (' + ownerId + '-' + playlistId + ') - load new playlist data from spotify');
+                adapter.log.debug('doNotTestSnapshotId= ' + doNotTestSnapshotId + ' or current snapshot_id not found: (' + ownerId + '-' + playlistId + ') - load new playlist data from spotify');
                 return Promise.all([
                     cache.setValue(prefix, null, {
                         type: 'channel',
@@ -1746,7 +1842,7 @@ function createPlaylists(parseJson, autoContinue, addedList) {
                     createOrDefault(item, 'tracks.total', prefix + '.tracksTotal', 0, 'number of songs', 'number'),
                     createOrDefault(item, 'images[0].url', prefix + '.imageUrl', '', 'image url', 'string')
                 ])
-                    .then(() => getPlaylistTracks(ownerId, playlistId))
+                    .then(() => getPlaylistTracks(ownerId, playlistId, playlistName))
                     .then(playlistObject => {
                         if (playlistObject.songs.length > 0) {
                             let trackListValue = '';
@@ -1803,6 +1899,9 @@ function createPlaylists(parseJson, autoContinue, addedList) {
                                 createOrDefault(playlistObject, 'trackIds', prefix + '.trackListIds', '',
                                     'contains list of track ids as string, pattern: id;id;id;...',
                                     'string'),
+                                createOrDefault(playlistObject, 'imageUrl64Map', prefix + '.imageUrl64List', '',
+                                    'contains list of track imageUrl64 as string, pattern: url;url;url;...',
+                                    'string'),
                                 createOrDefault(playlistObject, 'songs', prefix + '.trackListArray', '',
                                     'contains list of tracks as array object, pattern:\n[{id: "id",\ntitle: "title",\nartistName: "artistName1, artistName2",\nartistArray: [{id: "artistId", name: "artistName"}, {id: "artistId", name: "artistName"}, ...],\nalbum: {id: "albumId", name: "albumName"},\ndurationMs: 253844,\nduration: 4:13,\naddedAt: 15395478261235,\naddedBy: "userId",\ndiscNumber: 1,\nepisode: false,\nexplicit: false,\npopularity: 56\n}, ...]',
                                     'object')
@@ -1825,10 +1924,16 @@ function createPlaylists(parseJson, autoContinue, addedList) {
 
     return p.then(() => {
         if (autoContinue && parseJson.items.length !== 0 && (parseJson['next'] !== null)) {
+            playlistComplete = false;
             return getUsersPlaylist(parseJson.offset + parseJson.limit, addedList);
         } else {
-            cache.setValue('pl_found', pl_foundCount);
-            cache.setValue('pl_notFound', pl_notFoundCount);
+            adapter.log.debug('doNotTestSnapshotId: ' + doNotTestSnapshotId);
+            if (!doNotTestSnapshotId) {
+                adapter.log.debug('pl_notFound: ' + pl_notFoundCount + ' /pl_found: ' + pl_foundCount);
+                cache.setValue('pl_notFound', pl_notFoundCount);
+                cache.setValue('pl_found', pl_foundCount);
+            }
+            playlistComplete = true;
             return addedList;
         }
     });
@@ -1842,6 +1947,7 @@ function createAlbums(parseJson, autoContinue, addedList) {
     }
     let fn = function (item) {
         //adapter.log.warn('createAlbum parseJson: ' + JSON.stringify(parseJson));
+        let oldAlbum = false;
         let albumName = loadOrDefault(item.album, 'name', '');
         if (isEmpty(albumName)) {
             adapter.log.warn('empty album name');
@@ -1850,112 +1956,129 @@ function createAlbums(parseJson, autoContinue, addedList) {
         let artistName = loadOrDefault(item.album, 'artists[0].name', '');
         albumName = (!isEmpty(artistName)) ? artistName + ' | ' + albumName : albumName;
         let albumId = loadOrDefault(item.album, 'id', '');
-        let trackCount = loadOrDefault(item.album, 'tracks_total', 0);
+        let trackCount = loadOrDefault(item.album, 'tracks.total', 0);
         let release_date = loadOrDefault(item.album, 'release_date', '');
         let imageUrl = loadOrDefault(item.album, 'images[0].url', '');
+        let imageUrl64 = loadOrDefault(item.album, 'images[2].url', '');
+        let imageUrl300 = loadOrDefault(item.album, 'images[1].url', '');
         let popularity = loadOrDefault(item.album, 'popularity', 0);
         
         albumCache[albumId] = {
             id: albumId,
             name: albumName,
             release_date: release_date,
-            images: [{url: imageUrl}],
+            images: [{url: imageUrl}, {url: imageUrl300}, {url: imageUrl64}],
             tracks: {total: trackCount}
         };
 
         let prefix = 'albums.' + shrinkStateName(albumId);
         addedList = addedList || [];
         addedList.push(prefix);
+        let oldAlbumPath = cache.getValue(prefix + '.name');
+        if (oldAlbumPath && oldAlbumPath.val) {
+            let _release_date = cache.getValue(prefix + '.release_date').val;
+            let _trackCount = cache.getValue(prefix + '.tracksTotal').val;
+            //adapter.log.warn('Album: '+ albumName + ' gefunden, release: ' + release_date + ', tracks: ' + trackCount);
+            if (release_date == _release_date && trackCount == _trackCount) {
+                oldAlbum = true;
+                adapter.log.debug('Album: '+ albumName + ' gefunden und release gleich');
+            }
+        } else {
+            adapter.log.debug('Album: ' + albumName + ' nicht gefunden');
+        }
+        if (doNotTestAlbum || !oldAlbum){
+            return Promise.all([
+                cache.setValue(prefix, null, {
+                    type: 'channel',
+                    common: {name: albumName},
+                    native: {}
+                }),
+                cache.setValue(prefix + '.playThisAlbum', false, {
+                    type: 'state',
+                    common: {
+                        name: 'press to play this album',
+                        type: 'boolean',
+                        role: 'button',
+                        read: false,
+                        write: true,
+                        icon: 'icons/play_black.png'
+                    },
+                    native: {}
+                }),
+                createOrDefault(item.album, 'id', prefix + '.id', '', 'album id', 'string'),
+                createOrDefault(item.album, 'name', prefix + '.name', '', 'album name', 'string'),
+                createOrDefault(item.album, 'artists[0].name', prefix + '.artistName', '', 'artist name', 'string'),
+                createOrDefault(item.album, 'release_date', prefix + '.release_date', 0, 'album release date', 'string'),
+                createOrDefault(item.album, 'popularity', prefix + '.popularity', 0, 'album popularity', 'number'),
+                createOrDefault(item.album, 'tracks.total', prefix + '.tracksTotal', 0, 'number of songs', 'number'),
+                createOrDefault(item.album, 'images[0].url', prefix + '.imageUrl', '', 'image url', 'string'),
+                createOrDefault(item.album, 'images[1].url', prefix + '.imageUrl300', '', 'image url 300px', 'string'),
+                createOrDefault(item.album, 'images[2].url', prefix + '.imageUrl64', '', 'image url 64px', 'string')
+            ])
+                .then(() => getAlbumTracks(albumId))
+                .then(albumObject => {
+                    if (albumObject.songs.length > 0) {
+                        let trackListValue = '';
+                        let curAlbumIdState = cache.getValue('player.album.id');
+                        let currentalbumId = loadOrDefault(curAlbumIdState, 'val', '');
+                        let StateSongId = cache.getValue('player.trackId');
+                        let songId = loadOrDefault(StateSongId, 'val', '');
 
-        return Promise.all([
-            cache.setValue(prefix, null, {
-                type: 'channel',
-                common: {name: albumName},
-                native: {}
-            }),
-            cache.setValue(prefix + '.playThisAlbum', false, {
-                type: 'state',
-                common: {
-                    name: 'press to play this album',
-                    type: 'boolean',
-                    role: 'button',
-                    read: false,
-                    write: true,
-                    icon: 'icons/play_black.png'
-                },
-                native: {}
-            }),
-            createOrDefault(item.album, 'id', prefix + '.id', '', 'album id', 'string'),
-            createOrDefault(item.album, 'name', prefix + '.name', '', 'album name', 'string'),
-            createOrDefault(item.album, 'artists[0].name', prefix + '.artistName', '', 'artist name', 'string'),
-            createOrDefault(item.album, 'release_date', prefix + '.release_date', 0, 'album release date', 'string'),
-            createOrDefault(item.album, 'popularity', prefix + '.popularity', 0, 'album popularity', 'number'),
-            createOrDefault(item.album, 'total_tracks', prefix + '.tracksTotal', 0, 'number of songs', 'number'),
-            createOrDefault(item.album, 'images[0].url', prefix + '.imageUrl', '', 'image url', 'string')
-        ])
-            .then(() => getAlbumTracks(albumId))
-            .then(albumObject => {
-                if (albumObject.songs.length > 0) {
-                    let trackListValue = '';
-                    let curAlbumIdState = cache.getValue('player.album.id');
-                    let currentalbumId = loadOrDefault(curAlbumIdState, 'val', '');
-                    let StateSongId = cache.getValue('player.trackId');
-                    let songId = loadOrDefault(StateSongId, 'val', '');
+                        if (`${albumId}` === `${currentalbumId}`) {
+                            let stateName = albumObject.trackIds.split(';');
+                            let stateArr = [];
+                            for (let i = 0; i < stateName.length; i++) {
+                                let ele = stateName[i].split(':');
+                                stateArr[ele[1]] = ele[0];
+                            }
+                            if (stateArr[songId] !== '' && (stateArr[songId] !== null)) {
+                                trackListValue = stateArr[songId];
+                            }
+                        }
 
-                    if (`${albumId}` === `${currentalbumId}`) {
-                        let stateName = albumObject.trackIds.split(';');
-                        let stateArr = [];
-                        for (let i = 0; i < stateName.length; i++) {
-                            let ele = stateName[i].split(':');
-                            stateArr[ele[1]] = ele[0];
-                        }
-                        if (stateArr[songId] !== '' && (stateArr[songId] !== null)) {
-                            trackListValue = stateArr[songId];
-                        }
+                        const stateObj = {};
+                        const states = loadOrDefault(albumObject, 'stateString', '').split(';');
+                        states.forEach(state => {
+                            let el = state.split(':');
+                            if (el && el.length === 2) {
+                                stateObj[el[0]] = el[1];
+                            }
+                        });
+                        return Promise.all([
+                            cache.setValue(prefix + '.trackList', trackListValue, {
+                                type: 'state',
+                                common: {
+                                    name: 'Tracks of the album saved in common part. Change this value to a track position number to start this album with this track. First track is 0',
+                                    type: 'mixed',
+                                    role: 'value',
+                                    states: stateObj,
+                                    read: true,
+                                    write: true
+                                },
+                                native: {}
+                            }),
+
+                            createOrDefault(albumObject, 'listNumber', prefix + '.trackListNumber', 0,
+                                'contains list of tracks as string, patter: 0;1;2;...',
+                                'string'),
+                            createOrDefault(albumObject, 'listString', prefix + '.trackListString', '',
+                                'contains list of tracks as string, patter: title - artist;title - artist;title - artist;...',
+                                'string'),
+                            createOrDefault(albumObject, 'stateString', prefix + '.trackListStates', '',
+                                'contains list of tracks as string with position, pattern: 0:title - artist;1:title - artist;2:title - artist;...',
+                                'string'),
+                            createOrDefault(albumObject, 'trackIdMap', prefix + '.trackListIdMap', '',
+                                'contains list of track ids as string with position, pattern: 0:id;1:id;2:id;...',
+                                'string'),
+                            createOrDefault(albumObject, 'trackIds', prefix + '.trackListIds', '',
+                                'contains list of track ids as string, pattern: id;id;id;...',
+                                'string'),
+                            createOrDefault(albumObject, 'songs', prefix + '.trackListArray', '',
+                                'contains list of tracks as array object, pattern:\n[{id: "id",\ntitle: "title",\nartistName: "artistName1, artistName2",\nartistArray: [{id: "artistId", name: "artistName"}, {id: "artistId", name: "artistName"}, ...],\ndurationMs: 253844,\nduration: 4:13,\ndiscNumber: 1,\nexplicit: false, ...]', 'object')
+                        ]);
                     }
-
-                    const stateObj = {};
-                    const states = loadOrDefault(albumObject, 'stateString', '').split(';');
-                    states.forEach(state => {
-                        let el = state.split(':');
-                        if (el && el.length === 2) {
-                            stateObj[el[0]] = el[1];
-                        }
-                    });
-                    return Promise.all([
-                        cache.setValue(prefix + '.trackList', trackListValue, {
-                            type: 'state',
-                            common: {
-                                name: 'Tracks of the album saved in common part. Change this value to a track position number to start this album with this track. First track is 0',
-                                type: 'mixed',
-                                role: 'value',
-                                states: stateObj,
-                                read: true,
-                                write: true
-                            },
-                            native: {}
-                        }),
-
-                        createOrDefault(albumObject, 'listNumber', prefix + '.trackListNumber', 0,
-                            'contains list of tracks as string, patter: 0;1;2;...',
-                            'string'),
-                        createOrDefault(albumObject, 'listString', prefix + '.trackListString', '',
-                            'contains list of tracks as string, patter: title - artist;title - artist;title - artist;...',
-                            'string'),
-                        createOrDefault(albumObject, 'stateString', prefix + '.trackListStates', '',
-                            'contains list of tracks as string with position, pattern: 0:title - artist;1:title - artist;2:title - artist;...',
-                            'string'),
-                        createOrDefault(albumObject, 'trackIdMap', prefix + '.trackListIdMap', '',
-                            'contains list of track ids as string with position, pattern: 0:id;1:id;2:id;...',
-                            'string'),
-                        createOrDefault(albumObject, 'trackIds', prefix + '.trackListIds', '',
-                            'contains list of track ids as string, pattern: id;id;id;...',
-                            'string'),
-                        createOrDefault(albumObject, 'songs', prefix + '.trackListArray', '',
-                            'contains list of tracks as array object, pattern:\n[{id: "id",\ntitle: "title",\nartistName: "artistName1, artistName2",\nartistArray: [{id: "artistId", name: "artistName"}, {id: "artistId", name: "artistName"}, ...],\ndurationMs: 253844,\nduration: 4:13,\ndiscNumber: 1,\nexplicit: false, ...]', 'object')
-                    ]);
-                }
-            });
+                });
+        }
     };
 
     let p = Promise.resolve();
@@ -1967,8 +2090,10 @@ function createAlbums(parseJson, autoContinue, addedList) {
 
     return p.then(() => {
         if (autoContinue && parseJson.items.length !== 0 && (parseJson['next'] !== null)) {
+            albumComplete = false;
             return getUsersAlbum(parseJson.offset + parseJson.limit, addedList);
         } else {
+            albumComplete = true;
             return addedList;
         }
     });
@@ -2058,6 +2183,7 @@ function createCollections() {
                     },
                     native: {}
                 }),
+                cache.setValue('getCollection', false),
                 createOrDefault(collectionObject, 'listNumber', prefix + '.trackListNumber', '',
                     'contains list of tracks as string, patter: 0;1;2;...',
                     'string'),
@@ -2083,6 +2209,7 @@ function createCollections() {
 function getUsersCollection(){
     if (!isEmpty(application.userId)) {
         createCollections();
+        cache.setValue('lastLoadCollection', Date.now());
     } else {
         adapter.log.warn('no userId');
         return Promise.reject('no userId');
@@ -2093,13 +2220,17 @@ function getUsersPlaylist(offset, addedList) {
     addedList = addedList || [];
 
     if (!isEmpty(application.userId)) {
+        //limit: 50 to minimize requests/min (max. 50)
         let query = {
             limit: 50,
             offset: offset
         };
         return sendRequest(`/v1/users/${application.userId}/playlists?${querystring.stringify(query)}`, 'GET', '')
             .then(parsedJson => createPlaylists(parsedJson, true, addedList))
-            .catch(err => adapter.log.warn('getUsersPlaylist warning ' + err));
+            .catch(err => {
+                addedList = null; //liste leeren sonst löschen der aktiven playlists bei error
+                adapter.log.warn('getUsersPlaylist warn ' + err);
+            });
     } else {
         adapter.log.warn('no userId');
         return Promise.reject('no userId');
@@ -2121,6 +2252,7 @@ function loadPlaylistAppCache() {
                 let plName = loadOrDefault(cache.getValue(prefix + '.name'), 'val','');
                 let snapshot_id = loadOrDefault(cache.getValue(prefix + '.snapshot_id'),'val', '');
                 let plImage = loadOrDefault(cache.getValue(prefix + '.imageUrl'), 'val', '');
+                //let plImage64 = loadOrDefault(cache.getValue(prefix + '.imageUrl64'), 'val', '');
                 let owner = loadOrDefault(cache.getValue(prefix + '.owner'), 'val', '');
                 let trackCount = loadOrDefault(cache.getValue(prefix + '.tracksTotal'), 'val', '');
                 let songs = loadOrDefault(cache.getValue(prefix + '.trackListArray'), 'val', []);     
@@ -2140,6 +2272,7 @@ function loadPlaylistAppCache() {
                 playlistAppCache.push(plAppCache);
                 cnt++;
             }
+            cache.setValue('loadPlaylistCache', false);
             adapter.log.debug('loadPlaylistAppCache gestartet playlist-count: ' + cnt);
         }
     } catch(err) {
@@ -2171,13 +2304,17 @@ function getUsersAlbum(offset, addedList) {
     addedList = addedList || [];
 
     if (!isEmpty(application.userId)) {
+        //limit: 50 to minimize requests/min (max. 50)
         let query = {
             limit: 50,
             offset: offset
         };
         return sendRequest(`/v1/me/albums?${querystring.stringify(query)}`, 'GET', '')
             .then(parsedJson => createAlbums(parsedJson, true, addedList))
-            .catch(err => adapter.log.warn('getUsersAlbum warning ' + err));
+            .catch(err => {
+                addedList = null; //liste leeren sonst löschen der aktiven playlists bei error
+                adapter.log.warn('getUsersAlbum warn ' + err);
+            });
     } else {
         adapter.log.warn('no userId');
         return Promise.reject('no userId');
@@ -2188,13 +2325,17 @@ function getUsersShows(offset, addedList) {
     addedList = addedList || [];
 
     if (!isEmpty(application.userId)) {
+        //limit: 50 to minimize requests/min (max. 50)
         let query = {
             limit: 50,
             offset: offset
         };
         return sendRequest(`/v1/me/shows?${querystring.stringify(query)}`, 'GET', '')
             .then(parsedJson => createShows(parsedJson, true, addedList))
-            .catch(err => adapter.log.warn('getUsersShows warning ' + err));
+            .catch(err => {
+                addedList = null; //liste leeren sonst löschen der aktiven playlists bei error
+                adapter.log.warn('getUsersShows warn ' + err);
+            });
     } else {
         adapter.log.warn('no userId');
         return Promise.reject('no userId');
@@ -2230,6 +2371,123 @@ function cleanState(str) {
     }
     while (old !== str);
     return str.trim();
+}
+
+function unfollowPlaylist(playlistId) {
+    //owner-playlistId or only playlistId
+    if (!isEmpty(playlistId)) {
+        let plID = '';
+        if (playlistId.indexOf('-') >= 0) {
+            let pl_tmp = playlistId.split('-');
+            plID = pl_tmp[1];
+        } else {
+            plID = playlistId;
+        }
+        return sendRequest('/v1/playlists/'+ plID + '/followers', 'DELETE', '')
+        .then(() => {
+            //local playlist delete/refresh
+            let delPlaylistState = cache.getValue('playlists.playlistListIds');
+            if (delPlaylistState && delPlaylistState.val) {
+                let delPl_lst = delPlaylistState.val.split(';');
+                let lstObjId = '';
+                for (let i = 0; i < delPl_lst.length; i++) {
+                    let lstObj = delPl_lst[i].split('-');
+                    if (lstObj[1] === plID) {
+                        lstObjId = delPl_lst[i];
+                        break;
+                    }
+                }
+                if (!isEmpty(lstObjId)) {
+                    adapter.log.warn('delete: ' + adapter.namespace + '.playlists.' + lstObjId);
+                    let states = cache.getValue('playlists.' + lstObjId + '.*');
+                    let keys = Object.keys(states);
+                    let fn = function (key) {
+                        key = removeNameSpace(key);
+                        return cache.delObject(key)
+                        .then(() => {
+                            //adapter.log.warn('lösche: ' + key);
+                            if (key.endsWith('.id')) {
+                                return cache.delObject(key.substring(0, key.length - 3));
+                            }
+                        });
+                    };
+                    return Promise.all(keys.map(fn))
+                    .then(() => {
+                        btnClearCache();
+                        btnRefreshPlaylistList();
+                    });
+                }
+                //cache.setValue('unfollowPlaylistId', {val: playlistId, ack: true});
+            }
+            //mit Löschen der alten PlaylistLists
+            //btnRefreshPlaylistList();
+        })
+        .catch(err => adapter.log.warn('unfollowPlaylist err: ' + err));
+    } else {
+        adapter.log.warn('unfollowPlaylist no playlistId');
+    }
+}
+
+function unfollowAlbum(albumId) {
+    if (!isEmpty(albumId)) {
+        return sendRequest('/v1/me/albums?ids=' + albumId, 'DELETE', '')
+        .then(() => {
+            adapter.log.warn('delete: ' + adapter.namespace + '.albums.' + albumId);
+            let states = cache.getValue('albums.' + albumId + '.*');
+            let keys = Object.keys(states);
+            let fn = function (key) {
+                key = removeNameSpace(key);
+                return cache.delObject(key)
+                .then(() => {
+                    //adapter.log.warn('lösche: ' + key);
+                    if (key.endsWith('.id')) {
+                        return cache.delObject(key.substring(0, key.length - 3));
+                    }
+                });
+            };
+            return Promise.all(keys.map(fn));    
+        })
+        .then(() => {
+            btnClearCache();
+            btnRefreshAlbumList();
+            //löschen der alten Daten dann neu anlegen
+            //cache.setValue('unfollowAlbumId', {val: albumId, ack: true});
+        })
+        .catch(err => adapter.log.warn('unfollowAlbum err: ' + err));
+    } else {
+        adapter.log.warn('unfollowAlbum no albumId');
+    }
+}
+
+function unfollowShow(showId) {
+    if (!isEmpty(showId)) {
+        return sendRequest('/v1/me/shows?ids=' + showId, 'DELETE', '')
+        .then(() => {
+            adapter.log.warn('delete: ' + adapter.namespace + '.shows.' + showId);
+            let states = cache.getValue('shows.' + showId + '.*');
+            let keys = Object.keys(states);
+            let fn = function (key) {
+                key = removeNameSpace(key);
+                return cache.delObject(key)
+                .then(() => {
+                    //adapter.log.warn('lösche: ' + key);
+                    if (key.endsWith('.id')) {
+                        return cache.delObject(key.substring(0, key.length - 3));
+                    }
+                });
+            };
+            return Promise.all(keys.map(fn));    
+        })
+        .then(() => {
+            btnClearCache();
+            btnRefreshShowList();
+            //löschen der alten Listen und neu anlegen
+            //cache.setValue('unfollowShowId', {val: showId, ack: true});
+        })
+        .catch(err => adapter.log.warn('unfollowShow err: ' + err));
+    } else {
+        adapter.log.warn('unfollowShow no showId');
+    }
 }
 
 function deleteTrackInCollection(trackId) {
@@ -2302,6 +2560,7 @@ async function getShowEpisodes(showid) {
         listString: '',
         listNumber: '',
         episodeIdMap: '',
+        episodeImageUrl64: '',
         episodeIds: '',
         episodeDuration_msList: '',
         episodes: []
@@ -2320,6 +2579,7 @@ async function getShowEpisodes(showid) {
                 let showDescription = loadOrDefault(data, 'description', '');
                 let showExplicit = loadOrDefault(data, 'explicit', false);
                 let showImages = loadOrDefault(data, 'images[0].url', '');
+                let showImage64 = loadOrDefault(data, 'images[2].url', '');
                 let showName = loadOrDefault(data, 'name', '');
                 let showPublisher = loadOrDefault(data, 'publisher', '');
                 let showTotal_episodes = loadOrDefault(data, 'total_episodes', 0);
@@ -2339,6 +2599,7 @@ async function getShowEpisodes(showid) {
                         let explicit = loadOrDefault(item, 'explicit', false);
                         let is_playable = loadOrDefault(item, 'is_playable', false);
                         let images = loadOrDefault(item, 'images[0].url', '');
+                        let imageUrl64 = loadOrDefault(item, 'images[2].url', '');
                         let language = loadOrDefault(item, 'language', '');
                         let name = loadOrDefault(item, 'name', '');
                         let release_date = loadOrDefault(item, 'release_date', '');
@@ -2350,6 +2611,7 @@ async function getShowEpisodes(showid) {
                             showObject.stateString += ';';
                             showObject.listString += ';';
                             showObject.episodeIdMap += ';';
+                            showObject.episodeImageUrl64 += ';',
                             showObject.episodeDuration_msList += ';';
                             showObject.episodeIds += ';';
                             showObject.listNumber += ';';
@@ -2359,6 +2621,7 @@ async function getShowEpisodes(showid) {
                         showObject.stateString += tmpstate;
                         showObject.listString += name;
                         showObject.episodeIdMap += tmpids;
+                        showObject.episodeImageUrl64 += imageUrl64;
                         showObject.episodeDuration_msList += duration_ms;
                         showObject.episodeIds += episodesId;
                         showObject.listNumber += no;
@@ -2373,6 +2636,7 @@ async function getShowEpisodes(showid) {
                             release_date_precision: release_date_precision,
                             language: language,
                             images: images,
+                            imageUrl64: imageUrl64,
                             explicit: explicit,
                             type: type,
                             uri: uri,
@@ -2396,16 +2660,19 @@ async function getShowEpisodes(showid) {
     return showObject;
 }
 
-async function getPlaylistTracks(owner, id) {
+async function getPlaylistTracks(owner, id, plName) {
     const playlistObject = {
         stateString: '',
         listString: '',
         listNumber: '',
         trackIdMap: '',
+        imageUrl64Map: '',
         trackIds: '',
         songs: []
     };
     let offset = 0;
+    let currentNo = 0;
+    let currentTrack = '';
     let regParam = `${owner}/playlists/${id}/tracks`;
     while (true) {
         const query = {
@@ -2420,6 +2687,7 @@ async function getPlaylistTracks(owner, id) {
                 data.items.forEach(item => {
                     let trackId = loadOrDefault(item, 'track.id', ''); 
                     no = i;
+                    currentNo = no;
                     if (isEmpty(trackId)) {
                         return adapter.log.debug(
                             `There was a playlist track ignored because of missing id; playlist: ${id}; track no: ${no}`);
@@ -2446,21 +2714,25 @@ async function getPlaylistTracks(owner, id) {
                     let addedBy = loadOrDefault(item, 'addedBy', '');
                     let trackAlbumId = loadOrDefault(item, 'track.album.id', '');
                     let trackAlbumName = loadOrDefault(item, 'track.album.name', '');
+                    let trackImageUrl64 = loadOrDefault(item, 'track.album.images[2].url');
                     let trackDiscNumber = loadOrDefault(item, 'track.disc_number', 1);
                     let trackEpisode = loadOrDefault(item, 'track.episode', false);
                     let trackExplicit = loadOrDefault(item, 'track.explicit', false);
                     let trackPopularity = loadOrDefault(item, 'track.popularity', 0);
                     let trackIsPlayable = loadOrDefault(item, 'track.is_playable', false);
+                    currentTrack = trackName;
                     if (playlistObject.songs.length > 0) {
                         playlistObject.stateString += ';';
                         playlistObject.listString += ';';
                         playlistObject.trackIdMap += ';';
+                        playlistObject.imageUrl64Map += ';';
                         playlistObject.trackIds += ';';
                         playlistObject.listNumber += ';';
                     }
                     playlistObject.stateString += no +':' + trackName + '-' + artist;
                     playlistObject.listString += trackName + '-' + artist;
                     playlistObject.trackIdMap += no + ':' + trackId;
+                    playlistObject.imageUrl64Map += trackImageUrl64;
                     playlistObject.trackIds += trackId;
                     playlistObject.listNumber += no;
                     let a = {
@@ -2469,6 +2741,7 @@ async function getPlaylistTracks(owner, id) {
                         artistName: artist,
                         artistArray: artistArray,
                         album: {id: trackAlbumId, name: trackAlbumName},
+                        imageUrl64: trackImageUrl64,
                         durationMs: trackDuration,
                         duration: convertToDigiClock(trackDuration),
                         addedAt: addedAt,
@@ -2494,11 +2767,11 @@ async function getPlaylistTracks(owner, id) {
         
         //.catch(err => adapter.log.warn('error on load tracks: ' + err));
         } catch(err) {
-            adapter.log.warn('error on load tracks(getPlaylistTracks): ' + err + ' owner: ' + owner + ' id: ' + id);
+            adapter.log.warn('error on load tracks(getPlaylistTracks): ' + err + ' owner: ' + owner + ' id: ' + id + ' bei Playlist: ' + plName);
             break;
         }
     }
-    adapter.log.debug('PlaylistFound: ' + pl_foundCount + ' playlistNotFound: ' + pl_notFoundCount + ' /Track-Daten geladen für playlist: ' + owner + '-' + id);
+    adapter.log.debug('PlaylistFound: ' + pl_foundCount + ' playlistNotFound: ' + pl_notFoundCount + ' /Track-Daten geladen für playlist: ' + owner + '-' + id + ' ' + plName);
     return playlistObject;
 }
 
@@ -2596,6 +2869,165 @@ async function getAlbumTracks(albumId) {
     return albumObject;
 }
 
+function btnLoadQueue() {
+    if (!isPlaying) {
+        cache.setValue('player.queueArray', {});
+        return;
+    }
+     return Promise.all([
+        cache.setValue('player.queueArray', {})
+    ])
+    .then(() => {
+        getQueueTracks()
+        .then(queueObject => {
+            if (queueObject.songs.length > 0) {
+                return Promise.all([
+                    createOrDefault(queueObject, 'songs', 'player.queueArray', '',
+                    'contains list of tracks as array object, pattern:\n[{id: "id",\ntitle: "title",\nartistName: "artistName",\nartistArray: [{id: "artistId", name: "artistName"}, {id: "artistId", name: "artistName"}, ...],\ndurationMs: 253844,\nduration: 4:13,\ndiscNumber: 1,\nexplicit: false, ...]', 'object')
+                ])
+            }
+        })
+    })
+    .catch(err => adapter.log.warn('btnLoadQueue err: ' + err));
+}
+
+async function getQueueTracks() {
+    const queueObject = {
+        stateString: '',
+        listString: '',
+        listNumber: '',
+        trackIdMap: '',
+        trackIds: '',
+        songs: []
+    };
+
+    try {
+        const data = await sendRequest('/v1/me/player/queue', 'GET', '');
+        let no = 0;
+        //adapter.log.warn('trackData: ' + querystring.stringify(data.queue));
+        //first item is currently_playing -> queue
+        if (data && data.queue && data.currently_playing && data.queue.length > 0) {
+            //currently_playing
+            let trackId = loadOrDefault(data.currently_playing, 'id', ''); 
+            if (isEmpty(trackId)) {
+                return adapter.log.warn(
+                    `There was a currently_playing track ignored because of missing id; track no: ${no}`);
+            }
+            let artist = getArtistNamesOrDefault(data.currently_playing, 'artists');
+            let artistArray = getArtistArrayOrDefault(data.currently_playing, 'artists');
+            let trackName = loadOrDefault(data.currently_playing, 'name', '');
+            let albumName = loadOrDefault(data.currently_playing.album, 'name', '');
+            let albumId = loadOrDefault(data.currently_playing.album, 'id', '');
+            let trackType = loadOrDefault(data.currently_playing, 'type', '');
+            let trackImgUrl64 = '';
+            if (trackType === 'episode') {
+                trackImgUrl64 = loadOrDefault(data.currently_playing, 'images[2].url', '');    
+            } else {
+                trackImgUrl64 = loadOrDefault(data.currently_playing.album, 'images[2].url', '');
+            }
+            let trackDuration = loadOrDefault(data.currently_playing, 'duration_ms', 0);
+            let trackDiscNumber = loadOrDefault(data.currently_playing, 'disc_number', 1);
+            let trackExplicit = loadOrDefault(data.currently_playing, 'explicit', false);
+            let trackPopularity = loadOrDefault(data.currently_playing, 'popularity',0);
+            let track_number = loadOrDefault(data.currently_playing, 'track_number', 0);
+            let track_uri = loadOrDefault(data.currently_playing, 'uri', '');
+            if (queueObject.songs.length > 0) {
+                queueObject.stateString += ';';
+                queueObject.listString += ';';
+                queueObject.trackIdMap += ';';
+                queueObject.trackIds += ';';
+                queueObject.listNumber += ';';
+            }
+            let tmpStr = no + ':' + trackName + '-' + artist;
+            queueObject.stateString += tmpStr;
+            queueObject.listString += trackName + '-' + artist;
+            queueObject.trackIdMap += no + ':' + trackId;
+            queueObject.trackIds += trackId;
+            queueObject.listNumber += no;
+            let a = {
+                id: trackId,
+                title: trackName,
+                artistName: artist,
+                artistArray: artistArray,
+                albumName: albumName,
+                albumId: albumId,
+                imageUrl64: trackImgUrl64,
+                durationMs: trackDuration,
+                duration: convertToDigiClock(trackDuration),
+                discNumber: trackDiscNumber,
+                popularity: trackPopularity,
+                explicit: trackExplicit,
+                track_number: track_number,
+                uri: track_uri
+            };
+            queueObject.songs.push(a);
+            no++;
+            //queue            
+            data.queue.forEach(item => {
+                let trackId = loadOrDefault(item, 'id', ''); 
+                if (isEmpty(trackId)) {
+                    return adapter.log.warn(
+                        `There was a queue track ignored because of missing id; track no: ${no}`);
+                }
+                
+                let artist = getArtistNamesOrDefault(item, 'artists');
+                let artistArray = getArtistArrayOrDefault(item, 'artists');
+                let trackName = loadOrDefault(item, 'name', '');
+                let albumId = loadOrDefault(item.album, 'id', '');
+                let trackType = loadOrDefault(item, 'type', '');
+                let trackImgUrl64 = '';
+                if (trackType === 'episode') {
+                    trackImgUrl64 = loadOrDefault(item, 'images[2].url', '');
+                } else {
+                    trackImgUrl64 = loadOrDefault(item.album, 'images[2].url', '');
+                }
+                let albumName = loadOrDefault(item.album, 'name', '');
+                let trackDuration = loadOrDefault(item, 'duration_ms', 0);
+                let trackDiscNumber = loadOrDefault(item, 'disc_number', 1);
+                let trackExplicit = loadOrDefault(item, 'explicit', false);
+                let trackPopularity = loadOrDefault(item, 'popularity',0);
+                let track_number = loadOrDefault(item, 'track_number', 0);
+                let track_uri = loadOrDefault(item, 'uri', '');
+                if (queueObject.songs.length > 0) {
+                    queueObject.stateString += ';';
+                    queueObject.listString += ';';
+                    queueObject.trackIdMap += ';';
+                    queueObject.trackIds += ';';
+                    queueObject.listNumber += ';';
+                }
+                let tmpStr = no + ':' + trackName + '-' + artist;
+                queueObject.stateString += tmpStr;
+                queueObject.listString += trackName + '-' + artist;
+                queueObject.trackIdMap += no + ':' + trackId;
+                queueObject.trackIds += trackId;
+                queueObject.listNumber += no;
+                let a = {
+                    id: trackId,
+                    title: trackName,
+                    artistName: artist,
+                    artistArray: artistArray,
+                    albumName: albumName,
+                    albumId: albumId,
+                    imageUrl64: trackImgUrl64,
+                    durationMs: trackDuration,
+                    duration: convertToDigiClock(trackDuration),
+                    discNumber: trackDiscNumber,
+                    popularity: trackPopularity,
+                    explicit: trackExplicit,
+                    track_number: track_number,
+                    uri: track_uri
+                };
+                queueObject.songs.push(a);
+                no++;                  
+            });
+        }
+        
+    } catch(err) {
+        adapter.log.warn('error in function getQueueTracks: ' + err);
+    }
+    return queueObject;
+}
+
 async function getCollectionTracks() {
     const collectionObject = {
         stateString: '',
@@ -2631,6 +3063,7 @@ async function getCollectionTracks() {
                     let artist = getArtistNamesOrDefault(item.track, 'artists');
                     let artistArray = getArtistArrayOrDefault(item.track, 'artists');
                     let trackName = loadOrDefault(item.track, 'name', '');
+                    let trackImgUrl64 = loadOrDefault(item.track.album, 'images[2].url', '');
                     let trackDuration = loadOrDefault(item.track, 'duration_ms', 0);
                     let trackDiscNumber = loadOrDefault(item.track, 'disc_number', 1);
                     let trackExplicit = loadOrDefault(item.track, 'explicit', false);
@@ -2654,6 +3087,7 @@ async function getCollectionTracks() {
                         title: trackName,
                         artistName: artist,
                         artistArray: artistArray,
+                        imageUrl64: trackImgUrl64,
                         durationMs: trackDuration,
                         duration: convertToDigiClock(trackDuration),
                         discNumber: trackDiscNumber,
@@ -2691,7 +3125,10 @@ function reloadDevices(data) {
                 p = disableDevices(addedList);
             }
             return p
-                .then(() => refreshDeviceList());
+                .then(() => {
+                    refreshDeviceList();
+                    cache.setValue('getDevices', {val: false, ack: true});
+                });
         });
 }
 
@@ -2879,7 +3316,54 @@ function refreshShowsList() {
             if (id && id.val && id.val !== null) {
                 return cache.setValue('shows.showList', id.val);
             }
-        });
+        })
+        .catch(err => adapter.log.warn('refreshShowList err: ' + err));
+}
+
+function btnRefreshPlaylistList() {
+    return Promise.all([
+        cache.setValue('playlists.playlistListIds', ''),
+        cache.setValue('playlists.playlistListString', ''),
+        cache.setValue('playlists.yourPlaylistListIds', ''),
+        cache.setValue('playlists.yourPlaylistListString', ''),
+        setObjectStatesIfChanged('playlists.playlistList', {})
+    ])
+    .then(() => {
+        if (isEmpty(cache.getValue('playlists.playlistListIds').val)) {
+            adapter.log.debug('playlistList... in playlists wurden gelöscht!');
+        }
+        refreshPlaylistList();
+        cache.setValue('refreshPlaylistList', {val: false, ack: true});
+    })
+    .catch(err => adapter.log.warn('btnRefreshPlaylistList err: ' + err));
+}
+
+function btnRefreshShowList() {
+    return Promise.all([
+        setObjectStatesIfChanged('shows.showList', {}),
+        cache.setValue('shows.showListIds', ''),
+        cache.setValue('shows.showListString', '')
+    ])
+    .then(() => {
+        refreshShowsList();
+        cache.setValue('refreshShowList', {val: false, ack: true});
+    })
+    .catch(err => adapter.log.warn('btnRefreshShowList err: ' + err));
+}
+
+function btnRefreshDeviceList() {
+    return Promise.all([
+        setObjectStatesIfChanged('devices.deviceList', {}),
+        cache.setValue('devices.deviceListIds', ''),
+        cache.setValue('devices.deviceListString', ''),
+        cache.setValue('devices.availableDeviceListIds', ''),
+        cache.setValue('devices.availableDeviceListString', '')
+    ])
+    .then(() => {
+        refreshDeviceList();
+        cache.setValue('refreshDeviceList', {val: false, ack: true});
+    })
+    .catch(err => adapter.log.warn('btnRefreshDeviceList err: ' + err));
 }
 
 function refreshPlaylistList() {
@@ -2899,7 +3383,6 @@ function refreshPlaylistList() {
             your: application.userId === owner.val ? owner.val : ''
         });
     };
-
     return Promise.all(keys.map(fn))
         .then(() => {
             a.sort(function (l, u){
@@ -2910,7 +3393,7 @@ function refreshPlaylistList() {
             let listString = '';
             let yourIds = '';
             let yourString = '';
-            for (let i = 0, len = a.length; i < len; i++) {
+            for (let i = 0; i < a.length; i++) {
                 let normId = a[i].id;
                 let normName = cleanState(a[i].name);
                 if (listIds.length > 0) {
@@ -2930,11 +3413,12 @@ function refreshPlaylistList() {
                 }
             }
             return Promise.all([
-                setObjectStatesIfChanged('playlists.playlistList', stateList),
                 cache.setValue('playlists.playlistListIds', listIds),
                 cache.setValue('playlists.playlistListString', listString),
                 cache.setValue('playlists.yourPlaylistListIds', yourIds),
-                cache.setValue('playlists.yourPlaylistListString', yourString)
+                cache.setValue('playlists.yourPlaylistListString', yourString),
+                setObjectStatesIfChanged('playlists.playlistList', stateList),
+                adapter.log.debug('write playlists-List-Values in refreshPlaylistList()')
             ]);
         })
         .then(() => {
@@ -2942,10 +3426,26 @@ function refreshPlaylistList() {
             if (id) {
                 let owner = cache.getValue('player.playlist.owner').val;
                 if (owner) {
-                    return cache.setValue('playlists.playlistList', owner + '-' + id);
+                    return cache.setValue('playlists.playlistList', shrinkStateName(owner + '-' + id));
                 }
             }
-        });
+        })
+        .catch(err => adapter.log.warn('refreshPlaylistList err: ' + err));
+}
+
+function btnRefreshAlbumList() {
+    return Promise.all([
+        setObjectStatesIfChanged('albums.albumList', {}),
+        cache.setValue('albums.albumListIds', ''),
+        cache.setValue('albums.albumListString', ''),
+        cache.setValue('albums.artistAlbumList', ''),
+        cache.setValue('albums.artistList', '')
+    ])
+    .then(() => {
+        refreshAlbumList();
+        cache.setValue('refreshAlbumList', {val: false, ack: true});
+    })
+    .catch(err => adapter.log.warn('btnRefreshAlbumList err: ' + err));
 }
 
 function refreshAlbumList() {
@@ -3010,7 +3510,8 @@ function refreshAlbumList() {
                 let id = loadOrDefault(idState,'val', '');
                 return cache.setValue('albums.albumList', id);    
             }
-        });
+        })
+        .catch(err => adapter.log.warn('refreshAlbumList err: ' + err));
 }
 
 function refreshDeviceList() {
@@ -3025,7 +3526,7 @@ function refreshDeviceList() {
         let id = normKey.substring(8, normKey.length - 5);
         const available = cache.getValue(`devices.${id}.isAvailable`);
         a.push({
-            id,
+            id: id,
             name: states[key].val,
             available: available ? available.val : false
         });
@@ -3106,7 +3607,8 @@ function refreshDeviceList() {
                 ]);
             }
         })
-        .then(() => listenOnHtmlDevices());
+        .then(() => listenOnHtmlDevices())
+        .catch(err => adapter.log.warn('refreshDeviceList err: ' + err));
 }
 
 function generateRandomString(length) {
@@ -3258,6 +3760,7 @@ function scheduleStatusInternalTimer(durationMs, progressMs, startDate, count) {
 }
 
 function pollRequestCount() {
+    cache.setValue('requestCount',0);
     clearTimeout(application.requestPollingHandle);
     //ausgabe der werte
     return cache.setValue('requestCount',RequestCount)
@@ -3294,6 +3797,7 @@ function pollStatusApi(noReschedule) {
         .then(data => {
             if (!isEmpty(data)) {
                 createPlaybackInfo(data);
+                cache.setValue('getPlaybackInfo', {val: false, ack: true});
             }
             // statusPolling auch starten wenn data is empty
             if (!noReschedule) {
@@ -3314,7 +3818,12 @@ function pollStatusApi(noReschedule) {
                     }
                     application.error202shown = true;
                 } else {
-                    adapter.log.warn('pollStatusApi: unexpected response http ' + err + '; continue polling');
+                    if (err >= 500) {
+                        //console.log('pollStatusApi: unexpected response http ' + err + '; continue polling');
+                        adapter.log.debug('pollStatusApi: unexpected response http ' + err + '; continue polling');
+                    } else {
+                        adapter.log.warn('pollStatusApi: unexpected response http ' + err + '; continue polling');
+                    }
                 }
                 // 202, 401 and 502 keep the polling running
                 //let dummyBody = {
@@ -3353,6 +3862,8 @@ function pollDeviceApi() {
 
 function schedulePlaylistPolling() {
     clearTimeout(application.playlistPollingHandle);
+    cache.setValue('pl_notFound', 0);
+    cache.setValue('pl_found', 0);
     if (application.playlistPollingDelaySeconds > 0) {
         adapter.log.debug('call schedulePlaylistPolling');
         application.playlistPollingHandle = setTimeout(() => !stopped && pollPlaylistApi(), application.playlistPollingDelaySeconds *
@@ -3380,24 +3891,14 @@ function scheduleShowPolling() {
 
 /* default run all 15 min */
 function pollPlaylistApi() {
-    //clearTimeout(application.playlistInternalTimer);
     clearTimeout(application.playlistPollingHandle);
     adapter.log.debug('call playlist polling');
     loadPlaylistAppCache();
     pl_foundCount = 0;
     pl_notFoundCount = 0;
     reloadUsersPlaylist();
-    //loadPlaylistAppCache();
     getUsersCollection();
     schedulePlaylistPolling();
-    /*return Promise.all([
-        cache.setValue('pl_found', pl_foundCount),
-        cache.setValue('pl_notFound', pl_notFoundCount)
-    ])
-    .then(() => {
-        adapter.log.debug('write playlist foundCount');   
-    })
-    .catch(err =>adapter.log.error('pollPlaylistApi error: ' + err));*/
 }
 
 function pollShowApi() {
@@ -3410,6 +3911,7 @@ function pollShowApi() {
 function pollAlbumApi() {
     clearTimeout(application.albumPollingHandle);
     adapter.log.debug('call album polling');
+    doNotTestAlbum = false;
     reloadUsersAlbums();
     scheduleAlbumPolling();
 }
@@ -3473,7 +3975,7 @@ function startShow(showId, episodeNo, keepTrack){
             };
             let d_Id = getSelectedDevice(deviceData);
             return sendRequest('/v1/me/player/play?device_id=' + d_Id, 'PUT', JSON.stringify(send), true)
-                .then(() => setTimeout(() => !stopped && pollStatusApi(true), 1000))
+                .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000))
                 .catch(err => adapter.log.error(`could not start show ${showId}; error: ${err}`));
         });
         /*.then(() => {
@@ -3537,8 +4039,9 @@ function startPlaylist(playlist, owner, trackNo, keepTrack) {
                 }
             };
             let d_Id = getSelectedDevice(deviceData);
-            return sendRequest('/v1/me/player/play?device_id=' + d_Id, 'PUT', JSON.stringify(send), true)
-                .then(() => setTimeout(() => !stopped && pollStatusApi(true), 1000))
+            //return sendRequest('/v1/me/player/play?device_id=' + d_Id, 'PUT', JSON.stringify(send), true)
+            return sendRequest('/v1/me/player/play', 'PUT', JSON.stringify(send), true)
+                .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000))
                 .catch(err => adapter.log.error(`could not start playlist ${playlist} of user ${owner}; error: ${err}`));
         })
         .then(() => {
@@ -3699,7 +4202,7 @@ function listenOnGetAuthorization() {
         response_type: 'code',
         redirect_uri: application.redirect_uri,
         state: state,
-        scope: 'user-modify-playback-state user-read-playback-state user-read-currently-playing playlist-read-private user-library-read user-library-modify'
+        scope: 'user-modify-playback-state user-read-playback-state user-read-playback-position user-read-currently-playing playlist-read-private user-library-read user-library-modify playlist-read-collaborative'
     };
 
     let options = {
@@ -3742,15 +4245,13 @@ function listenOnAuthorized(obj) {
                 }
             }
             if (application.showPollingDelaySeconds > 0) {
-                if (pl_poll || alb_poll) {
-                    let waiting = 300 * 1000;
+                if (pl_poll || alb_poll) { 
                     if ((pl_poll && !alb_poll) || (!pl_poll && alb_poll)) {
                         // wait for 5 min playlist or album polling
-                        myAlTimeOut = setTimeout(() => !stopped && scheduleShowPolling(), waiting);
+                        myAlTimeOut = setTimeout(() => !stopped && scheduleShowPolling(), 300 * 1000);
                     } else if (pl_poll && alb_poll) {
                         // wait for 10 min playlist & album polling is active
-                        waiting = 600 * 1000;
-                        myAlTimeOut = setTimeout(() => !stopped && scheduleShowPolling(), waiting);
+                        myAlTimeOut = setTimeout(() => !stopped && scheduleShowPolling(), 600 * 1000);
                     }
                 } else {
                     scheduleShowPolling();
@@ -3783,8 +4284,8 @@ function listenOnUseForPlayback(obj) {
         play: true
     };
     return sendRequest('/v1/me/player', 'PUT', JSON.stringify(send), true)
-        .then(() => setTimeout(() => !stopped && pollStatusApi(true), 1000))
-        .catch(err => adapter.log.error('listenOnUseForPlayback could not execute command: ' + err));
+        .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000))
+        .catch(err => adapter.log.error('listenOnUseForPlayback could not execute command: ' + err + ' device_id: ' + deviceData.lastSelectDeviceId));
 }
 
 function listenOnTrackList(obj) {
@@ -3796,7 +4297,7 @@ function listenOnTrackList(obj) {
         } else if (oSt.indexOf('playlist') >= 0) {
             listenOnPlayThisList(obj, obj.state.val);
         } else if (oSt.indexOf('collection') >= 0){
-            listOnPlayThisCollection(obj, obj.state.val);
+            listenOnPlayThisCollection(obj, obj.state.val);
         }
     }
 }
@@ -3814,6 +4315,7 @@ function listenOnEpisodeList(obj) {
             let eid = cache.getValue('shows.' + showid.val + '.episodeListIds');
             let eix = obj.state.val;
             let curEpiIx = 0;
+            //nr gegenrechnen -> episodesTotal /spielt älteste episode zuerst!
             if (maxEpisodes > 1 && maxEpisodes > eix) {
                 curEpiIx = maxEpisodes - (eix + 1);
             } else {
@@ -3823,7 +4325,7 @@ function listenOnEpisodeList(obj) {
                 let ixList = eid.val.split(';');
                 let episodeId = ixList[eix];
                 if (episodeId && !isEmpty(episodeId)){
-                    //adapter.log.warn('listenOnEpisodeList obj.slice... obj.state.val: ' + obj.state.val + ' episodeId: ' + episodeId);
+                    adapter.log.warn('listenOnEpisodeList obj.slice... obj.state.val: ' + obj.state.val + ' episodeId: ' + episodeId);
                     lastPlayingShow.lastShowId = showid.val;
                     lastPlayingShow.lastEpisodeNo = obj.state.val;
                     lastPlayingShow.lastEpisodeId = episodeId;
@@ -3837,10 +4339,10 @@ function listenOnEpisodeList(obj) {
                         }
                         
                     }
-                    //listenOnEpisodeIdStr(episodeId);
+                    listenOnEpisodeIdStr(episodeId);
                     // episode kann noch nicht direkt gestartet werden, play läuft immer vom alten zum neuen 99,98,97....
                     // curEpiIx = total(100) - (eix + 1) 0-basis
-                    startShow(showid.val, curEpiIx);
+                    //startShow(showid.val, curEpiIx);
                 }
             }
         }
@@ -3856,7 +4358,7 @@ function transferPlayback(dev_id){
         };
         adapter.log.debug('transferPlayback gestartet');
         return sendRequest('/v1/me/player', 'PUT', JSON.stringify(send), true)
-            .then(() => setTimeout(() => !stopped && pollStatusApi(true), 1000))
+            .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000))
             .catch(err => adapter.log.error('transferPlayback could not execute command: ' + err + ' device_id: ' + dev_id));  
     } else {
         adapter.log.debug('transferPlayback: dev_id is empty');
@@ -3906,7 +4408,7 @@ function listenOnPlayThisList(obj, pos) {
     return startPlaylist(id, owner, pos, keepTrack);
 }
 
-function listOnPlayThisCollection(obj, pos) {
+function listenOnPlayThisCollection(obj, pos) {
     let keepTrack = true;
     if (isEmpty(pos)) {
         keepTrack = false;
@@ -3957,7 +4459,8 @@ function listenOnPlayThisShow(obj, pos) {
 
 function listenOnDeviceList(obj) {
     if (!isEmpty(obj.state.val)) {
-        listenOnUseForPlayback({id: `devices.${obj.state.val}.useForPlayback`});
+        //listenOnUseForPlayback({id: `devices.${obj.state.val}.useForPlayback`});
+        transferPlayback(obj.state.val);
     }
 }
 
@@ -4004,11 +4507,57 @@ function listenOnUriToQueue(obj) {
 
         clearTimeout(application.statusPollingHandle);
         adapter.log.debug('uri: ' + uri + ' dev_id: ' + dev_id);
-        sendRequest('/v1/me/player/queue?uri=' + uri + '&device_id=' + dev_id, 'POST', '', true)
+        sendRequest('/v1/me/player/queue?uri=' + uri, 'POST', '', true) //geändert! nach uri eingefügen: + '&device_id=' + dev_id
             .catch(err => adapter.log.error('listenOnUriToQueue could not execute command: ' + err))
             .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000));
     } else {
         adapter.log.warn('listenOnUriToQueue: no uri or not playing');
+    }
+}
+
+function listenOnUnfollowPlaylist(obj) {
+    if (obj && obj.state && obj.state.val) {
+        if (!isEmpty(obj.state.val)) {
+            unfollowPlaylist(obj.state.val);
+        }
+    } else {
+        adapter.log.warn('listenOnUnfollowPlaylist no playlistId');
+    }
+}
+
+function listenOnUnfollowAlbum(obj) {
+    if (obj && obj.state && obj.state.val) {
+        if (!isEmpty(obj.state.val)) {
+            unfollowAlbum(obj.state.val);
+        }
+    } else {
+        adapter.log.warn('listenOnUnfollowAlbum no albumId');
+    }
+}
+
+function listenOnUnfollowShow(obj) {
+    if (obj && obj.state && obj.state.val) {
+        if (!isEmpty(obj.state.val)) {
+            unfollowShow(obj.state.val);
+        }
+    } else {
+        adapter.log.warn('listenOnUnfollowShow no showId');
+    }
+}
+
+function listenOnSetToFavorite(obj) {
+    if (obj && obj.state && obj.state.val) {
+        if (!isEmpty(obj.state.val)) {
+            addTrackToCollection(obj.state.val);
+        }
+    }
+}
+
+function listenOnUnsetFromFavorite(obj) {
+    if (obj && obj.state && obj.state.val) {
+        if (!isEmpty(obj.state.val)) {
+            deleteTrackInCollection(obj.state.val);
+        }
     }
 }
 
@@ -4028,7 +4577,6 @@ function listenOnPlay() {
                 return cache.setValue('player.device.isAvailable', false);
             }
         }
-
     } else {
         //normaler play wenn device.isActive
         let query = {
@@ -4036,7 +4584,8 @@ function listenOnPlay() {
         };
         adapter.log.debug('lastSelect: ' + deviceData.lastSelectDeviceId + ' lastActive: ' + deviceData.lastActiveDeviceId);
         clearTimeout(application.statusPollingHandle);
-        sendRequest('/v1/me/player/play?' + querystring.stringify(query), 'PUT', '', true)
+        //sendRequest('/v1/me/player/play?' + querystring.stringify(query), 'PUT', '', true)
+        sendRequest('/v1/me/player/play', 'PUT', '', true)
             .catch(err => adapter.log.error('listenOnPlay could not execute command: ' + err))
             .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000));
     }
@@ -4050,37 +4599,46 @@ function listenOnPause() {
     adapter.log.debug('pause device_id: ' + getSelectedDevice(deviceData));
     adapter.log.debug('lastSelect: ' + deviceData.lastSelectDeviceId + ' lastActive: ' + deviceData.lastActiveDeviceId);
     clearTimeout(application.statusPollingHandle);
-    sendRequest('/v1/me/player/pause?' + querystring.stringify(query), 'PUT', '', true)
+    //sendRequest('/v1/me/player/pause?' + querystring.stringify(query), 'PUT', '', true)
+    sendRequest('/v1/me/player/pause', 'PUT', '', true)
         .catch(err => adapter.log.error('listenOnPause could not execute command: ' + err))
         .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000));
 }
 
 function listenOnSkipPlus() {
-    let query = {
-        device_id: getSelectedDevice(deviceData)
-    };
-    clearTimeout(application.statusPollingHandle);
-    sendRequest('/v1/me/player/next?' + querystring.stringify(query), 'POST', '', true)
-        .catch(err => adapter.log.error('listenOnSkipPlus could not execute command: ' + err))
-        .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000));
+    if (isPlaying) {
+        let query = {
+            device_id: getSelectedDevice(deviceData)
+        };
+        clearTimeout(application.statusPollingHandle);
+        //sendRequest('/v1/me/player/next?' + querystring.stringify(query), 'POST', '', true)
+        sendRequest('/v1/me/player/next', 'POST', '', true)
+            .catch(err => adapter.log.error('listenOnSkipPlus could not execute command: ' + err))
+            .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000));
+    }
 }
 
 function listenOnSkipMinus() {
-    let query = {
-        device_id: getSelectedDevice(deviceData)
-    };
-    clearTimeout(application.statusPollingHandle);
-    sendRequest('/v1/me/player/previous?' + querystring.stringify(query), 'POST', '', true)
-        .catch(err => adapter.log.error('listenOnSkipMinus could not execute command: ' + err))
-        .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000));
+    if (isPlaying) {
+        let query = {
+            device_id: getSelectedDevice(deviceData)
+        };
+        clearTimeout(application.statusPollingHandle);
+        //sendRequest('/v1/me/player/previous?' + querystring.stringify(query), 'POST', '', true)
+        sendRequest('/v1/me/player/previous', 'POST', '', true)
+            .catch(err => adapter.log.error('listenOnSkipMinus could not execute command: ' + err))
+            .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000));
+    }
 }
 
 function listenOnRepeat(obj) {
-    if (['track', 'context', 'off'].indexOf(obj.state.val) >= 0) {
-        clearTimeout(application.statusPollingHandle);
-        sendRequest('/v1/me/player/repeat?state=' + obj.state.val, 'PUT', '', true)
-            .catch(err => adapter.log.error('listenOnRepeat could not execute command: ' + err))
-            .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000));
+    if (isPlaying) {
+        if (['track', 'context', 'off'].indexOf(obj.state.val) >= 0) {
+            clearTimeout(application.statusPollingHandle);
+            sendRequest('/v1/me/player/repeat?state=' + obj.state.val, 'PUT', '', true)
+                .catch(err => adapter.log.error('listenOnRepeat could not execute command: ' + err))
+                .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000));
+        }
     }
 }
 
@@ -4109,11 +4667,11 @@ function listenOnRepeatOff() {
 }
 
 function listenOnVolume(obj) {
-    let is_play = cache.getValue('player.isPlaying');
     let d_Id = getSelectedDevice(deviceData);
-    if (is_play && is_play.val) {
+    if (isPlaying) {
         clearTimeout(application.statusPollingHandle);
-        sendRequest('/v1/me/player/volume?volume_percent=' + obj.state.val + '&device_id=' + d_Id, 'PUT', '', true)
+        //sendRequest('/v1/me/player/volume?volume_percent=' + obj.state.val + '&device_id=' + d_Id, 'PUT', '', true)
+        sendRequest('/v1/me/player/volume?volume_percent=' + obj.state.val, 'PUT', '', true)
             .catch(err => adapter.log.error('could not execute volume-command: ' + err))
             .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000));
     }
@@ -4121,12 +4679,14 @@ function listenOnVolume(obj) {
 
 function listenOnProgressMs(obj) {
     let progress = obj.state.val;
+    let duration = 0;
     clearTimeout(application.statusInternalTimer);
 
-    sendRequest('/v1/me/player/seek?position_ms=' + progress, 'PUT', '', true).then(function () {
+    sendRequest('/v1/me/player/seek?position_ms=' + progress, 'PUT', '', true)
+    .then(function () {
         const durationState = cache.getValue('player.durationMs');
         if (durationState) {
-            let duration = durationState.val;
+            duration = durationState.val;
 
             if (duration > 0 && duration <= progress) {
                 let progressPercentage = Math.floor(progress / duration * 100);
@@ -4166,10 +4726,12 @@ function listenOnProgressPercentage(obj) {
 }
 
 function listenOnShuffle(obj) {
-    clearTimeout(application.statusPollingHandle);
-    return sendRequest('/v1/me/player/shuffle?state=' + (obj.state.val === 'on' ? 'true' : 'false'), 'PUT', '', true)
-        .catch(err => adapter.log.error('could not execute command: ' + err))
-        .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000));
+    if (isPlaying) {
+        clearTimeout(application.statusPollingHandle);
+        return sendRequest('/v1/me/player/shuffle?state=' + (obj.state.val === 'on' ? 'true' : 'false'), 'PUT', '', true)
+            .catch(err => adapter.log.error('could not execute command: ' + err))
+            .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000));
+    }
 }
 
 function listenOnShuffleOff() {
@@ -4217,14 +4779,14 @@ function listenOnShowId(obj) {
 }
 
 function listenOnEpisodeId(obj) {
-    //geht nicht mit Episoden
     if (obj && obj.state && obj.state.val) {
         let d_Id = getSelectedDevice(deviceData);
         let send = {
-            uri: ['spotify:episode:' + obj.state.val]
+            uris: ['spotify:episode:' + obj.state.val]
         };
         clearTimeout(application.statusPollingHandle);
-        sendRequest('/v1/me/player/play?device_id=' + d_Id, 'PUT', JSON.stringify(send), true)
+        //sendRequest('/v1/me/player/play?device_id=' + d_Id, 'PUT', JSON.stringify(send), true)
+        sendRequest('/v1/me/player/play', 'PUT', JSON.stringify(send), true)
             .catch(err => adapter.log.error('listenOnEpisodeId could not execute command: ' + err))
             .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000));
     }
@@ -4234,10 +4796,11 @@ function listenOnEpisodeIdStr(episodeIdStr) {
     if (!isEmpty(episodeIdStr)) {
         let d_Id = getSelectedDevice(deviceData);
         let send = {
-            uri: ['spotify:episode:' + episodeIdStr]
+            uris: ['spotify:episode:' + episodeIdStr]
         };
         clearTimeout(application.statusPollingHandle);
-        sendRequest('/v1/me/player/play?device_id=' + d_Id, 'PUT', JSON.stringify(send), true)
+        //sendRequest('/v1/me/player/play?device_id=' + d_Id, 'PUT', JSON.stringify(send), true)
+        sendRequest('/v1/me/player/play', 'PUT', JSON.stringify(send), true)
             .catch(err => adapter.log.error('listenOnEpisodeStrId could not execute command: ' + err))
             .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000));
     }
@@ -4323,7 +4886,18 @@ function listenOnGetDevices() {
 function clearCache() {
     artistImageUrlCache = {};
     playlistInfoCache = {};
+    playlistAppCache = [];
+    albumCache = {};
     application.cacheClearHandle = setTimeout(() => !stopped && clearCache(), 1000 * 60 * 60 * 24);
+}
+
+function btnClearCache() {
+    artistImageUrlCache = {};
+    playlistInfoCache = {};
+    playlistAppCache = [];
+    albumCache = {};
+    cache.reloadCache();
+    cache.setValue('clearCache', {val: false, ack: true});
 }
 
 function listenOnHtmlPlaylists() {
