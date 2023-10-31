@@ -96,6 +96,7 @@ function startAdapter(options) {
             cache.on(/\.trackList$/, listenOnTrackList, true);
             cache.on(/\.playThisShow$/, listenOnPlayThisShow);
             cache.on(/\.playThisList$/, listenOnPlayThisList);
+            cache.on(/\.playThisListTrackId$/, listenOnTrackId,true);
             cache.on(/\.playThisAlbum$/, listenOnPlayThisAlbum);
             cache.on(/\.episodeList$/, listenOnEpisodeList, true);
             cache.on(/\.albumList$/, listenOnAlbumList, true);
@@ -680,8 +681,11 @@ function createPlaybackInfo(data) {
     }
     if (!isEmpty(currentPlayingType) && (currentPlayingType === 'episode' || currentPlayingType === 'show')) {
         type = currentPlayingType;
-        cache.setValue('player.type', type);
     }
+    cache.setValue('player.type', type);
+    cache.setValue('player.ctype', ctype);
+    cache.setValue('player.itype', itype);
+    cache.setValue('player.currentlyPlayingType', currently_playing_type);
     //adapter.log.warn('playbackInfo type: ' + type);
     let progress = loadOrDefault(data, 'progress_ms', 0);
     let progressPercentage = 0;
@@ -1231,6 +1235,9 @@ function createPlaybackInfo(data) {
                                     lastPlayingShow.lastEpisodeNo = epi_ix;
                                     episodeNo = epi_ix;
                                 }
+                            }
+                            if (duration > 0) {
+                                progressPercentage = Math.floor(progress / duration * 100);
                             }
                             //adapter.log.warn('epitype: ' + type);
                             if (!isEmpty(showId)){
@@ -1835,6 +1842,17 @@ function createPlaylists(parseJson, autoContinue, addedList) {
                         },
                         native: {}
                     }),
+                    cache.setValue(prefix + '.playThisListTrackId', '', {
+                        type: 'state',
+                        common: {
+                            name: 'trackId to start play this playlist',
+                            type: 'string',
+                            role: 'value',
+                            read: true,
+                            write: true,
+                        },
+                        native: {}
+                    }),
                     createOrDefault(item, 'id', prefix + '.id', '', 'playlist id', 'string'),
                     createOrDefault(item, 'owner.id', prefix + '.owner', '', 'playlist owner', 'string'),
                     createOrDefault(item, 'name', prefix + '.name', '', 'playlist name', 'string'),
@@ -1901,6 +1919,9 @@ function createPlaylists(parseJson, autoContinue, addedList) {
                                     'string'),
                                 createOrDefault(playlistObject, 'imageUrl64Map', prefix + '.imageUrl64List', '',
                                     'contains list of track imageUrl64 as string, pattern: url;url;url;...',
+                                    'string'),
+                                createOrDefault(playlistObject, 'imageAlbumUrlMap', prefix + '.imageAlbumUrlList', '',
+                                    'contains list of track imageAlbumUrl as string, pattern: url;url;url;...',
                                     'string'),
                                 createOrDefault(playlistObject, 'songs', prefix + '.trackListArray', '',
                                     'contains list of tracks as array object, pattern:\n[{id: "id",\ntitle: "title",\nartistName: "artistName1, artistName2",\nartistArray: [{id: "artistId", name: "artistName"}, {id: "artistId", name: "artistName"}, ...],\nalbum: {id: "albumId", name: "albumName"},\ndurationMs: 253844,\nduration: 4:13,\naddedAt: 15395478261235,\naddedBy: "userId",\ndiscNumber: 1,\nepisode: false,\nexplicit: false,\npopularity: 56\n}, ...]',
@@ -2667,6 +2688,7 @@ async function getPlaylistTracks(owner, id, plName) {
         listNumber: '',
         trackIdMap: '',
         imageUrl64Map: '',
+        imageAlbumUrlMap: '',
         trackIds: '',
         songs: []
     };
@@ -2714,6 +2736,7 @@ async function getPlaylistTracks(owner, id, plName) {
                     let addedBy = loadOrDefault(item, 'addedBy', '');
                     let trackAlbumId = loadOrDefault(item, 'track.album.id', '');
                     let trackAlbumName = loadOrDefault(item, 'track.album.name', '');
+                    let trackAlbumImgUrl = loadOrDefault(item, 'track.album.images[0].url', '');
                     let trackImageUrl64 = loadOrDefault(item, 'track.album.images[2].url');
                     let trackDiscNumber = loadOrDefault(item, 'track.disc_number', 1);
                     let trackEpisode = loadOrDefault(item, 'track.episode', false);
@@ -2726,6 +2749,7 @@ async function getPlaylistTracks(owner, id, plName) {
                         playlistObject.listString += ';';
                         playlistObject.trackIdMap += ';';
                         playlistObject.imageUrl64Map += ';';
+                        playlistObject.imageAlbumUrlMap += ';';
                         playlistObject.trackIds += ';';
                         playlistObject.listNumber += ';';
                     }
@@ -2733,6 +2757,7 @@ async function getPlaylistTracks(owner, id, plName) {
                     playlistObject.listString += trackName + '-' + artist;
                     playlistObject.trackIdMap += no + ':' + trackId;
                     playlistObject.imageUrl64Map += trackImageUrl64;
+                    playlistObject.imageAlbumUrlMap += trackAlbumImgUrl;
                     playlistObject.trackIds += trackId;
                     playlistObject.listNumber += no;
                     let a = {
@@ -2742,6 +2767,7 @@ async function getPlaylistTracks(owner, id, plName) {
                         artistArray: artistArray,
                         album: {id: trackAlbumId, name: trackAlbumName},
                         imageUrl64: trackImageUrl64,
+                        imageAlbumUrl: trackAlbumImgUrl,
                         durationMs: trackDuration,
                         duration: convertToDigiClock(trackDuration),
                         addedAt: addedAt,
@@ -3994,7 +4020,8 @@ function startShow(showId, episodeNo, keepTrack){
         });*/
     }
 
-function startPlaylist(playlist, owner, trackNo, keepTrack) {
+function startPlaylist(playlist, owner, trackNo, keepTrack, startTrackId, position_ms) {
+    //neu startTrackId: wenn nicht leer wird ab dieser TrackId die Playlist gestartet sonst mit trackNo
     //bei weiteren Problemen mit owner den owner aus playlists.xx.owner holen
     let playlist_owner = loadOrDefault(cache.getValue('player.playlist.owner'), 'val', '');
     if (isEmpty(owner) && !isEmpty(playlist_owner)) {
@@ -4010,6 +4037,9 @@ function startPlaylist(playlist, owner, trackNo, keepTrack) {
     }
     if (keepTrack !== true) {
         keepTrack = false;
+    }
+    if (isEmpty(position_ms)) {
+        position_ms = 0;
     }
     let resetShuffle = false;
     let r = Promise.resolve();
@@ -4032,15 +4062,27 @@ function startPlaylist(playlist, owner, trackNo, keepTrack) {
 
     return r
         .then(() => {
-            let send = {
-                context_uri: `spotify:user:${owner}:playlist:${playlist}`,
-                offset: {
-                    position: trackNo
-                }
-            };
+            let send = {};
+            if (startTrackId && !isEmpty(startTrackId)) {
+                send = {
+                    context_uri: `spotify:user:${owner}:playlist:${playlist}`,
+                    offset: {
+                        uri: `spotify:track:${startTrackId}`,
+                        position_ms: position_ms
+                    }
+                };
+            } else {
+                send = {
+                    context_uri: `spotify:user:${owner}:playlist:${playlist}`,
+                    offset: {
+                        position: trackNo,
+                        position_ms: position_ms
+                    }
+                };
+            }
             let d_Id = getSelectedDevice(deviceData);
-            //return sendRequest('/v1/me/player/play?device_id=' + d_Id, 'PUT', JSON.stringify(send), true)
-            return sendRequest('/v1/me/player/play', 'PUT', JSON.stringify(send), true)
+            return sendRequest('/v1/me/player/play?device_id=' + d_Id, 'PUT', JSON.stringify(send), true)
+            //return sendRequest('/v1/me/player/play', 'PUT', JSON.stringify(send), true)
                 .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000))
                 .catch(err => adapter.log.error(`could not start playlist ${playlist} of user ${owner}; error: ${err}`));
         })
@@ -4302,6 +4344,15 @@ function listenOnTrackList(obj) {
     }
 }
 
+function listenOnTrackId(obj) {
+    if (!isEmpty(obj.state.val)) {
+        let oSt = obj.id;
+        if (oSt.indexOf('playlist') >= 0) {
+            listenOnPlayThisListTrackId(obj, obj.state.val)
+        }
+    }
+}
+
 function listenOnEpisodeList(obj) {
     if (obj.state.val >= 0) {
         let showid = cache.getValue(obj.id.slice(0, obj.id.lastIndexOf('.')) + '.id');
@@ -4405,7 +4456,22 @@ function listenOnPlayThisList(obj, pos) {
     }
     let id = idState.val;
     let owner = ownerState.val;
-    return startPlaylist(id, owner, pos, keepTrack);
+    return startPlaylist(id, owner, pos, keepTrack, '', 0);
+}
+
+function listenOnPlayThisListTrackId(obj, trackId) {
+    let keepTrack = true;
+    let pos = 0;
+
+    // Play a specific playlist immediately
+    const idState = cache.getValue(obj.id.slice(0, obj.id.lastIndexOf('.')) + '.id');
+    const ownerState = cache.getValue(obj.id.slice(0, obj.id.lastIndexOf('.')) + '.owner');
+    if (!idState || !ownerState) {
+        return;
+    }
+    let id = idState.val;
+    let owner = ownerState.val;
+    return startPlaylist(id, owner, pos, keepTrack, trackId, 0);
 }
 
 function listenOnPlayThisCollection(obj, pos) {
@@ -4811,7 +4877,7 @@ function listenOnPlaylistId(obj) {
     if (!ownerState) {
         return;
     }
-    return startPlaylist(obj.state.val, ownerState.val, 0);
+    return startPlaylist(obj.state.val, ownerState.val, 0, true, '', 0);
 }
 
 function listenOnAlbumId(obj) {
@@ -4823,7 +4889,7 @@ function listenOnPlaylistOwner(obj) {
     if (!PlayListIdState) {
         return;
     }
-    return startPlaylist(PlayListIdState.val, obj.state.val, 0);
+    return startPlaylist(PlayListIdState.val, obj.state.val, 0, true, '', 0);
 }
 
 function listenOnPlaylistTrackNo(obj) {
@@ -4837,7 +4903,7 @@ function listenOnPlaylistTrackNo(obj) {
     let o = obj.state.val;
     o = parseInt(o, 10) || 1;
 
-    return startPlaylist(id, owner, o - 1, true);
+    return startPlaylist(id, owner, o - 1, true, '', 0);
 }
 
 function listenOnAlbumTrackNo(obj) {
