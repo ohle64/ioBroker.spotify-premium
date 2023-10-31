@@ -1,9 +1,9 @@
 {
   "common": {
     "name": "spotify-premium",
-    "version": "1.2.2",
+    "version": "2.2.2",
     "news": {
-      "1.2.2": {
+      "2.2.2": {
         "en": "Fix potential crash cases reported by Sentry\nOptimize adapter stop behaviour",
         "de": "Behebt mögliche Crashfälle, die von Sentry gemeldet wurden\nOptimieren des Adapters",
         "ru": "Исправление потенциальных аварийных случаев, сообщенных Sentry\nОптимизируйте поведение остановки адаптера",
@@ -647,7 +647,7 @@
         "icon": "icons/play_black.png"
       },
       "native": {}
-    },
+    },    
     {
       "_id": "player.albumImageUrl64",
       "type": "state",
@@ -1488,6 +1488,27 @@
       "type": "state",
       "common": {
         "role": "value",
+        "name": "type",
+        "type": "string",
+        "read": true,
+        "write": true,
+        "states": {
+          "album": "Album",
+          "artist": "Artist",
+          "playlist": "Playlist",
+          "collection": "Collection",
+          "track": "Track",
+          "episode": "Episode",
+          "show": "Show"
+        }
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.ctype",
+      "type": "state",
+      "common": {
+        "role": "value",
         "name": "context type",
         "type": "string",
         "read": true,
@@ -1498,7 +1519,50 @@
           "playlist": "Playlist",
           "collection": "Collection",
           "track": "Track",
-          "episode": "Episode"
+          "episode": "Episode",
+          "show": "Show"
+        }
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.itype",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "item type",
+        "type": "string",
+        "read": true,
+        "write": true,
+        "states": {
+          "album": "Album",
+          "artist": "Artist",
+          "playlist": "Playlist",
+          "collection": "Collection",
+          "track": "Track",
+          "episode": "Episode",
+          "show": "Show"
+        }
+      },
+      "native": {}
+    },
+    {
+      "_id": "player.currentlyPlayingType",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "currently playing type",
+        "type": "string",
+        "read": true,
+        "write": true,
+        "states": {
+          "album": "Album",
+          "artist": "Artist",
+          "playlist": "Playlist",
+          "collection": "Collection",
+          "track": "Track",
+          "episode": "Episode",
+          "show": "Show"
         }
       },
       "native": {}
