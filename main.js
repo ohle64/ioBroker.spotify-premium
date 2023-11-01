@@ -2436,9 +2436,9 @@ function unfollowPlaylist(playlistId) {
                     .then(() => {
                         btnClearCache();
                         btnRefreshPlaylistList();
+                        cache.setValue('unfollowPlaylistId', {val: '', ack: true});
                     });
                 }
-                //cache.setValue('unfollowPlaylistId', {val: playlistId, ack: true});
             }
             //mit Löschen der alten PlaylistLists
             //btnRefreshPlaylistList();
@@ -2472,7 +2472,7 @@ function unfollowAlbum(albumId) {
             btnClearCache();
             btnRefreshAlbumList();
             //löschen der alten Daten dann neu anlegen
-            //cache.setValue('unfollowAlbumId', {val: albumId, ack: true});
+            cache.setValue('unfollowAlbumId', {val: '', ack: true});
         })
         .catch(err => adapter.log.warn('unfollowAlbum err: ' + err));
     } else {
@@ -2503,7 +2503,7 @@ function unfollowShow(showId) {
             btnClearCache();
             btnRefreshShowList();
             //löschen der alten Listen und neu anlegen
-            //cache.setValue('unfollowShowId', {val: showId, ack: true});
+            cache.setValue('unfollowShowId', {val: '', ack: true});
         })
         .catch(err => adapter.log.warn('unfollowShow err: ' + err));
     } else {
@@ -3448,11 +3448,11 @@ function refreshPlaylistList() {
             ]);
         })
         .then(() => {
-            let id = cache.getValue('player.playlist.id').val;
-            if (id) {
-                let owner = cache.getValue('player.playlist.owner').val;
-                if (owner) {
-                    return cache.setValue('playlists.playlistList', shrinkStateName(owner + '-' + id));
+            let id = cache.getValue('player.playlist.id');
+            if (id && id.val) {
+                let owner = cache.getValue('player.playlist.owner');
+                if (owner && owner.val) {
+                    return cache.setValue('playlists.playlistList', shrinkStateName(owner.val + '-' + id.val));
                 }
             }
         })
