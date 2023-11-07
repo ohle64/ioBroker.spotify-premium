@@ -4403,14 +4403,18 @@ function listenOnEpisodeList(obj) {
 //Funktion zum Reaktivieren des letzten Device mit play
 function transferPlayback(dev_id){
     if (!isEmpty(dev_id)){
+        let  devIdAmazn = (dev_id.indexOf('_amzn_1') >= 0) ? dev_id.split('_amzn_1', 1) : [dev_id];
+        // [] bei device_ids wegnehmen
         let send = {
-            device_ids: [dev_id],
-            play: true
+            "device_ids": 
+                devIdAmazn
+            ,
+            "play": true
         };
-        adapter.log.debug('transferPlayback gestartet');
+        adapter.log.debug('transferPlayback gestartet mit dev_id: ' + devIdAmazn);
         return sendRequest('/v1/me/player', 'PUT', JSON.stringify(send), true)
             .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000))
-            .catch(err => adapter.log.error('transferPlayback could not execute command: ' + err + ' device_id: ' + dev_id));  
+            .catch(err => adapter.log.error('transferPlayback could not execute command: ' + err + ' device_id: ' + devIdAmazn));  
     } else {
         adapter.log.debug('transferPlayback: dev_id is empty');
     }
