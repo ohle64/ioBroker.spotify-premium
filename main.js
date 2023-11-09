@@ -4403,7 +4403,7 @@ function listenOnEpisodeList(obj) {
 //Funktion zum Reaktivieren des letzten Device mit play
 function transferPlayback(dev_id){
     if (!isEmpty(dev_id)){
-        let  devIdAmazn = (dev_id.indexOf('_amzn_1') >= 0) ? dev_id.split('_amzn_1', 1) : [dev_id];
+        let  devIdAmazn = [dev_id]; //(dev_id.indexOf('_amzn_1') >= 0) ? dev_id.split('_amzn_1', 1) : [dev_id];
         // [] bei device_ids wegnehmen
         let send = {
             "device_ids": 
@@ -4423,8 +4423,8 @@ function transferPlayback(dev_id){
 function transferPlaybackNoPlay(){
     let dev_id = getSelectedDevice(deviceData);
     let send = {
-        device_ids: [dev_id],
-        play: false
+        "device_ids": [dev_id],
+        "play": false
     };
     adapter.log.debug('transferPlaybackNoPlay gestartet');
     return sendRequest('/v1/me/player', 'PUT', JSON.stringify(send), true)
