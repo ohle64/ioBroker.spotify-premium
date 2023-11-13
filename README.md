@@ -1,1 +1,3138 @@
-{"payload":{"allShortcutsEnabled":true,"fileTree":{"":{"items":[{"name":".github","path":".github","contentType":"directory"},{"name":"admin","path":"admin","contentType":"directory"},{"name":"docs","path":"docs","contentType":"directory"},{"name":"icon","path":"icon","contentType":"directory"},{"name":"lib","path":"lib","contentType":"directory"},{"name":"test","path":"test","contentType":"directory"},{"name":"widgets","path":"widgets","contentType":"directory"},{"name":".gitattributes","path":".gitattributes","contentType":"file"},{"name":".gitignore","path":".gitignore","contentType":"file"},{"name":".project","path":".project","contentType":"file"},{"name":".releaseconfig.json","path":".releaseconfig.json","contentType":"file"},{"name":"LICENSE","path":"LICENSE","contentType":"file"},{"name":"README.md","path":"README.md","contentType":"file"},{"name":"gulpfile.js","path":"gulpfile.js","contentType":"file"},{"name":"io-package.json","path":"io-package.json","contentType":"file"},{"name":"iob_npm.done","path":"iob_npm.done","contentType":"file"},{"name":"main.js","path":"main.js","contentType":"file"},{"name":"package-lock.json","path":"package-lock.json","contentType":"file"},{"name":"package.json","path":"package.json","contentType":"file"}],"totalCount":19}},"fileTreeProcessingTime":8.688558,"foldersToFetch":[],"reducedMotionEnabled":"system","repo":{"id":459564828,"defaultBranch":"master","name":"ioBroker.spotify-premium","ownerLogin":"ohle64","currentUserCanPush":true,"isFork":true,"isEmpty":false,"createdAt":"2022-02-15T13:15:23.000+01:00","ownerAvatar":"https://avatars.githubusercontent.com/u/7418761?v=4","public":true,"private":false,"isOrgOwned":false},"symbolsExpanded":false,"treeExpanded":true,"refInfo":{"name":"master","listCacheKey":"v0:1698858479.0","canEdit":true,"refType":"branch","currentOid":"c11c5ed48877bd23d57a2da3852e861fb183f2dd"},"path":"README.md","currentUser":{"id":7418761,"login":"ohle64","userEmail":"f.ohlmann@gmx.de"},"blob":{"rawLines":null,"stylingDirectives":null,"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":null,"configFilePath":null,"networkDependabotPath":"/ohle64/ioBroker.spotify-premium/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":false,"repoAlertsPath":"/ohle64/ioBroker.spotify-premium/security/dependabot","repoSecurityAndAnalysisPath":"/ohle64/ioBroker.spotify-premium/settings/security_analysis","repoOwnerIsOrg":false,"currentUserCanAdminRepo":true},"displayName":"README.md","displayUrl":"https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md?raw=true","headerInfo":{"blobSize":"27.7 KB","deleteInfo":{"deleteTooltip":"Delete this file"},"editInfo":{"editTooltip":"Edit this file"},"ghDesktopPath":"https://desktop.github.com","gitLfsPath":null,"onBranch":true,"shortPath":"2356de1","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fohle64%2FioBroker.spotify-premium%2Fblob%2Fmaster%2FREADME.md","isCSV":false,"isRichtext":true,"toc":[{"level":1,"text":"ioBroker.spotify-premium","anchor":"iobrokerspotify-premium","htmlText":"ioBroker.spotify-premium"},{"level":2,"text":"Documentation","anchor":"documentation","htmlText":"Documentation"},{"level":3,"text":"Setup / Authorization","anchor":"setup--authorization","htmlText":"Setup / Authorization"},{"level":4,"text":"Video tutorial","anchor":"video-tutorial","htmlText":"Video tutorial"},{"level":3,"text":"States","anchor":"states","htmlText":"States"},{"level":3,"text":"VIS usage examples","anchor":"vis-usage-examples","htmlText":"VIS usage examples"},{"level":2,"text":"Changelog","anchor":"changelog","htmlText":"Changelog"},{"level":3,"text":"4.2.2 (2023-10-30)","anchor":"222-2023-10-30","htmlText":"4.2.2 (2023-10-30)"},{"level":3,"text":"1.2.2 (2022-06-17)","anchor":"122-2022-06-17","htmlText":"1.2.2 (2022-06-17)"},{"level":3,"text":"1.2.1 (2022-05-12)","anchor":"121-2022-05-12","htmlText":"1.2.1 (2022-05-12)"},{"level":3,"text":"1.2.0 (2022-05-11)","anchor":"120-2022-05-11","htmlText":"1.2.0 (2022-05-11)"},{"level":3,"text":"1.1.9 (2021-11-21)","anchor":"119-2021-11-21","htmlText":"1.1.9 (2021-11-21)"},{"level":3,"text":"1.1.8 (2021-11-18)","anchor":"118-2021-11-18","htmlText":"1.1.8 (2021-11-18)"},{"level":3,"text":"1.1.4 (2021-11-17)","anchor":"114-2021-11-17","htmlText":"1.1.4 (2021-11-17)"},{"level":3,"text":"1.1.3 (2021-07-22)","anchor":"113-2021-07-22","htmlText":"1.1.3 (2021-07-22)"},{"level":3,"text":"1.1.1 (2021-07-22)","anchor":"111-2021-07-22","htmlText":"1.1.1 (2021-07-22)"},{"level":3,"text":"1.1.0 (in dev)","anchor":"110-in-dev","htmlText":"1.1.0 (in dev)"},{"level":3,"text":"1.0.0 (2018.12.18)","anchor":"100-20181218","htmlText":"1.0.0 (2018.12.18)"},{"level":3,"text":"0.3.1 (2018.06.20)","anchor":"031-20180620","htmlText":"0.3.1 (2018.06.20)"},{"level":3,"text":"0.3.0 (2018.05.31)","anchor":"030-20180531","htmlText":"0.3.0 (2018.05.31)"},{"level":3,"text":"0.2.5 (2018.05.24)","anchor":"025-20180524","htmlText":"0.2.5 (2018.05.24)"},{"level":3,"text":"0.2.4 (2018.05.17)","anchor":"024-20180517","htmlText":"0.2.4 (2018.05.17)"},{"level":3,"text":"0.2.3 (2018.05.17)","anchor":"023-20180517","htmlText":"0.2.3 (2018.05.17)"},{"level":3,"text":"0.2.2 (2018.05.16)","anchor":"022-20180516","htmlText":"0.2.2 (2018.05.16)"},{"level":3,"text":"0.2.1 (2018.05.14)","anchor":"021-20180514","htmlText":"0.2.1 (2018.05.14)"},{"level":3,"text":"0.2.0 (2018.05.13)","anchor":"020-20180513","htmlText":"0.2.0 (2018.05.13)"},{"level":3,"text":"0.1.3 (2018.04.28)","anchor":"013-20180428","htmlText":"0.1.3 (2018.04.28)"},{"level":3,"text":"0.1.2 (2018.04.10)","anchor":"012-20180410","htmlText":"0.1.2 (2018.04.10)"},{"level":3,"text":"0.1.1 (2018.03.03)","anchor":"011-20180303","htmlText":"0.1.1 (2018.03.03)"},{"level":3,"text":"0.1.0 (2018.02.23)","anchor":"010-20180223","htmlText":"0.1.0 (2018.02.23)"},{"level":3,"text":"0.0.9 (2018.02.21)","anchor":"009-20180221","htmlText":"0.0.9 (2018.02.21)"},{"level":3,"text":"0.0.8 (2018.02.20)","anchor":"008-20180220","htmlText":"0.0.8 (2018.02.20)"},{"level":3,"text":"0.0.7 (2018.02.16)","anchor":"007-20180216","htmlText":"0.0.7 (2018.02.16)"},{"level":3,"text":"0.0.6 (2018.02.16)","anchor":"006-20180216","htmlText":"0.0.6 (2018.02.16)"},{"level":3,"text":"0.0.5 (2018.02.16)","anchor":"005-20180216","htmlText":"0.0.5 (2018.02.16)"},{"level":3,"text":"0.0.4 (2018.02.16)","anchor":"004-20180216","htmlText":"0.0.4 (2018.02.16)"},{"level":3,"text":"0.0.3 (2018.02.15)","anchor":"003-20180215","htmlText":"0.0.3 (2018.02.15)"},{"level":3,"text":"0.0.2 (2018.02.11)","anchor":"002-20180211","htmlText":"0.0.2 (2018.02.11)"},{"level":3,"text":"0.0.1 (2018.02.07)","anchor":"001-20180207","htmlText":"0.0.1 (2018.02.07)"},{"level":2,"text":"License","anchor":"license","htmlText":"License"}],"lineInfo":{"truncatedLoc":"251","truncatedSloc":"205"},"mode":"file"},"image":false,"isCodeownersFile":null,"isPlain":false,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Markdown","languageID":222,"large":false,"loggedIn":true,"newDiscussionPath":"/ohle64/ioBroker.spotify-premium/discussions/new","newIssuePath":"/ohle64/ioBroker.spotify-premium/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/ohle64/ioBroker.spotify-premium/blob/master/README.md","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/ohle64/ioBroker.spotify-premium/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"rawBlobUrl":"https://github.com/ohle64/ioBroker.spotify-premium/raw/master/README.md","renderImageOrRaw":false,"richText":"<article class=\"markdown-body entry-content container-lg\" itemprop=\"text\"><p dir=\"auto\"><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"/ohle64/ioBroker.spotify-premium/blob/master/admin/spotify-premium.png\"><img src=\"/ohle64/ioBroker.spotify-premium/raw/master/admin/spotify-premium.png\" alt=\"Logo\" style=\"max-width: 100%;\"></a></p>\n<h1 tabindex=\"-1\" id=\"user-content-iobrokerspotify-premium\" dir=\"auto\"><a class=\"heading-link\" href=\"#iobrokerspotify-premium\">ioBroker.spotify-premium<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h1>\n<p dir=\"auto\"><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://camo.githubusercontent.com/6af6b52d13c20468e05afa37fdb1c854b3a2c98b9fa72c24d58382593200d344/687474703a2f2f696f62726f6b65722e6c6976652f6261646765732f73706f746966792d7072656d69756d2d696e7374616c6c65642e737667\"><img src=\"https://camo.githubusercontent.com/6af6b52d13c20468e05afa37fdb1c854b3a2c98b9fa72c24d58382593200d344/687474703a2f2f696f62726f6b65722e6c6976652f6261646765732f73706f746966792d7072656d69756d2d696e7374616c6c65642e737667\" alt=\"Number of Installations\" data-canonical-src=\"http://iobroker.live/badges/spotify-premium-installed.svg\" style=\"max-width: 100%;\"></a>\n<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://camo.githubusercontent.com/86566458298dd53f45c2509346f28262d29079832483ad40c6f8c0f809d5c192/687474703a2f2f696f62726f6b65722e6c6976652f6261646765732f73706f746966792d7072656d69756d2d737461626c652e737667\"><img src=\"https://camo.githubusercontent.com/86566458298dd53f45c2509346f28262d29079832483ad40c6f8c0f809d5c192/687474703a2f2f696f62726f6b65722e6c6976652f6261646765732f73706f746966792d7072656d69756d2d737461626c652e737667\" alt=\"Number of Installations\" data-canonical-src=\"http://iobroker.live/badges/spotify-premium-stable.svg\" style=\"max-width: 100%;\"></a>\n<a href=\"https://www.npmjs.com/package/iobroker.spotify-premium\" rel=\"nofollow\"><img src=\"https://camo.githubusercontent.com/c7d97b0a4a50ac6c9f6b8c8b8b2c4036982b134a434f091c869f22ef00c04049/687474703a2f2f696d672e736869656c64732e696f2f6e706d2f762f696f62726f6b65722e73706f746966792d7072656d69756d2e737667\" alt=\"NPM version\" data-canonical-src=\"http://img.shields.io/npm/v/iobroker.spotify-premium.svg\" style=\"max-width: 100%;\"></a></p>\n<p dir=\"auto\"><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://github.com/iobroker-community-adapters/iobroker.spotify-premium/workflows/Test%20and%20Release/badge.svg\"><img src=\"https://github.com/iobroker-community-adapters/iobroker.spotify-premium/workflows/Test%20and%20Release/badge.svg\" alt=\"Test and Release\" style=\"max-width: 100%;\"></a>\n<a href=\"https://weblate.iobroker.net/engage/adapters/?utm_source=widget\" rel=\"nofollow\"><img src=\"https://camo.githubusercontent.com/04a436afbdfadd51d80dfe8e9e66673c8f6458d23dd0d36790c785c86f04f98b/68747470733a2f2f7765626c6174652e696f62726f6b65722e6e65742f776964676574732f61646170746572732f2d2f73706f746966792d7072656d69756d2f7376672d62616467652e737667\" alt=\"Translation status\" data-canonical-src=\"https://weblate.iobroker.net/widgets/adapters/-/spotify-premium/svg-badge.svg\" style=\"max-width: 100%;\"></a>\n<a href=\"https://www.npmjs.com/package/iobroker.spotify-premium\" rel=\"nofollow\"><img src=\"https://camo.githubusercontent.com/161c9c4ad3330d0b7094b3c3ec35b93b95dd45d10860d8b53e6958f263dd2942/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f646d2f696f62726f6b65722e73706f746966792d7072656d69756d2e737667\" alt=\"Downloads\" data-canonical-src=\"https://img.shields.io/npm/dm/iobroker.spotify-premium.svg\" style=\"max-width: 100%;\"></a></p>\n<p dir=\"auto\"><strong>This adapter uses Sentry libraries to automatically report exceptions and code errors to the developers.</strong> For more details and for information how to disable the error reporting see <a href=\"https://github.com/ioBroker/plugin-sentry#plugin-sentry\">Sentry-Plugin Documentation</a>! Sentry reporting is used starting with js-controller 3.0.</p>\n<p dir=\"auto\">Adapter to access spotify playback controls. Because of the spotify API a premium account is necessary.</p>\n<p dir=\"auto\">Connection to <a href=\"https://www.spotify.com/\" rel=\"nofollow\">Spotify Premium API</a>.</p>\n<h2 tabindex=\"-1\" id=\"user-content-documentation\" dir=\"auto\"><a class=\"heading-link\" href=\"#documentation\">Documentation<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h2>\n<p dir=\"auto\">See also the <a href=\"https://developer.spotify.com/\" rel=\"nofollow\">Spotify Developer API Documentation</a>.</p>\n<h3 tabindex=\"-1\" id=\"user-content-setup--authorization\" dir=\"auto\"><a class=\"heading-link\" href=\"#setup--authorization\">Setup / Authorization<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<ol dir=\"auto\">\n<li>Sign in on <a href=\"https://developer.spotify.com/dashboard/\" rel=\"nofollow\">https://developer.spotify.com/dashboard/</a></li>\n<li>Create an application, you get a Client ID and a Client Secret</li>\n<li>Set the redirect URIs to <code>http://localhost</code> in your app settings at your created spotify application</li>\n<li>Put the Client ID and Client Secret in the fields down below</li>\n<li>Start the instance</li>\n<li>Switch to the objects tab and push the button getAuthorization at <code>spotify-premium.0.authorization</code></li>\n<li>Copy the appearing URL from <code>spotify-premium.0.authorization.authorizationUrl</code> to your webbrowser and call it</li>\n<li>You maybe need to sign in to spotify and grant access</li>\n<li>The browser will be redirected to an invalid URL. If the error <code>invalid redirect uri</code> occurs please verify step 3</li>\n<li>Copy that url and put it to <code>spotify-premium.0.authorization.authorizationReturnUri</code></li>\n<li>The value in <code>spotify-premium.0.authorization.authorized</code> turns to true if everything was successful</li>\n</ol>\n<h4 tabindex=\"-1\" id=\"user-content-video-tutorial\" dir=\"auto\"><a class=\"heading-link\" href=\"#video-tutorial\"></a><a href=\"https://www.youtube.com/watch?v=n0m9201qABU\" rel=\"nofollow\">Video tutorial</a><svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></h4>\n<p dir=\"auto\"><a href=\"https://www.youtube.com/watch?v=n0m9201qABU\" rel=\"nofollow\"><img src=\"https://camo.githubusercontent.com/7b77ddc5d1c29751e8a00f5dcbe0fad6338fd9d57c9fb261751a3cb7094fbf7b/68747470733a2f2f696d672e796f75747562652e636f6d2f76692f6e306d39323031714142552f302e6a7067\" alt=\"How to authorize\" title=\"https://www.youtube.com/watch?v=n0m9201qABU\" data-canonical-src=\"https://img.youtube.com/vi/n0m9201qABU/0.jpg\" style=\"max-width: 100%;\"></a></p>\n<h3 tabindex=\"-1\" id=\"user-content-states\" dir=\"auto\"><a class=\"heading-link\" href=\"#states\">States<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<p dir=\"auto\">All states are described in admin.</p>\n<h3 tabindex=\"-1\" id=\"user-content-vis-usage-examples\" dir=\"auto\"><a class=\"heading-link\" href=\"#vis-usage-examples\">VIS usage examples<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<p dir=\"auto\">Click for widget source.</p>\n<details>\n  <summary>Start one specific playlist<br><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"/ohle64/ioBroker.spotify-premium/blob/master/docs/en/img/choose_playlist.png\"><img src=\"/ohle64/ioBroker.spotify-premium/raw/master/docs/en/img/choose_playlist.png\" style=\"max-width: 100%;\"></a></summary>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"[{&quot;tpl&quot;:&quot;tplJquiButtonState&quot;,&quot;data&quot;:{&quot;oid&quot;:&quot;spotify-premium.0.playlists.YourPlaylistName.playThisList&quot;,&quot;g_fixed&quot;:false,&quot;g_visibility&quot;:false,&quot;g_css_font_text&quot;:false,&quot;g_css_background&quot;:false,&quot;g_css_shadow_padding&quot;:false,&quot;g_css_border&quot;:false,&quot;g_gestures&quot;:false,&quot;g_signals&quot;:false,&quot;g_last_change&quot;:false,&quot;visibility-cond&quot;:&quot;==&quot;,&quot;visibility-val&quot;:1,&quot;visibility-groups-action&quot;:&quot;hide&quot;,&quot;buttontext&quot;:&quot;Choose Playlist&quot;,&quot;signals-cond-0&quot;:&quot;==&quot;,&quot;signals-val-0&quot;:true,&quot;signals-icon-0&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-0&quot;:0,&quot;signals-blink-0&quot;:false,&quot;signals-horz-0&quot;:0,&quot;signals-vert-0&quot;:0,&quot;signals-hide-edit-0&quot;:false,&quot;signals-cond-1&quot;:&quot;==&quot;,&quot;signals-val-1&quot;:true,&quot;signals-icon-1&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-1&quot;:0,&quot;signals-blink-1&quot;:false,&quot;signals-horz-1&quot;:0,&quot;signals-vert-1&quot;:0,&quot;signals-hide-edit-1&quot;:false,&quot;signals-cond-2&quot;:&quot;==&quot;,&quot;signals-val-2&quot;:true,&quot;signals-icon-2&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-2&quot;:0,&quot;signals-blink-2&quot;:false,&quot;signals-horz-2&quot;:0,&quot;signals-vert-2&quot;:0,&quot;signals-hide-edit-2&quot;:false,&quot;lc-type&quot;:&quot;last-change&quot;,&quot;lc-is-interval&quot;:true,&quot;lc-is-moment&quot;:false,&quot;lc-format&quot;:&quot;&quot;,&quot;lc-position-vert&quot;:&quot;top&quot;,&quot;lc-position-horz&quot;:&quot;right&quot;,&quot;lc-offset-vert&quot;:0,&quot;lc-offset-horz&quot;:0,&quot;lc-font-size&quot;:&quot;12px&quot;,&quot;lc-font-family&quot;:&quot;&quot;,&quot;lc-font-style&quot;:&quot;&quot;,&quot;lc-bkg-color&quot;:&quot;&quot;,&quot;lc-color&quot;:&quot;&quot;,&quot;lc-border-width&quot;:&quot;0&quot;,&quot;lc-border-style&quot;:&quot;&quot;,&quot;lc-border-color&quot;:&quot;&quot;,&quot;lc-border-radius&quot;:10,&quot;lc-zindex&quot;:0,&quot;value&quot;:&quot;true&quot;,&quot;no_style&quot;:false},&quot;style&quot;:{&quot;left&quot;:&quot;549px&quot;,&quot;top&quot;:&quot;364px&quot;},&quot;widgetSet&quot;:&quot;jqui&quot;}]\"><pre class=\"notranslate\"><code>[{\"tpl\":\"tplJquiButtonState\",\"data\":{\"oid\":\"spotify-premium.0.playlists.YourPlaylistName.playThisList\",\"g_fixed\":false,\"g_visibility\":false,\"g_css_font_text\":false,\"g_css_background\":false,\"g_css_shadow_padding\":false,\"g_css_border\":false,\"g_gestures\":false,\"g_signals\":false,\"g_last_change\":false,\"visibility-cond\":\"==\",\"visibility-val\":1,\"visibility-groups-action\":\"hide\",\"buttontext\":\"Choose Playlist\",\"signals-cond-0\":\"==\",\"signals-val-0\":true,\"signals-icon-0\":\"/vis/signals/lowbattery.png\",\"signals-icon-size-0\":0,\"signals-blink-0\":false,\"signals-horz-0\":0,\"signals-vert-0\":0,\"signals-hide-edit-0\":false,\"signals-cond-1\":\"==\",\"signals-val-1\":true,\"signals-icon-1\":\"/vis/signals/lowbattery.png\",\"signals-icon-size-1\":0,\"signals-blink-1\":false,\"signals-horz-1\":0,\"signals-vert-1\":0,\"signals-hide-edit-1\":false,\"signals-cond-2\":\"==\",\"signals-val-2\":true,\"signals-icon-2\":\"/vis/signals/lowbattery.png\",\"signals-icon-size-2\":0,\"signals-blink-2\":false,\"signals-horz-2\":0,\"signals-vert-2\":0,\"signals-hide-edit-2\":false,\"lc-type\":\"last-change\",\"lc-is-interval\":true,\"lc-is-moment\":false,\"lc-format\":\"\",\"lc-position-vert\":\"top\",\"lc-position-horz\":\"right\",\"lc-offset-vert\":0,\"lc-offset-horz\":0,\"lc-font-size\":\"12px\",\"lc-font-family\":\"\",\"lc-font-style\":\"\",\"lc-bkg-color\":\"\",\"lc-color\":\"\",\"lc-border-width\":\"0\",\"lc-border-style\":\"\",\"lc-border-color\":\"\",\"lc-border-radius\":10,\"lc-zindex\":0,\"value\":\"true\",\"no_style\":false},\"style\":{\"left\":\"549px\",\"top\":\"364px\"},\"widgetSet\":\"jqui\"}]</code></pre></div>\n</details>\n<details>\n  <summary>Start one specific device<br><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"/ohle64/ioBroker.spotify-premium/blob/master/docs/en/img/choose_device.png\"><img src=\"/ohle64/ioBroker.spotify-premium/raw/master/docs/en/img/choose_device.png\" style=\"max-width: 100%;\"></a></summary>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"[{&quot;tpl&quot;:&quot;tplJquiButtonState&quot;,&quot;data&quot;:{&quot;oid&quot;:&quot;spotify-premium.0.devices.YourDeviceName.useForPlayback&quot;,&quot;g_fixed&quot;:false,&quot;g_visibility&quot;:false,&quot;g_css_font_text&quot;:false,&quot;g_css_background&quot;:false,&quot;g_css_shadow_padding&quot;:false,&quot;g_css_border&quot;:false,&quot;g_gestures&quot;:false,&quot;g_signals&quot;:false,&quot;g_last_change&quot;:false,&quot;visibility-cond&quot;:&quot;==&quot;,&quot;visibility-val&quot;:1,&quot;visibility-groups-action&quot;:&quot;hide&quot;,&quot;buttontext&quot;:&quot;Choose Device&quot;,&quot;signals-cond-0&quot;:&quot;==&quot;,&quot;signals-val-0&quot;:true,&quot;signals-icon-0&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-0&quot;:0,&quot;signals-blink-0&quot;:false,&quot;signals-horz-0&quot;:0,&quot;signals-vert-0&quot;:0,&quot;signals-hide-edit-0&quot;:false,&quot;signals-cond-1&quot;:&quot;==&quot;,&quot;signals-val-1&quot;:true,&quot;signals-icon-1&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-1&quot;:0,&quot;signals-blink-1&quot;:false,&quot;signals-horz-1&quot;:0,&quot;signals-vert-1&quot;:0,&quot;signals-hide-edit-1&quot;:false,&quot;signals-cond-2&quot;:&quot;==&quot;,&quot;signals-val-2&quot;:true,&quot;signals-icon-2&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-2&quot;:0,&quot;signals-blink-2&quot;:false,&quot;signals-horz-2&quot;:0,&quot;signals-vert-2&quot;:0,&quot;signals-hide-edit-2&quot;:false,&quot;lc-type&quot;:&quot;last-change&quot;,&quot;lc-is-interval&quot;:true,&quot;lc-is-moment&quot;:false,&quot;lc-format&quot;:&quot;&quot;,&quot;lc-position-vert&quot;:&quot;top&quot;,&quot;lc-position-horz&quot;:&quot;right&quot;,&quot;lc-offset-vert&quot;:0,&quot;lc-offset-horz&quot;:0,&quot;lc-font-size&quot;:&quot;12px&quot;,&quot;lc-font-family&quot;:&quot;&quot;,&quot;lc-font-style&quot;:&quot;&quot;,&quot;lc-bkg-color&quot;:&quot;&quot;,&quot;lc-color&quot;:&quot;&quot;,&quot;lc-border-width&quot;:&quot;0&quot;,&quot;lc-border-style&quot;:&quot;&quot;,&quot;lc-border-color&quot;:&quot;&quot;,&quot;lc-border-radius&quot;:10,&quot;lc-zindex&quot;:0,&quot;value&quot;:&quot;true&quot;,&quot;no_style&quot;:false},&quot;style&quot;:{&quot;left&quot;:&quot;549px&quot;,&quot;top&quot;:&quot;364px&quot;},&quot;widgetSet&quot;:&quot;jqui&quot;}]\"><pre class=\"notranslate\"><code>[{\"tpl\":\"tplJquiButtonState\",\"data\":{\"oid\":\"spotify-premium.0.devices.YourDeviceName.useForPlayback\",\"g_fixed\":false,\"g_visibility\":false,\"g_css_font_text\":false,\"g_css_background\":false,\"g_css_shadow_padding\":false,\"g_css_border\":false,\"g_gestures\":false,\"g_signals\":false,\"g_last_change\":false,\"visibility-cond\":\"==\",\"visibility-val\":1,\"visibility-groups-action\":\"hide\",\"buttontext\":\"Choose Device\",\"signals-cond-0\":\"==\",\"signals-val-0\":true,\"signals-icon-0\":\"/vis/signals/lowbattery.png\",\"signals-icon-size-0\":0,\"signals-blink-0\":false,\"signals-horz-0\":0,\"signals-vert-0\":0,\"signals-hide-edit-0\":false,\"signals-cond-1\":\"==\",\"signals-val-1\":true,\"signals-icon-1\":\"/vis/signals/lowbattery.png\",\"signals-icon-size-1\":0,\"signals-blink-1\":false,\"signals-horz-1\":0,\"signals-vert-1\":0,\"signals-hide-edit-1\":false,\"signals-cond-2\":\"==\",\"signals-val-2\":true,\"signals-icon-2\":\"/vis/signals/lowbattery.png\",\"signals-icon-size-2\":0,\"signals-blink-2\":false,\"signals-horz-2\":0,\"signals-vert-2\":0,\"signals-hide-edit-2\":false,\"lc-type\":\"last-change\",\"lc-is-interval\":true,\"lc-is-moment\":false,\"lc-format\":\"\",\"lc-position-vert\":\"top\",\"lc-position-horz\":\"right\",\"lc-offset-vert\":0,\"lc-offset-horz\":0,\"lc-font-size\":\"12px\",\"lc-font-family\":\"\",\"lc-font-style\":\"\",\"lc-bkg-color\":\"\",\"lc-color\":\"\",\"lc-border-width\":\"0\",\"lc-border-style\":\"\",\"lc-border-color\":\"\",\"lc-border-radius\":10,\"lc-zindex\":0,\"value\":\"true\",\"no_style\":false},\"style\":{\"left\":\"549px\",\"top\":\"364px\"},\"widgetSet\":\"jqui\"}]</code></pre></div>\n</details>\n<details>\n  <summary>Start playing<br><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"/ohle64/ioBroker.spotify-premium/blob/master/docs/en/img/play_pause.gif\"><img src=\"/ohle64/ioBroker.spotify-premium/raw/master/docs/en/img/play_pause.gif\" data-animated-image=\"\" style=\"max-width: 100%;\"></a></summary>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"[{&quot;tpl&quot;:&quot;tplSpotifyPlayButton&quot;,&quot;data&quot;:{&quot;g_fixed&quot;:false,&quot;g_visibility&quot;:false,&quot;g_css_font_text&quot;:false,&quot;g_css_background&quot;:false,&quot;g_css_shadow_padding&quot;:false,&quot;g_css_border&quot;:false,&quot;g_gestures&quot;:false,&quot;g_signals&quot;:false,&quot;g_last_change&quot;:false,&quot;visibility-cond&quot;:&quot;==&quot;,&quot;visibility-val&quot;:1,&quot;visibility-groups-action&quot;:&quot;hide&quot;,&quot;oidplay&quot;:&quot;spotify-premium.0.player.play&quot;,&quot;oidpause&quot;:&quot;spotify-premium.0.player.pause&quot;,&quot;oidstate&quot;:&quot;spotify-premium.0.player.isPlaying&quot;,&quot;colorplay&quot;:&quot;green&quot;,&quot;colorpause&quot;:&quot;green&quot;,&quot;signals-cond-0&quot;:&quot;==&quot;,&quot;signals-val-0&quot;:true,&quot;signals-icon-0&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-0&quot;:0,&quot;signals-blink-0&quot;:false,&quot;signals-horz-0&quot;:0,&quot;signals-vert-0&quot;:0,&quot;signals-hide-edit-0&quot;:false,&quot;signals-cond-1&quot;:&quot;==&quot;,&quot;signals-val-1&quot;:true,&quot;signals-icon-1&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-1&quot;:0,&quot;signals-blink-1&quot;:false,&quot;signals-horz-1&quot;:0,&quot;signals-vert-1&quot;:0,&quot;signals-hide-edit-1&quot;:false,&quot;signals-cond-2&quot;:&quot;==&quot;,&quot;signals-val-2&quot;:true,&quot;signals-icon-2&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-2&quot;:0,&quot;signals-blink-2&quot;:false,&quot;signals-horz-2&quot;:0,&quot;signals-vert-2&quot;:0,&quot;signals-hide-edit-2&quot;:false,&quot;lc-type&quot;:&quot;last-change&quot;,&quot;lc-is-interval&quot;:true,&quot;lc-is-moment&quot;:false,&quot;lc-format&quot;:&quot;&quot;,&quot;lc-position-vert&quot;:&quot;top&quot;,&quot;lc-position-horz&quot;:&quot;right&quot;,&quot;lc-offset-vert&quot;:0,&quot;lc-offset-horz&quot;:0,&quot;lc-font-size&quot;:&quot;12px&quot;,&quot;lc-font-family&quot;:&quot;&quot;,&quot;lc-font-style&quot;:&quot;&quot;,&quot;lc-bkg-color&quot;:&quot;&quot;,&quot;lc-color&quot;:&quot;&quot;,&quot;lc-border-width&quot;:&quot;0&quot;,&quot;lc-border-style&quot;:&quot;&quot;,&quot;lc-border-color&quot;:&quot;&quot;,&quot;lc-border-radius&quot;:10,&quot;lc-zindex&quot;:0},&quot;style&quot;:{&quot;left&quot;:&quot;487px&quot;,&quot;top&quot;:&quot;604px&quot;},&quot;widgetSet&quot;:&quot;spotify-premium&quot;}]\"><pre class=\"notranslate\"><code>[{\"tpl\":\"tplSpotifyPlayButton\",\"data\":{\"g_fixed\":false,\"g_visibility\":false,\"g_css_font_text\":false,\"g_css_background\":false,\"g_css_shadow_padding\":false,\"g_css_border\":false,\"g_gestures\":false,\"g_signals\":false,\"g_last_change\":false,\"visibility-cond\":\"==\",\"visibility-val\":1,\"visibility-groups-action\":\"hide\",\"oidplay\":\"spotify-premium.0.player.play\",\"oidpause\":\"spotify-premium.0.player.pause\",\"oidstate\":\"spotify-premium.0.player.isPlaying\",\"colorplay\":\"green\",\"colorpause\":\"green\",\"signals-cond-0\":\"==\",\"signals-val-0\":true,\"signals-icon-0\":\"/vis/signals/lowbattery.png\",\"signals-icon-size-0\":0,\"signals-blink-0\":false,\"signals-horz-0\":0,\"signals-vert-0\":0,\"signals-hide-edit-0\":false,\"signals-cond-1\":\"==\",\"signals-val-1\":true,\"signals-icon-1\":\"/vis/signals/lowbattery.png\",\"signals-icon-size-1\":0,\"signals-blink-1\":false,\"signals-horz-1\":0,\"signals-vert-1\":0,\"signals-hide-edit-1\":false,\"signals-cond-2\":\"==\",\"signals-val-2\":true,\"signals-icon-2\":\"/vis/signals/lowbattery.png\",\"signals-icon-size-2\":0,\"signals-blink-2\":false,\"signals-horz-2\":0,\"signals-vert-2\":0,\"signals-hide-edit-2\":false,\"lc-type\":\"last-change\",\"lc-is-interval\":true,\"lc-is-moment\":false,\"lc-format\":\"\",\"lc-position-vert\":\"top\",\"lc-position-horz\":\"right\",\"lc-offset-vert\":0,\"lc-offset-horz\":0,\"lc-font-size\":\"12px\",\"lc-font-family\":\"\",\"lc-font-style\":\"\",\"lc-bkg-color\":\"\",\"lc-color\":\"\",\"lc-border-width\":\"0\",\"lc-border-style\":\"\",\"lc-border-color\":\"\",\"lc-border-radius\":10,\"lc-zindex\":0},\"style\":{\"left\":\"487px\",\"top\":\"604px\"},\"widgetSet\":\"spotify-premium\"}]</code></pre></div>\n</details>\n<details>\n  <summary>Play previous track<br><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"/ohle64/ioBroker.spotify-premium/blob/master/docs/en/img/previous.png\"><img src=\"/ohle64/ioBroker.spotify-premium/raw/master/docs/en/img/previous.png\" style=\"max-width: 100%;\"></a></summary>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"[{&quot;tpl&quot;:&quot;tplSpotifyPreviousButton&quot;,&quot;data&quot;:{&quot;g_fixed&quot;:false,&quot;g_visibility&quot;:false,&quot;g_css_font_text&quot;:false,&quot;g_css_background&quot;:false,&quot;g_css_shadow_padding&quot;:false,&quot;g_css_border&quot;:false,&quot;g_gestures&quot;:false,&quot;g_signals&quot;:false,&quot;g_last_change&quot;:false,&quot;visibility-cond&quot;:&quot;==&quot;,&quot;visibility-val&quot;:1,&quot;visibility-groups-action&quot;:&quot;hide&quot;,&quot;oid&quot;:&quot;spotify-premium.0.player.skipMinus&quot;,&quot;colorbox&quot;:&quot;green&quot;,&quot;signals-cond-0&quot;:&quot;==&quot;,&quot;signals-val-0&quot;:true,&quot;signals-icon-0&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-0&quot;:0,&quot;signals-blink-0&quot;:false,&quot;signals-horz-0&quot;:0,&quot;signals-vert-0&quot;:0,&quot;signals-hide-edit-0&quot;:false,&quot;signals-cond-1&quot;:&quot;==&quot;,&quot;signals-val-1&quot;:true,&quot;signals-icon-1&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-1&quot;:0,&quot;signals-blink-1&quot;:false,&quot;signals-horz-1&quot;:0,&quot;signals-vert-1&quot;:0,&quot;signals-hide-edit-1&quot;:false,&quot;signals-cond-2&quot;:&quot;==&quot;,&quot;signals-val-2&quot;:true,&quot;signals-icon-2&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-2&quot;:0,&quot;signals-blink-2&quot;:false,&quot;signals-horz-2&quot;:0,&quot;signals-vert-2&quot;:0,&quot;signals-hide-edit-2&quot;:false,&quot;lc-type&quot;:&quot;last-change&quot;,&quot;lc-is-interval&quot;:true,&quot;lc-is-moment&quot;:false,&quot;lc-format&quot;:&quot;&quot;,&quot;lc-position-vert&quot;:&quot;top&quot;,&quot;lc-position-horz&quot;:&quot;right&quot;,&quot;lc-offset-vert&quot;:0,&quot;lc-offset-horz&quot;:0,&quot;lc-font-size&quot;:&quot;12px&quot;,&quot;lc-font-family&quot;:&quot;&quot;,&quot;lc-font-style&quot;:&quot;&quot;,&quot;lc-bkg-color&quot;:&quot;&quot;,&quot;lc-color&quot;:&quot;&quot;,&quot;lc-border-width&quot;:&quot;0&quot;,&quot;lc-border-style&quot;:&quot;&quot;,&quot;lc-border-color&quot;:&quot;&quot;,&quot;lc-border-radius&quot;:10,&quot;lc-zindex&quot;:0},&quot;style&quot;:{&quot;left&quot;:&quot;386px&quot;,&quot;top&quot;:&quot;604px&quot;},&quot;widgetSet&quot;:&quot;spotify-premium&quot;}]\"><pre class=\"notranslate\"><code>[{\"tpl\":\"tplSpotifyPreviousButton\",\"data\":{\"g_fixed\":false,\"g_visibility\":false,\"g_css_font_text\":false,\"g_css_background\":false,\"g_css_shadow_padding\":false,\"g_css_border\":false,\"g_gestures\":false,\"g_signals\":false,\"g_last_change\":false,\"visibility-cond\":\"==\",\"visibility-val\":1,\"visibility-groups-action\":\"hide\",\"oid\":\"spotify-premium.0.player.skipMinus\",\"colorbox\":\"green\",\"signals-cond-0\":\"==\",\"signals-val-0\":true,\"signals-icon-0\":\"/vis/signals/lowbattery.png\",\"signals-icon-size-0\":0,\"signals-blink-0\":false,\"signals-horz-0\":0,\"signals-vert-0\":0,\"signals-hide-edit-0\":false,\"signals-cond-1\":\"==\",\"signals-val-1\":true,\"signals-icon-1\":\"/vis/signals/lowbattery.png\",\"signals-icon-size-1\":0,\"signals-blink-1\":false,\"signals-horz-1\":0,\"signals-vert-1\":0,\"signals-hide-edit-1\":false,\"signals-cond-2\":\"==\",\"signals-val-2\":true,\"signals-icon-2\":\"/vis/signals/lowbattery.png\",\"signals-icon-size-2\":0,\"signals-blink-2\":false,\"signals-horz-2\":0,\"signals-vert-2\":0,\"signals-hide-edit-2\":false,\"lc-type\":\"last-change\",\"lc-is-interval\":true,\"lc-is-moment\":false,\"lc-format\":\"\",\"lc-position-vert\":\"top\",\"lc-position-horz\":\"right\",\"lc-offset-vert\":0,\"lc-offset-horz\":0,\"lc-font-size\":\"12px\",\"lc-font-family\":\"\",\"lc-font-style\":\"\",\"lc-bkg-color\":\"\",\"lc-color\":\"\",\"lc-border-width\":\"0\",\"lc-border-style\":\"\",\"lc-border-color\":\"\",\"lc-border-radius\":10,\"lc-zindex\":0},\"style\":{\"left\":\"386px\",\"top\":\"604px\"},\"widgetSet\":\"spotify-premium\"}]</code></pre></div>\n</details>\n<details>\n  <summary>Play next track<br><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"/ohle64/ioBroker.spotify-premium/blob/master/docs/en/img/next.png\"><img src=\"/ohle64/ioBroker.spotify-premium/raw/master/docs/en/img/next.png\" style=\"max-width: 100%;\"></a></summary>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"[{&quot;tpl&quot;:&quot;tplSpotifyNextButton&quot;,&quot;data&quot;:{&quot;g_fixed&quot;:false,&quot;g_visibility&quot;:false,&quot;g_css_font_text&quot;:false,&quot;g_css_background&quot;:false,&quot;g_css_shadow_padding&quot;:false,&quot;g_css_border&quot;:false,&quot;g_gestures&quot;:false,&quot;g_signals&quot;:false,&quot;g_last_change&quot;:false,&quot;visibility-cond&quot;:&quot;==&quot;,&quot;visibility-val&quot;:1,&quot;visibility-groups-action&quot;:&quot;hide&quot;,&quot;oid&quot;:&quot;spotify-premium.0.player.skipPlus&quot;,&quot;colorbox&quot;:&quot;green&quot;,&quot;signals-cond-0&quot;:&quot;==&quot;,&quot;signals-val-0&quot;:true,&quot;signals-icon-0&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-0&quot;:0,&quot;signals-blink-0&quot;:false,&quot;signals-horz-0&quot;:0,&quot;signals-vert-0&quot;:0,&quot;signals-hide-edit-0&quot;:false,&quot;signals-cond-1&quot;:&quot;==&quot;,&quot;signals-val-1&quot;:true,&quot;signals-icon-1&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-1&quot;:0,&quot;signals-blink-1&quot;:false,&quot;signals-horz-1&quot;:0,&quot;signals-vert-1&quot;:0,&quot;signals-hide-edit-1&quot;:false,&quot;signals-cond-2&quot;:&quot;==&quot;,&quot;signals-val-2&quot;:true,&quot;signals-icon-2&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-2&quot;:0,&quot;signals-blink-2&quot;:false,&quot;signals-horz-2&quot;:0,&quot;signals-vert-2&quot;:0,&quot;signals-hide-edit-2&quot;:false,&quot;lc-type&quot;:&quot;last-change&quot;,&quot;lc-is-interval&quot;:true,&quot;lc-is-moment&quot;:false,&quot;lc-format&quot;:&quot;&quot;,&quot;lc-position-vert&quot;:&quot;top&quot;,&quot;lc-position-horz&quot;:&quot;right&quot;,&quot;lc-offset-vert&quot;:0,&quot;lc-offset-horz&quot;:0,&quot;lc-font-size&quot;:&quot;12px&quot;,&quot;lc-font-family&quot;:&quot;&quot;,&quot;lc-font-style&quot;:&quot;&quot;,&quot;lc-bkg-color&quot;:&quot;&quot;,&quot;lc-color&quot;:&quot;&quot;,&quot;lc-border-width&quot;:&quot;0&quot;,&quot;lc-border-style&quot;:&quot;&quot;,&quot;lc-border-color&quot;:&quot;&quot;,&quot;lc-border-radius&quot;:10,&quot;lc-zindex&quot;:0},&quot;style&quot;:{&quot;left&quot;:&quot;588px&quot;,&quot;top&quot;:&quot;604px&quot;},&quot;widgetSet&quot;:&quot;spotify-premium&quot;}]\"><pre class=\"notranslate\"><code>[{\"tpl\":\"tplSpotifyNextButton\",\"data\":{\"g_fixed\":false,\"g_visibility\":false,\"g_css_font_text\":false,\"g_css_background\":false,\"g_css_shadow_padding\":false,\"g_css_border\":false,\"g_gestures\":false,\"g_signals\":false,\"g_last_change\":false,\"visibility-cond\":\"==\",\"visibility-val\":1,\"visibility-groups-action\":\"hide\",\"oid\":\"spotify-premium.0.player.skipPlus\",\"colorbox\":\"green\",\"signals-cond-0\":\"==\",\"signals-val-0\":true,\"signals-icon-0\":\"/vis/signals/lowbattery.png\",\"signals-icon-size-0\":0,\"signals-blink-0\":false,\"signals-horz-0\":0,\"signals-vert-0\":0,\"signals-hide-edit-0\":false,\"signals-cond-1\":\"==\",\"signals-val-1\":true,\"signals-icon-1\":\"/vis/signals/lowbattery.png\",\"signals-icon-size-1\":0,\"signals-blink-1\":false,\"signals-horz-1\":0,\"signals-vert-1\":0,\"signals-hide-edit-1\":false,\"signals-cond-2\":\"==\",\"signals-val-2\":true,\"signals-icon-2\":\"/vis/signals/lowbattery.png\",\"signals-icon-size-2\":0,\"signals-blink-2\":false,\"signals-horz-2\":0,\"signals-vert-2\":0,\"signals-hide-edit-2\":false,\"lc-type\":\"last-change\",\"lc-is-interval\":true,\"lc-is-moment\":false,\"lc-format\":\"\",\"lc-position-vert\":\"top\",\"lc-position-horz\":\"right\",\"lc-offset-vert\":0,\"lc-offset-horz\":0,\"lc-font-size\":\"12px\",\"lc-font-family\":\"\",\"lc-font-style\":\"\",\"lc-bkg-color\":\"\",\"lc-color\":\"\",\"lc-border-width\":\"0\",\"lc-border-style\":\"\",\"lc-border-color\":\"\",\"lc-border-radius\":10,\"lc-zindex\":0},\"style\":{\"left\":\"588px\",\"top\":\"604px\"},\"widgetSet\":\"spotify-premium\"}]</code></pre></div>\n</details>\n<details>\n  <summary>Control repeat<br><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"/ohle64/ioBroker.spotify-premium/blob/master/docs/en/img/repeat.gif\"><img src=\"/ohle64/ioBroker.spotify-premium/raw/master/docs/en/img/repeat.gif\" data-animated-image=\"\" style=\"max-width: 100%;\"></a></summary>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"[{&quot;tpl&quot;:&quot;tplSpotifyRepeatButton&quot;,&quot;data&quot;:{&quot;g_fixed&quot;:false,&quot;g_visibility&quot;:false,&quot;g_css_font_text&quot;:false,&quot;g_css_background&quot;:false,&quot;g_css_shadow_padding&quot;:false,&quot;g_css_border&quot;:false,&quot;g_gestures&quot;:false,&quot;g_signals&quot;:false,&quot;g_last_change&quot;:false,&quot;visibility-cond&quot;:&quot;==&quot;,&quot;visibility-val&quot;:1,&quot;visibility-groups-action&quot;:&quot;hide&quot;,&quot;oidall&quot;:&quot;spotify-premium.0.player.repeatContext&quot;,&quot;oidoff&quot;:&quot;spotify-premium.0.player.repeatOff&quot;,&quot;oidone&quot;:&quot;spotify-premium.0.player.repeatTrack&quot;,&quot;oidstate&quot;:&quot;spotify-premium.0.player.repeat&quot;,&quot;coloroff&quot;:&quot;white&quot;,&quot;colorall&quot;:&quot;green&quot;,&quot;colorone&quot;:&quot;green&quot;,&quot;signals-cond-0&quot;:&quot;==&quot;,&quot;signals-val-0&quot;:true,&quot;signals-icon-0&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-0&quot;:0,&quot;signals-blink-0&quot;:false,&quot;signals-horz-0&quot;:0,&quot;signals-vert-0&quot;:0,&quot;signals-hide-edit-0&quot;:false,&quot;signals-cond-1&quot;:&quot;==&quot;,&quot;signals-val-1&quot;:true,&quot;signals-icon-1&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-1&quot;:0,&quot;signals-blink-1&quot;:false,&quot;signals-horz-1&quot;:0,&quot;signals-vert-1&quot;:0,&quot;signals-hide-edit-1&quot;:false,&quot;signals-cond-2&quot;:&quot;==&quot;,&quot;signals-val-2&quot;:true,&quot;signals-icon-2&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-2&quot;:0,&quot;signals-blink-2&quot;:false,&quot;signals-horz-2&quot;:0,&quot;signals-vert-2&quot;:0,&quot;signals-hide-edit-2&quot;:false,&quot;lc-type&quot;:&quot;last-change&quot;,&quot;lc-is-interval&quot;:true,&quot;lc-is-moment&quot;:false,&quot;lc-format&quot;:&quot;&quot;,&quot;lc-position-vert&quot;:&quot;top&quot;,&quot;lc-position-horz&quot;:&quot;right&quot;,&quot;lc-offset-vert&quot;:0,&quot;lc-offset-horz&quot;:0,&quot;lc-font-size&quot;:&quot;12px&quot;,&quot;lc-font-family&quot;:&quot;&quot;,&quot;lc-font-style&quot;:&quot;&quot;,&quot;lc-bkg-color&quot;:&quot;&quot;,&quot;lc-color&quot;:&quot;&quot;,&quot;lc-border-width&quot;:&quot;0&quot;,&quot;lc-border-style&quot;:&quot;&quot;,&quot;lc-border-color&quot;:&quot;&quot;,&quot;lc-border-radius&quot;:10,&quot;lc-zindex&quot;:0},&quot;style&quot;:{&quot;left&quot;:&quot;689px&quot;,&quot;top&quot;:&quot;614px&quot;,&quot;width&quot;:&quot;48px&quot;,&quot;height&quot;:&quot;56px&quot;},&quot;widgetSet&quot;:&quot;spotify-premium&quot;}]\"><pre class=\"notranslate\"><code>[{\"tpl\":\"tplSpotifyRepeatButton\",\"data\":{\"g_fixed\":false,\"g_visibility\":false,\"g_css_font_text\":false,\"g_css_background\":false,\"g_css_shadow_padding\":false,\"g_css_border\":false,\"g_gestures\":false,\"g_signals\":false,\"g_last_change\":false,\"visibility-cond\":\"==\",\"visibility-val\":1,\"visibility-groups-action\":\"hide\",\"oidall\":\"spotify-premium.0.player.repeatContext\",\"oidoff\":\"spotify-premium.0.player.repeatOff\",\"oidone\":\"spotify-premium.0.player.repeatTrack\",\"oidstate\":\"spotify-premium.0.player.repeat\",\"coloroff\":\"white\",\"colorall\":\"green\",\"colorone\":\"green\",\"signals-cond-0\":\"==\",\"signals-val-0\":true,\"signals-icon-0\":\"/vis/signals/lowbattery.png\",\"signals-icon-size-0\":0,\"signals-blink-0\":false,\"signals-horz-0\":0,\"signals-vert-0\":0,\"signals-hide-edit-0\":false,\"signals-cond-1\":\"==\",\"signals-val-1\":true,\"signals-icon-1\":\"/vis/signals/lowbattery.png\",\"signals-icon-size-1\":0,\"signals-blink-1\":false,\"signals-horz-1\":0,\"signals-vert-1\":0,\"signals-hide-edit-1\":false,\"signals-cond-2\":\"==\",\"signals-val-2\":true,\"signals-icon-2\":\"/vis/signals/lowbattery.png\",\"signals-icon-size-2\":0,\"signals-blink-2\":false,\"signals-horz-2\":0,\"signals-vert-2\":0,\"signals-hide-edit-2\":false,\"lc-type\":\"last-change\",\"lc-is-interval\":true,\"lc-is-moment\":false,\"lc-format\":\"\",\"lc-position-vert\":\"top\",\"lc-position-horz\":\"right\",\"lc-offset-vert\":0,\"lc-offset-horz\":0,\"lc-font-size\":\"12px\",\"lc-font-family\":\"\",\"lc-font-style\":\"\",\"lc-bkg-color\":\"\",\"lc-color\":\"\",\"lc-border-width\":\"0\",\"lc-border-style\":\"\",\"lc-border-color\":\"\",\"lc-border-radius\":10,\"lc-zindex\":0},\"style\":{\"left\":\"689px\",\"top\":\"614px\",\"width\":\"48px\",\"height\":\"56px\"},\"widgetSet\":\"spotify-premium\"}]</code></pre></div>\n</details>\n<details>\n  <summary>Control shuffle<br><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"/ohle64/ioBroker.spotify-premium/blob/master/docs/en/img/shuffle.gif\"><img src=\"/ohle64/ioBroker.spotify-premium/raw/master/docs/en/img/shuffle.gif\" data-animated-image=\"\" style=\"max-width: 100%;\"></a></summary>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"[{&quot;tpl&quot;:&quot;tplSpotifyShuffleButton&quot;,&quot;data&quot;:{&quot;g_fixed&quot;:false,&quot;g_visibility&quot;:false,&quot;g_css_font_text&quot;:false,&quot;g_css_background&quot;:false,&quot;g_css_shadow_padding&quot;:false,&quot;g_css_border&quot;:false,&quot;g_gestures&quot;:false,&quot;g_signals&quot;:false,&quot;g_last_change&quot;:false,&quot;visibility-cond&quot;:&quot;==&quot;,&quot;visibility-val&quot;:1,&quot;visibility-groups-action&quot;:&quot;hide&quot;,&quot;oidon&quot;:&quot;spotify-premium.0.player.shuffleOn&quot;,&quot;oidoff&quot;:&quot;spotify-premium.0.player.shuffleOff&quot;,&quot;oidstate&quot;:&quot;spotify-premium.0.player.shuffle&quot;,&quot;coloroff&quot;:&quot;white&quot;,&quot;coloron&quot;:&quot;green&quot;,&quot;signals-cond-0&quot;:&quot;==&quot;,&quot;signals-val-0&quot;:true,&quot;signals-icon-0&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-0&quot;:0,&quot;signals-blink-0&quot;:false,&quot;signals-horz-0&quot;:0,&quot;signals-vert-0&quot;:0,&quot;signals-hide-edit-0&quot;:false,&quot;signals-cond-1&quot;:&quot;==&quot;,&quot;signals-val-1&quot;:true,&quot;signals-icon-1&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-1&quot;:0,&quot;signals-blink-1&quot;:false,&quot;signals-horz-1&quot;:0,&quot;signals-vert-1&quot;:0,&quot;signals-hide-edit-1&quot;:false,&quot;signals-cond-2&quot;:&quot;==&quot;,&quot;signals-val-2&quot;:true,&quot;signals-icon-2&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-2&quot;:0,&quot;signals-blink-2&quot;:false,&quot;signals-horz-2&quot;:0,&quot;signals-vert-2&quot;:0,&quot;signals-hide-edit-2&quot;:false,&quot;lc-type&quot;:&quot;last-change&quot;,&quot;lc-is-interval&quot;:true,&quot;lc-is-moment&quot;:false,&quot;lc-format&quot;:&quot;&quot;,&quot;lc-position-vert&quot;:&quot;top&quot;,&quot;lc-position-horz&quot;:&quot;right&quot;,&quot;lc-offset-vert&quot;:0,&quot;lc-offset-horz&quot;:0,&quot;lc-font-size&quot;:&quot;12px&quot;,&quot;lc-font-family&quot;:&quot;&quot;,&quot;lc-font-style&quot;:&quot;&quot;,&quot;lc-bkg-color&quot;:&quot;&quot;,&quot;lc-color&quot;:&quot;&quot;,&quot;lc-border-width&quot;:&quot;0&quot;,&quot;lc-border-style&quot;:&quot;&quot;,&quot;lc-border-color&quot;:&quot;&quot;,&quot;lc-border-radius&quot;:10,&quot;lc-zindex&quot;:0},&quot;style&quot;:{&quot;left&quot;:&quot;319px&quot;,&quot;top&quot;:&quot;622px&quot;,&quot;width&quot;:&quot;38px&quot;,&quot;height&quot;:&quot;40px&quot;},&quot;widgetSet&quot;:&quot;spotify-premium&quot;}]\"><pre class=\"notranslate\"><code>[{\"tpl\":\"tplSpotifyShuffleButton\",\"data\":{\"g_fixed\":false,\"g_visibility\":false,\"g_css_font_text\":false,\"g_css_background\":false,\"g_css_shadow_padding\":false,\"g_css_border\":false,\"g_gestures\":false,\"g_signals\":false,\"g_last_change\":false,\"visibility-cond\":\"==\",\"visibility-val\":1,\"visibility-groups-action\":\"hide\",\"oidon\":\"spotify-premium.0.player.shuffleOn\",\"oidoff\":\"spotify-premium.0.player.shuffleOff\",\"oidstate\":\"spotify-premium.0.player.shuffle\",\"coloroff\":\"white\",\"coloron\":\"green\",\"signals-cond-0\":\"==\",\"signals-val-0\":true,\"signals-icon-0\":\"/vis/signals/lowbattery.png\",\"signals-icon-size-0\":0,\"signals-blink-0\":false,\"signals-horz-0\":0,\"signals-vert-0\":0,\"signals-hide-edit-0\":false,\"signals-cond-1\":\"==\",\"signals-val-1\":true,\"signals-icon-1\":\"/vis/signals/lowbattery.png\",\"signals-icon-size-1\":0,\"signals-blink-1\":false,\"signals-horz-1\":0,\"signals-vert-1\":0,\"signals-hide-edit-1\":false,\"signals-cond-2\":\"==\",\"signals-val-2\":true,\"signals-icon-2\":\"/vis/signals/lowbattery.png\",\"signals-icon-size-2\":0,\"signals-blink-2\":false,\"signals-horz-2\":0,\"signals-vert-2\":0,\"signals-hide-edit-2\":false,\"lc-type\":\"last-change\",\"lc-is-interval\":true,\"lc-is-moment\":false,\"lc-format\":\"\",\"lc-position-vert\":\"top\",\"lc-position-horz\":\"right\",\"lc-offset-vert\":0,\"lc-offset-horz\":0,\"lc-font-size\":\"12px\",\"lc-font-family\":\"\",\"lc-font-style\":\"\",\"lc-bkg-color\":\"\",\"lc-color\":\"\",\"lc-border-width\":\"0\",\"lc-border-style\":\"\",\"lc-border-color\":\"\",\"lc-border-radius\":10,\"lc-zindex\":0},\"style\":{\"left\":\"319px\",\"top\":\"622px\",\"width\":\"38px\",\"height\":\"40px\"},\"widgetSet\":\"spotify-premium\"}]</code></pre></div>\n</details>\n<details>\n  <summary>Context image<br><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"/ohle64/ioBroker.spotify-premium/blob/master/docs/en/img/context_image.png\"><img src=\"/ohle64/ioBroker.spotify-premium/raw/master/docs/en/img/context_image.png\" style=\"max-width: 100%;\"></a></summary>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"[{&quot;tpl&quot;:&quot;tplValueStringImg&quot;,&quot;data&quot;:{&quot;oid&quot;:&quot;spotify-premium.0.player.contextImageUrl&quot;,&quot;g_fixed&quot;:false,&quot;g_visibility&quot;:false,&quot;g_css_font_text&quot;:false,&quot;g_css_background&quot;:false,&quot;g_css_shadow_padding&quot;:false,&quot;g_css_border&quot;:false,&quot;g_gestures&quot;:false,&quot;g_signals&quot;:false,&quot;g_last_change&quot;:false,&quot;visibility-cond&quot;:&quot;==&quot;,&quot;visibility-val&quot;:1,&quot;visibility-groups-action&quot;:&quot;hide&quot;,&quot;refreshInterval&quot;:&quot;0&quot;,&quot;signals-cond-0&quot;:&quot;==&quot;,&quot;signals-val-0&quot;:true,&quot;signals-icon-0&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-0&quot;:0,&quot;signals-blink-0&quot;:false,&quot;signals-horz-0&quot;:0,&quot;signals-vert-0&quot;:0,&quot;signals-hide-edit-0&quot;:false,&quot;signals-cond-1&quot;:&quot;==&quot;,&quot;signals-val-1&quot;:true,&quot;signals-icon-1&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-1&quot;:0,&quot;signals-blink-1&quot;:false,&quot;signals-horz-1&quot;:0,&quot;signals-vert-1&quot;:0,&quot;signals-hide-edit-1&quot;:false,&quot;signals-cond-2&quot;:&quot;==&quot;,&quot;signals-val-2&quot;:true,&quot;signals-icon-2&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-2&quot;:0,&quot;signals-blink-2&quot;:false,&quot;signals-horz-2&quot;:0,&quot;signals-vert-2&quot;:0,&quot;signals-hide-edit-2&quot;:false,&quot;lc-type&quot;:&quot;last-change&quot;,&quot;lc-is-interval&quot;:true,&quot;lc-is-moment&quot;:false,&quot;lc-format&quot;:&quot;&quot;,&quot;lc-position-vert&quot;:&quot;top&quot;,&quot;lc-position-horz&quot;:&quot;right&quot;,&quot;lc-offset-vert&quot;:0,&quot;lc-offset-horz&quot;:0,&quot;lc-font-size&quot;:&quot;12px&quot;,&quot;lc-font-family&quot;:&quot;&quot;,&quot;lc-font-style&quot;:&quot;&quot;,&quot;lc-bkg-color&quot;:&quot;&quot;,&quot;lc-color&quot;:&quot;&quot;,&quot;lc-border-width&quot;:&quot;0&quot;,&quot;lc-border-style&quot;:&quot;&quot;,&quot;lc-border-color&quot;:&quot;&quot;,&quot;lc-border-radius&quot;:10,&quot;lc-zindex&quot;:0},&quot;style&quot;:{&quot;left&quot;:&quot;338px&quot;,&quot;top&quot;:&quot;131px&quot;,&quot;width&quot;:&quot;122px&quot;,&quot;height&quot;:&quot;122px&quot;},&quot;widgetSet&quot;:&quot;basic&quot;}]\"><pre class=\"notranslate\"><code>[{\"tpl\":\"tplValueStringImg\",\"data\":{\"oid\":\"spotify-premium.0.player.contextImageUrl\",\"g_fixed\":false,\"g_visibility\":false,\"g_css_font_text\":false,\"g_css_background\":false,\"g_css_shadow_padding\":false,\"g_css_border\":false,\"g_gestures\":false,\"g_signals\":false,\"g_last_change\":false,\"visibility-cond\":\"==\",\"visibility-val\":1,\"visibility-groups-action\":\"hide\",\"refreshInterval\":\"0\",\"signals-cond-0\":\"==\",\"signals-val-0\":true,\"signals-icon-0\":\"/vis/signals/lowbattery.png\",\"signals-icon-size-0\":0,\"signals-blink-0\":false,\"signals-horz-0\":0,\"signals-vert-0\":0,\"signals-hide-edit-0\":false,\"signals-cond-1\":\"==\",\"signals-val-1\":true,\"signals-icon-1\":\"/vis/signals/lowbattery.png\",\"signals-icon-size-1\":0,\"signals-blink-1\":false,\"signals-horz-1\":0,\"signals-vert-1\":0,\"signals-hide-edit-1\":false,\"signals-cond-2\":\"==\",\"signals-val-2\":true,\"signals-icon-2\":\"/vis/signals/lowbattery.png\",\"signals-icon-size-2\":0,\"signals-blink-2\":false,\"signals-horz-2\":0,\"signals-vert-2\":0,\"signals-hide-edit-2\":false,\"lc-type\":\"last-change\",\"lc-is-interval\":true,\"lc-is-moment\":false,\"lc-format\":\"\",\"lc-position-vert\":\"top\",\"lc-position-horz\":\"right\",\"lc-offset-vert\":0,\"lc-offset-horz\":0,\"lc-font-size\":\"12px\",\"lc-font-family\":\"\",\"lc-font-style\":\"\",\"lc-bkg-color\":\"\",\"lc-color\":\"\",\"lc-border-width\":\"0\",\"lc-border-style\":\"\",\"lc-border-color\":\"\",\"lc-border-radius\":10,\"lc-zindex\":0},\"style\":{\"left\":\"338px\",\"top\":\"131px\",\"width\":\"122px\",\"height\":\"122px\"},\"widgetSet\":\"basic\"}]</code></pre></div>\n</details>\n<details>\n  <summary>Choose track of current playlist<br><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"/ohle64/ioBroker.spotify-premium/blob/master/docs/en/img/choose_track.gif\"><img src=\"/ohle64/ioBroker.spotify-premium/raw/master/docs/en/img/choose_track.gif\" data-animated-image=\"\" style=\"max-width: 100%;\"></a></summary>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"[{&quot;tpl&quot;:&quot;tplJquiSelectList&quot;,&quot;data&quot;:{&quot;oid&quot;:&quot;spotify-premium.0.player.playlist.trackList&quot;,&quot;g_fixed&quot;:false,&quot;g_visibility&quot;:false,&quot;g_css_font_text&quot;:false,&quot;g_css_background&quot;:false,&quot;g_css_shadow_padding&quot;:false,&quot;g_css_border&quot;:false,&quot;g_gestures&quot;:false,&quot;g_signals&quot;:false,&quot;g_last_change&quot;:false,&quot;visibility-cond&quot;:&quot;==&quot;,&quot;visibility-val&quot;:1,&quot;visibility-groups-action&quot;:&quot;hide&quot;,&quot;values&quot;:&quot;{spotify-premium.0.player.playlist.trackListNumber}&quot;,&quot;texts&quot;:&quot;{spotify-premium.0.player.playlist.trackListString}&quot;,&quot;height&quot;:&quot;100&quot;,&quot;signals-cond-0&quot;:&quot;==&quot;,&quot;signals-val-0&quot;:true,&quot;signals-icon-0&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-0&quot;:0,&quot;signals-blink-0&quot;:false,&quot;signals-horz-0&quot;:0,&quot;signals-vert-0&quot;:0,&quot;signals-hide-edit-0&quot;:false,&quot;signals-cond-1&quot;:&quot;==&quot;,&quot;signals-val-1&quot;:true,&quot;signals-icon-1&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-1&quot;:0,&quot;signals-blink-1&quot;:false,&quot;signals-horz-1&quot;:0,&quot;signals-vert-1&quot;:0,&quot;signals-hide-edit-1&quot;:false,&quot;signals-cond-2&quot;:&quot;==&quot;,&quot;signals-val-2&quot;:true,&quot;signals-icon-2&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-2&quot;:0,&quot;signals-blink-2&quot;:false,&quot;signals-horz-2&quot;:0,&quot;signals-vert-2&quot;:0,&quot;signals-hide-edit-2&quot;:false,&quot;lc-type&quot;:&quot;last-change&quot;,&quot;lc-is-interval&quot;:true,&quot;lc-is-moment&quot;:false,&quot;lc-format&quot;:&quot;&quot;,&quot;lc-position-vert&quot;:&quot;top&quot;,&quot;lc-position-horz&quot;:&quot;right&quot;,&quot;lc-offset-vert&quot;:0,&quot;lc-offset-horz&quot;:0,&quot;lc-font-size&quot;:&quot;12px&quot;,&quot;lc-font-family&quot;:&quot;&quot;,&quot;lc-font-style&quot;:&quot;&quot;,&quot;lc-bkg-color&quot;:&quot;&quot;,&quot;lc-color&quot;:&quot;&quot;,&quot;lc-border-width&quot;:&quot;0&quot;,&quot;lc-border-style&quot;:&quot;&quot;,&quot;lc-border-color&quot;:&quot;&quot;,&quot;lc-border-radius&quot;:10,&quot;lc-zindex&quot;:0},&quot;style&quot;:{&quot;left&quot;:&quot;505px&quot;,&quot;top&quot;:&quot;369px&quot;},&quot;widgetSet&quot;:&quot;jqui&quot;}]\"><pre class=\"notranslate\"><code>[{\"tpl\":\"tplJquiSelectList\",\"data\":{\"oid\":\"spotify-premium.0.player.playlist.trackList\",\"g_fixed\":false,\"g_visibility\":false,\"g_css_font_text\":false,\"g_css_background\":false,\"g_css_shadow_padding\":false,\"g_css_border\":false,\"g_gestures\":false,\"g_signals\":false,\"g_last_change\":false,\"visibility-cond\":\"==\",\"visibility-val\":1,\"visibility-groups-action\":\"hide\",\"values\":\"{spotify-premium.0.player.playlist.trackListNumber}\",\"texts\":\"{spotify-premium.0.player.playlist.trackListString}\",\"height\":\"100\",\"signals-cond-0\":\"==\",\"signals-val-0\":true,\"signals-icon-0\":\"/vis/signals/lowbattery.png\",\"signals-icon-size-0\":0,\"signals-blink-0\":false,\"signals-horz-0\":0,\"signals-vert-0\":0,\"signals-hide-edit-0\":false,\"signals-cond-1\":\"==\",\"signals-val-1\":true,\"signals-icon-1\":\"/vis/signals/lowbattery.png\",\"signals-icon-size-1\":0,\"signals-blink-1\":false,\"signals-horz-1\":0,\"signals-vert-1\":0,\"signals-hide-edit-1\":false,\"signals-cond-2\":\"==\",\"signals-val-2\":true,\"signals-icon-2\":\"/vis/signals/lowbattery.png\",\"signals-icon-size-2\":0,\"signals-blink-2\":false,\"signals-horz-2\":0,\"signals-vert-2\":0,\"signals-hide-edit-2\":false,\"lc-type\":\"last-change\",\"lc-is-interval\":true,\"lc-is-moment\":false,\"lc-format\":\"\",\"lc-position-vert\":\"top\",\"lc-position-horz\":\"right\",\"lc-offset-vert\":0,\"lc-offset-horz\":0,\"lc-font-size\":\"12px\",\"lc-font-family\":\"\",\"lc-font-style\":\"\",\"lc-bkg-color\":\"\",\"lc-color\":\"\",\"lc-border-width\":\"0\",\"lc-border-style\":\"\",\"lc-border-color\":\"\",\"lc-border-radius\":10,\"lc-zindex\":0},\"style\":{\"left\":\"505px\",\"top\":\"369px\"},\"widgetSet\":\"jqui\"}]</code></pre></div>\n</details>\n<details>\n  <summary>Switch device<br><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"/ohle64/ioBroker.spotify-premium/blob/master/docs/en/img/choose_device.gif\"><img src=\"/ohle64/ioBroker.spotify-premium/raw/master/docs/en/img/choose_device.gif\" data-animated-image=\"\" style=\"max-width: 100%;\"></a></summary>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"[{&quot;tpl&quot;:&quot;tplJquiSelectList&quot;,&quot;data&quot;:{&quot;oid&quot;:&quot;spotify-premium.0.devices.deviceList&quot;,&quot;g_fixed&quot;:false,&quot;g_visibility&quot;:false,&quot;g_css_font_text&quot;:false,&quot;g_css_background&quot;:false,&quot;g_css_shadow_padding&quot;:false,&quot;g_css_border&quot;:false,&quot;g_gestures&quot;:false,&quot;g_signals&quot;:false,&quot;g_last_change&quot;:false,&quot;visibility-cond&quot;:&quot;==&quot;,&quot;visibility-val&quot;:1,&quot;visibility-groups-action&quot;:&quot;hide&quot;,&quot;values&quot;:&quot;{spotify-premium.0.devices.availableDeviceListIds}&quot;,&quot;texts&quot;:&quot;{spotify-premium.0.devices.availableDeviceListString}&quot;,&quot;height&quot;:&quot;100&quot;,&quot;signals-cond-0&quot;:&quot;==&quot;,&quot;signals-val-0&quot;:true,&quot;signals-icon-0&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-0&quot;:0,&quot;signals-blink-0&quot;:false,&quot;signals-horz-0&quot;:0,&quot;signals-vert-0&quot;:0,&quot;signals-hide-edit-0&quot;:false,&quot;signals-cond-1&quot;:&quot;==&quot;,&quot;signals-val-1&quot;:true,&quot;signals-icon-1&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-1&quot;:0,&quot;signals-blink-1&quot;:false,&quot;signals-horz-1&quot;:0,&quot;signals-vert-1&quot;:0,&quot;signals-hide-edit-1&quot;:false,&quot;signals-cond-2&quot;:&quot;==&quot;,&quot;signals-val-2&quot;:true,&quot;signals-icon-2&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-2&quot;:0,&quot;signals-blink-2&quot;:false,&quot;signals-horz-2&quot;:0,&quot;signals-vert-2&quot;:0,&quot;signals-hide-edit-2&quot;:false,&quot;lc-type&quot;:&quot;last-change&quot;,&quot;lc-is-interval&quot;:true,&quot;lc-is-moment&quot;:false,&quot;lc-format&quot;:&quot;&quot;,&quot;lc-position-vert&quot;:&quot;top&quot;,&quot;lc-position-horz&quot;:&quot;right&quot;,&quot;lc-offset-vert&quot;:0,&quot;lc-offset-horz&quot;:0,&quot;lc-font-size&quot;:&quot;12px&quot;,&quot;lc-font-family&quot;:&quot;&quot;,&quot;lc-font-style&quot;:&quot;&quot;,&quot;lc-bkg-color&quot;:&quot;&quot;,&quot;lc-color&quot;:&quot;&quot;,&quot;lc-border-width&quot;:&quot;0&quot;,&quot;lc-border-style&quot;:&quot;&quot;,&quot;lc-border-color&quot;:&quot;&quot;,&quot;lc-border-radius&quot;:10,&quot;lc-zindex&quot;:0},&quot;style&quot;:{&quot;left&quot;:&quot;578px&quot;,&quot;top&quot;:&quot;378px&quot;},&quot;widgetSet&quot;:&quot;jqui&quot;}]\"><pre class=\"notranslate\"><code>[{\"tpl\":\"tplJquiSelectList\",\"data\":{\"oid\":\"spotify-premium.0.devices.deviceList\",\"g_fixed\":false,\"g_visibility\":false,\"g_css_font_text\":false,\"g_css_background\":false,\"g_css_shadow_padding\":false,\"g_css_border\":false,\"g_gestures\":false,\"g_signals\":false,\"g_last_change\":false,\"visibility-cond\":\"==\",\"visibility-val\":1,\"visibility-groups-action\":\"hide\",\"values\":\"{spotify-premium.0.devices.availableDeviceListIds}\",\"texts\":\"{spotify-premium.0.devices.availableDeviceListString}\",\"height\":\"100\",\"signals-cond-0\":\"==\",\"signals-val-0\":true,\"signals-icon-0\":\"/vis/signals/lowbattery.png\",\"signals-icon-size-0\":0,\"signals-blink-0\":false,\"signals-horz-0\":0,\"signals-vert-0\":0,\"signals-hide-edit-0\":false,\"signals-cond-1\":\"==\",\"signals-val-1\":true,\"signals-icon-1\":\"/vis/signals/lowbattery.png\",\"signals-icon-size-1\":0,\"signals-blink-1\":false,\"signals-horz-1\":0,\"signals-vert-1\":0,\"signals-hide-edit-1\":false,\"signals-cond-2\":\"==\",\"signals-val-2\":true,\"signals-icon-2\":\"/vis/signals/lowbattery.png\",\"signals-icon-size-2\":0,\"signals-blink-2\":false,\"signals-horz-2\":0,\"signals-vert-2\":0,\"signals-hide-edit-2\":false,\"lc-type\":\"last-change\",\"lc-is-interval\":true,\"lc-is-moment\":false,\"lc-format\":\"\",\"lc-position-vert\":\"top\",\"lc-position-horz\":\"right\",\"lc-offset-vert\":0,\"lc-offset-horz\":0,\"lc-font-size\":\"12px\",\"lc-font-family\":\"\",\"lc-font-style\":\"\",\"lc-bkg-color\":\"\",\"lc-color\":\"\",\"lc-border-width\":\"0\",\"lc-border-style\":\"\",\"lc-border-color\":\"\",\"lc-border-radius\":10,\"lc-zindex\":0},\"style\":{\"left\":\"578px\",\"top\":\"378px\"},\"widgetSet\":\"jqui\"}]</code></pre></div>\n</details>\n<details>\n  <summary>Switch playlist<br><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"/ohle64/ioBroker.spotify-premium/blob/master/docs/en/img/choose_playlist.gif\"><img src=\"/ohle64/ioBroker.spotify-premium/raw/master/docs/en/img/choose_playlist.gif\" data-animated-image=\"\" style=\"max-width: 100%;\"></a></summary>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"[{&quot;tpl&quot;:&quot;tplJquiSelectList&quot;,&quot;data&quot;:{&quot;oid&quot;:&quot;spotify-premium.0.playlists.playlistList&quot;,&quot;g_fixed&quot;:false,&quot;g_visibility&quot;:false,&quot;g_css_font_text&quot;:false,&quot;g_css_background&quot;:false,&quot;g_css_shadow_padding&quot;:false,&quot;g_css_border&quot;:false,&quot;g_gestures&quot;:false,&quot;g_signals&quot;:false,&quot;g_last_change&quot;:false,&quot;visibility-cond&quot;:&quot;==&quot;,&quot;visibility-val&quot;:1,&quot;visibility-groups-action&quot;:&quot;hide&quot;,&quot;values&quot;:&quot;{spotify-premium.0.playlists.playlistListIds}&quot;,&quot;texts&quot;:&quot;{spotify-premium.0.playlists.playlistListString}&quot;,&quot;height&quot;:&quot;100&quot;,&quot;signals-cond-0&quot;:&quot;==&quot;,&quot;signals-val-0&quot;:true,&quot;signals-icon-0&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-0&quot;:0,&quot;signals-blink-0&quot;:false,&quot;signals-horz-0&quot;:0,&quot;signals-vert-0&quot;:0,&quot;signals-hide-edit-0&quot;:false,&quot;signals-cond-1&quot;:&quot;==&quot;,&quot;signals-val-1&quot;:true,&quot;signals-icon-1&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-1&quot;:0,&quot;signals-blink-1&quot;:false,&quot;signals-horz-1&quot;:0,&quot;signals-vert-1&quot;:0,&quot;signals-hide-edit-1&quot;:false,&quot;signals-cond-2&quot;:&quot;==&quot;,&quot;signals-val-2&quot;:true,&quot;signals-icon-2&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-2&quot;:0,&quot;signals-blink-2&quot;:false,&quot;signals-horz-2&quot;:0,&quot;signals-vert-2&quot;:0,&quot;signals-hide-edit-2&quot;:false,&quot;lc-type&quot;:&quot;last-change&quot;,&quot;lc-is-interval&quot;:true,&quot;lc-is-moment&quot;:false,&quot;lc-format&quot;:&quot;&quot;,&quot;lc-position-vert&quot;:&quot;top&quot;,&quot;lc-position-horz&quot;:&quot;right&quot;,&quot;lc-offset-vert&quot;:0,&quot;lc-offset-horz&quot;:0,&quot;lc-font-size&quot;:&quot;12px&quot;,&quot;lc-font-family&quot;:&quot;&quot;,&quot;lc-font-style&quot;:&quot;&quot;,&quot;lc-bkg-color&quot;:&quot;&quot;,&quot;lc-color&quot;:&quot;&quot;,&quot;lc-border-width&quot;:&quot;0&quot;,&quot;lc-border-style&quot;:&quot;&quot;,&quot;lc-border-color&quot;:&quot;&quot;,&quot;lc-border-radius&quot;:10,&quot;lc-zindex&quot;:0},&quot;style&quot;:{&quot;left&quot;:&quot;571px&quot;,&quot;top&quot;:&quot;509px&quot;},&quot;widgetSet&quot;:&quot;jqui&quot;}]\"><pre class=\"notranslate\"><code>[{\"tpl\":\"tplJquiSelectList\",\"data\":{\"oid\":\"spotify-premium.0.playlists.playlistList\",\"g_fixed\":false,\"g_visibility\":false,\"g_css_font_text\":false,\"g_css_background\":false,\"g_css_shadow_padding\":false,\"g_css_border\":false,\"g_gestures\":false,\"g_signals\":false,\"g_last_change\":false,\"visibility-cond\":\"==\",\"visibility-val\":1,\"visibility-groups-action\":\"hide\",\"values\":\"{spotify-premium.0.playlists.playlistListIds}\",\"texts\":\"{spotify-premium.0.playlists.playlistListString}\",\"height\":\"100\",\"signals-cond-0\":\"==\",\"signals-val-0\":true,\"signals-icon-0\":\"/vis/signals/lowbattery.png\",\"signals-icon-size-0\":0,\"signals-blink-0\":false,\"signals-horz-0\":0,\"signals-vert-0\":0,\"signals-hide-edit-0\":false,\"signals-cond-1\":\"==\",\"signals-val-1\":true,\"signals-icon-1\":\"/vis/signals/lowbattery.png\",\"signals-icon-size-1\":0,\"signals-blink-1\":false,\"signals-horz-1\":0,\"signals-vert-1\":0,\"signals-hide-edit-1\":false,\"signals-cond-2\":\"==\",\"signals-val-2\":true,\"signals-icon-2\":\"/vis/signals/lowbattery.png\",\"signals-icon-size-2\":0,\"signals-blink-2\":false,\"signals-horz-2\":0,\"signals-vert-2\":0,\"signals-hide-edit-2\":false,\"lc-type\":\"last-change\",\"lc-is-interval\":true,\"lc-is-moment\":false,\"lc-format\":\"\",\"lc-position-vert\":\"top\",\"lc-position-horz\":\"right\",\"lc-offset-vert\":0,\"lc-offset-horz\":0,\"lc-font-size\":\"12px\",\"lc-font-family\":\"\",\"lc-font-style\":\"\",\"lc-bkg-color\":\"\",\"lc-color\":\"\",\"lc-border-width\":\"0\",\"lc-border-style\":\"\",\"lc-border-color\":\"\",\"lc-border-radius\":10,\"lc-zindex\":0},\"style\":{\"left\":\"571px\",\"top\":\"509px\"},\"widgetSet\":\"jqui\"}]</code></pre></div>\n</details>\n\n<h2 tabindex=\"-1\" id=\"user-content-changelog\" dir=\"auto\"><a class=\"heading-link\" href=\"#changelog\">Changelog<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h2>\n<h3 tabindex=\"-1\" id=\"user-content-222-2023-10-30\" dir=\"auto\"><a class=\"heading-link\" href=\"#222-2023-10-30\">2.2.2 (2023-10-30)<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<ul dir=\"auto\">\n<li>(ohle64) many changes with playlist, album, shows(episodes), collection (like tracks)</li>\n<li>(ohle64) prevent to many requests - use snapshot_id for playlist-refresh</li>\n<li>(ohle64) repair timer-functions (add play-polling, non-play-polling to prevent request)</li>\n<li>(ohle64) add some buttons: refresh current playlist(only currently playing), getShows, getAlbums, getCollection, check Track in collection, refresh application cache for playlists</li>\n<li>(ohle64) visualisation of playlist_found, playlist_notFound, requests/min</li>\n<li>(ohle64) catch err 408 geo location</li>\n</ul>\n<h3 tabindex=\"-1\" id=\"user-content-122-2022-06-17\" dir=\"auto\"><a class=\"heading-link\" href=\"#122-2022-06-17\">1.2.2 (2022-06-17)<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<ul dir=\"auto\">\n<li>(Apollon77) Fix potential crash cases reported by Sentry</li>\n<li>(Apollon77) Optimize adapter stop behaviour</li>\n</ul>\n<h3 tabindex=\"-1\" id=\"user-content-121-2022-05-12\" dir=\"auto\"><a class=\"heading-link\" href=\"#121-2022-05-12\">1.2.1 (2022-05-12)<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<ul dir=\"auto\">\n<li>(Apollon77) Prevent js-controller warnings</li>\n</ul>\n<h3 tabindex=\"-1\" id=\"user-content-120-2022-05-11\" dir=\"auto\"><a class=\"heading-link\" href=\"#120-2022-05-11\">1.2.0 (2022-05-11)<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<ul dir=\"auto\">\n<li>(duczz) Fix tracklist request issues</li>\n<li>(Apollon77) Fix several potential crash cases and object warnings</li>\n<li>(Apollon77) Add Sentry for crash reporting</li>\n</ul>\n<h3 tabindex=\"-1\" id=\"user-content-119-2021-11-21\" dir=\"auto\"><a class=\"heading-link\" href=\"#119-2021-11-21\">1.1.9 (2021-11-21)<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<ul dir=\"auto\">\n<li>(bluefox) Tried to catch 403 error</li>\n</ul>\n<h3 tabindex=\"-1\" id=\"user-content-118-2021-11-18\" dir=\"auto\"><a class=\"heading-link\" href=\"#118-2021-11-18\">1.1.8 (2021-11-18)<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<ul dir=\"auto\">\n<li>(ohle64) Fixed the shuffle behaviour</li>\n<li>(bluefox) Allowed to set the default shuffle value</li>\n<li>(bluefox) The type of trackNo corrected</li>\n</ul>\n<h3 tabindex=\"-1\" id=\"user-content-114-2021-11-17\" dir=\"auto\"><a class=\"heading-link\" href=\"#114-2021-11-17\">1.1.4 (2021-11-17)<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<ul dir=\"auto\">\n<li>(bluefox) Fix errors</li>\n</ul>\n<h3 tabindex=\"-1\" id=\"user-content-113-2021-07-22\" dir=\"auto\"><a class=\"heading-link\" href=\"#113-2021-07-22\">1.1.3 (2021-07-22)<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<ul dir=\"auto\">\n<li>(bluefox) Improved authorization process</li>\n</ul>\n<h3 tabindex=\"-1\" id=\"user-content-111-2021-07-22\" dir=\"auto\"><a class=\"heading-link\" href=\"#111-2021-07-22\">1.1.1 (2021-07-22)<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<ul dir=\"auto\">\n<li>(bluefox) removed warnings for js-controller 3.x</li>\n</ul>\n<h3 tabindex=\"-1\" id=\"user-content-110-in-dev\" dir=\"auto\"><a class=\"heading-link\" href=\"#110-in-dev\">1.1.0 (in dev)<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<ul dir=\"auto\">\n<li>IMPORTANT: js-controller 2.0.0 is now required at least</li>\n<li>(twonky) added control widgets</li>\n<li>(twonky) added compact mode</li>\n<li>(Apollon77) Core Files/Testing Update and introduce adapter-core</li>\n<li>(twonky) added state <code>player.playUri</code> to support user defined input</li>\n<li>(Apollon77) Fix js-controller 3.3 warnings</li>\n<li>(Xyolyp) Listen on <code>player.volume</code> instead of player.device.volume as the latter is readonly</li>\n<li>(bellerG) fix player.playUri</li>\n</ul>\n<h3 tabindex=\"-1\" id=\"user-content-100-20181218\" dir=\"auto\"><a class=\"heading-link\" href=\"#100-20181218\">1.0.0 (2018.12.18)<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<ul dir=\"auto\">\n<li>(twonky) <code>playbackInfo</code> and <code>player</code> merged together to <code>player</code></li>\n<li>(twonky) <code>player.volume</code> moved to <code>player.device.volume</code></li>\n<li>(twonky) The <code>duration</code> format of <code>player.playlist.trackListArray</code> and <code>playlists.[playListName].trackListArray</code> was changed from milliseconds to time (MM:SS) and a new one was created for this <code>durationMs</code>.</li>\n<li>(twonky) The <code>album</code> of <code>player.playlist.trackListArray</code> and <code>playlists.[playListName].trackListArray</code> was changed to <code>artistName</code> and <code>artistArray</code>.</li>\n<li>(twonky) Several data was added to <code>player.playlist.trackListArray</code> and <code>playlists.[playListName].trackListArray</code>: <code>album</code>, <code>addedAt</code>, <code>addedBy</code>, <code>discNumber</code>, <code>episode</code>, <code>explicit</code> and <code>popularity</code></li>\n<li>(twonky) change <code>player.playlist.trackNo</code> to start with 1 (0-based before)</li>\n<li>(twonky) performance optimization (states/objects are only set on change)</li>\n<li>(twonky) html lists added: <code>html.devices</code>, <code>html.playlists</code> and <code>html.tracks</code></li>\n<li>(twonky) new icons</li>\n</ul>\n<h3 tabindex=\"-1\" id=\"user-content-031-20180620\" dir=\"auto\"><a class=\"heading-link\" href=\"#031-20180620\">0.3.1 (2018.06.20)<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<ul dir=\"auto\">\n<li>(twonky) Fix: state playlists.playlistList doesn't refresh after the playlist changed via app</li>\n</ul>\n<h3 tabindex=\"-1\" id=\"user-content-030-20180531\" dir=\"auto\"><a class=\"heading-link\" href=\"#030-20180531\">0.3.0 (2018.05.31)<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<ul dir=\"auto\">\n<li>(twonky) Change playlist and device state names from name to id</li>\n<li>(twonky) New states for device selection: <code>devices.deviceList</code>, <code>devices.deviceListIds</code>, <code>devices.deviceListString</code>, <code>devices.availableDeviceListIds</code>, <code>devices.availableDeviceListString</code></li>\n<li>(twonky) New states for playlist selection: <code>playlists.playlistList</code>, <code>playlists.playlistListIds</code>, <code>playlists.playlistListString</code>, <code>playlists.yourPlaylistListIds</code>, <code>playlists.yourPlaylistListString</code></li>\n<li>(twonky) Add option to avoid shuffle state reset on some devices after starting a playlist</li>\n</ul>\n<h3 tabindex=\"-1\" id=\"user-content-025-20180524\" dir=\"auto\"><a class=\"heading-link\" href=\"#025-20180524\">0.2.5 (2018.05.24)<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<ul dir=\"auto\">\n<li>(twonky) Fix: <code>playlists.YourPlaylistName.playThisList</code> starts always with second track</li>\n</ul>\n<h3 tabindex=\"-1\" id=\"user-content-024-20180517\" dir=\"auto\"><a class=\"heading-link\" href=\"#024-20180517\">0.2.4 (2018.05.17)<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<ul dir=\"auto\">\n<li>(twonky) remove special character (\"'*) from device and playlist state names</li>\n</ul>\n<h3 tabindex=\"-1\" id=\"user-content-023-20180517\" dir=\"auto\"><a class=\"heading-link\" href=\"#023-20180517\">0.2.3 (2018.05.17)<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<ul dir=\"auto\">\n<li>(twonky) remove special character (,?[]) from device and playlist state names</li>\n</ul>\n<h3 tabindex=\"-1\" id=\"user-content-022-20180516\" dir=\"auto\"><a class=\"heading-link\" href=\"#022-20180516\">0.2.2 (2018.05.16)<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<ul dir=\"auto\">\n<li>(twonky) <code>playbackInfo.playlist.track*</code> States are only reset when changed; stop flickering of tracks SelectList (example \"Choose track of current playlist\")</li>\n</ul>\n<h3 tabindex=\"-1\" id=\"user-content-021-20180514\" dir=\"auto\"><a class=\"heading-link\" href=\"#021-20180514\">0.2.1 (2018.05.14)<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<ul dir=\"auto\">\n<li>(twonky) change state <code>player.shuffle</code> to string with possible values \"on\" and \"off\"</li>\n</ul>\n<h3 tabindex=\"-1\" id=\"user-content-020-20180513\" dir=\"auto\"><a class=\"heading-link\" href=\"#020-20180513\">0.2.0 (2018.05.13)<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<ul dir=\"auto\">\n<li>(twonky) removed support for deprecated state <code>PlaybackInfo.image_url</code></li>\n<li>(twonky) all states improved and proper descriptions added</li>\n</ul>\n<h3 tabindex=\"-1\" id=\"user-content-013-20180428\" dir=\"auto\"><a class=\"heading-link\" href=\"#013-20180428\">0.1.3 (2018.04.28)<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<ul dir=\"auto\">\n<li>(twonky) fix spotify api change</li>\n</ul>\n<h3 tabindex=\"-1\" id=\"user-content-012-20180410\" dir=\"auto\"><a class=\"heading-link\" href=\"#012-20180410\">0.1.2 (2018.04.10)<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<ul dir=\"auto\">\n<li>(twonky) automatic updating of devices and playlists (configurable in the adapter)</li>\n<li>(twonky) new state <code>Devices.DEVICE.is_available</code> indicates if a device is available</li>\n<li>(twonky) shows warning message http 202 only as debug and only one time</li>\n<li>(twonky) the States <code>Player.Shuffle</code>,<code> Player.Playlist_ID</code>, <code>Player.TrackId</code> and<code> Player.Volume</code> also show the current value</li>\n<li>(twonky) new states <code>Playlists.PLAYLISTNAME.image_url</code>,<code> PlaybackInfo.Playlist_image_url</code>, <code>PlaybackInfo.Album_image_url</code></li>\n<li>(twonky) marks the state <code>PlaybackInfo.image_url</code> as deprecated. Will not be included in a new installation and will not be updated in future versions</li>\n<li>(twonky) changing the State <code>Playlists.PLAYLISTNAME.Track_ID</code> now works like in Lucky's script</li>\n</ul>\n<h3 tabindex=\"-1\" id=\"user-content-011-20180303\" dir=\"auto\"><a class=\"heading-link\" href=\"#011-20180303\">0.1.1 (2018.03.03)<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<ul dir=\"auto\">\n<li>(twonky) fix several small issues</li>\n</ul>\n<h3 tabindex=\"-1\" id=\"user-content-010-20180223\" dir=\"auto\"><a class=\"heading-link\" href=\"#010-20180223\">0.1.0 (2018.02.23)<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<ul dir=\"auto\">\n<li>(twonky) rework api polling mechanism</li>\n</ul>\n<h3 tabindex=\"-1\" id=\"user-content-009-20180221\" dir=\"auto\"><a class=\"heading-link\" href=\"#009-20180221\">0.0.9 (2018.02.21)<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<ul dir=\"auto\">\n<li>(twonky) new state <code>PlaybackInfo.repeat</code> with possible values: off, context, track</li>\n<li>(twonky) new state <code>PlaybackInfo.shuffle</code> with possible values: true, false</li>\n<li>(twonky) states for the playing device will also updated in 5s intervals</li>\n<li>(twonky) states in <code>PlaybackInfo</code> are now updated also if no device is active playing</li>\n<li>(twonky) states in <code>PlaybackInfo</code> are now cleared if no device is available</li>\n<li>(twonky) loading new playlists if playing the first time</li>\n</ul>\n<h3 tabindex=\"-1\" id=\"user-content-008-20180220\" dir=\"auto\"><a class=\"heading-link\" href=\"#008-20180220\">0.0.8 (2018.02.20)<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<ul dir=\"auto\">\n<li>(twonky) new adapter option to delete no longer existing devices and playlists</li>\n<li>(twonky) load complete playlists (limitation of 100 first tracks was removed)</li>\n</ul>\n<h3 tabindex=\"-1\" id=\"user-content-007-20180216\" dir=\"auto\"><a class=\"heading-link\" href=\"#007-20180216\">0.0.7 (2018.02.16)<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<ul dir=\"auto\">\n<li>(twonky) fix: auto refresh token</li>\n</ul>\n<h3 tabindex=\"-1\" id=\"user-content-006-20180216\" dir=\"auto\"><a class=\"heading-link\" href=\"#006-20180216\">0.0.6 (2018.02.16)<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<ul dir=\"auto\">\n<li>(twonky) fix: playlist loading</li>\n</ul>\n<h3 tabindex=\"-1\" id=\"user-content-005-20180216\" dir=\"auto\"><a class=\"heading-link\" href=\"#005-20180216\">0.0.5 (2018.02.16)<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<ul dir=\"auto\">\n<li>(twonky) fix: fatal error if no open player</li>\n</ul>\n<h3 tabindex=\"-1\" id=\"user-content-004-20180216\" dir=\"auto\"><a class=\"heading-link\" href=\"#004-20180216\">0.0.4 (2018.02.16)<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<ul dir=\"auto\">\n<li>(twonky) check configuration</li>\n<li>(twonky) fix: adapter configuration in admin2</li>\n<li>(twonky) fix: restart after authorization need</li>\n</ul>\n<h3 tabindex=\"-1\" id=\"user-content-003-20180215\" dir=\"auto\"><a class=\"heading-link\" href=\"#003-20180215\">0.0.3 (2018.02.15)<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<ul dir=\"auto\">\n<li>(wendy2702) improved manual</li>\n</ul>\n<h3 tabindex=\"-1\" id=\"user-content-002-20180211\" dir=\"auto\"><a class=\"heading-link\" href=\"#002-20180211\">0.0.2 (2018.02.11)<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<ul dir=\"auto\">\n<li>(twonky) merge original script v0.5.3 by <a href=\"http://forum.iobroker.net/viewtopic.php?f=21&amp;t=8173\" rel=\"nofollow\">Lucky</a></li>\n</ul>\n<h3 tabindex=\"-1\" id=\"user-content-001-20180207\" dir=\"auto\"><a class=\"heading-link\" href=\"#001-20180207\">0.0.1 (2018.02.07)<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h3>\n<ul dir=\"auto\">\n<li>(twonky) initial adapter, original script v0.5.1 by <a href=\"http://forum.iobroker.net/viewtopic.php?f=21&amp;t=8173\" rel=\"nofollow\">Lucky</a></li>\n</ul>\n<h2 tabindex=\"-1\" id=\"user-content-license\" dir=\"auto\"><a class=\"heading-link\" href=\"#license\">License<svg class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"></path></svg></a></h2>\n<p dir=\"auto\">The MIT License (MIT)</p>\n<p dir=\"auto\">Copyright (c) 2019-2022 Alexander Kose <a href=\"mailto:twonky4@gmx.de\">twonky4@gmx.de</a></p>\n<p dir=\"auto\">Permission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:</p>\n<p dir=\"auto\">The above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.</p>\n<p dir=\"auto\">THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.</p>\n</article>","renderedFileInfo":null,"shortPath":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"ohle64","repoName":"ioBroker.spotify-premium","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":null,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":false,"symbols":[{"name":" ioBroker.spotify-premium","kind":"section_1","identStart":36,"identEnd":61,"extentStart":35,"extentEnd":28386,"fullyQualifiedName":" ioBroker.spotify-premium","identUtf16":{"start":{"lineNumber":1,"utf16Col":1},"end":{"lineNumber":1,"utf16Col":26}},"extentUtf16":{"start":{"lineNumber":1,"utf16Col":0},"end":{"lineNumber":251,"utf16Col":0}}},{"name":" Documentation","kind":"section_2","identStart":1301,"identEnd":1315,"extentStart":1299,"extentEnd":20738,"fullyQualifiedName":" Documentation","identUtf16":{"start":{"lineNumber":17,"utf16Col":2},"end":{"lineNumber":17,"utf16Col":16}},"extentUtf16":{"start":{"lineNumber":17,"utf16Col":0},"end":{"lineNumber":90,"utf16Col":0}}},{"name":" Setup / Authorization","kind":"section_3","identStart":1404,"identEnd":1426,"extentStart":1401,"extentEnd":2550,"fullyQualifiedName":" Setup / Authorization","identUtf16":{"start":{"lineNumber":20,"utf16Col":3},"end":{"lineNumber":20,"utf16Col":25}},"extentUtf16":{"start":{"lineNumber":20,"utf16Col":0},"end":{"lineNumber":36,"utf16Col":0}}},{"name":" [Video tutorial](https://www.youtube.com/watch?v=n0m9201qABU)","kind":"section_4","identStart":2327,"identEnd":2389,"extentStart":2323,"extentEnd":2550,"fullyQualifiedName":" [Video tutorial](https://www.youtube.com/watch?v=n0m9201qABU)","identUtf16":{"start":{"lineNumber":33,"utf16Col":4},"end":{"lineNumber":33,"utf16Col":66}},"extentUtf16":{"start":{"lineNumber":33,"utf16Col":0},"end":{"lineNumber":36,"utf16Col":0}}},{"name":" States","kind":"section_3","identStart":2553,"identEnd":2560,"extentStart":2550,"extentEnd":2597,"fullyQualifiedName":" States","identUtf16":{"start":{"lineNumber":36,"utf16Col":3},"end":{"lineNumber":36,"utf16Col":10}},"extentUtf16":{"start":{"lineNumber":36,"utf16Col":0},"end":{"lineNumber":39,"utf16Col":0}}},{"name":" VIS usage examples","kind":"section_3","identStart":2600,"identEnd":2619,"extentStart":2597,"extentEnd":20738,"fullyQualifiedName":" VIS usage examples","identUtf16":{"start":{"lineNumber":39,"utf16Col":3},"end":{"lineNumber":39,"utf16Col":22}},"extentUtf16":{"start":{"lineNumber":39,"utf16Col":0},"end":{"lineNumber":90,"utf16Col":0}}},{"name":" Changelog","kind":"section_2","identStart":20740,"identEnd":20750,"extentStart":20738,"extentEnd":27272,"fullyQualifiedName":" Changelog","identUtf16":{"start":{"lineNumber":90,"utf16Col":2},"end":{"lineNumber":90,"utf16Col":12}},"extentUtf16":{"start":{"lineNumber":90,"utf16Col":0},"end":{"lineNumber":229,"utf16Col":0}}},{"name":" 2.2.2 (2023-10-30)","kind":"section_3","identStart":20754,"identEnd":20773,"extentStart":20751,"extentEnd":21323,"fullyQualifiedName":" 2.2.2 (2023-10-30)","identUtf16":{"start":{"lineNumber":91,"utf16Col":3},"end":{"lineNumber":91,"utf16Col":22}},"extentUtf16":{"start":{"lineNumber":91,"utf16Col":0},"end":{"lineNumber":98,"utf16Col":0}}},{"name":" 1.2.2 (2022-06-17)","kind":"section_3","identStart":21326,"identEnd":21345,"extentStart":21323,"extentEnd":21452,"fullyQualifiedName":" 1.2.2 (2022-06-17)","identUtf16":{"start":{"lineNumber":98,"utf16Col":3},"end":{"lineNumber":98,"utf16Col":22}},"extentUtf16":{"start":{"lineNumber":98,"utf16Col":0},"end":{"lineNumber":102,"utf16Col":0}}},{"name":" 1.2.1 (2022-05-12)","kind":"section_3","identStart":21455,"identEnd":21474,"extentStart":21452,"extentEnd":21521,"fullyQualifiedName":" 1.2.1 (2022-05-12)","identUtf16":{"start":{"lineNumber":102,"utf16Col":3},"end":{"lineNumber":102,"utf16Col":22}},"extentUtf16":{"start":{"lineNumber":102,"utf16Col":0},"end":{"lineNumber":105,"utf16Col":0}}},{"name":" 1.2.0 (2022-05-11)","kind":"section_3","identStart":21524,"identEnd":21543,"extentStart":21521,"extentEnd":21697,"fullyQualifiedName":" 1.2.0 (2022-05-11)","identUtf16":{"start":{"lineNumber":105,"utf16Col":3},"end":{"lineNumber":105,"utf16Col":22}},"extentUtf16":{"start":{"lineNumber":105,"utf16Col":0},"end":{"lineNumber":110,"utf16Col":0}}},{"name":" 1.1.9 (2021-11-21)","kind":"section_3","identStart":21700,"identEnd":21719,"extentStart":21697,"extentEnd":21758,"fullyQualifiedName":" 1.1.9 (2021-11-21)","identUtf16":{"start":{"lineNumber":110,"utf16Col":3},"end":{"lineNumber":110,"utf16Col":22}},"extentUtf16":{"start":{"lineNumber":110,"utf16Col":0},"end":{"lineNumber":113,"utf16Col":0}}},{"name":" 1.1.8 (2021-11-18)","kind":"section_3","identStart":21761,"identEnd":21780,"extentStart":21758,"extentEnd":21917,"fullyQualifiedName":" 1.1.8 (2021-11-18)","identUtf16":{"start":{"lineNumber":113,"utf16Col":3},"end":{"lineNumber":113,"utf16Col":22}},"extentUtf16":{"start":{"lineNumber":113,"utf16Col":0},"end":{"lineNumber":118,"utf16Col":0}}},{"name":" 1.1.4 (2021-11-17)","kind":"section_3","identStart":21920,"identEnd":21939,"extentStart":21917,"extentEnd":21964,"fullyQualifiedName":" 1.1.4 (2021-11-17)","identUtf16":{"start":{"lineNumber":118,"utf16Col":3},"end":{"lineNumber":118,"utf16Col":22}},"extentUtf16":{"start":{"lineNumber":118,"utf16Col":0},"end":{"lineNumber":121,"utf16Col":0}}},{"name":" 1.1.3 (2021-07-22)","kind":"section_3","identStart":21967,"identEnd":21986,"extentStart":21964,"extentEnd":22031,"fullyQualifiedName":" 1.1.3 (2021-07-22)","identUtf16":{"start":{"lineNumber":121,"utf16Col":3},"end":{"lineNumber":121,"utf16Col":22}},"extentUtf16":{"start":{"lineNumber":121,"utf16Col":0},"end":{"lineNumber":124,"utf16Col":0}}},{"name":" 1.1.1 (2021-07-22)","kind":"section_3","identStart":22034,"identEnd":22053,"extentStart":22031,"extentEnd":22106,"fullyQualifiedName":" 1.1.1 (2021-07-22)","identUtf16":{"start":{"lineNumber":124,"utf16Col":3},"end":{"lineNumber":124,"utf16Col":22}},"extentUtf16":{"start":{"lineNumber":124,"utf16Col":0},"end":{"lineNumber":127,"utf16Col":0}}},{"name":" 1.1.0 (in dev)","kind":"section_3","identStart":22109,"identEnd":22124,"extentStart":22106,"extentEnd":22555,"fullyQualifiedName":" 1.1.0 (in dev)","identUtf16":{"start":{"lineNumber":127,"utf16Col":3},"end":{"lineNumber":127,"utf16Col":18}},"extentUtf16":{"start":{"lineNumber":127,"utf16Col":0},"end":{"lineNumber":137,"utf16Col":0}}},{"name":" 1.0.0 (2018.12.18)","kind":"section_3","identStart":22558,"identEnd":22577,"extentStart":22555,"extentEnd":23522,"fullyQualifiedName":" 1.0.0 (2018.12.18)","identUtf16":{"start":{"lineNumber":137,"utf16Col":3},"end":{"lineNumber":137,"utf16Col":22}},"extentUtf16":{"start":{"lineNumber":137,"utf16Col":0},"end":{"lineNumber":148,"utf16Col":0}}},{"name":" 0.3.1 (2018.06.20)","kind":"section_3","identStart":23525,"identEnd":23544,"extentStart":23522,"extentEnd":23642,"fullyQualifiedName":" 0.3.1 (2018.06.20)","identUtf16":{"start":{"lineNumber":148,"utf16Col":3},"end":{"lineNumber":148,"utf16Col":22}},"extentUtf16":{"start":{"lineNumber":148,"utf16Col":0},"end":{"lineNumber":151,"utf16Col":0}}},{"name":" 0.3.0 (2018.05.31)","kind":"section_3","identStart":23645,"identEnd":23664,"extentStart":23642,"extentEnd":24215,"fullyQualifiedName":" 0.3.0 (2018.05.31)","identUtf16":{"start":{"lineNumber":151,"utf16Col":3},"end":{"lineNumber":151,"utf16Col":22}},"extentUtf16":{"start":{"lineNumber":151,"utf16Col":0},"end":{"lineNumber":157,"utf16Col":0}}},{"name":" 0.2.5 (2018.05.24)","kind":"section_3","identStart":24218,"identEnd":24237,"extentStart":24215,"extentEnd":24329,"fullyQualifiedName":" 0.2.5 (2018.05.24)","identUtf16":{"start":{"lineNumber":157,"utf16Col":3},"end":{"lineNumber":157,"utf16Col":22}},"extentUtf16":{"start":{"lineNumber":157,"utf16Col":0},"end":{"lineNumber":160,"utf16Col":0}}},{"name":" 0.2.4 (2018.05.17)","kind":"section_3","identStart":24332,"identEnd":24351,"extentStart":24329,"extentEnd":24432,"fullyQualifiedName":" 0.2.4 (2018.05.17)","identUtf16":{"start":{"lineNumber":160,"utf16Col":3},"end":{"lineNumber":160,"utf16Col":22}},"extentUtf16":{"start":{"lineNumber":160,"utf16Col":0},"end":{"lineNumber":163,"utf16Col":0}}},{"name":" 0.2.3 (2018.05.17)","kind":"section_3","identStart":24435,"identEnd":24454,"extentStart":24432,"extentEnd":24536,"fullyQualifiedName":" 0.2.3 (2018.05.17)","identUtf16":{"start":{"lineNumber":163,"utf16Col":3},"end":{"lineNumber":163,"utf16Col":22}},"extentUtf16":{"start":{"lineNumber":163,"utf16Col":0},"end":{"lineNumber":166,"utf16Col":0}}},{"name":" 0.2.2 (2018.05.16)","kind":"section_3","identStart":24539,"identEnd":24558,"extentStart":24536,"extentEnd":24720,"fullyQualifiedName":" 0.2.2 (2018.05.16)","identUtf16":{"start":{"lineNumber":166,"utf16Col":3},"end":{"lineNumber":166,"utf16Col":22}},"extentUtf16":{"start":{"lineNumber":166,"utf16Col":0},"end":{"lineNumber":169,"utf16Col":0}}},{"name":" 0.2.1 (2018.05.14)","kind":"section_3","identStart":24723,"identEnd":24742,"extentStart":24720,"extentEnd":24831,"fullyQualifiedName":" 0.2.1 (2018.05.14)","identUtf16":{"start":{"lineNumber":169,"utf16Col":3},"end":{"lineNumber":169,"utf16Col":22}},"extentUtf16":{"start":{"lineNumber":169,"utf16Col":0},"end":{"lineNumber":172,"utf16Col":0}}},{"name":" 0.2.0 (2018.05.13)","kind":"section_3","identStart":24834,"identEnd":24853,"extentStart":24831,"extentEnd":24989,"fullyQualifiedName":" 0.2.0 (2018.05.13)","identUtf16":{"start":{"lineNumber":172,"utf16Col":3},"end":{"lineNumber":172,"utf16Col":22}},"extentUtf16":{"start":{"lineNumber":172,"utf16Col":0},"end":{"lineNumber":176,"utf16Col":0}}},{"name":" 0.1.3 (2018.04.28)","kind":"section_3","identStart":24992,"identEnd":25011,"extentStart":24989,"extentEnd":25047,"fullyQualifiedName":" 0.1.3 (2018.04.28)","identUtf16":{"start":{"lineNumber":176,"utf16Col":3},"end":{"lineNumber":176,"utf16Col":22}},"extentUtf16":{"start":{"lineNumber":176,"utf16Col":0},"end":{"lineNumber":179,"utf16Col":0}}},{"name":" 0.1.2 (2018.04.10)","kind":"section_3","identStart":25050,"identEnd":25069,"extentStart":25047,"extentEnd":25817,"fullyQualifiedName":" 0.1.2 (2018.04.10)","identUtf16":{"start":{"lineNumber":179,"utf16Col":3},"end":{"lineNumber":179,"utf16Col":22}},"extentUtf16":{"start":{"lineNumber":179,"utf16Col":0},"end":{"lineNumber":188,"utf16Col":0}}},{"name":" 0.1.1 (2018.03.03)","kind":"section_3","identStart":25820,"identEnd":25839,"extentStart":25817,"extentEnd":25877,"fullyQualifiedName":" 0.1.1 (2018.03.03)","identUtf16":{"start":{"lineNumber":188,"utf16Col":3},"end":{"lineNumber":188,"utf16Col":22}},"extentUtf16":{"start":{"lineNumber":188,"utf16Col":0},"end":{"lineNumber":191,"utf16Col":0}}},{"name":" 0.1.0 (2018.02.23)","kind":"section_3","identStart":25880,"identEnd":25899,"extentStart":25877,"extentEnd":25941,"fullyQualifiedName":" 0.1.0 (2018.02.23)","identUtf16":{"start":{"lineNumber":191,"utf16Col":3},"end":{"lineNumber":191,"utf16Col":22}},"extentUtf16":{"start":{"lineNumber":191,"utf16Col":0},"end":{"lineNumber":194,"utf16Col":0}}},{"name":" 0.0.9 (2018.02.21)","kind":"section_3","identStart":25944,"identEnd":25963,"extentStart":25941,"extentEnd":26428,"fullyQualifiedName":" 0.0.9 (2018.02.21)","identUtf16":{"start":{"lineNumber":194,"utf16Col":3},"end":{"lineNumber":194,"utf16Col":22}},"extentUtf16":{"start":{"lineNumber":194,"utf16Col":0},"end":{"lineNumber":202,"utf16Col":0}}},{"name":" 0.0.8 (2018.02.20)","kind":"section_3","identStart":26431,"identEnd":26450,"extentStart":26428,"extentEnd":26613,"fullyQualifiedName":" 0.0.8 (2018.02.20)","identUtf16":{"start":{"lineNumber":202,"utf16Col":3},"end":{"lineNumber":202,"utf16Col":22}},"extentUtf16":{"start":{"lineNumber":202,"utf16Col":0},"end":{"lineNumber":206,"utf16Col":0}}},{"name":" 0.0.7 (2018.02.16)","kind":"section_3","identStart":26616,"identEnd":26635,"extentStart":26613,"extentEnd":26672,"fullyQualifiedName":" 0.0.7 (2018.02.16)","identUtf16":{"start":{"lineNumber":206,"utf16Col":3},"end":{"lineNumber":206,"utf16Col":22}},"extentUtf16":{"start":{"lineNumber":206,"utf16Col":0},"end":{"lineNumber":209,"utf16Col":0}}},{"name":" 0.0.6 (2018.02.16)","kind":"section_3","identStart":26675,"identEnd":26694,"extentStart":26672,"extentEnd":26729,"fullyQualifiedName":" 0.0.6 (2018.02.16)","identUtf16":{"start":{"lineNumber":209,"utf16Col":3},"end":{"lineNumber":209,"utf16Col":22}},"extentUtf16":{"start":{"lineNumber":209,"utf16Col":0},"end":{"lineNumber":212,"utf16Col":0}}},{"name":" 0.0.5 (2018.02.16)","kind":"section_3","identStart":26732,"identEnd":26751,"extentStart":26729,"extentEnd":26799,"fullyQualifiedName":" 0.0.5 (2018.02.16)","identUtf16":{"start":{"lineNumber":212,"utf16Col":3},"end":{"lineNumber":212,"utf16Col":22}},"extentUtf16":{"start":{"lineNumber":212,"utf16Col":0},"end":{"lineNumber":215,"utf16Col":0}}},{"name":" 0.0.4 (2018.02.16)","kind":"section_3","identStart":26802,"identEnd":26821,"extentStart":26799,"extentEnd":26951,"fullyQualifiedName":" 0.0.4 (2018.02.16)","identUtf16":{"start":{"lineNumber":215,"utf16Col":3},"end":{"lineNumber":215,"utf16Col":22}},"extentUtf16":{"start":{"lineNumber":215,"utf16Col":0},"end":{"lineNumber":220,"utf16Col":0}}},{"name":" 0.0.3 (2018.02.15)","kind":"section_3","identStart":26954,"identEnd":26973,"extentStart":26951,"extentEnd":27005,"fullyQualifiedName":" 0.0.3 (2018.02.15)","identUtf16":{"start":{"lineNumber":220,"utf16Col":3},"end":{"lineNumber":220,"utf16Col":22}},"extentUtf16":{"start":{"lineNumber":220,"utf16Col":0},"end":{"lineNumber":223,"utf16Col":0}}},{"name":" 0.0.2 (2018.02.11)","kind":"section_3","identStart":27008,"identEnd":27027,"extentStart":27005,"extentEnd":27133,"fullyQualifiedName":" 0.0.2 (2018.02.11)","identUtf16":{"start":{"lineNumber":223,"utf16Col":3},"end":{"lineNumber":223,"utf16Col":22}},"extentUtf16":{"start":{"lineNumber":223,"utf16Col":0},"end":{"lineNumber":226,"utf16Col":0}}},{"name":" 0.0.1 (2018.02.07)","kind":"section_3","identStart":27136,"identEnd":27155,"extentStart":27133,"extentEnd":27272,"fullyQualifiedName":" 0.0.1 (2018.02.07)","identUtf16":{"start":{"lineNumber":226,"utf16Col":3},"end":{"lineNumber":226,"utf16Col":22}},"extentUtf16":{"start":{"lineNumber":226,"utf16Col":0},"end":{"lineNumber":229,"utf16Col":0}}},{"name":" License","kind":"section_2","identStart":27274,"identEnd":27282,"extentStart":27272,"extentEnd":28386,"fullyQualifiedName":" License","identUtf16":{"start":{"lineNumber":229,"utf16Col":2},"end":{"lineNumber":229,"utf16Col":10}},"extentUtf16":{"start":{"lineNumber":229,"utf16Col":0},"end":{"lineNumber":251,"utf16Col":0}}}]}},"copilotInfo":{"documentationUrl":"https://docs.github.com/copilot/overview-of-github-copilot/about-github-copilot-for-individuals","notices":{"codeViewPopover":{"dismissed":false,"dismissPath":"/settings/dismiss-notice/code_view_copilot_popover"}},"userAccess":{"accessAllowed":false,"hasSubscriptionEnded":false,"orgHasCFBAccess":false,"userHasCFIAccess":false,"userHasOrgs":false,"userIsOrgAdmin":false,"userIsOrgMember":false,"business":null,"featureRequestInfo":null}},"copilotAccessAllowed":false,"csrf_tokens":{"/ohle64/ioBroker.spotify-premium/branches":{"post":"_zKZ9uTVBJN2tZcs9FcU2Ily6l5IQVeqtwnLOJ6cUHSVg6XCQQPFN022hsOeAn3R0MZhXedKq1q5BJDwPbNxWQ"},"/repos/preferences":{"post":"JHvppYDgv_8nliiSVSKJ-KVN7DXj-5n2B2ApzdziWDVp7RN9Xg2c4F8N88_Ysbu-8bAl38JqJA36FMRdbOTLpw"}}},"title":"ioBroker.spotify-premium/README.md at master · ohle64/ioBroker.spotify-premium"}
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" data-color-mode="auto" data-light-theme="light" data-dark-theme="dark" data-a11y-animated-images="system">
+  <head>
+    <meta charset="utf-8">
+  <link rel="dns-prefetch" href="https://github.githubassets.com">
+  <link rel="dns-prefetch" href="https://avatars.githubusercontent.com">
+  <link rel="dns-prefetch" href="https://github-cloud.s3.amazonaws.com">
+  <link rel="dns-prefetch" href="https://user-images.githubusercontent.com/">
+  <link rel="preconnect" href="https://github.githubassets.com" crossorigin>
+  <link rel="preconnect" href="https://avatars.githubusercontent.com">
+
+
+
+  <link crossorigin="anonymous" media="all" integrity="sha512-UXiu4O52iBFkqt6Kx5t+pqHYP2/LWWIw9+l5ia74TWw+xPzpH44BFfAQp7yzCe0XFGZa72Xiqyml6tox1KkUjw==" rel="stylesheet" href="https://github.githubassets.com/assets/light-5178aee0ee76.css" /><link crossorigin="anonymous" media="all" integrity="sha512-IX1PnI5wWBz8Kgb1JI0f2QFa/WuRQQHJHe0vkKinQzsxRlNb4b8NgODX5htSZVAAkA1O6Vch+RRlDTI8j96slA==" rel="stylesheet" href="https://github.githubassets.com/assets/dark-217d4f9c8e70.css" /><link data-color-theme="dark_dimmed" crossorigin="anonymous" media="all" integrity="sha512-Ct+ijw5ofrvpiRNwv+EhmU4CBCIgm7ApMfRCT8IQK4luRFZf8tLg0CC0VLyTPVLgMbQ9+74znLAZwi1RSzjpiA==" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_dimmed-0adfa28f0e68.css" /><link data-color-theme="dark_high_contrast" crossorigin="anonymous" media="all" integrity="sha512-HIV1s2ZEVz1WLyBRua8znQozNKaQ0LM5AHRX9sMlitm5TNY3QMJzKsRD5FPCF9oluzIXNO9JxRK4bBjxGhcctA==" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_high_contrast-1c8575b36644.css" /><link data-color-theme="dark_colorblind" crossorigin="anonymous" media="all" integrity="sha512-URPSviCw4m4n71IKn4qyu7MEDpGbCiTfsMTNrUjPwcg38KtEKDt12vzjlNzoy3YDFiQ8D0TCCYKCtrZpqX097g==" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_colorblind-5113d2be20b0.css" /><link data-color-theme="light_colorblind" crossorigin="anonymous" media="all" integrity="sha512-yWrddCSE7sqLZ4iqcSOoAsVnCbxs4IgN+oDKgxarp3O6V9dQ8XKyE+ffedHQa55VkB1tY0iNI3QqACG8p1k8IA==" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_colorblind-c96add742484.css" /><link data-color-theme="light_high_contrast" crossorigin="anonymous" media="all" integrity="sha512-KQ+S9ehnvP9vzfiaBA1FbrSWS1RuJBo/ez+bKUm+XKGEMR22w7Oyc712UyVcpYIqpTCTvaaJ3MfeU0x4xPeI+A==" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_high_contrast-290f92f5e867.css" /><link data-color-theme="light_tritanopia" crossorigin="anonymous" media="all" integrity="sha512-zdiPFGv3QFuv1X24wK9Sa7DM3W/It82kehdMBrepjoJJyJyBISVFUJLvMMkvr4uu8j11Rn35dXZiVrN1FNWzGA==" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_tritanopia-cdd88f146bf7.css" /><link data-color-theme="dark_tritanopia" crossorigin="anonymous" media="all" integrity="sha512-IXHqDweLGMT47BTl4v+0woPqFAAtkFBeVqg9U/AliukeUyVREIssCu32RfWmXNdMjwmdVBcS+q9SMQMYuYF5dQ==" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_tritanopia-2171ea0f078b.css" />
+  
+    <link crossorigin="anonymous" media="all" integrity="sha512-SUqyEQoqiybF4TGdLH0th4vDL9I9EFGTXfcth9CIVAoNeQJfAyfu8MtmOMWbGnqP6VxFIQ6VdDHxhdXNG1k//Q==" rel="stylesheet" href="https://github.githubassets.com/assets/primer-494ab2110a2a.css" />
+    <link crossorigin="anonymous" media="all" integrity="sha512-QYwQx1Lni/sSc2dLr2elXRPzOo9udnroJD4iebtuczyT61Ms1Gwl5mRDpWjFNCTwh+AGG7/sEOTWWC6zcpkQYQ==" rel="stylesheet" href="https://github.githubassets.com/assets/global-418c10c752e7.css" />
+    <link crossorigin="anonymous" media="all" integrity="sha512-grUkdIYCk+1YO7R2PF4y8lM1J/u5YqOiulWqSU3sDX3e+srs7rZ78EdnNVMpSe4C40CA176PTE16LWKhJqdOUQ==" rel="stylesheet" href="https://github.githubassets.com/assets/github-82b524748602.css" />
+  <link crossorigin="anonymous" media="all" integrity="sha512-PXtwH8brj9qH7LskWA0iAMLw4Wx3RXN7txSxjlqdzQEalZKu3UcsQ+ajfHJMDkYDA2iWL1FIrf2zyLflA5Xu7A==" rel="stylesheet" href="https://github.githubassets.com/assets/code-3d7b701fc6eb.css" />
+
+    <meta name="optimizely-datafile" content="{&quot;groups&quot;: [], &quot;environmentKey&quot;: &quot;production&quot;, &quot;rollouts&quot;: [], &quot;typedAudiences&quot;: [], &quot;projectId&quot;: &quot;16737760170&quot;, &quot;variables&quot;: [], &quot;featureFlags&quot;: [], &quot;experiments&quot;: [{&quot;status&quot;: &quot;Running&quot;, &quot;audienceIds&quot;: [], &quot;variations&quot;: [{&quot;variables&quot;: [], &quot;id&quot;: &quot;20667381018&quot;, &quot;key&quot;: &quot;control&quot;}, {&quot;variables&quot;: [], &quot;id&quot;: &quot;20680930759&quot;, &quot;key&quot;: &quot;treatment&quot;}], &quot;id&quot;: &quot;20652570897&quot;, &quot;key&quot;: &quot;project_genesis&quot;, &quot;layerId&quot;: &quot;20672300363&quot;, &quot;trafficAllocation&quot;: [{&quot;entityId&quot;: &quot;20667381018&quot;, &quot;endOfRange&quot;: 5000}, {&quot;entityId&quot;: &quot;20680930759&quot;, &quot;endOfRange&quot;: 10000}], &quot;forcedVariations&quot;: {&quot;83356e17066d336d1803024138ecb683&quot;: &quot;treatment&quot;, &quot;18e31c8a9b2271332466133162a4aa0d&quot;: &quot;treatment&quot;, &quot;10f8ab3fbc5ebe989a36a05f79d48f32&quot;: &quot;treatment&quot;, &quot;1686089f6d540cd2deeaec60ee43ecf7&quot;: &quot;treatment&quot;}}, {&quot;status&quot;: &quot;Running&quot;, &quot;audienceIds&quot;: [], &quot;variations&quot;: [{&quot;variables&quot;: [], &quot;id&quot;: &quot;21427950901&quot;, &quot;key&quot;: &quot;control&quot;}, {&quot;variables&quot;: [], &quot;id&quot;: &quot;21429710665&quot;, &quot;key&quot;: &quot;beginner&quot;}, {&quot;variables&quot;: [], &quot;id&quot;: &quot;21437291543&quot;, &quot;key&quot;: &quot;upstart&quot;}], &quot;id&quot;: &quot;21445030708&quot;, &quot;key&quot;: &quot;_259_zero_user_dashboard&quot;, &quot;layerId&quot;: &quot;21434011841&quot;, &quot;trafficAllocation&quot;: [{&quot;entityId&quot;: &quot;21427950901&quot;, &quot;endOfRange&quot;: 3334}, {&quot;entityId&quot;: &quot;21427950901&quot;, &quot;endOfRange&quot;: 5000}, {&quot;entityId&quot;: &quot;21427950901&quot;, &quot;endOfRange&quot;: 8333}, {&quot;entityId&quot;: &quot;21427950901&quot;, &quot;endOfRange&quot;: 10000}], &quot;forcedVariations&quot;: {&quot;3c64268131793aa297119a343c19e345&quot;: &quot;beginner&quot;, &quot;95b24126db31ea8693c0fe5ea9f53b65&quot;: &quot;beginner&quot;, &quot;086e2abe64e9101112af53b95d2d90b9&quot;: &quot;upstart&quot;, &quot;bae688df9d297afac98e2d254e912ada&quot;: &quot;control&quot;, &quot;6c2cfda7c41396fcc31a4db759a42b94&quot;: &quot;beginner&quot;, &quot;16ed2b4ff7de02663b7c606309695916&quot;: &quot;control&quot;, &quot;1971768911.1635962195&quot;: &quot;beginner&quot;, &quot;830bf802470ec6c9c5800c99d8e57445&quot;: &quot;beginner&quot;}}, {&quot;status&quot;: &quot;Running&quot;, &quot;audienceIds&quot;: [], &quot;variations&quot;: [{&quot;variables&quot;: [], &quot;id&quot;: &quot;21454052779&quot;, &quot;key&quot;: &quot;control&quot;}, {&quot;variables&quot;: [], &quot;id&quot;: &quot;21450922535&quot;, &quot;key&quot;: &quot;redesign&quot;}], &quot;id&quot;: &quot;21486342806&quot;, &quot;key&quot;: &quot;_261_downgrade&quot;, &quot;layerId&quot;: &quot;21478441323&quot;, &quot;trafficAllocation&quot;: [{&quot;entityId&quot;: &quot;21454052779&quot;, &quot;endOfRange&quot;: 5000}, {&quot;entityId&quot;: &quot;21450922535&quot;, &quot;endOfRange&quot;: 10000}], &quot;forcedVariations&quot;: {&quot;60c046ae30e9007c321e5539ae1738b5&quot;: &quot;redesign&quot;}}, {&quot;status&quot;: &quot;Running&quot;, &quot;audienceIds&quot;: [], &quot;variations&quot;: [{&quot;variables&quot;: [], &quot;id&quot;: &quot;21540260416&quot;, &quot;key&quot;: &quot;variant_fetch_upstream&quot;}, {&quot;variables&quot;: [], &quot;id&quot;: &quot;21551370594&quot;, &quot;key&quot;: &quot;variant_sync_fork&quot;}], &quot;id&quot;: &quot;21532540507&quot;, &quot;key&quot;: &quot;fork_syncing&quot;, &quot;layerId&quot;: &quot;21510660568&quot;, &quot;trafficAllocation&quot;: [{&quot;entityId&quot;: &quot;21540260416&quot;, &quot;endOfRange&quot;: 5000}, {&quot;entityId&quot;: &quot;21551370594&quot;, &quot;endOfRange&quot;: 10000}], &quot;forcedVariations&quot;: {&quot;bcceffdcc63834cc146ddb8cce0c556d&quot;: &quot;variant_sync_fork&quot;, &quot;0bd228f43ec6ac1a9eb9087f4e2471e6&quot;: &quot;variant_sync_fork&quot;, &quot;404ee4d837b290b3089170d9226758ea&quot;: &quot;variant_sync_fork&quot;}}, {&quot;status&quot;: &quot;Running&quot;, &quot;audienceIds&quot;: [], &quot;variations&quot;: [{&quot;variables&quot;: [], &quot;id&quot;: &quot;21672251105&quot;, &quot;key&quot;: &quot;control&quot;}, {&quot;variables&quot;: [], &quot;id&quot;: &quot;21636601473&quot;, &quot;key&quot;: &quot;primer&quot;}, {&quot;variables&quot;: [], &quot;id&quot;: &quot;21663911434&quot;, &quot;key&quot;: &quot;growth&quot;}, {&quot;variables&quot;: [], &quot;id&quot;: &quot;21673341369&quot;, &quot;key&quot;: &quot;brand&quot;}], &quot;id&quot;: &quot;21685100630&quot;, &quot;key&quot;: &quot;_241_onboard_users_to_protect_branches&quot;, &quot;layerId&quot;: &quot;21696970697&quot;, &quot;trafficAllocation&quot;: [{&quot;entityId&quot;: &quot;21672251105&quot;, &quot;endOfRange&quot;: 825}, {&quot;entityId&quot;: &quot;21636601473&quot;, &quot;endOfRange&quot;: 2310}, {&quot;entityId&quot;: &quot;21636601473&quot;, &quot;endOfRange&quot;: 2500}, {&quot;entityId&quot;: &quot;21636601473&quot;, &quot;endOfRange&quot;: 2830}, {&quot;entityId&quot;: &quot;21636601473&quot;, &quot;endOfRange&quot;: 3135}, {&quot;entityId&quot;: &quot;21636601473&quot;, &quot;endOfRange&quot;: 3310}, {&quot;entityId&quot;: &quot;21663911434&quot;, &quot;endOfRange&quot;: 3325}, {&quot;entityId&quot;: &quot;21663911434&quot;, &quot;endOfRange&quot;: 3980}, {&quot;entityId&quot;: &quot;21636601473&quot;, &quot;endOfRange&quot;: 3995}, {&quot;entityId&quot;: &quot;21663911434&quot;, &quot;endOfRange&quot;: 4170}, {&quot;entityId&quot;: &quot;21663911434&quot;, &quot;endOfRange&quot;: 5000}, {&quot;entityId&quot;: &quot;21663911434&quot;, &quot;endOfRange&quot;: 5155}, {&quot;entityId&quot;: &quot;21663911434&quot;, &quot;endOfRange&quot;: 5330}, {&quot;entityId&quot;: &quot;21663911434&quot;, &quot;endOfRange&quot;: 5825}, {&quot;entityId&quot;: &quot;21672251105&quot;, &quot;endOfRange&quot;: 6000}, {&quot;entityId&quot;: &quot;21672251105&quot;, &quot;endOfRange&quot;: 7500}, {&quot;entityId&quot;: &quot;21673341369&quot;, &quot;endOfRange&quot;: 7830}, {&quot;entityId&quot;: &quot;21673341369&quot;, &quot;endOfRange&quot;: 8325}, {&quot;entityId&quot;: &quot;21673341369&quot;, &quot;endOfRange&quot;: 9330}, {&quot;entityId&quot;: &quot;21673341369&quot;, &quot;endOfRange&quot;: 10000}], &quot;forcedVariations&quot;: {&quot;409007617793ebd1e12654adf87047d0&quot;: &quot;growth&quot;, &quot;3977d8a7a265a13d734f3edf9226214c&quot;: &quot;primer&quot;, &quot;bcf588169e3ac842af083a5a54708563&quot;: &quot;growth&quot;}}], &quot;version&quot;: &quot;4&quot;, &quot;audiences&quot;: [{&quot;conditions&quot;: &quot;[\&quot;or\&quot;, {\&quot;match\&quot;: \&quot;exact\&quot;, \&quot;name\&quot;: \&quot;$opt_dummy_attribute\&quot;, \&quot;type\&quot;: \&quot;custom_attribute\&quot;, \&quot;value\&quot;: \&quot;$opt_dummy_value\&quot;}]&quot;, &quot;id&quot;: &quot;$opt_dummy_audience&quot;, &quot;name&quot;: &quot;Optimizely-Generated Audience for Backwards Compatibility&quot;}], &quot;anonymizeIP&quot;: true, &quot;sdkKey&quot;: &quot;WTc6awnGuYDdG98CYRban&quot;, &quot;attributes&quot;: [{&quot;id&quot;: &quot;16822470375&quot;, &quot;key&quot;: &quot;user_id&quot;}, {&quot;id&quot;: &quot;17143601254&quot;, &quot;key&quot;: &quot;spammy&quot;}, {&quot;id&quot;: &quot;18175660309&quot;, &quot;key&quot;: &quot;organization_plan&quot;}, {&quot;id&quot;: &quot;18813001570&quot;, &quot;key&quot;: &quot;is_logged_in&quot;}, {&quot;id&quot;: &quot;19073851829&quot;, &quot;key&quot;: &quot;geo&quot;}, {&quot;id&quot;: &quot;20175462351&quot;, &quot;key&quot;: &quot;requestedCurrency&quot;}, {&quot;id&quot;: &quot;20785470195&quot;, &quot;key&quot;: &quot;country_code&quot;}, {&quot;id&quot;: &quot;21656311196&quot;, &quot;key&quot;: &quot;opened_downgrade_dialog&quot;}], &quot;botFiltering&quot;: false, &quot;accountId&quot;: &quot;16737760170&quot;, &quot;events&quot;: [{&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;17911811441&quot;, &quot;key&quot;: &quot;hydro_click.dashboard.teacher_toolbox_cta&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18124116703&quot;, &quot;key&quot;: &quot;submit.organizations.complete_sign_up&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18145892387&quot;, &quot;key&quot;: &quot;no_metric.tracked_outside_of_optimizely&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18178755568&quot;, &quot;key&quot;: &quot;click.org_onboarding_checklist.add_repo&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18180553241&quot;, &quot;key&quot;: &quot;submit.repository_imports.create&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18186103728&quot;, &quot;key&quot;: &quot;click.help.learn_more_about_repository_creation&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18188530140&quot;, &quot;key&quot;: &quot;test_event&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18191963644&quot;, &quot;key&quot;: &quot;click.empty_org_repo_cta.transfer_repository&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18195612788&quot;, &quot;key&quot;: &quot;click.empty_org_repo_cta.import_repository&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18210945499&quot;, &quot;key&quot;: &quot;click.org_onboarding_checklist.invite_members&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18211063248&quot;, &quot;key&quot;: &quot;click.empty_org_repo_cta.create_repository&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18215721889&quot;, &quot;key&quot;: &quot;click.org_onboarding_checklist.update_profile&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18224360785&quot;, &quot;key&quot;: &quot;click.org_onboarding_checklist.dismiss&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18234832286&quot;, &quot;key&quot;: &quot;submit.organization_activation.complete&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18252392383&quot;, &quot;key&quot;: &quot;submit.org_repository.create&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18257551537&quot;, &quot;key&quot;: &quot;submit.org_member_invitation.create&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18259522260&quot;, &quot;key&quot;: &quot;submit.organization_profile.update&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18564603625&quot;, &quot;key&quot;: &quot;view.classroom_select_organization&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18568612016&quot;, &quot;key&quot;: &quot;click.classroom_sign_in_click&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18572592540&quot;, &quot;key&quot;: &quot;view.classroom_name&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18574203855&quot;, &quot;key&quot;: &quot;click.classroom_create_organization&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18582053415&quot;, &quot;key&quot;: &quot;click.classroom_select_organization&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18589463420&quot;, &quot;key&quot;: &quot;click.classroom_create_classroom&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18591323364&quot;, &quot;key&quot;: &quot;click.classroom_create_first_classroom&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18591652321&quot;, &quot;key&quot;: &quot;click.classroom_grant_access&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18607131425&quot;, &quot;key&quot;: &quot;view.classroom_creation&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;18831680583&quot;, &quot;key&quot;: &quot;upgrade_account_plan&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;19064064515&quot;, &quot;key&quot;: &quot;click.signup&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;19075373687&quot;, &quot;key&quot;: &quot;click.view_account_billing_page&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;19077355841&quot;, &quot;key&quot;: &quot;click.dismiss_signup_prompt&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;19079713938&quot;, &quot;key&quot;: &quot;click.contact_sales&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;19120963070&quot;, &quot;key&quot;: &quot;click.compare_account_plans&quot;}, {&quot;experimentIds&quot;: [&quot;21685100630&quot;], &quot;id&quot;: &quot;19151690317&quot;, &quot;key&quot;: &quot;click.upgrade_account_cta&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;19424193129&quot;, &quot;key&quot;: &quot;click.open_account_switcher&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;19520330825&quot;, &quot;key&quot;: &quot;click.visit_account_profile&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;19540970635&quot;, &quot;key&quot;: &quot;click.switch_account_context&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;19730198868&quot;, &quot;key&quot;: &quot;submit.homepage_signup&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;19820830627&quot;, &quot;key&quot;: &quot;click.homepage_signup&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;19988571001&quot;, &quot;key&quot;: &quot;click.create_enterprise_trial&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20036538294&quot;, &quot;key&quot;: &quot;click.create_organization_team&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20040653299&quot;, &quot;key&quot;: &quot;click.input_enterprise_trial_form&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20062030003&quot;, &quot;key&quot;: &quot;click.continue_with_team&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20068947153&quot;, &quot;key&quot;: &quot;click.create_organization_free&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20086636658&quot;, &quot;key&quot;: &quot;click.signup_continue.username&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20091648988&quot;, &quot;key&quot;: &quot;click.signup_continue.create_account&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20103637615&quot;, &quot;key&quot;: &quot;click.signup_continue.email&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20111574253&quot;, &quot;key&quot;: &quot;click.signup_continue.password&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20120044111&quot;, &quot;key&quot;: &quot;view.pricing_page&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20152062109&quot;, &quot;key&quot;: &quot;submit.create_account&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20165800992&quot;, &quot;key&quot;: &quot;submit.upgrade_payment_form&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20171520319&quot;, &quot;key&quot;: &quot;submit.create_organization&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20222645674&quot;, &quot;key&quot;: &quot;click.recommended_plan_in_signup.discuss_your_needs&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20227443657&quot;, &quot;key&quot;: &quot;submit.verify_primary_user_email&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20234607160&quot;, &quot;key&quot;: &quot;click.recommended_plan_in_signup.try_enterprise&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20238175784&quot;, &quot;key&quot;: &quot;click.recommended_plan_in_signup.team&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20239847212&quot;, &quot;key&quot;: &quot;click.recommended_plan_in_signup.continue_free&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20251097193&quot;, &quot;key&quot;: &quot;recommended_plan&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20438619534&quot;, &quot;key&quot;: &quot;click.pricing_calculator.1_member&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20456699683&quot;, &quot;key&quot;: &quot;click.pricing_calculator.15_members&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20467868331&quot;, &quot;key&quot;: &quot;click.pricing_calculator.10_members&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20476267432&quot;, &quot;key&quot;: &quot;click.trial_days_remaining&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20476357660&quot;, &quot;key&quot;: &quot;click.discover_feature&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20479287901&quot;, &quot;key&quot;: &quot;click.pricing_calculator.custom_members&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20481107083&quot;, &quot;key&quot;: &quot;click.recommended_plan_in_signup.apply_teacher_benefits&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20483089392&quot;, &quot;key&quot;: &quot;click.pricing_calculator.5_members&quot;}, {&quot;experimentIds&quot;: [&quot;20652570897&quot;], &quot;id&quot;: &quot;20484283944&quot;, &quot;key&quot;: &quot;click.onboarding_task&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20484996281&quot;, &quot;key&quot;: &quot;click.recommended_plan_in_signup.apply_student_benefits&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20486713726&quot;, &quot;key&quot;: &quot;click.onboarding_task_breadcrumb&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20490791319&quot;, &quot;key&quot;: &quot;click.upgrade_to_enterprise&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20491786766&quot;, &quot;key&quot;: &quot;click.talk_to_us&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20494144087&quot;, &quot;key&quot;: &quot;click.dismiss_enterprise_trial&quot;}, {&quot;experimentIds&quot;: [&quot;20652570897&quot;], &quot;id&quot;: &quot;20499722759&quot;, &quot;key&quot;: &quot;completed_all_tasks&quot;}, {&quot;experimentIds&quot;: [&quot;20652570897&quot;], &quot;id&quot;: &quot;20500710104&quot;, &quot;key&quot;: &quot;completed_onboarding_tasks&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20513160672&quot;, &quot;key&quot;: &quot;click.read_doc&quot;}, {&quot;experimentIds&quot;: [&quot;20652570897&quot;], &quot;id&quot;: &quot;20516196762&quot;, &quot;key&quot;: &quot;actions_enabled&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20518980986&quot;, &quot;key&quot;: &quot;click.dismiss_trial_banner&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20535446721&quot;, &quot;key&quot;: &quot;click.issue_actions_prompt.dismiss_prompt&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20557002247&quot;, &quot;key&quot;: &quot;click.issue_actions_prompt.setup_workflow&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20595070227&quot;, &quot;key&quot;: &quot;click.pull_request_setup_workflow&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20626600314&quot;, &quot;key&quot;: &quot;click.seats_input&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20642310305&quot;, &quot;key&quot;: &quot;click.decrease_seats_number&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20662990045&quot;, &quot;key&quot;: &quot;click.increase_seats_number&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20679620969&quot;, &quot;key&quot;: &quot;click.public_product_roadmap&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20761240940&quot;, &quot;key&quot;: &quot;click.dismiss_survey_banner&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20767210721&quot;, &quot;key&quot;: &quot;click.take_survey&quot;}, {&quot;experimentIds&quot;: [&quot;20652570897&quot;], &quot;id&quot;: &quot;20795281201&quot;, &quot;key&quot;: &quot;click.archive_list&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20966790249&quot;, &quot;key&quot;: &quot;contact_sales.submit&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20996500333&quot;, &quot;key&quot;: &quot;contact_sales.existing_customer&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;20996890162&quot;, &quot;key&quot;: &quot;contact_sales.blank_message_field&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;21000470317&quot;, &quot;key&quot;: &quot;contact_sales.personal_email&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;21002790172&quot;, &quot;key&quot;: &quot;contact_sales.blank_phone_field&quot;}, {&quot;experimentIds&quot;: [&quot;21445030708&quot;], &quot;id&quot;: &quot;21354412592&quot;, &quot;key&quot;: &quot;click.dismiss_create_readme&quot;}, {&quot;experimentIds&quot;: [&quot;21445030708&quot;], &quot;id&quot;: &quot;21366102546&quot;, &quot;key&quot;: &quot;click.dismiss_zero_user_content&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;21370252505&quot;, &quot;key&quot;: &quot;account_did_downgrade&quot;}, {&quot;experimentIds&quot;: [&quot;21445030708&quot;], &quot;id&quot;: &quot;21370840408&quot;, &quot;key&quot;: &quot;click.cta_create_readme&quot;}, {&quot;experimentIds&quot;: [&quot;21445030708&quot;], &quot;id&quot;: &quot;21375451068&quot;, &quot;key&quot;: &quot;click.cta_create_new_repository&quot;}, {&quot;experimentIds&quot;: [&quot;21445030708&quot;], &quot;id&quot;: &quot;21385390948&quot;, &quot;key&quot;: &quot;click.zero_user_content&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;21467712175&quot;, &quot;key&quot;: &quot;click.downgrade_keep&quot;}, {&quot;experimentIds&quot;: [&quot;21486342806&quot;], &quot;id&quot;: &quot;21484112202&quot;, &quot;key&quot;: &quot;click.downgrade&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;21495292213&quot;, &quot;key&quot;: &quot;click.downgrade_survey_exit&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;21508241468&quot;, &quot;key&quot;: &quot;click.downgrade_survey_submit&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;21512030356&quot;, &quot;key&quot;: &quot;click.downgrade_support&quot;}, {&quot;experimentIds&quot;: [&quot;21486342806&quot;], &quot;id&quot;: &quot;21539090022&quot;, &quot;key&quot;: &quot;click.downgrade_exit&quot;}, {&quot;experimentIds&quot;: [&quot;21532540507&quot;], &quot;id&quot;: &quot;21543640644&quot;, &quot;key&quot;: &quot;click_fetch_upstream&quot;}, {&quot;experimentIds&quot;: [&quot;21685100630&quot;], &quot;id&quot;: &quot;21646510300&quot;, &quot;key&quot;: &quot;click.move_your_work&quot;}, {&quot;experimentIds&quot;: [&quot;21685100630&quot;], &quot;id&quot;: &quot;21656151116&quot;, &quot;key&quot;: &quot;click.add_branch_protection_rule&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;21663860599&quot;, &quot;key&quot;: &quot;click.downgrade_dialog_open&quot;}, {&quot;experimentIds&quot;: [&quot;21685100630&quot;], &quot;id&quot;: &quot;21687860483&quot;, &quot;key&quot;: &quot;click.learn_about_protected_branches&quot;}, {&quot;experimentIds&quot;: [&quot;21685100630&quot;], &quot;id&quot;: &quot;21689050333&quot;, &quot;key&quot;: &quot;click.dismiss_protect_this_branch&quot;}, {&quot;experimentIds&quot;: [], &quot;id&quot;: &quot;21864370109&quot;, &quot;key&quot;: &quot;click.sign_in&quot;}], &quot;revision&quot;: &quot;1336&quot;}" />
+
+
+  <script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-Zc9Uj7x2fY6Kf5CK+Ry0aDxEDo+G9ne1EMS+9Kus4EHSwOhQQNDYyE7K0IPEUFGgf7YDDm6iFKYZ/ipFVk1u8w==" src="https://github.githubassets.com/assets/runtime-65cf548fbc76.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-ivm676uepRn1vQvL/mShZVrbNfsUUZRp0a2RCZNYrFJYFlYhdDU2P+UC8axgVT17oqv1BVQLngSsGoiBN2MJpw==" src="https://github.githubassets.com/assets/vendors-node_modules_manuelpuyol_turbo_dist_turbo_es2017-esm_js-8af9baefab9e.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-GB4jwt8fni2MoE1wzROiGvrgScSHotjr1A9c1FQKUTsfuFn9W2y5/knx+uD8eOAC1rVSA3UPi3h+PTwAuaDZYQ==" src="https://github.githubassets.com/assets/vendors-node_modules_stacktrace-parser_dist_stack-trace-parser_esm_js-node_modules_github_bro-a4c183-181e23c2df1f.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-KdAZEmCLv7zagCUgOzlv10WgxL0DXtMZzeIO4MJGgQ7tpw9dqCPBqyHsrfio0JM1NFKnF3OrTZ7LbLLFWeGrWw==" src="https://github.githubassets.com/assets/environment-29d01912608b.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-ZQM3kW293O7WR1cDuHZ02wendjejLzwVD0wy4L1eCNr34RHXiY05wmHUx4hnV9WELD/OEZRGrzK+M8uwiZ/WEw==" src="https://github.githubassets.com/assets/vendors-node_modules_selector-observer_dist_index_esm_js-650337916dbd.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-Si8390GeCVPslYj8WomaMCyj33Jutd8vZ+Sdi6WXLSbdZRyC4wwijhTNyLy0zpHhfYnrynP6qArdz1PXti1sOg==" src="https://github.githubassets.com/assets/vendors-node_modules_delegated-events_dist_index_js-node_modules_github_details-dialog-elemen-63debe-4a2f37f7419e.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-y4q/Q8lPgxuYzQJwVhhMWYDJ60RPVbL9xHfxCeMKJHsarrBRFjYA/AEe8wtPw1PLhox5HqxIgqIfFNW+gXYTSQ==" src="https://github.githubassets.com/assets/vendors-node_modules_fzy_js_index_js-node_modules_github_catalyst_lib_index_js-cb8abf43c94f.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-JE0pLsqAg/D/QS77l4fZ88pjAfu9w4A4lzGUQjWix2h3W24+DOJ98Kq3jcDW5tFwTglIxZU43Qksg8C72W9E0g==" src="https://github.githubassets.com/assets/vendors-node_modules_github_filter-input-element_dist_index_js-node_modules_github_remote-inp-73b750-244d292eca80.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-dLTsUc4gGkg08fxQZXA6geV1V+spetoVjY4I5PF5JMBMZsuP0NqkBqAsHRpHwHaNTrxTs7CmW0yPyq1d8SXPsQ==" src="https://github.githubassets.com/assets/vendors-node_modules_github_time-elements_dist_index_js-74b4ec51ce20.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-Rh8gmnXkUHxZz6gYM0gapLCxVlAePcQEFYCfJCnydATStJech3+gN7XUdXj8Q+xihasvvbMzkETh8ZzAZKT8ww==" src="https://github.githubassets.com/assets/vendors-node_modules_github_file-attachment-element_dist_index_js-node_modules_primer_view-co-54af05-461f209a75e4.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-7RXbCviIvfrHb9HwQmHNSrWlMzQzT8jcqwnDobRawcVUNAqJnZmPkJSjRtOMJ8uq5kQHoC3l5wrPIlvd5AqOnA==" src="https://github.githubassets.com/assets/github-elements-ed15db0af888.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-KGOlPJM9Ch3al54rAXARRCbJTSe18kKVnIjGHtnB6ze4f0uTg0/IVEG2oYXLIpvilhIv0uwR+bXgJBepPL9s5A==" src="https://github.githubassets.com/assets/element-registry-2863a53c933d.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-6VTowByTC7C1Ae4nuESJ5iT76vchmVCzjuit7IR83B/TPkwjSserSlr83SYhLvIfNLvJfB2zH0bHBr8+fzIa+w==" src="https://github.githubassets.com/assets/vendors-node_modules_lit-html_lit-html_js-e954e8c01c93.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-3YkTrGWwrb2whIVWEwKEhghL4yI2UAHnLW/QtnYMQFLkfQUYD3gtJ2WqDJg8wzzSm0rP05KFDOsKKx4a1wQRdA==" src="https://github.githubassets.com/assets/vendors-node_modules_github_mini-throttle_dist_index_js-node_modules_github_hotkey_dist_index-9f48bd-dd8913ac65b0.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-/5zfcpKrnUxXsz8HKbUml3aosH3Bdz7hsB21H9gldcjjqyR+2rIU6vwTtQ9WDyCjfvhCPZImF5Ug8DbXiHpI3w==" src="https://github.githubassets.com/assets/vendors-node_modules_github_remote-form_dist_index_js-node_modules_scroll-anchoring_dist_scro-5881a7-ff9cdf7292ab.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-roE+E9pShZIalw6PTT6TMWTS+tmflvuKN2ST5RbsColq1wBmaR4YTXWJUVo7B/WVEm0hpPh/XOP5zrf2pPi+HA==" src="https://github.githubassets.com/assets/vendors-node_modules_github_paste-markdown_dist_index_esm_js-node_modules_github_quote-select-0a479e-ae813e13da52.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-iv5zc66CDnM+oVHCDv7cko+Bee6Q895DqJ52+TvMOtDYiEWLpTjQheRSbAygXr1SdVa7CSDLpnj3ze+dv1eIaw==" src="https://github.githubassets.com/assets/app_assets_modules_github_soft-nav_navigate_ts-8afe7373ae82.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-MUqllU1zWScJrG44uhPiK8irir0nw6SepGvp+rwjRQRnLnKTlIgaCO1N7OEZ3XSqHIJyNnZR1UlA29lBZrqxSw==" src="https://github.githubassets.com/assets/app_assets_modules_github_behaviors_keyboard-shortcuts-helper_ts-app_assets_modules_github_di-9b8a64-314aa5954d73.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-sFfyQjq1ObFkfG0l+z9HzzoSicV7DnX6adtbhmwkcwapEIZkJef1OWQl3cYK14uRj/DZcMBTf9630E9xIyxDeA==" src="https://github.githubassets.com/assets/app_assets_modules_github_behaviors_task-list_ts-app_assets_modules_github_has-interactions_t-0091d6-b057f2423ab5.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-iZTEUA76AQY6oHo8SRucuITxoL9oIEp+kjkLt14bWgeaZhs5CuXGkF8LbcBP4SJXmy0WkwisrWLzdykrDuLzHA==" src="https://github.githubassets.com/assets/app_assets_modules_github_behaviors_details_ts-app_assets_modules_github_behaviors_include-fr-a78de3-8994c4500efa.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-Z4gbcllweVT5ctPeic5SY6g0R9iV4iTsWMeRBFGXhvBBjGk86edzEqVf8j1aruDJrtSWuHgrNLw6VmQyROCY5g==" src="https://github.githubassets.com/assets/app_assets_modules_github_behaviors_commenting_edit_ts-app_assets_modules_github_behaviors_ht-83c235-67881b725970.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-sQjgUwoV4n7qnZB72INCm5TMNKx6rv+m0op2jmx4liOkGgzDjU1NdWW9pllTvqso7+cJdKYn0OY3sq9P1G6E2w==" src="https://github.githubassets.com/assets/behaviors-b108e0530a15.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-d4hUbfQ2iadFUIZEYzWtw7J3+rUei1LoCrq3TAisyHMoW6ERm28NawvaJpppfMvroppQJc1HXteqjyRWmugzdA==" src="https://github.githubassets.com/assets/vendors-node_modules_delegated-events_dist_index_js-node_modules_github_catalyst_lib_index_js-57c13e1-7788546df436.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-O73Mm2+i15d5+OJHBJqEGJ7yINcBZotEHst9GPxgdFdVaI+nI9MDzrDJ50ZJUHzZxZytebBKxUc4mR+qNQuTtA==" src="https://github.githubassets.com/assets/notifications-global-3bbdcc9b6fa2.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-zJei4l6VynbbZLG3C4JZilhEZt1EJ/LeWP+Q7zEI0YsrLdu1L1rb1FU9zAvh+UBlY1xdiWuPpMTvh1VXzZWmYQ==" src="https://github.githubassets.com/assets/vendors-node_modules_optimizely_optimizely-sdk_dist_optimizely_browser_es_min_js-node_modules-089adc-cc97a2e25e95.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-/lhNtPP+1J1/pzkojtD6DD+TknYEAqz9ZzAk+abFIhtRd/swtsE1z2hsdAh1GnchAqU7+g6iC6nMcpGYK6AjjQ==" src="https://github.githubassets.com/assets/optimizely-fe584db4f3fe.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-F8z8SSakEr7YpDXzZGEdriFwg9sCN9ptY7hKHSZowNV10rNMr5Ihp5qxYkZxWMPrmXulB8ra4tuxEPpZdMNbeg==" src="https://github.githubassets.com/assets/vendors-node_modules_virtualized-list_es_index_js-node_modules_github_template-parts_lib_index_js-17ccfc4926a4.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-gKxQ0R5nZ6S07uwsTFxtiIC75SdVO8wv0Y/gdlCrCzyUgwo6SH3Se7/tlXIvNGpboX/6ebnW9SyhLWh3Bul+pA==" src="https://github.githubassets.com/assets/vendors-node_modules_github_file-attachment-element_dist_index_js-node_modules_github_filter--63965d-80ac50d11e67.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-jxdSPN0NbVmEhgHRpvTnZNPzdVVKP/Yr+ZvWmX/gEkfmHbjNPQBaQ0dZHQngvBiMp7dqTWay07pi723jOakVlQ==" src="https://github.githubassets.com/assets/app_assets_modules_github_ref-selector_ts-8f17523cdd0d.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-JTEIr8Kd1o8iqZYHhZz73Zllswwu+LM/TPfs4Vt2qzgG15K2zCDJ7a1gwJUixJ2e/S1T7PGn+uVumgoUNCVfTw==" src="https://github.githubassets.com/assets/repositories-253108afc29d.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-SlSqEMwovSZNKZc9AtWLclq4u59o8sN1Xc61FpkoDSEpCSIwL7pYUnFlJDJRa3BBPH/pShnnSPKDDwl4Rlt41g==" src="https://github.githubassets.com/assets/vendors-node_modules_github_clipboard-copy-element_dist_index_esm_js-node_modules_github_remo-8e6bec-4a54aa10cc28.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-cUI32hcX4byGeNg0lFCKjYPJmrs8z6w/qoLkomXtYj3V73x2oy08vJalw74NhYcN1jB5lbysMRRUA5ImZsgt9Q==" src="https://github.githubassets.com/assets/vendors-node_modules_github_mini-throttle_dist_decorators_js-node_modules_scroll-anchoring_di-a017b0-714237da1717.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-94nb28v4cR5Tjl//1yMu/VgLOs4KXjKfnjTpD/XBnamK+uonIol+2lAeKvgYM1/IPsEzuJnkSJkzfisjZ8cKdA==" src="https://github.githubassets.com/assets/app_assets_modules_github_diffs_blob-lines_ts-app_assets_modules_github_diffs_linkable-line-n-f314c3-f789dbdbcbf8.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-dKWnLh6HBaEA94BZL8cPP03mH5ARYggiy7hKrnvQWY7t6mQbGNJa2n3N8AD8+rvV95Z+B6Il/PwPptHyAnl5QA==" src="https://github.githubassets.com/assets/diffs-74a5a72e1e87.js"></script>
+  
+
+  <title>ioBroker.spotify-premium/README.md at master · ohle64/ioBroker.spotify-premium</title>
+
+
+
+    
+
+  <meta name="request-id" content="21FB:BC79:1E5E03F:21A2DC8:62E7850A" data-pjax-transient="true" /><meta name="html-safe-nonce" content="94fa185f56aaca8fbfbde3b55f0af1341f63867f628656f2d4455ce20ac19130" data-pjax-transient="true" /><meta name="visitor-payload" content="eyJyZWZlcnJlciI6Imh0dHBzOi8vZ2l0aHViLmNvbS9vaGxlNjQvaW9Ccm9rZXIuc3BvdGlmeS1wcmVtaXVtIiwicmVxdWVzdF9pZCI6IjIxRkI6QkM3OToxRTVFMDNGOjIxQTJEQzg6NjJFNzg1MEEiLCJ2aXNpdG9yX2lkIjoiMjA4NzI3MDEzNjU5MzQ2MDU2NCIsInJlZ2lvbl9lZGdlIjoiZnJhIiwicmVnaW9uX3JlbmRlciI6ImlhZCJ9" data-pjax-transient="true" /><meta name="visitor-hmac" content="b7864f67955123dd56a3ae558b6083e10be3ae142d2cab5226afafec8268f5b7" data-pjax-transient="true" />
+
+    <meta name="hovercard-subject-tag" content="repository:459564828" data-pjax-transient>
+
+
+  <meta name="github-keyboard-shortcuts" content="repository,source-code" data-pjax-transient="true" />
+  
+
+  <meta name="selected-link" value="repo_source" data-pjax-transient>
+
+    <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
+  <meta name="google-site-verification" content="KT5gs8h0wvaagLKAVWq8bbeNwnZZK1r1XQysX3xurLU">
+  <meta name="google-site-verification" content="ZzhVyEFwb7w3e0-uOTltm8Jsck2F5StVihD0exw2fsA">
+  <meta name="google-site-verification" content="GXs5KoUUkNCoaAZn7wPN-t01Pywp9M3sEjnt_3_ZWPc">
+
+<meta name="octolytics-url" content="https://collector.github.com/github/collect" /><meta name="octolytics-actor-id" content="7418761" /><meta name="octolytics-actor-login" content="ohle64" /><meta name="octolytics-actor-hash" content="0f43865158911c09efd3620b2f63869bb1a577d46f322012fd26e3360223e5f8" />
+
+  <meta name="analytics-location" content="/&lt;user-name&gt;/&lt;repo-name&gt;/blob/show" data-pjax-transient="true" />
+
+  
+
+
+
+
+  
+
+    <meta name="user-login" content="ohle64">
+
+  <link rel="sudo-modal" href="/sessions/sudo_modal">
+
+    <meta name="viewport" content="width=device-width">
+    
+      <meta name="description" content="Spotify client for IoBroker. Contribute to ohle64/ioBroker.spotify-premium development by creating an account on GitHub.">
+      <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub">
+    <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
+    <meta property="fb:app_id" content="1401488693436528">
+    <meta name="apple-itunes-app" content="app-id=1477376905" />
+      <meta name="twitter:image:src" content="https://opengraph.githubassets.com/7f5b5f793146a21e5a1a91fc3b60f7b0e4d194a54a59f004782bb99292ad7864/ohle64/ioBroker.spotify-premium" /><meta name="twitter:site" content="@github" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="ioBroker.spotify-premium/README.md at master · ohle64/ioBroker.spotify-premium" /><meta name="twitter:description" content="Spotify client for IoBroker. Contribute to ohle64/ioBroker.spotify-premium development by creating an account on GitHub." />
+      <meta property="og:image" content="https://opengraph.githubassets.com/7f5b5f793146a21e5a1a91fc3b60f7b0e4d194a54a59f004782bb99292ad7864/ohle64/ioBroker.spotify-premium" /><meta property="og:image:alt" content="Spotify client for IoBroker. Contribute to ohle64/ioBroker.spotify-premium development by creating an account on GitHub." /><meta property="og:image:width" content="1200" /><meta property="og:image:height" content="600" /><meta property="og:site_name" content="GitHub" /><meta property="og:type" content="object" /><meta property="og:title" content="ioBroker.spotify-premium/README.md at master · ohle64/ioBroker.spotify-premium" /><meta property="og:url" content="https://github.com/ohle64/ioBroker.spotify-premium" /><meta property="og:description" content="Spotify client for IoBroker. Contribute to ohle64/ioBroker.spotify-premium development by creating an account on GitHub." />
+      
+    <link rel="assets" href="https://github.githubassets.com/">
+      <link rel="shared-web-socket" href="wss://alive.github.com/_sockets/u/7418761/ws?session=eyJ2IjoiVjMiLCJ1Ijo3NDE4NzYxLCJzIjo4OTE4NTQxNjAsImMiOjE1MjMxMDUwOTMsInQiOjE2NTkzNDAwNTh9--b6ccc4aa045666c0b7d84a4e43c388ce5d199cb6caf3ad612b26c448b099bf66" data-refresh-url="/_alive" data-session-id="7baa47c08ab62a1456674b598d62a90e67f93a7fec9851a38753be7f86fdf7a6">
+      <link rel="shared-web-socket-src" href="/assets-cdn/worker/socket-worker-b87581f5816c.js">
+
+
+        <meta name="hostname" content="github.com">
+
+
+      <meta name="keyboard-shortcuts-preference" content="all">
+      <script type="application/json" id="memex_keyboard_shortcuts_preference">"all"</script>
+
+        <meta name="expected-hostname" content="github.com">
+
+    <meta name="enabled-features" content="PRESENCE_IDLE,IMAGE_METRIC_TRACKING,GEOJSON_AZURE_MAPS">
+
+
+  <meta http-equiv="x-pjax-version" content="4e6fa2ce6c3a6b2832d9a4c0d348fad53c767ba4f03f270cd1d482cbc96124fe" data-turbo-track="reload">
+  <meta http-equiv="x-pjax-csp-version" content="171483bb7fa1e692e90fd1050e6472447a67ec3e4df764579d3e8998bee757d8" data-turbo-track="reload">
+  <meta http-equiv="x-pjax-css-version" content="b149fe36a2dac4973e4feb7c3dacc0ceae51247b58057120bcda5338a833966b" data-turbo-track="reload">
+  <meta http-equiv="x-pjax-js-version" content="d8eb62bd73079689dcada1e16f65c021f541cdc4126044a91ea0425cb327095a" data-turbo-track="reload">
+
+  <meta name="turbo-cache-control" content="no-preview" data-pjax-transient="">
+
+    
+  <meta name="go-import" content="github.com/ohle64/ioBroker.spotify-premium git https://github.com/ohle64/ioBroker.spotify-premium.git">
+
+  <meta name="octolytics-dimension-user_id" content="7418761" /><meta name="octolytics-dimension-user_login" content="ohle64" /><meta name="octolytics-dimension-repository_id" content="459564828" /><meta name="octolytics-dimension-repository_nwo" content="ohle64/ioBroker.spotify-premium" /><meta name="octolytics-dimension-repository_public" content="true" /><meta name="octolytics-dimension-repository_is_fork" content="true" /><meta name="octolytics-dimension-repository_parent_id" content="119598162" /><meta name="octolytics-dimension-repository_parent_nwo" content="iobroker-community-adapters/ioBroker.spotify-premium" /><meta name="octolytics-dimension-repository_network_root_id" content="119598162" /><meta name="octolytics-dimension-repository_network_root_nwo" content="iobroker-community-adapters/ioBroker.spotify-premium" />
+
+
+
+    <link rel="canonical" href="https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md" data-pjax-transient>
+  <meta name="turbo-body-classes" content="logged-in env-production page-responsive page-blob">
+
+
+  <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">
+
+  <meta name="browser-errors-url" content="https://api.github.com/_private/browser/errors">
+
+  <meta name="browser-optimizely-client-errors-url" content="https://api.github.com/_private/browser/optimizely_client/errors">
+
+  <link rel="mask-icon" href="https://github.githubassets.com/pinned-octocat.svg" color="#000000">
+  <link rel="alternate icon" class="js-site-favicon" type="image/png" href="https://github.githubassets.com/favicons/favicon.png">
+  <link rel="icon" class="js-site-favicon" type="image/svg+xml" href="https://github.githubassets.com/favicons/favicon.svg">
+
+<meta name="theme-color" content="#1e2327">
+<meta name="color-scheme" content="light dark" />
+
+
+  <link rel="manifest" href="/manifest.json" crossOrigin="use-credentials">
+
+  </head>
+
+  <body class="logged-in env-production page-responsive page-blob" style="word-wrap: break-word;">
+    
+
+    <div class="position-relative js-header-wrapper ">
+      <a href="#start-of-content" class="p-3 color-bg-accent-emphasis color-fg-on-emphasis show-on-focus js-skip-to-content">Skip to content</a>
+      <span data-view-component="true" class="progress-pjax-loader js-pjax-loader-bar Progress position-fixed width-full">
+    <span style="width: 0%;" data-view-component="true" class="Progress-item progress-pjax-loader-bar left-0 top-0 color-bg-accent-emphasis"></span>
+</span>      
+      
+
+
+        <script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-LNqCroHCKsoCa853gU2us8e+TCPe2ptFjSMNwig00WJi/kWoEwxb9A5RxyA4ZWFzP2dJnb1Z4NaQAmxIMZCNbw==" src="https://github.githubassets.com/assets/vendors-node_modules_github_mini-throttle_dist_decorators_js-node_modules_github_command-pale-4090c9-2cda82ae81c2.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-fjHld+VVtEZME9BkjOS48GiJHiE2xd5TmnDjtEc4iTJiO0kPwYMVV/hwKmWy5syA0PCd6VvVlRLz+xTTpqCmGA==" src="https://github.githubassets.com/assets/vendors-node_modules_github_clipboard-copy-element_dist_index_esm_js-node_modules_delegated-e-e4591b-7e31e577e555.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-vL62dwdTG2Li4Co+vCZ+wcotX8Bmiu3MjMatKLVwxOvwp980P+Kf5E1tGm57vOWk4+bqeDtbBFDRCsBZ52qhMQ==" src="https://github.githubassets.com/assets/app_assets_modules_github_command-palette_items_help-item_ts-app_assets_modules_github_comman-7e29fd-bcbeb6770753.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" integrity="sha512-DYI0Z9i8vN4lGCG/URxlkucS7ajjw72mYqH8gglcbe5Wos/pCjweOK5pmYCD6x4zliFLX9epGxBYH+V5nyn9wg==" src="https://github.githubassets.com/assets/command-palette-0d823467d8bc.js"></script>
+
+            <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap" role="banner" >
+  
+    <div class="Header-item mt-n1 mb-n1  d-none d-md-flex">
+      <a
+  class="Header-link "
+  href="https://github.com/"
+  data-hotkey="g d"
+  aria-label="Homepage "
+  data-turbo="false"
+  data-analytics-event="{&quot;category&quot;:&quot;Header&quot;,&quot;action&quot;:&quot;go to dashboard&quot;,&quot;label&quot;:&quot;icon:logo&quot;}"
+>
+  <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" class="octicon octicon-mark-github v-align-middle">
+    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+</svg>
+</a>
+
+    </div>
+
+    <div class="Header-item d-md-none">
+      <button aria-label="Toggle navigation" aria-expanded="false" type="button" data-view-component="true" class="Header-link js-details-target btn-link">  <svg aria-hidden="true" height="24" viewBox="0 0 16 16" version="1.1" width="24" data-view-component="true" class="octicon octicon-three-bars">
+    <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>
+</svg>
+  
+</button>    </div>
+
+    <div class="Header-item Header-item--full flex-column flex-md-row width-full flex-order-2 flex-md-order-none mr-0 mt-3 mt-md-0 Details-content--hidden-not-important d-md-flex">
+              
+
+
+
+<div class="header-search flex-auto js-site-search position-relative flex-self-stretch flex-md-self-auto mb-3 mb-md-0 mr-0 mr-md-3 scoped-search site-scoped-search js-jump-to"
+>
+  <div class="position-relative">
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="js-site-search-form" role="search" aria-label="Site" data-scope-type="Repository" data-scope-id="459564828" data-scoped-search-url="/ohle64/ioBroker.spotify-premium/search" data-owner-scoped-search-url="/users/ohle64/search" data-unscoped-search-url="/search" data-turbo="false" action="/ohle64/ioBroker.spotify-premium/search" accept-charset="UTF-8" method="get">
+      <label class="form-control input-sm header-search-wrapper p-0 js-chromeless-input-container header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center">
+        <input type="text"
+          class="form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus js-site-search-field is-clearable"
+          data-hotkey=s,/
+          name="q"
+          data-test-selector="nav-search-input"
+          placeholder="Search or jump to…"
+          data-unscoped-placeholder="Search or jump to…"
+          data-scoped-placeholder="Search or jump to…"
+          autocapitalize="off"
+          role="combobox"
+          aria-haspopup="listbox"
+          aria-expanded="false"
+          aria-autocomplete="list"
+          aria-controls="jump-to-results"
+          aria-label="Search or jump to…"
+          data-jump-to-suggestions-path="/_graphql/GetSuggestedNavigationDestinations"
+          spellcheck="false"
+          autocomplete="off"
+        >
+        <input type="hidden" value="h_62Dizda-OAotttGP_edcyMhuciuidmWuUFocS39VHiYMO-Us0a9S_fyM9sfz246LfGHRMdqzyOLaK7hqAbuA" data-csrf="true" class="js-data-jump-to-suggestions-path-csrf" />
+        <input type="hidden" class="js-site-search-type-field" name="type" >
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="20" aria-hidden="true" class="mr-1 header-search-key-slash"><path fill="none" stroke="#979A9C" opacity=".4" d="M3.5.5h12c1.7 0 3 1.3 3 3v13c0 1.7-1.3 3-3 3h-12c-1.7 0-3-1.3-3-3v-13c0-1.7 1.3-3 3-3z"></path><path fill="#979A9C" d="M11.8 6L8 15.1h-.9L10.8 6h1z"></path></svg>
+
+
+          <div class="Box position-absolute overflow-hidden d-none jump-to-suggestions js-jump-to-suggestions-container">
+            
+<ul class="d-none js-jump-to-suggestions-template-container">
+  
+
+<li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-suggestion" role="option">
+  <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" href="" data-item-type="suggestion">
+    <div class="jump-to-octicon js-jump-to-octicon flex-shrink-0 mr-2 text-center d-none">
+      <svg title="Repository" aria-label="Repository" role="img" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo js-jump-to-octicon-repo d-none flex-shrink-0">
+    <path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path>
+</svg>
+      <svg title="Project" aria-label="Project" role="img" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-project js-jump-to-octicon-project d-none flex-shrink-0">
+    <path fill-rule="evenodd" d="M1.75 0A1.75 1.75 0 000 1.75v12.5C0 15.216.784 16 1.75 16h12.5A1.75 1.75 0 0016 14.25V1.75A1.75 1.75 0 0014.25 0H1.75zM1.5 1.75a.25.25 0 01.25-.25h12.5a.25.25 0 01.25.25v12.5a.25.25 0 01-.25.25H1.75a.25.25 0 01-.25-.25V1.75zM11.75 3a.75.75 0 00-.75.75v7.5a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75zm-8.25.75a.75.75 0 011.5 0v5.5a.75.75 0 01-1.5 0v-5.5zM8 3a.75.75 0 00-.75.75v3.5a.75.75 0 001.5 0v-3.5A.75.75 0 008 3z"></path>
+</svg>
+      <svg title="Search" aria-label="Search" role="img" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-search js-jump-to-octicon-search d-none flex-shrink-0">
+    <path fill-rule="evenodd" d="M11.5 7a4.499 4.499 0 11-8.998 0A4.499 4.499 0 0111.5 7zm-.82 4.74a6 6 0 111.06-1.06l3.04 3.04a.75.75 0 11-1.06 1.06l-3.04-3.04z"></path>
+</svg>
+    </div>
+
+    <img class="avatar mr-2 flex-shrink-0 js-jump-to-suggestion-avatar d-none" alt="" aria-label="Team" src="" width="28" height="28">
+
+    <div class="jump-to-suggestion-name js-jump-to-suggestion-name flex-auto overflow-hidden text-left no-wrap css-truncate css-truncate-target">
+    </div>
+
+    <div class="border rounded-2 flex-shrink-0 color-bg-subtle px-1 color-fg-muted ml-1 f6 d-none js-jump-to-badge-search">
+      <span class="js-jump-to-badge-search-text-default d-none" aria-label="in this repository">
+        In this repository
+      </span>
+      <span class="js-jump-to-badge-search-text-global d-none" aria-label="in all of GitHub">
+        All GitHub
+      </span>
+      <span aria-hidden="true" class="d-inline-block ml-1 v-align-middle">↵</span>
+    </div>
+
+    <div aria-hidden="true" class="border rounded-2 flex-shrink-0 color-bg-subtle px-1 color-fg-muted ml-1 f6 d-none d-on-nav-focus js-jump-to-badge-jump">
+      Jump to
+      <span class="d-inline-block ml-1 v-align-middle">↵</span>
+    </div>
+  </a>
+</li>
+
+</ul>
+
+<ul class="d-none js-jump-to-no-results-template-container">
+  <li class="d-flex flex-justify-center flex-items-center f5 d-none js-jump-to-suggestion p-2">
+    <span class="color-fg-muted">No suggested jump to results</span>
+  </li>
+</ul>
+
+<ul id="jump-to-results" role="listbox" class="p-0 m-0 js-navigation-container jump-to-suggestions-results-container js-jump-to-suggestions-results-container">
+  
+
+<li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-scoped-search d-none" role="option">
+  <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" href="" data-item-type="scoped_search">
+    <div class="jump-to-octicon js-jump-to-octicon flex-shrink-0 mr-2 text-center d-none">
+      <svg title="Repository" aria-label="Repository" role="img" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo js-jump-to-octicon-repo d-none flex-shrink-0">
+    <path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path>
+</svg>
+      <svg title="Project" aria-label="Project" role="img" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-project js-jump-to-octicon-project d-none flex-shrink-0">
+    <path fill-rule="evenodd" d="M1.75 0A1.75 1.75 0 000 1.75v12.5C0 15.216.784 16 1.75 16h12.5A1.75 1.75 0 0016 14.25V1.75A1.75 1.75 0 0014.25 0H1.75zM1.5 1.75a.25.25 0 01.25-.25h12.5a.25.25 0 01.25.25v12.5a.25.25 0 01-.25.25H1.75a.25.25 0 01-.25-.25V1.75zM11.75 3a.75.75 0 00-.75.75v7.5a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75zm-8.25.75a.75.75 0 011.5 0v5.5a.75.75 0 01-1.5 0v-5.5zM8 3a.75.75 0 00-.75.75v3.5a.75.75 0 001.5 0v-3.5A.75.75 0 008 3z"></path>
+</svg>
+      <svg title="Search" aria-label="Search" role="img" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-search js-jump-to-octicon-search d-none flex-shrink-0">
+    <path fill-rule="evenodd" d="M11.5 7a4.499 4.499 0 11-8.998 0A4.499 4.499 0 0111.5 7zm-.82 4.74a6 6 0 111.06-1.06l3.04 3.04a.75.75 0 11-1.06 1.06l-3.04-3.04z"></path>
+</svg>
+    </div>
+
+    <img class="avatar mr-2 flex-shrink-0 js-jump-to-suggestion-avatar d-none" alt="" aria-label="Team" src="" width="28" height="28">
+
+    <div class="jump-to-suggestion-name js-jump-to-suggestion-name flex-auto overflow-hidden text-left no-wrap css-truncate css-truncate-target">
+    </div>
+
+    <div class="border rounded-2 flex-shrink-0 color-bg-subtle px-1 color-fg-muted ml-1 f6 d-none js-jump-to-badge-search">
+      <span class="js-jump-to-badge-search-text-default d-none" aria-label="in this repository">
+        In this repository
+      </span>
+      <span class="js-jump-to-badge-search-text-global d-none" aria-label="in all of GitHub">
+        All GitHub
+      </span>
+      <span aria-hidden="true" class="d-inline-block ml-1 v-align-middle">↵</span>
+    </div>
+
+    <div aria-hidden="true" class="border rounded-2 flex-shrink-0 color-bg-subtle px-1 color-fg-muted ml-1 f6 d-none d-on-nav-focus js-jump-to-badge-jump">
+      Jump to
+      <span class="d-inline-block ml-1 v-align-middle">↵</span>
+    </div>
+  </a>
+</li>
+
+  
+
+<li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-owner-scoped-search d-none" role="option">
+  <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" href="" data-item-type="owner_scoped_search">
+    <div class="jump-to-octicon js-jump-to-octicon flex-shrink-0 mr-2 text-center d-none">
+      <svg title="Repository" aria-label="Repository" role="img" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo js-jump-to-octicon-repo d-none flex-shrink-0">
+    <path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path>
+</svg>
+      <svg title="Project" aria-label="Project" role="img" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-project js-jump-to-octicon-project d-none flex-shrink-0">
+    <path fill-rule="evenodd" d="M1.75 0A1.75 1.75 0 000 1.75v12.5C0 15.216.784 16 1.75 16h12.5A1.75 1.75 0 0016 14.25V1.75A1.75 1.75 0 0014.25 0H1.75zM1.5 1.75a.25.25 0 01.25-.25h12.5a.25.25 0 01.25.25v12.5a.25.25 0 01-.25.25H1.75a.25.25 0 01-.25-.25V1.75zM11.75 3a.75.75 0 00-.75.75v7.5a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75zm-8.25.75a.75.75 0 011.5 0v5.5a.75.75 0 01-1.5 0v-5.5zM8 3a.75.75 0 00-.75.75v3.5a.75.75 0 001.5 0v-3.5A.75.75 0 008 3z"></path>
+</svg>
+      <svg title="Search" aria-label="Search" role="img" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-search js-jump-to-octicon-search d-none flex-shrink-0">
+    <path fill-rule="evenodd" d="M11.5 7a4.499 4.499 0 11-8.998 0A4.499 4.499 0 0111.5 7zm-.82 4.74a6 6 0 111.06-1.06l3.04 3.04a.75.75 0 11-1.06 1.06l-3.04-3.04z"></path>
+</svg>
+    </div>
+
+    <img class="avatar mr-2 flex-shrink-0 js-jump-to-suggestion-avatar d-none" alt="" aria-label="Team" src="" width="28" height="28">
+
+    <div class="jump-to-suggestion-name js-jump-to-suggestion-name flex-auto overflow-hidden text-left no-wrap css-truncate css-truncate-target">
+    </div>
+
+    <div class="border rounded-2 flex-shrink-0 color-bg-subtle px-1 color-fg-muted ml-1 f6 d-none js-jump-to-badge-search">
+      <span class="js-jump-to-badge-search-text-default d-none" aria-label="in this user">
+        In this user
+      </span>
+      <span class="js-jump-to-badge-search-text-global d-none" aria-label="in all of GitHub">
+        All GitHub
+      </span>
+      <span aria-hidden="true" class="d-inline-block ml-1 v-align-middle">↵</span>
+    </div>
+
+    <div aria-hidden="true" class="border rounded-2 flex-shrink-0 color-bg-subtle px-1 color-fg-muted ml-1 f6 d-none d-on-nav-focus js-jump-to-badge-jump">
+      Jump to
+      <span class="d-inline-block ml-1 v-align-middle">↵</span>
+    </div>
+  </a>
+</li>
+
+  
+
+<li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-global-search d-none" role="option">
+  <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" href="" data-item-type="global_search">
+    <div class="jump-to-octicon js-jump-to-octicon flex-shrink-0 mr-2 text-center d-none">
+      <svg title="Repository" aria-label="Repository" role="img" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo js-jump-to-octicon-repo d-none flex-shrink-0">
+    <path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path>
+</svg>
+      <svg title="Project" aria-label="Project" role="img" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-project js-jump-to-octicon-project d-none flex-shrink-0">
+    <path fill-rule="evenodd" d="M1.75 0A1.75 1.75 0 000 1.75v12.5C0 15.216.784 16 1.75 16h12.5A1.75 1.75 0 0016 14.25V1.75A1.75 1.75 0 0014.25 0H1.75zM1.5 1.75a.25.25 0 01.25-.25h12.5a.25.25 0 01.25.25v12.5a.25.25 0 01-.25.25H1.75a.25.25 0 01-.25-.25V1.75zM11.75 3a.75.75 0 00-.75.75v7.5a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75zm-8.25.75a.75.75 0 011.5 0v5.5a.75.75 0 01-1.5 0v-5.5zM8 3a.75.75 0 00-.75.75v3.5a.75.75 0 001.5 0v-3.5A.75.75 0 008 3z"></path>
+</svg>
+      <svg title="Search" aria-label="Search" role="img" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-search js-jump-to-octicon-search d-none flex-shrink-0">
+    <path fill-rule="evenodd" d="M11.5 7a4.499 4.499 0 11-8.998 0A4.499 4.499 0 0111.5 7zm-.82 4.74a6 6 0 111.06-1.06l3.04 3.04a.75.75 0 11-1.06 1.06l-3.04-3.04z"></path>
+</svg>
+    </div>
+
+    <img class="avatar mr-2 flex-shrink-0 js-jump-to-suggestion-avatar d-none" alt="" aria-label="Team" src="" width="28" height="28">
+
+    <div class="jump-to-suggestion-name js-jump-to-suggestion-name flex-auto overflow-hidden text-left no-wrap css-truncate css-truncate-target">
+    </div>
+
+    <div class="border rounded-2 flex-shrink-0 color-bg-subtle px-1 color-fg-muted ml-1 f6 d-none js-jump-to-badge-search">
+      <span class="js-jump-to-badge-search-text-default d-none" aria-label="in this repository">
+        In this repository
+      </span>
+      <span class="js-jump-to-badge-search-text-global d-none" aria-label="in all of GitHub">
+        All GitHub
+      </span>
+      <span aria-hidden="true" class="d-inline-block ml-1 v-align-middle">↵</span>
+    </div>
+
+    <div aria-hidden="true" class="border rounded-2 flex-shrink-0 color-bg-subtle px-1 color-fg-muted ml-1 f6 d-none d-on-nav-focus js-jump-to-badge-jump">
+      Jump to
+      <span class="d-inline-block ml-1 v-align-middle">↵</span>
+    </div>
+  </a>
+</li>
+
+
+    <li class="d-flex flex-justify-center flex-items-center p-0 f5 js-jump-to-suggestion">
+      <svg style="box-sizing: content-box; color: var(--color-icon-primary);" width="32" height="32" viewBox="0 0 16 16" fill="none" data-view-component="true" class="m-3 anim-rotate">
+  <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke" />
+  <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+</svg>
+    </li>
+</ul>
+
+          </div>
+      </label>
+</form>  </div>
+</div>
+
+        <nav id="global-nav" class="d-flex flex-column flex-md-row flex-self-stretch flex-md-self-auto" aria-label="Global">
+      <a class="Header-link py-md-3 d-block d-md-none py-2 border-top border-md-top-0 border-white-fade" data-ga-click="Header, click, Nav menu - item:dashboard:user" aria-label="Dashboard" data-turbo="false" href="/dashboard">Dashboard</a>
+
+    <a class="js-selected-navigation-item Header-link mt-md-n3 mb-md-n3 py-2 py-md-3 mr-0 mr-md-3 border-top border-md-top-0 border-white-fade" data-hotkey="g p" data-ga-click="Header, click, Nav menu - item:pulls context:user" aria-label="Pull requests you created" data-turbo="false" data-selected-links="/pulls /pulls/assigned /pulls/mentioned /pulls" href="/pulls">
+        Pull<span class="d-inline d-md-none d-lg-inline"> request</span>s
+</a>
+    <a class="js-selected-navigation-item Header-link mt-md-n3 mb-md-n3 py-2 py-md-3 mr-0 mr-md-3 border-top border-md-top-0 border-white-fade" data-hotkey="g i" data-ga-click="Header, click, Nav menu - item:issues context:user" aria-label="Issues you created" data-turbo="false" data-selected-links="/issues /issues/assigned /issues/mentioned /issues" href="/issues">Issues</a>
+
+      <div class="d-flex position-relative">
+        <a class="js-selected-navigation-item Header-link flex-auto mt-md-n3 mb-md-n3 py-2 py-md-3 mr-0 mr-md-3 border-top border-md-top-0 border-white-fade" data-ga-click="Header, click, Nav menu - item:marketplace context:user" data-octo-click="marketplace_click" data-octo-dimensions="location:nav_bar" data-turbo="false" data-selected-links=" /marketplace" href="/marketplace">Marketplace</a>
+      </div>
+
+    <a class="js-selected-navigation-item Header-link mt-md-n3 mb-md-n3 py-2 py-md-3 mr-0 mr-md-3 border-top border-md-top-0 border-white-fade" data-ga-click="Header, click, Nav menu - item:explore" data-turbo="false" data-selected-links="/explore /trending /trending/developers /integrations /integrations/feature/code /integrations/feature/collaborate /integrations/feature/ship showcases showcases_search showcases_landing /explore" href="/explore">Explore</a>
+
+    <a class="js-selected-navigation-item Header-link d-block d-md-none py-2 py-md-3 border-top border-md-top-0 border-white-fade" data-ga-click="Header, click, Nav menu - item:workspaces context:user" data-turbo="false" data-selected-links="/codespaces /codespaces" href="/codespaces">Codespaces</a>
+
+      <a class="js-selected-navigation-item Header-link d-block d-md-none py-2 py-md-3 border-top border-md-top-0 border-white-fade" data-ga-click="Header, click, Nav menu - item:Sponsors" data-hydro-click="{&quot;event_type&quot;:&quot;sponsors.button_click&quot;,&quot;payload&quot;:{&quot;button&quot;:&quot;HEADER_SPONSORS_DASHBOARD&quot;,&quot;sponsorable_login&quot;:&quot;ohle64&quot;,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="8f23ae58c34406bc5408345935a8e31c029c563b10db0887a9556d828cb9e98c" data-turbo="false" data-selected-links=" /sponsors/accounts" href="/sponsors/accounts">Sponsors</a>
+
+    <a class="Header-link d-block d-md-none mr-0 mr-md-3 py-2 py-md-3 border-top border-md-top-0 border-white-fade" data-turbo="false" href="/settings/profile">Settings</a>
+
+    <a class="Header-link d-block d-md-none mr-0 mr-md-3 py-2 py-md-3 border-top border-md-top-0 border-white-fade" data-turbo="false" href="/ohle64">
+      <img class="avatar avatar-user" loading="lazy" decoding="async" src="https://avatars.githubusercontent.com/u/7418761?s=40&amp;v=4" width="20" height="20" alt="@ohle64" />
+      ohle64
+</a>
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form data-turbo="false" action="/logout" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="J7OdFeo3DUfOxVcVvbuIGPaogZuxC1O2r5LNYcUWfH2a1eLqmosNyEtLF13LNMnXo6YgJg5zsqar4MW-CJi9xQ" />
+      <button
+        type="submit"
+        class="Header-link mr-0 mr-md-3 py-2 py-md-3 border-top border-md-top-0 border-white-fade d-md-none btn-link d-block width-full text-left"
+        style="padding-left: 2px;"
+        data-analytics-event="{&quot;category&quot;:&quot;Header&quot;,&quot;action&quot;:&quot;sign out&quot;,&quot;label&quot;:&quot;icon:logout&quot;}"
+      >
+        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-sign-out v-align-middle">
+    <path fill-rule="evenodd" d="M2 2.75C2 1.784 2.784 1 3.75 1h2.5a.75.75 0 010 1.5h-2.5a.25.25 0 00-.25.25v10.5c0 .138.112.25.25.25h2.5a.75.75 0 010 1.5h-2.5A1.75 1.75 0 012 13.25V2.75zm10.44 4.5H6.75a.75.75 0 000 1.5h5.69l-1.97 1.97a.75.75 0 101.06 1.06l3.25-3.25a.75.75 0 000-1.06l-3.25-3.25a.75.75 0 10-1.06 1.06l1.97 1.97z"></path>
+</svg>
+        Sign out
+      </button>
+</form></nav>
+
+    </div>
+
+    <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
+        <a
+  class="Header-link "
+  href="https://github.com/"
+  data-hotkey="g d"
+  aria-label="Homepage "
+  data-turbo="false"
+  data-analytics-event="{&quot;category&quot;:&quot;Header&quot;,&quot;action&quot;:&quot;go to dashboard&quot;,&quot;label&quot;:&quot;icon:logo&quot;}"
+>
+  <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" class="octicon octicon-mark-github v-align-middle">
+    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+</svg>
+</a>
+
+    </div>
+
+    <div class="Header-item mr-0 mr-md-3 flex-order-1 flex-md-order-none">
+        
+<notification-indicator
+  
+  class=" js-socket-channel"
+  data-channel="eyJjIjoibm90aWZpY2F0aW9uLWNoYW5nZWQ6NzQxODc2MSIsInQiOjE2NTkzNDAwNTh9--72937a079a2427ebabc6579e10323f74625ccc7d96fcb05b870a32eee7a409f0"
+  data-indicator-mode="none"
+  data-tooltip-global="You have unread notifications"
+  data-tooltip-unavailable="Notifications are unavailable at the moment."
+  data-tooltip-none="You have no unread notifications"
+>
+
+  <a href="/notifications"
+    class="Header-link notification-indicator position-relative tooltipped tooltipped-sw"
+
+    
+
+    data-hotkey="g n"
+    data-target="notification-indicator.link"
+
+    data-analytics-event="{&quot;category&quot;:&quot;Header&quot;,&quot;action&quot;:&quot;go to notifications&quot;,&quot;label&quot;:&quot;icon:read&quot;}">
+
+    <span
+      data-target="notification-indicator.badge"
+      class="mail-status unread" hidden>
+    </span>
+
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-bell">
+    <path d="M8 16a2 2 0 001.985-1.75c.017-.137-.097-.25-.235-.25h-3.5c-.138 0-.252.113-.235.25A2 2 0 008 16z"></path><path fill-rule="evenodd" d="M8 1.5A3.5 3.5 0 004.5 5v2.947c0 .346-.102.683-.294.97l-1.703 2.556a.018.018 0 00-.003.01l.001.006c0 .002.002.004.004.006a.017.017 0 00.006.004l.007.001h10.964l.007-.001a.016.016 0 00.006-.004.016.016 0 00.004-.006l.001-.007a.017.017 0 00-.003-.01l-1.703-2.554a1.75 1.75 0 01-.294-.97V5A3.5 3.5 0 008 1.5zM3 5a5 5 0 0110 0v2.947c0 .05.015.098.042.139l1.703 2.555A1.518 1.518 0 0113.482 13H2.518a1.518 1.518 0 01-1.263-2.36l1.703-2.554A.25.25 0 003 7.947V5z"></path>
+</svg>
+  </a>
+</notification-indicator>
+
+    </div>
+
+
+    <div class="Header-item position-relative d-none d-md-flex">
+        <details class="details-overlay details-reset">
+  <summary
+    class="Header-link"
+    aria-label="Create new…"
+    data-analytics-event="{&quot;category&quot;:&quot;Header&quot;,&quot;action&quot;:&quot;create new&quot;,&quot;label&quot;:&quot;icon:add&quot;}"
+  >
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-plus">
+    <path fill-rule="evenodd" d="M7.75 2a.75.75 0 01.75.75V7h4.25a.75.75 0 110 1.5H8.5v4.25a.75.75 0 11-1.5 0V8.5H2.75a.75.75 0 010-1.5H7V2.75A.75.75 0 017.75 2z"></path>
+</svg> <span class="dropdown-caret"></span>
+  </summary>
+  <details-menu class="dropdown-menu dropdown-menu-sw">
+    
+<a role="menuitem" class="dropdown-item" href="/new" data-ga-click="Header, create new repository">
+  New repository
+</a>
+
+  <a role="menuitem" class="dropdown-item" href="/new/import" data-ga-click="Header, import a repository">
+    Import repository
+  </a>
+
+<a role="menuitem" class="dropdown-item" href="https://gist.github.com/" data-ga-click="Header, create new gist">
+  New gist
+</a>
+
+  <a role="menuitem" class="dropdown-item" href="/organizations/new" data-ga-click="Header, create new organization">
+    New organization
+  </a>
+
+
+
+  </details-menu>
+</details>
+
+    </div>
+
+    <div class="Header-item position-relative mr-0 d-none d-md-flex">
+        
+  <details class="details-overlay details-reset js-feature-preview-indicator-container" data-feature-preview-indicator-src="/users/ohle64/feature_preview/indicator_check">
+
+  <summary
+    class="Header-link"
+    aria-label="View profile and more"
+    data-analytics-event="{&quot;category&quot;:&quot;Header&quot;,&quot;action&quot;:&quot;show menu&quot;,&quot;label&quot;:&quot;icon:avatar&quot;}"
+  >
+    <img src="https://avatars.githubusercontent.com/u/7418761?s=40&amp;v=4" alt="@ohle64" size="20" height="20" width="20" data-view-component="true" class="avatar avatar-small circle" />
+      <span class="unread-indicator js-feature-preview-indicator" style="top: 1px;" hidden></span>
+    <span class="dropdown-caret"></span>
+  </summary>
+  <details-menu
+      class="dropdown-menu dropdown-menu-sw"
+      style="width: 180px"
+      
+      preload>
+      <include-fragment src="/users/7418761/menu" loading="lazy">
+        <p class="text-center mt-3" data-hide-on-error>
+          <svg style="box-sizing: content-box; color: var(--color-icon-primary);" width="32" height="32" viewBox="0 0 16 16" fill="none" data-view-component="true" class="anim-rotate">
+  <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke" />
+  <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+</svg>
+        </p>
+        <p class="ml-1 mb-2 mt-2 color-fg-default" data-show-on-error>
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
+    <path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path>
+</svg>
+          Sorry, something went wrong.
+        </p>
+      </include-fragment>
+  </details-menu>
+</details>
+
+    </div>
+</header>
+
+            
+    </div>
+
+  <div id="start-of-content" class="show-on-focus"></div>
+
+
+
+
+
+
+
+    <div data-pjax-replace id="js-flash-container" data-turbo-replace>
+
+
+
+  <template class="js-flash-template">
+    <div class="flash flash-full  {{ className }}">
+  <div class="px-2" >
+    <button class="flash-close js-flash-close" type="button" aria-label="Dismiss this message">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+    <path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z"></path>
+</svg>
+    </button>
+    
+      <div>{{ message }}</div>
+
+  </div>
+</div>
+  </template>
+</div>
+
+
+    
+  <include-fragment class="js-notification-shelf-include-fragment" data-base-src="https://github.com/notifications/beta/shelf"></include-fragment>
+
+
+
+
+      <details
+  class="details-reset details-overlay details-overlay-dark js-command-palette-dialog"
+  data-pjax-replace
+  id="command-palette-pjax-container"
+  data-turbo-replace
+>
+  <summary aria-label="command palette trigger">
+  </summary>
+  <details-dialog class="command-palette-details-dialog d-flex flex-column flex-justify-center height-fit" aria-label="command palette">
+    <command-palette
+      class="command-palette color-bg-default rounded-3 border color-shadow-small"
+      return-to=/ohle64/ioBroker.spotify-premium/blob/master/README.md
+      user-id="7418761"
+      activation-hotkey="Mod+k,Mod+Alt+k"
+      command-mode-hotkey="Mod+Shift+k"
+      data-action="
+        command-palette-page-stack-updated:command-palette#updateInputScope
+        itemsUpdated:command-palette#itemsUpdated
+        keydown:command-palette#onKeydown
+        loadingStateChanged:command-palette#loadingStateChanged
+        selectedItemChanged:command-palette#selectedItemChanged
+        pageFetchError:command-palette#pageFetchError
+      ">
+
+        <command-palette-mode
+          data-char="#"
+            data-scope-types="[&quot;&quot;]"
+            data-placeholder="Search issues and pull requests"
+        ></command-palette-mode>
+        <command-palette-mode
+          data-char="#"
+            data-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
+            data-placeholder="Search issues, pull requests, discussions, and projects"
+        ></command-palette-mode>
+        <command-palette-mode
+          data-char="!"
+            data-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
+            data-placeholder="Search projects"
+        ></command-palette-mode>
+        <command-palette-mode
+          data-char="@"
+            data-scope-types="[&quot;&quot;]"
+            data-placeholder="Search or jump to a user, organization, or repository"
+        ></command-palette-mode>
+        <command-palette-mode
+          data-char="@"
+            data-scope-types="[&quot;owner&quot;]"
+            data-placeholder="Search or jump to a repository"
+        ></command-palette-mode>
+        <command-palette-mode
+          data-char="/"
+            data-scope-types="[&quot;repository&quot;]"
+            data-placeholder="Search files"
+        ></command-palette-mode>
+        <command-palette-mode
+          data-char="?"
+        ></command-palette-mode>
+        <command-palette-mode
+          data-char="&gt;"
+            data-placeholder="Run a command"
+        ></command-palette-mode>
+        <command-palette-mode
+          data-char=""
+            data-scope-types="[&quot;&quot;]"
+            data-placeholder="Search or jump to..."
+        ></command-palette-mode>
+        <command-palette-mode
+          data-char=""
+            data-scope-types="[&quot;owner&quot;]"
+            data-placeholder="Search or jump to..."
+        ></command-palette-mode>
+      <command-palette-mode
+        class="js-command-palette-default-mode"
+        data-char=""
+        data-placeholder="Search or jump to..."
+      ></command-palette-mode>
+
+      <command-palette-input placeholder="Search or jump to..."
+
+        data-action="
+          command-palette-input:command-palette#onInput
+          command-palette-select:command-palette#onSelect
+          command-palette-descope:command-palette#onDescope
+          command-palette-cleared:command-palette#onInputClear
+        "
+      >
+        <div class="js-search-icon d-flex flex-items-center mr-2" style="height: 26px">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-search color-fg-muted">
+    <path fill-rule="evenodd" d="M11.5 7a4.499 4.499 0 11-8.998 0A4.499 4.499 0 0111.5 7zm-.82 4.74a6 6 0 111.06-1.06l3.04 3.04a.75.75 0 11-1.06 1.06l-3.04-3.04z"></path>
+</svg>
+        </div>
+        <div class="js-spinner d-flex flex-items-center mr-2 color-fg-muted" hidden>
+          <svg aria-label="Loading" class="anim-rotate" viewBox="0 0 16 16" fill="none" width="16" height="16">
+            <circle
+              cx="8"
+              cy="8"
+              r="7"
+              stroke="currentColor"
+              stroke-opacity="0.25"
+              stroke-width="2"
+              vector-effect="non-scaling-stroke"
+            ></circle>
+            <path
+              d="M15 8a7.002 7.002 0 00-7-7"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              vector-effect="non-scaling-stroke"
+            ></path>
+          </svg>
+        </div>
+        <command-palette-scope >
+          <div data-target="command-palette-scope.placeholder" hidden class="color-fg-subtle">/&nbsp;&nbsp;<span class="text-semibold color-fg-default">...</span>&nbsp;&nbsp;/&nbsp;&nbsp;</div>
+              <command-palette-token
+                data-text="ohle64"
+                data-id="MDQ6VXNlcjc0MTg3NjE="
+                data-type="owner"
+                data-value="ohle64"
+                data-targets="command-palette-scope.tokens"
+                class="color-fg-default text-semibold"
+                style="white-space:nowrap;line-height:20px;"
+                >ohle64<span class="color-fg-subtle text-normal">&nbsp;&nbsp;/&nbsp;&nbsp;</span></command-palette-token>
+              <command-palette-token
+                data-text="ioBroker.spotify-premium"
+                data-id="R_kgDOG2RnHA"
+                data-type="repository"
+                data-value="ioBroker.spotify-premium"
+                data-targets="command-palette-scope.tokens"
+                class="color-fg-default text-semibold"
+                style="white-space:nowrap;line-height:20px;"
+                >ioBroker.spotify-...<span class="color-fg-subtle text-normal">&nbsp;&nbsp;/&nbsp;&nbsp;</span></command-palette-token>
+        </command-palette-scope>
+        <div class="command-palette-input-group flex-1 form-control border-0 box-shadow-none" style="z-index: 0">
+          <div class="command-palette-typeahead position-absolute d-flex flex-items-center Truncate">
+            <span class="typeahead-segment input-mirror" data-target="command-palette-input.mirror"></span>
+            <span class="Truncate-text" data-target="command-palette-input.typeaheadText"></span>
+            <span class="typeahead-segment" data-target="command-palette-input.typeaheadPlaceholder"></span>
+          </div>
+          <input
+            class="js-overlay-input typeahead-input d-none"
+            disabled
+            tabindex="-1"
+            aria-label="Hidden input for typeahead"
+          >
+          <input
+            type="text"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+            class="js-input typeahead-input form-control border-0 box-shadow-none input-block width-full no-focus-indicator"
+            aria-label="Command palette input"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+            aria-autocomplete="list"
+            aria-controls="command-palette-page-stack"
+            role="combobox"
+            data-action="
+              input:command-palette-input#onInput
+              keydown:command-palette-input#onKeydown
+            "
+          >
+        </div>
+          <button aria-label="clear command palette" aria-keyshortcuts="Control+Backspace" data-action="click:command-palette-input#onClear keypress:command-palette-input#onClear" data-target="command-palette-input.clearButton" id="command-palette-clear-button" hidden="hidden" type="button" data-view-component="true" class="btn-octicon command-palette-input-clear-button"><svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x-circle-fill">
+    <path fill-rule="evenodd" d="M2.343 13.657A8 8 0 1113.657 2.343 8 8 0 012.343 13.657zM6.03 4.97a.75.75 0 00-1.06 1.06L6.94 8 4.97 9.97a.75.75 0 101.06 1.06L8 9.06l1.97 1.97a.75.75 0 101.06-1.06L9.06 8l1.97-1.97a.75.75 0 10-1.06-1.06L8 6.94 6.03 4.97z"></path>
+</svg></button>
+          <tool-tip hidden="hidden" for="command-palette-clear-button" data-direction="w" data-type="description" data-view-component="true">Clear</tool-tip>
+      </command-palette-input>
+
+      <command-palette-page-stack
+        data-default-scope-id="R_kgDOG2RnHA"
+        data-default-scope-type="Repository"
+        data-action="command-palette-page-octicons-cached:command-palette-page-stack#cacheOcticons"
+      >
+          <command-palette-tip
+            class="color-fg-muted f6 px-3 py-1 my-2"
+              data-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]"
+            data-mode=""
+            data-value="">
+            <div class="d-flex flex-items-start flex-justify-between">
+              <div>
+                <span class="text-bold">Tip:</span>
+                  Type <kbd class="hx_kbd">#</kbd> to search pull requests
+              </div>
+              <div class="ml-2 flex-shrink-0">
+                Type <kbd class="hx_kbd">?</kbd> for help and tips
+              </div>
+            </div>
+          </command-palette-tip>
+          <command-palette-tip
+            class="color-fg-muted f6 px-3 py-1 my-2"
+              data-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]"
+            data-mode=""
+            data-value="">
+            <div class="d-flex flex-items-start flex-justify-between">
+              <div>
+                <span class="text-bold">Tip:</span>
+                  Type <kbd class="hx_kbd">#</kbd> to search issues
+              </div>
+              <div class="ml-2 flex-shrink-0">
+                Type <kbd class="hx_kbd">?</kbd> for help and tips
+              </div>
+            </div>
+          </command-palette-tip>
+          <command-palette-tip
+            class="color-fg-muted f6 px-3 py-1 my-2"
+              data-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
+            data-mode=""
+            data-value="">
+            <div class="d-flex flex-items-start flex-justify-between">
+              <div>
+                <span class="text-bold">Tip:</span>
+                  Type <kbd class="hx_kbd">#</kbd> to search discussions
+              </div>
+              <div class="ml-2 flex-shrink-0">
+                Type <kbd class="hx_kbd">?</kbd> for help and tips
+              </div>
+            </div>
+          </command-palette-tip>
+          <command-palette-tip
+            class="color-fg-muted f6 px-3 py-1 my-2"
+              data-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
+            data-mode=""
+            data-value="">
+            <div class="d-flex flex-items-start flex-justify-between">
+              <div>
+                <span class="text-bold">Tip:</span>
+                  Type <kbd class="hx_kbd">!</kbd> to search projects
+              </div>
+              <div class="ml-2 flex-shrink-0">
+                Type <kbd class="hx_kbd">?</kbd> for help and tips
+              </div>
+            </div>
+          </command-palette-tip>
+          <command-palette-tip
+            class="color-fg-muted f6 px-3 py-1 my-2"
+              data-scope-types="[&quot;owner&quot;]"
+            data-mode=""
+            data-value="">
+            <div class="d-flex flex-items-start flex-justify-between">
+              <div>
+                <span class="text-bold">Tip:</span>
+                  Type <kbd class="hx_kbd">@</kbd> to search teams
+              </div>
+              <div class="ml-2 flex-shrink-0">
+                Type <kbd class="hx_kbd">?</kbd> for help and tips
+              </div>
+            </div>
+          </command-palette-tip>
+          <command-palette-tip
+            class="color-fg-muted f6 px-3 py-1 my-2"
+              data-scope-types="[&quot;&quot;]"
+            data-mode=""
+            data-value="">
+            <div class="d-flex flex-items-start flex-justify-between">
+              <div>
+                <span class="text-bold">Tip:</span>
+                  Type <kbd class="hx_kbd">@</kbd> to search people and organizations
+              </div>
+              <div class="ml-2 flex-shrink-0">
+                Type <kbd class="hx_kbd">?</kbd> for help and tips
+              </div>
+            </div>
+          </command-palette-tip>
+          <command-palette-tip
+            class="color-fg-muted f6 px-3 py-1 my-2"
+              data-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]"
+            data-mode=""
+            data-value="">
+            <div class="d-flex flex-items-start flex-justify-between">
+              <div>
+                <span class="text-bold">Tip:</span>
+                  Type <kbd class="hx_kbd">&gt;</kbd> to activate command mode
+              </div>
+              <div class="ml-2 flex-shrink-0">
+                Type <kbd class="hx_kbd">?</kbd> for help and tips
+              </div>
+            </div>
+          </command-palette-tip>
+          <command-palette-tip
+            class="color-fg-muted f6 px-3 py-1 my-2"
+              data-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]"
+            data-mode=""
+            data-value="">
+            <div class="d-flex flex-items-start flex-justify-between">
+              <div>
+                <span class="text-bold">Tip:</span>
+                  Go to your accessibility settings to change your keyboard shortcuts
+              </div>
+              <div class="ml-2 flex-shrink-0">
+                Type <kbd class="hx_kbd">?</kbd> for help and tips
+              </div>
+            </div>
+          </command-palette-tip>
+          <command-palette-tip
+            class="color-fg-muted f6 px-3 py-1 my-2"
+              data-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]"
+            data-mode="#"
+            data-value="">
+            <div class="d-flex flex-items-start flex-justify-between">
+              <div>
+                <span class="text-bold">Tip:</span>
+                  Type author:@me to search your content
+              </div>
+              <div class="ml-2 flex-shrink-0">
+                Type <kbd class="hx_kbd">?</kbd> for help and tips
+              </div>
+            </div>
+          </command-palette-tip>
+          <command-palette-tip
+            class="color-fg-muted f6 px-3 py-1 my-2"
+              data-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]"
+            data-mode="#"
+            data-value="">
+            <div class="d-flex flex-items-start flex-justify-between">
+              <div>
+                <span class="text-bold">Tip:</span>
+                  Type is:pr to filter to pull requests
+              </div>
+              <div class="ml-2 flex-shrink-0">
+                Type <kbd class="hx_kbd">?</kbd> for help and tips
+              </div>
+            </div>
+          </command-palette-tip>
+          <command-palette-tip
+            class="color-fg-muted f6 px-3 py-1 my-2"
+              data-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]"
+            data-mode="#"
+            data-value="">
+            <div class="d-flex flex-items-start flex-justify-between">
+              <div>
+                <span class="text-bold">Tip:</span>
+                  Type is:issue to filter to issues
+              </div>
+              <div class="ml-2 flex-shrink-0">
+                Type <kbd class="hx_kbd">?</kbd> for help and tips
+              </div>
+            </div>
+          </command-palette-tip>
+          <command-palette-tip
+            class="color-fg-muted f6 px-3 py-1 my-2"
+              data-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
+            data-mode="#"
+            data-value="">
+            <div class="d-flex flex-items-start flex-justify-between">
+              <div>
+                <span class="text-bold">Tip:</span>
+                  Type is:project to filter to projects
+              </div>
+              <div class="ml-2 flex-shrink-0">
+                Type <kbd class="hx_kbd">?</kbd> for help and tips
+              </div>
+            </div>
+          </command-palette-tip>
+          <command-palette-tip
+            class="color-fg-muted f6 px-3 py-1 my-2"
+              data-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]"
+            data-mode="#"
+            data-value="">
+            <div class="d-flex flex-items-start flex-justify-between">
+              <div>
+                <span class="text-bold">Tip:</span>
+                  Type is:open to filter to open content
+              </div>
+              <div class="ml-2 flex-shrink-0">
+                Type <kbd class="hx_kbd">?</kbd> for help and tips
+              </div>
+            </div>
+          </command-palette-tip>
+        <command-palette-tip class="mx-3 my-2 flash flash-error d-flex flex-items-center" data-scope-types="*" data-on-error>
+          <div>
+            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
+    <path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path>
+</svg>
+          </div>
+          <div class="px-2">
+            We’ve encountered an error and some results aren't available at this time. Type a new search or try again later.
+          </div>
+        </command-palette-tip>
+        <command-palette-tip class="h4 color-fg-default pl-3 pb-2 pt-3" data-on-empty data-scope-types="*" data-match-mode="[^?]|^$">
+          No results matched your search
+        </command-palette-tip>
+
+        <div hidden>
+
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="arrow-right-color-fg-muted">
+              <svg height="16" class="octicon octicon-arrow-right color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06l2.97-2.97H3.75a.75.75 0 010-1.5h7.44L8.22 4.03a.75.75 0 010-1.06z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="arrow-right-color-fg-default">
+              <svg height="16" class="octicon octicon-arrow-right color-fg-default" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06l2.97-2.97H3.75a.75.75 0 010-1.5h7.44L8.22 4.03a.75.75 0 010-1.06z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="codespaces-color-fg-muted">
+              <svg height="16" class="octicon octicon-codespaces color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path fill-rule="evenodd" d="M2 1.75C2 .784 2.784 0 3.75 0h8.5C13.216 0 14 .784 14 1.75v5a1.75 1.75 0 01-1.75 1.75h-8.5A1.75 1.75 0 012 6.75v-5zm1.75-.25a.25.25 0 00-.25.25v5c0 .138.112.25.25.25h8.5a.25.25 0 00.25-.25v-5a.25.25 0 00-.25-.25h-8.5zM0 11.25c0-.966.784-1.75 1.75-1.75h12.5c.966 0 1.75.784 1.75 1.75v3A1.75 1.75 0 0114.25 16H1.75A1.75 1.75 0 010 14.25v-3zM1.75 11a.25.25 0 00-.25.25v3c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25v-3a.25.25 0 00-.25-.25H1.75z"></path><path fill-rule="evenodd" d="M3 12.75a.75.75 0 01.75-.75h.5a.75.75 0 010 1.5h-.5a.75.75 0 01-.75-.75zm4 0a.75.75 0 01.75-.75h4.5a.75.75 0 010 1.5h-4.5a.75.75 0 01-.75-.75z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="copy-color-fg-muted">
+              <svg height="16" class="octicon octicon-copy color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="dash-color-fg-muted">
+              <svg height="16" class="octicon octicon-dash color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path fill-rule="evenodd" d="M2 7.75A.75.75 0 012.75 7h10a.75.75 0 010 1.5h-10A.75.75 0 012 7.75z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="file-color-fg-muted">
+              <svg height="16" class="octicon octicon-file color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path fill-rule="evenodd" d="M3.75 1.5a.25.25 0 00-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 00.25-.25V6h-2.75A1.75 1.75 0 019 4.25V1.5H3.75zm6.75.062V4.25c0 .138.112.25.25.25h2.688a.252.252 0 00-.011-.013l-2.914-2.914a.272.272 0 00-.013-.011zM2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0113.25 16h-9.5A1.75 1.75 0 012 14.25V1.75z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="gear-color-fg-muted">
+              <svg height="16" class="octicon octicon-gear color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.429 1.525a6.593 6.593 0 011.142 0c.036.003.108.036.137.146l.289 1.105c.147.56.55.967.997 1.189.174.086.341.183.501.29.417.278.97.423 1.53.27l1.102-.303c.11-.03.175.016.195.046.219.31.41.641.573.989.014.031.022.11-.059.19l-.815.806c-.411.406-.562.957-.53 1.456a4.588 4.588 0 010 .582c-.032.499.119 1.05.53 1.456l.815.806c.08.08.073.159.059.19a6.494 6.494 0 01-.573.99c-.02.029-.086.074-.195.045l-1.103-.303c-.559-.153-1.112-.008-1.529.27-.16.107-.327.204-.5.29-.449.222-.851.628-.998 1.189l-.289 1.105c-.029.11-.101.143-.137.146a6.613 6.613 0 01-1.142 0c-.036-.003-.108-.037-.137-.146l-.289-1.105c-.147-.56-.55-.967-.997-1.189a4.502 4.502 0 01-.501-.29c-.417-.278-.97-.423-1.53-.27l-1.102.303c-.11.03-.175-.016-.195-.046a6.492 6.492 0 01-.573-.989c-.014-.031-.022-.11.059-.19l.815-.806c.411-.406.562-.957.53-1.456a4.587 4.587 0 010-.582c.032-.499-.119-1.05-.53-1.456l-.815-.806c-.08-.08-.073-.159-.059-.19a6.44 6.44 0 01.573-.99c.02-.029.086-.075.195-.045l1.103.303c.559.153 1.112.008 1.529-.27.16-.107.327-.204.5-.29.449-.222.851-.628.998-1.189l.289-1.105c.029-.11.101-.143.137-.146zM8 0c-.236 0-.47.01-.701.03-.743.065-1.29.615-1.458 1.261l-.29 1.106c-.017.066-.078.158-.211.224a5.994 5.994 0 00-.668.386c-.123.082-.233.09-.3.071L3.27 2.776c-.644-.177-1.392.02-1.82.63a7.977 7.977 0 00-.704 1.217c-.315.675-.111 1.422.363 1.891l.815.806c.05.048.098.147.088.294a6.084 6.084 0 000 .772c.01.147-.038.246-.088.294l-.815.806c-.474.469-.678 1.216-.363 1.891.2.428.436.835.704 1.218.428.609 1.176.806 1.82.63l1.103-.303c.066-.019.176-.011.299.071.213.143.436.272.668.386.133.066.194.158.212.224l.289 1.106c.169.646.715 1.196 1.458 1.26a8.094 8.094 0 001.402 0c.743-.064 1.29-.614 1.458-1.26l.29-1.106c.017-.066.078-.158.211-.224a5.98 5.98 0 00.668-.386c.123-.082.233-.09.3-.071l1.102.302c.644.177 1.392-.02 1.82-.63.268-.382.505-.789.704-1.217.315-.675.111-1.422-.364-1.891l-.814-.806c-.05-.048-.098-.147-.088-.294a6.1 6.1 0 000-.772c-.01-.147.039-.246.088-.294l.814-.806c.475-.469.679-1.216.364-1.891a7.992 7.992 0 00-.704-1.218c-.428-.609-1.176-.806-1.82-.63l-1.103.303c-.066.019-.176.011-.299-.071a5.991 5.991 0 00-.668-.386c-.133-.066-.194-.158-.212-.224L10.16 1.29C9.99.645 9.444.095 8.701.031A8.094 8.094 0 008 0zm1.5 8a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM11 8a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="lock-color-fg-muted">
+              <svg height="16" class="octicon octicon-lock color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 4v2h-.25A1.75 1.75 0 002 7.75v5.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-5.5A1.75 1.75 0 0012.25 6H12V4a4 4 0 10-8 0zm6.5 2V4a2.5 2.5 0 00-5 0v2h5zM12 7.5h.25a.25.25 0 01.25.25v5.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-5.5a.25.25 0 01.25-.25H12z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="moon-color-fg-muted">
+              <svg height="16" class="octicon octicon-moon color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path fill-rule="evenodd" d="M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="person-color-fg-muted">
+              <svg height="16" class="octicon octicon-person color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path fill-rule="evenodd" d="M10.5 5a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zm.061 3.073a4 4 0 10-5.123 0 6.004 6.004 0 00-3.431 5.142.75.75 0 001.498.07 4.5 4.5 0 018.99 0 .75.75 0 101.498-.07 6.005 6.005 0 00-3.432-5.142z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="pencil-color-fg-muted">
+              <svg height="16" class="octicon octicon-pencil color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path fill-rule="evenodd" d="M11.013 1.427a1.75 1.75 0 012.474 0l1.086 1.086a1.75 1.75 0 010 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 01-.927-.928l.929-3.25a1.75 1.75 0 01.445-.758l8.61-8.61zm1.414 1.06a.25.25 0 00-.354 0L10.811 3.75l1.439 1.44 1.263-1.263a.25.25 0 000-.354l-1.086-1.086zM11.189 6.25L9.75 4.81l-6.286 6.287a.25.25 0 00-.064.108l-.558 1.953 1.953-.558a.249.249 0 00.108-.064l6.286-6.286z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="issue-opened-open">
+              <svg height="16" class="octicon octicon-issue-opened open" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M8 9.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path><path fill-rule="evenodd" d="M8 0a8 8 0 100 16A8 8 0 008 0zM1.5 8a6.5 6.5 0 1113 0 6.5 6.5 0 01-13 0z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="git-pull-request-draft-color-fg-muted">
+              <svg height="16" class="octicon octicon-git-pull-request-draft color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path fill-rule="evenodd" d="M2.5 3.25a.75.75 0 111.5 0 .75.75 0 01-1.5 0zM3.25 1a2.25 2.25 0 00-.75 4.372v5.256a2.251 2.251 0 101.5 0V5.372A2.25 2.25 0 003.25 1zm0 11a.75.75 0 100 1.5.75.75 0 000-1.5zm9.5 3a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5zm0-3a.75.75 0 100 1.5.75.75 0 000-1.5z"></path><path d="M14 7.5a1.25 1.25 0 11-2.5 0 1.25 1.25 0 012.5 0zm0-4.25a1.25 1.25 0 11-2.5 0 1.25 1.25 0 012.5 0z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="search-color-fg-muted">
+              <svg height="16" class="octicon octicon-search color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path fill-rule="evenodd" d="M11.5 7a4.499 4.499 0 11-8.998 0A4.499 4.499 0 0111.5 7zm-.82 4.74a6 6 0 111.06-1.06l3.04 3.04a.75.75 0 11-1.06 1.06l-3.04-3.04z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="sun-color-fg-muted">
+              <svg height="16" class="octicon octicon-sun color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="sync-color-fg-muted">
+              <svg height="16" class="octicon octicon-sync color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 2.5a5.487 5.487 0 00-4.131 1.869l1.204 1.204A.25.25 0 014.896 6H1.25A.25.25 0 011 5.75V2.104a.25.25 0 01.427-.177l1.38 1.38A7.001 7.001 0 0114.95 7.16a.75.75 0 11-1.49.178A5.501 5.501 0 008 2.5zM1.705 8.005a.75.75 0 01.834.656 5.501 5.501 0 009.592 2.97l-1.204-1.204a.25.25 0 01.177-.427h3.646a.25.25 0 01.25.25v3.646a.25.25 0 01-.427.177l-1.38-1.38A7.001 7.001 0 011.05 8.84a.75.75 0 01.656-.834z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="trash-color-fg-muted">
+              <svg height="16" class="octicon octicon-trash color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.5 1.75a.25.25 0 01.25-.25h2.5a.25.25 0 01.25.25V3h-3V1.75zm4.5 0V3h2.25a.75.75 0 010 1.5H2.75a.75.75 0 010-1.5H5V1.75C5 .784 5.784 0 6.75 0h2.5C10.216 0 11 .784 11 1.75zM4.496 6.675a.75.75 0 10-1.492.15l.66 6.6A1.75 1.75 0 005.405 15h5.19c.9 0 1.652-.681 1.741-1.576l.66-6.6a.75.75 0 00-1.492-.149l-.66 6.6a.25.25 0 01-.249.225h-5.19a.25.25 0 01-.249-.225l-.66-6.6z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="key-color-fg-muted">
+              <svg height="16" class="octicon octicon-key color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.5 5.5a4 4 0 112.731 3.795.75.75 0 00-.768.18L7.44 10.5H6.25a.75.75 0 00-.75.75v1.19l-.06.06H4.25a.75.75 0 00-.75.75v1.19l-.06.06H1.75a.25.25 0 01-.25-.25v-1.69l5.024-5.023a.75.75 0 00.181-.768A3.995 3.995 0 016.5 5.5zm4-5.5a5.5 5.5 0 00-5.348 6.788L.22 11.72a.75.75 0 00-.22.53v2C0 15.216.784 16 1.75 16h2a.75.75 0 00.53-.22l.5-.5a.75.75 0 00.22-.53V14h.75a.75.75 0 00.53-.22l.5-.5a.75.75 0 00.22-.53V12h.75a.75.75 0 00.53-.22l.932-.932A5.5 5.5 0 1010.5 0zm.5 6a1 1 0 100-2 1 1 0 000 2z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="comment-discussion-color-fg-muted">
+              <svg height="16" class="octicon octicon-comment-discussion color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path fill-rule="evenodd" d="M1.5 2.75a.25.25 0 01.25-.25h8.5a.25.25 0 01.25.25v5.5a.25.25 0 01-.25.25h-3.5a.75.75 0 00-.53.22L3.5 11.44V9.25a.75.75 0 00-.75-.75h-1a.25.25 0 01-.25-.25v-5.5zM1.75 1A1.75 1.75 0 000 2.75v5.5C0 9.216.784 10 1.75 10H2v1.543a1.457 1.457 0 002.487 1.03L7.061 10h3.189A1.75 1.75 0 0012 8.25v-5.5A1.75 1.75 0 0010.25 1h-8.5zM14.5 4.75a.25.25 0 00-.25-.25h-.5a.75.75 0 110-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0114.25 12H14v1.543a1.457 1.457 0 01-2.487 1.03L9.22 12.28a.75.75 0 111.06-1.06l2.22 2.22v-2.19a.75.75 0 01.75-.75h1a.25.25 0 00.25-.25v-5.5z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="bell-color-fg-muted">
+              <svg height="16" class="octicon octicon-bell color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M8 16a2 2 0 001.985-1.75c.017-.137-.097-.25-.235-.25h-3.5c-.138 0-.252.113-.235.25A2 2 0 008 16z"></path><path fill-rule="evenodd" d="M8 1.5A3.5 3.5 0 004.5 5v2.947c0 .346-.102.683-.294.97l-1.703 2.556a.018.018 0 00-.003.01l.001.006c0 .002.002.004.004.006a.017.017 0 00.006.004l.007.001h10.964l.007-.001a.016.016 0 00.006-.004.016.016 0 00.004-.006l.001-.007a.017.017 0 00-.003-.01l-1.703-2.554a1.75 1.75 0 01-.294-.97V5A3.5 3.5 0 008 1.5zM3 5a5 5 0 0110 0v2.947c0 .05.015.098.042.139l1.703 2.555A1.518 1.518 0 0113.482 13H2.518a1.518 1.518 0 01-1.263-2.36l1.703-2.554A.25.25 0 003 7.947V5z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="bell-slash-color-fg-muted">
+              <svg height="16" class="octicon octicon-bell-slash color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5c-.997 0-1.895.416-2.534 1.086A.75.75 0 014.38 1.55 5 5 0 0113 5v2.373a.75.75 0 01-1.5 0V5A3.5 3.5 0 008 1.5zM4.182 4.31L1.19 2.143a.75.75 0 10-.88 1.214L3 5.305v2.642a.25.25 0 01-.042.139L1.255 10.64A1.518 1.518 0 002.518 13h11.108l1.184.857a.75.75 0 10.88-1.214l-1.375-.996a1.196 1.196 0 00-.013-.01L4.198 4.321a.733.733 0 00-.016-.011zm7.373 7.19L4.5 6.391v1.556c0 .346-.102.683-.294.97l-1.703 2.556a.018.018 0 00-.003.01.015.015 0 00.005.012.017.017 0 00.006.004l.007.001h9.037zM8 16a2 2 0 001.985-1.75c.017-.137-.097-.25-.235-.25h-3.5c-.138 0-.252.113-.235.25A2 2 0 008 16z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="paintbrush-color-fg-muted">
+              <svg height="16" class="octicon octicon-paintbrush color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path fill-rule="evenodd" d="M11.134 1.535C9.722 2.562 8.16 4.057 6.889 5.312 5.8 6.387 5.041 7.401 4.575 8.294a3.745 3.745 0 00-3.227 1.054c-.43.431-.69 1.066-.86 1.657a11.982 11.982 0 00-.358 1.914A21.263 21.263 0 000 15.203v.054l.75-.007-.007.75h.054a14.404 14.404 0 00.654-.012 21.243 21.243 0 001.63-.118c.62-.07 1.3-.18 1.914-.357.592-.17 1.226-.43 1.657-.861a3.745 3.745 0 001.055-3.217c.908-.461 1.942-1.216 3.04-2.3 1.279-1.262 2.764-2.825 3.775-4.249.501-.706.923-1.428 1.125-2.096.2-.659.235-1.469-.368-2.07-.606-.607-1.42-.55-2.069-.34-.66.213-1.376.646-2.076 1.155zm-3.95 8.48a3.76 3.76 0 00-1.19-1.192 9.758 9.758 0 011.161-1.607l1.658 1.658a9.853 9.853 0 01-1.63 1.142zM.742 16l.007-.75-.75.008A.75.75 0 00.743 16zM12.016 2.749c-1.224.89-2.605 2.189-3.822 3.384l1.718 1.718c1.21-1.205 2.51-2.597 3.387-3.833.47-.662.78-1.227.912-1.662.134-.444.032-.551.009-.575h-.001V1.78c-.014-.014-.112-.113-.548.027-.432.14-.995.462-1.655.942zM1.62 13.089a19.56 19.56 0 00-.104 1.395 19.55 19.55 0 001.396-.104 10.528 10.528 0 001.668-.309c.526-.151.856-.325 1.011-.48a2.25 2.25 0 00-3.182-3.182c-.155.155-.329.485-.48 1.01a10.515 10.515 0 00-.309 1.67z"></path></svg>
+            </div>
+
+            <command-palette-item-group
+              data-group-id="top"
+              data-group-title="Top result"
+              data-group-hint=""
+              data-group-limits="{}"
+              data-default-priority="0"
+            >
+            </command-palette-item-group>
+            <command-palette-item-group
+              data-group-id="commands"
+              data-group-title="Commands"
+              data-group-hint="Type &gt; to filter"
+              data-group-limits="{&quot;static_items_page&quot;:50,&quot;issue&quot;:50,&quot;pull_request&quot;:50,&quot;discussion&quot;:50}"
+              data-default-priority="1"
+            >
+            </command-palette-item-group>
+            <command-palette-item-group
+              data-group-id="global_commands"
+              data-group-title="Global Commands"
+              data-group-hint="Type &gt; to filter"
+              data-group-limits="{&quot;issue&quot;:0,&quot;pull_request&quot;:0,&quot;discussion&quot;:0}"
+              data-default-priority="2"
+            >
+            </command-palette-item-group>
+            <command-palette-item-group
+              data-group-id="this_page"
+              data-group-title="This Page"
+              data-group-hint=""
+              data-group-limits="{}"
+              data-default-priority="3"
+            >
+            </command-palette-item-group>
+            <command-palette-item-group
+              data-group-id="files"
+              data-group-title="Files"
+              data-group-hint=""
+              data-group-limits="{}"
+              data-default-priority="4"
+            >
+            </command-palette-item-group>
+            <command-palette-item-group
+              data-group-id="default"
+              data-group-title="Default"
+              data-group-hint=""
+              data-group-limits="{&quot;static_items_page&quot;:50}"
+              data-default-priority="5"
+            >
+            </command-palette-item-group>
+            <command-palette-item-group
+              data-group-id="pages"
+              data-group-title="Pages"
+              data-group-hint=""
+              data-group-limits="{&quot;repository&quot;:10}"
+              data-default-priority="6"
+            >
+            </command-palette-item-group>
+            <command-palette-item-group
+              data-group-id="access_policies"
+              data-group-title="Access Policies"
+              data-group-hint=""
+              data-group-limits="{}"
+              data-default-priority="7"
+            >
+            </command-palette-item-group>
+            <command-palette-item-group
+              data-group-id="organizations"
+              data-group-title="Organizations"
+              data-group-hint=""
+              data-group-limits="{}"
+              data-default-priority="8"
+            >
+            </command-palette-item-group>
+            <command-palette-item-group
+              data-group-id="repositories"
+              data-group-title="Repositories"
+              data-group-hint=""
+              data-group-limits="{}"
+              data-default-priority="9"
+            >
+            </command-palette-item-group>
+            <command-palette-item-group
+              data-group-id="references"
+              data-group-title="Issues, pull requests, and discussions"
+              data-group-hint="Type # to filter"
+              data-group-limits="{}"
+              data-default-priority="10"
+            >
+            </command-palette-item-group>
+            <command-palette-item-group
+              data-group-id="teams"
+              data-group-title="Teams"
+              data-group-hint=""
+              data-group-limits="{}"
+              data-default-priority="11"
+            >
+            </command-palette-item-group>
+            <command-palette-item-group
+              data-group-id="users"
+              data-group-title="Users"
+              data-group-hint=""
+              data-group-limits="{}"
+              data-default-priority="12"
+            >
+            </command-palette-item-group>
+            <command-palette-item-group
+              data-group-id="projects"
+              data-group-title="Projects"
+              data-group-hint=""
+              data-group-limits="{}"
+              data-default-priority="13"
+            >
+            </command-palette-item-group>
+            <command-palette-item-group
+              data-group-id="footer"
+              data-group-title="Footer"
+              data-group-hint=""
+              data-group-limits="{}"
+              data-default-priority="14"
+            >
+            </command-palette-item-group>
+            <command-palette-item-group
+              data-group-id="modes_help"
+              data-group-title="Modes"
+              data-group-hint=""
+              data-group-limits="{}"
+              data-default-priority="15"
+            >
+            </command-palette-item-group>
+            <command-palette-item-group
+              data-group-id="filters_help"
+              data-group-title="Use filters in issues, pull requests, discussions, and projects"
+              data-group-hint=""
+              data-group-limits="{}"
+              data-default-priority="16"
+            >
+            </command-palette-item-group>
+
+            <command-palette-page
+              data-page-title="ohle64"
+              data-scope-id="MDQ6VXNlcjc0MTg3NjE="
+              data-scope-type="owner"
+              data-targets="command-palette-page-stack.defaultPages"
+              hidden
+            >
+            </command-palette-page>
+            <command-palette-page
+              data-page-title="ioBroker.spotify-premium"
+              data-scope-id="R_kgDOG2RnHA"
+              data-scope-type="repository"
+              data-targets="command-palette-page-stack.defaultPages"
+              hidden
+            >
+            </command-palette-page>
+        </div>
+
+        <command-palette-page data-is-root>
+        </command-palette-page>
+          <command-palette-page
+            data-page-title="ohle64"
+            data-scope-id="MDQ6VXNlcjc0MTg3NjE="
+            data-scope-type="owner"
+          >
+          </command-palette-page>
+          <command-palette-page
+            data-page-title="ioBroker.spotify-premium"
+            data-scope-id="R_kgDOG2RnHA"
+            data-scope-type="repository"
+          >
+          </command-palette-page>
+      </command-palette-page-stack>
+
+      <server-defined-provider data-type="search-links" data-targets="command-palette.serverDefinedProviderElements"></server-defined-provider>
+      <server-defined-provider data-type="help" data-targets="command-palette.serverDefinedProviderElements">
+          <command-palette-help
+            data-group="modes_help"
+              data-prefix="#"
+              data-scope-types="[&quot;&quot;]"
+          >
+            <span data-target="command-palette-help.titleElement">Search for <strong>issues</strong> and <strong>pull requests</strong></span>
+              <span data-target="command-palette-help.hintElement">
+                <kbd class="hx_kbd">#</kbd>
+              </span>
+          </command-palette-help>
+          <command-palette-help
+            data-group="modes_help"
+              data-prefix="#"
+              data-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
+          >
+            <span data-target="command-palette-help.titleElement">Search for <strong>issues, pull requests, discussions,</strong> and <strong>projects</strong></span>
+              <span data-target="command-palette-help.hintElement">
+                <kbd class="hx_kbd">#</kbd>
+              </span>
+          </command-palette-help>
+          <command-palette-help
+            data-group="modes_help"
+              data-prefix="@"
+              data-scope-types="[&quot;&quot;]"
+          >
+            <span data-target="command-palette-help.titleElement">Search for <strong>organizations, repositories,</strong> and <strong>users</strong></span>
+              <span data-target="command-palette-help.hintElement">
+                <kbd class="hx_kbd">@</kbd>
+              </span>
+          </command-palette-help>
+          <command-palette-help
+            data-group="modes_help"
+              data-prefix="!"
+              data-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
+          >
+            <span data-target="command-palette-help.titleElement">Search for <strong>projects</strong></span>
+              <span data-target="command-palette-help.hintElement">
+                <kbd class="hx_kbd">!</kbd>
+              </span>
+          </command-palette-help>
+          <command-palette-help
+            data-group="modes_help"
+              data-prefix="/"
+              data-scope-types="[&quot;repository&quot;]"
+          >
+            <span data-target="command-palette-help.titleElement">Search for <strong>files</strong></span>
+              <span data-target="command-palette-help.hintElement">
+                <kbd class="hx_kbd">/</kbd>
+              </span>
+          </command-palette-help>
+          <command-palette-help
+            data-group="modes_help"
+              data-prefix="&gt;"
+          >
+            <span data-target="command-palette-help.titleElement">Activate <strong>command mode</strong></span>
+              <span data-target="command-palette-help.hintElement">
+                <kbd class="hx_kbd">&gt;</kbd>
+              </span>
+          </command-palette-help>
+          <command-palette-help
+            data-group="filters_help"
+              data-prefix="# author:@me"
+          >
+            <span data-target="command-palette-help.titleElement">Search your issues, pull requests, and discussions</span>
+              <span data-target="command-palette-help.hintElement">
+                <kbd class="hx_kbd"># author:@me</kbd>
+              </span>
+          </command-palette-help>
+          <command-palette-help
+            data-group="filters_help"
+              data-prefix="# author:@me"
+          >
+            <span data-target="command-palette-help.titleElement">Search your issues, pull requests, and discussions</span>
+              <span data-target="command-palette-help.hintElement">
+                <kbd class="hx_kbd"># author:@me</kbd>
+              </span>
+          </command-palette-help>
+          <command-palette-help
+            data-group="filters_help"
+              data-prefix="# is:pr"
+          >
+            <span data-target="command-palette-help.titleElement">Filter to pull requests</span>
+              <span data-target="command-palette-help.hintElement">
+                <kbd class="hx_kbd"># is:pr</kbd>
+              </span>
+          </command-palette-help>
+          <command-palette-help
+            data-group="filters_help"
+              data-prefix="# is:issue"
+          >
+            <span data-target="command-palette-help.titleElement">Filter to issues</span>
+              <span data-target="command-palette-help.hintElement">
+                <kbd class="hx_kbd"># is:issue</kbd>
+              </span>
+          </command-palette-help>
+          <command-palette-help
+            data-group="filters_help"
+              data-prefix="# is:discussion"
+              data-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
+          >
+            <span data-target="command-palette-help.titleElement">Filter to discussions</span>
+              <span data-target="command-palette-help.hintElement">
+                <kbd class="hx_kbd"># is:discussion</kbd>
+              </span>
+          </command-palette-help>
+          <command-palette-help
+            data-group="filters_help"
+              data-prefix="# is:project"
+              data-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
+          >
+            <span data-target="command-palette-help.titleElement">Filter to projects</span>
+              <span data-target="command-palette-help.hintElement">
+                <kbd class="hx_kbd"># is:project</kbd>
+              </span>
+          </command-palette-help>
+          <command-palette-help
+            data-group="filters_help"
+              data-prefix="# is:open"
+          >
+            <span data-target="command-palette-help.titleElement">Filter to open issues, pull requests, and discussions</span>
+              <span data-target="command-palette-help.hintElement">
+                <kbd class="hx_kbd"># is:open</kbd>
+              </span>
+          </command-palette-help>
+      </server-defined-provider>
+
+        <server-defined-provider
+          data-type="commands"
+          data-fetch-debounce="0"
+            data-src="/command_palette/commands"
+          data-supported-modes="[]"
+            data-supports-commands
+          
+          data-targets="command-palette.serverDefinedProviderElements"
+          ></server-defined-provider>
+        <server-defined-provider
+          data-type="prefetched"
+          data-fetch-debounce="0"
+            data-src="/command_palette/jump_to_page_navigation"
+          data-supported-modes="[&quot;&quot;]"
+            data-supported-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]"
+          
+          data-targets="command-palette.serverDefinedProviderElements"
+          ></server-defined-provider>
+        <server-defined-provider
+          data-type="remote"
+          data-fetch-debounce="200"
+            data-src="/command_palette/issues"
+          data-supported-modes="[&quot;#&quot;,&quot;#&quot;]"
+            data-supported-scope-types="[&quot;owner&quot;,&quot;repository&quot;,&quot;&quot;]"
+          
+          data-targets="command-palette.serverDefinedProviderElements"
+          ></server-defined-provider>
+        <server-defined-provider
+          data-type="remote"
+          data-fetch-debounce="200"
+            data-src="/command_palette/jump_to"
+          data-supported-modes="[&quot;@&quot;,&quot;@&quot;]"
+            data-supported-scope-types="[&quot;&quot;,&quot;owner&quot;]"
+          
+          data-targets="command-palette.serverDefinedProviderElements"
+          ></server-defined-provider>
+        <server-defined-provider
+          data-type="remote"
+          data-fetch-debounce="200"
+            data-src="/command_palette/jump_to_members_only"
+          data-supported-modes="[&quot;@&quot;,&quot;@&quot;,&quot;&quot;,&quot;&quot;]"
+            data-supported-scope-types="[&quot;&quot;,&quot;owner&quot;]"
+          
+          data-targets="command-palette.serverDefinedProviderElements"
+          ></server-defined-provider>
+        <server-defined-provider
+          data-type="prefetched"
+          data-fetch-debounce="0"
+            data-src="/command_palette/jump_to_members_only_prefetched"
+          data-supported-modes="[&quot;@&quot;,&quot;@&quot;,&quot;&quot;,&quot;&quot;]"
+            data-supported-scope-types="[&quot;&quot;,&quot;owner&quot;]"
+          
+          data-targets="command-palette.serverDefinedProviderElements"
+          ></server-defined-provider>
+        <server-defined-provider
+          data-type="files"
+          data-fetch-debounce="0"
+            data-src="/command_palette/files"
+          data-supported-modes="[&quot;/&quot;]"
+            data-supported-scope-types="[&quot;repository&quot;]"
+          
+          data-targets="command-palette.serverDefinedProviderElements"
+          ></server-defined-provider>
+        <server-defined-provider
+          data-type="remote"
+          data-fetch-debounce="200"
+            data-src="/command_palette/discussions"
+          data-supported-modes="[&quot;#&quot;]"
+            data-supported-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
+          
+          data-targets="command-palette.serverDefinedProviderElements"
+          ></server-defined-provider>
+        <server-defined-provider
+          data-type="remote"
+          data-fetch-debounce="200"
+            data-src="/command_palette/projects"
+          data-supported-modes="[&quot;#&quot;,&quot;!&quot;]"
+            data-supported-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
+          
+          data-targets="command-palette.serverDefinedProviderElements"
+          ></server-defined-provider>
+        <server-defined-provider
+          data-type="prefetched"
+          data-fetch-debounce="0"
+            data-src="/command_palette/recent_issues"
+          data-supported-modes="[&quot;#&quot;,&quot;#&quot;]"
+            data-supported-scope-types="[&quot;owner&quot;,&quot;repository&quot;,&quot;&quot;]"
+          
+          data-targets="command-palette.serverDefinedProviderElements"
+          ></server-defined-provider>
+        <server-defined-provider
+          data-type="remote"
+          data-fetch-debounce="200"
+            data-src="/command_palette/teams"
+          data-supported-modes="[&quot;@&quot;,&quot;&quot;]"
+            data-supported-scope-types="[&quot;owner&quot;]"
+          
+          data-targets="command-palette.serverDefinedProviderElements"
+          ></server-defined-provider>
+        <server-defined-provider
+          data-type="remote"
+          data-fetch-debounce="200"
+            data-src="/command_palette/name_with_owner_repository"
+          data-supported-modes="[&quot;@&quot;,&quot;@&quot;,&quot;&quot;,&quot;&quot;]"
+            data-supported-scope-types="[&quot;&quot;,&quot;owner&quot;]"
+          
+          data-targets="command-palette.serverDefinedProviderElements"
+          ></server-defined-provider>
+    </command-palette>
+  </details-dialog>
+</details>
+
+<div class="position-fixed bottom-0 left-0 ml-5 mb-5 js-command-palette-toasts" style="z-index: 1000">
+  <div hidden class="Toast Toast--loading">
+    <span class="Toast-icon">
+      <svg class="Toast--spinner" viewBox="0 0 32 32" width="18" height="18" aria-hidden="true">
+        <path
+          fill="#959da5"
+          d="M16 0 A16 16 0 0 0 16 32 A16 16 0 0 0 16 0 M16 4 A12 12 0 0 1 16 28 A12 12 0 0 1 16 4"
+        />
+        <path fill="#ffffff" d="M16 0 A16 16 0 0 1 32 16 L28 16 A12 12 0 0 0 16 4z"></path>
+      </svg>
+    </span>
+    <span class="Toast-content"></span>
+  </div>
+
+  <div hidden class="anim-fade-in fast Toast Toast--error">
+    <span class="Toast-icon">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-stop">
+    <path fill-rule="evenodd" d="M4.47.22A.75.75 0 015 0h6a.75.75 0 01.53.22l4.25 4.25c.141.14.22.331.22.53v6a.75.75 0 01-.22.53l-4.25 4.25A.75.75 0 0111 16H5a.75.75 0 01-.53-.22L.22 11.53A.75.75 0 010 11V5a.75.75 0 01.22-.53L4.47.22zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5H5.31zM8 4a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5A.75.75 0 018 4zm0 8a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg>
+    </span>
+    <span class="Toast-content"></span>
+  </div>
+
+  <div hidden class="anim-fade-in fast Toast Toast--warning">
+    <span class="Toast-icon">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
+    <path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path>
+</svg>
+    </span>
+    <span class="Toast-content"></span>
+  </div>
+
+
+  <div hidden class="anim-fade-in fast Toast Toast--success">
+    <span class="Toast-icon">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check">
+    <path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path>
+</svg>
+    </span>
+    <span class="Toast-content"></span>
+  </div>
+
+  <div hidden class="anim-fade-in fast Toast">
+    <span class="Toast-icon">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-info">
+    <path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg>
+    </span>
+    <span class="Toast-content"></span>
+  </div>
+</div>
+
+
+  <div
+    class="application-main "
+    data-commit-hovercards-enabled
+    data-discussion-hovercards-enabled
+    data-issue-and-pr-hovercards-enabled
+  >
+        <div itemscope itemtype="http://schema.org/SoftwareSourceCode" class="">
+    <main id="js-repo-pjax-container" data-pjax-container >
+      
+  
+
+    
+
+
+
+
+
+
+  <div id="repository-container-header" class="pt-3 hide-full-screen" style="background-color: var(--color-page-header-bg);" data-pjax-replace data-turbo-replace>
+
+      <div class="d-flex mb-3 px-3 px-md-4 px-lg-5">
+
+        <div class="flex-auto min-width-0 width-fit mr-3">
+            <div class=" d-flex flex-wrap flex-items-center wb-break-word f3 text-normal">
+    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo-forked color-fg-muted mr-2">
+    <path fill-rule="evenodd" d="M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.122a2.25 2.25 0 10-1.5 0v.878A2.25 2.25 0 005.75 8.5h1.5v2.128a2.251 2.251 0 101.5 0V8.5h1.5a2.25 2.25 0 002.25-2.25v-.878a2.25 2.25 0 10-1.5 0v.878a.75.75 0 01-.75.75h-4.5A.75.75 0 015 6.25v-.878zm3.75 7.378a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm3-8.75a.75.75 0 100-1.5.75.75 0 000 1.5z"></path>
+</svg>
+  <span class="author flex-self-stretch" itemprop="author">
+    <a class="url fn" rel="author" data-hovercard-type="user" data-hovercard-url="/users/ohle64/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/ohle64">ohle64</a>
+  </span>
+  <span class="mx-1 flex-self-stretch color-fg-muted">/</span>
+  <strong itemprop="name" class="mr-2 flex-self-stretch">
+    <a data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" href="/ohle64/ioBroker.spotify-premium">ioBroker.spotify-premium</a>
+  </strong>
+
+  <span></span><span class="Label Label--secondary v-align-middle mr-1">Public</span>
+</div>
+  <span class="text-small lh-condensed-ultra no-wrap mt-1" data-repository-hovercards-enabled>
+    forked from <a data-hovercard-type="repository" data-hovercard-url="/iobroker-community-adapters/ioBroker.spotify-premium/hovercard" href="/iobroker-community-adapters/ioBroker.spotify-premium">iobroker-community-adapters/ioBroker.spotify-premium</a>
+  </span>
+
+        </div>
+
+          <ul class="pagehead-actions flex-shrink-0 d-none d-md-inline" style="padding: 2px 0;">
+
+    <li>
+  <div class="float-left" data-test-selector="pin-repo-button">
+    <form data-turbo="false" action="/ohle64/ioBroker.spotify-premium/profile_pin" accept-charset="UTF-8" method="post"><input type="hidden" name="_method" value="delete" autocomplete="off" /><input type="hidden" name="authenticity_token" value="taZQIoidwa7zXbujg6mCFP6HkzHjyoEN3gKWDzK-iQVIFlUivfrat-4_VJz9N9l6m7ALd23Zl-B3hUiwQSadGw" autocomplete="off" />
+      <button type="submit" data-view-component="true" class="btn-sm btn">  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-pin mr-2">
+    <path fill-rule="evenodd" d="M4.456.734a1.75 1.75 0 012.826.504l.613 1.327a3.081 3.081 0 002.084 1.707l2.454.584c1.332.317 1.8 1.972.832 2.94L11.06 10l3.72 3.72a.75.75 0 11-1.061 1.06L10 11.06l-2.204 2.205c-.968.968-2.623.5-2.94-.832l-.584-2.454a3.081 3.081 0 00-1.707-2.084l-1.327-.613a1.75 1.75 0 01-.504-2.826L4.456.734zM5.92 1.866a.25.25 0 00-.404-.072L1.794 5.516a.25.25 0 00.072.404l1.328.613A4.582 4.582 0 015.73 9.63l.584 2.454a.25.25 0 00.42.12l5.47-5.47a.25.25 0 00-.12-.42L9.63 5.73a4.581 4.581 0 01-3.098-2.537L5.92 1.866z"></path>
+</svg>Unpin
+  
+</button></form>  </div>
+</li>
+
+
+  <li>
+        <notifications-list-subscription-form
+      data-action="notifications-dialog-label-toggled:notifications-list-subscription-form#handleDialogLabelToggle"
+      class="f5 position-relative"
+    >
+      <details
+        class="details-reset details-overlay f5 position-relative"
+        data-target="notifications-list-subscription-form.details"
+        data-action="toggle:notifications-list-subscription-form#detailsToggled"
+      >
+
+      <summary data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;WATCH_BUTTON&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="0fcbf3b754df10c190441bd43a3add8965bc64ec3b4edb86dda0e30d3c3ade04" data-ga-click="Repository, click Watch settings, action:blob#show" aria-label="Notification settings" data-view-component="true" class="btn-sm btn">  <span data-menu-button>
+            <span
+              hidden
+              
+              data-target="notifications-list-subscription-form.unwatchButtonCopy"
+            >
+              <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-eye">
+    <path fill-rule="evenodd" d="M1.679 7.932c.412-.621 1.242-1.75 2.366-2.717C5.175 4.242 6.527 3.5 8 3.5c1.473 0 2.824.742 3.955 1.715 1.124.967 1.954 2.096 2.366 2.717a.119.119 0 010 .136c-.412.621-1.242 1.75-2.366 2.717C10.825 11.758 9.473 12.5 8 12.5c-1.473 0-2.824-.742-3.955-1.715C2.92 9.818 2.09 8.69 1.679 8.068a.119.119 0 010-.136zM8 2c-1.981 0-3.67.992-4.933 2.078C1.797 5.169.88 6.423.43 7.1a1.619 1.619 0 000 1.798c.45.678 1.367 1.932 2.637 3.024C4.329 13.008 6.019 14 8 14c1.981 0 3.67-.992 4.933-2.078 1.27-1.091 2.187-2.345 2.637-3.023a1.619 1.619 0 000-1.798c-.45-.678-1.367-1.932-2.637-3.023C11.671 2.992 9.981 2 8 2zm0 8a2 2 0 100-4 2 2 0 000 4z"></path>
+</svg>
+              Unwatch
+            </span>
+            <span
+              hidden
+              
+              data-target="notifications-list-subscription-form.stopIgnoringButtonCopy"
+            >
+              <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-bell-slash">
+    <path fill-rule="evenodd" d="M8 1.5c-.997 0-1.895.416-2.534 1.086A.75.75 0 014.38 1.55 5 5 0 0113 5v2.373a.75.75 0 01-1.5 0V5A3.5 3.5 0 008 1.5zM4.182 4.31L1.19 2.143a.75.75 0 10-.88 1.214L3 5.305v2.642a.25.25 0 01-.042.139L1.255 10.64A1.518 1.518 0 002.518 13h11.108l1.184.857a.75.75 0 10.88-1.214l-1.375-.996a1.196 1.196 0 00-.013-.01L4.198 4.321a.733.733 0 00-.016-.011zm7.373 7.19L4.5 6.391v1.556c0 .346-.102.683-.294.97l-1.703 2.556a.018.018 0 00-.003.01.015.015 0 00.005.012.017.017 0 00.006.004l.007.001h9.037zM8 16a2 2 0 001.985-1.75c.017-.137-.097-.25-.235-.25h-3.5c-.138 0-.252.113-.235.25A2 2 0 008 16z"></path>
+</svg>
+              Stop ignoring
+            </span>
+            <span
+              
+              
+              data-target="notifications-list-subscription-form.watchButtonCopy"
+            >
+              <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-eye">
+    <path fill-rule="evenodd" d="M1.679 7.932c.412-.621 1.242-1.75 2.366-2.717C5.175 4.242 6.527 3.5 8 3.5c1.473 0 2.824.742 3.955 1.715 1.124.967 1.954 2.096 2.366 2.717a.119.119 0 010 .136c-.412.621-1.242 1.75-2.366 2.717C10.825 11.758 9.473 12.5 8 12.5c-1.473 0-2.824-.742-3.955-1.715C2.92 9.818 2.09 8.69 1.679 8.068a.119.119 0 010-.136zM8 2c-1.981 0-3.67.992-4.933 2.078C1.797 5.169.88 6.423.43 7.1a1.619 1.619 0 000 1.798c.45.678 1.367 1.932 2.637 3.024C4.329 13.008 6.019 14 8 14c1.981 0 3.67-.992 4.933-2.078 1.27-1.091 2.187-2.345 2.637-3.023a1.619 1.619 0 000-1.798c-.45-.678-1.367-1.932-2.637-3.023C11.671 2.992 9.981 2 8 2zm0 8a2 2 0 100-4 2 2 0 000 4z"></path>
+</svg>
+              Watch
+            </span>
+          </span>
+            <span id="repo-notifications-counter" data-target="notifications-list-subscription-form.socialCount" data-pjax-replace="true" title="0" data-view-component="true" class="Counter">0</span>
+          <span class="dropdown-caret"></span>
+  
+</summary>
+        <details-menu
+          class="SelectMenu  "
+          role="menu"
+          data-target="notifications-list-subscription-form.menu"
+          
+        >
+          <div class="SelectMenu-modal notifications-component-menu-modal">
+            <header class="SelectMenu-header">
+              <h3 class="SelectMenu-title">Notifications</h3>
+              <button class="SelectMenu-closeButton" type="button" aria-label="Close menu" data-action="click:notifications-list-subscription-form#closeMenu">
+                <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+    <path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z"></path>
+</svg>
+              </button>
+            </header>
+
+            <div class="SelectMenu-list">
+              <form data-target="notifications-list-subscription-form.form" data-action="submit:notifications-list-subscription-form#submitForm" data-turbo="false" action="/notifications/subscribe" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="qWnHbpy-nUOEOK_o4kPYa4tuzyGEgon8HhzO_ghUsbB9UEu2QqeVAal0Z4pNf6XQ2xnqirWOwKL6HU0H4oF-vg" autocomplete="off" />
+
+                <input type="hidden" name="repository_id" value="459564828">
+
+                <button
+                  type="submit"
+                  name="do"
+                  value="included"
+                  class="SelectMenu-item flex-items-start"
+                  role="menuitemradio"
+                  aria-checked="true"
+                  data-targets="notifications-list-subscription-form.subscriptionButtons"
+                  
+                >
+                  <span class="f5">
+                    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check SelectMenu-icon SelectMenu-icon--check">
+    <path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path>
+</svg>
+                  </span>
+                  <div>
+                    <div class="f5 text-bold">
+                      Participating and @mentions
+                    </div>
+                    <div class="text-small color-fg-muted text-normal pb-1">
+                      Only receive notifications from this repository when participating or @mentioned.
+                    </div>
+                  </div>
+                </button>
+
+                <button
+                  type="submit"
+                  name="do"
+                  value="subscribed"
+                  class="SelectMenu-item flex-items-start"
+                  role="menuitemradio"
+                  aria-checked="false"
+                  data-targets="notifications-list-subscription-form.subscriptionButtons"
+                >
+                  <span class="f5">
+                    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check SelectMenu-icon SelectMenu-icon--check">
+    <path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path>
+</svg>
+                  </span>
+                  <div>
+                    <div class="f5 text-bold">
+                      All Activity
+                    </div>
+                    <div class="text-small color-fg-muted text-normal pb-1">
+                      Notified of all notifications on this repository.
+                    </div>
+                  </div>
+                </button>
+
+                <button
+                  type="submit"
+                  name="do"
+                  value="ignore"
+                  class="SelectMenu-item flex-items-start"
+                  role="menuitemradio"
+                  aria-checked="false"
+                  data-targets="notifications-list-subscription-form.subscriptionButtons"
+                >
+                  <span class="f5">
+                    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check SelectMenu-icon SelectMenu-icon--check">
+    <path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path>
+</svg>
+                  </span>
+                  <div>
+                    <div class="f5 text-bold">
+                      Ignore
+                    </div>
+                    <div class="text-small color-fg-muted text-normal pb-1">
+                      Never be notified.
+                    </div>
+                  </div>
+                </button>
+</form>
+              <button
+                class="SelectMenu-item flex-items-start pr-3"
+                type="button"
+                role="menuitemradio"
+                data-target="notifications-list-subscription-form.customButton"
+                data-action="click:notifications-list-subscription-form#openCustomDialog"
+                aria-haspopup="true"
+                aria-checked="false"
+                
+              >
+                <span class="f5">
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check SelectMenu-icon SelectMenu-icon--check">
+    <path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path>
+</svg>
+                </span>
+                <div>
+                  <div class="d-flex flex-items-start flex-justify-between">
+                    <div class="f5 text-bold">Custom</div>
+                    <div class="f5 pr-1">
+                      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-arrow-right">
+    <path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06l2.97-2.97H3.75a.75.75 0 010-1.5h7.44L8.22 4.03a.75.75 0 010-1.06z"></path>
+</svg>
+                    </div>
+                  </div>
+                  <div class="text-small color-fg-muted text-normal pb-1">
+                    Select events you want to be notified of in addition to participating and @mentions.
+                  </div>
+                </div>
+              </button>
+
+                <div class="px-3 py-2 d-flex color-bg-subtle flex-items-center">
+                  <span class="f5">
+                    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-device-mobile SelectMenu-icon SelectMenu-icon--device-mobile">
+    <path fill-rule="evenodd" d="M3.75 0A1.75 1.75 0 002 1.75v12.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 14.25V1.75A1.75 1.75 0 0012.25 0h-8.5zM3.5 1.75a.25.25 0 01.25-.25h8.5a.25.25 0 01.25.25v12.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25V1.75zM8 13a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg>
+                  </span>
+                  <span className="text-small color-fg-muted text-normal pb-1">
+                    Get push notifications on <a target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/app/apple-store/id1477376905?ct=watch-dropdown&amp;mt=8&amp;pt=524675">iOS</a> or <a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.github.android&amp;referrer=utm_campaign%3Dwatch-dropdown%26utm_medium%3Dweb%26utm_source%3Dgithub">Android</a>.
+                  </span>
+                </div>
+            </div>
+          </div>
+        </details-menu>
+
+        <details-dialog
+          class="notifications-component-dialog "
+          data-target="notifications-list-subscription-form.customDialog"
+          aria-label="Custom dialog"
+          hidden
+        >
+          <div class="SelectMenu-modal notifications-component-dialog-modal overflow-visible">
+            <form data-target="notifications-list-subscription-form.customform" data-action="submit:notifications-list-subscription-form#submitCustomForm" data-turbo="false" action="/notifications/subscribe" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="qRLU_ScvCpJ7I4-EssBJLpdIcK90WkM3d9Gu569IazR9K1gl-TYC0FZvR-Yd_DSVxz9VBEVWCmmT0C0eRZ2kOg" autocomplete="off" />
+
+              <input type="hidden" name="repository_id" value="459564828">
+
+              <header class="d-sm-none SelectMenu-header pb-0 border-bottom-0 px-2 px-sm-3">
+                <h1 class="f3 SelectMenu-title d-inline-flex">
+                  <button
+                    class="color-bg-default border-0 px-2 py-0 m-0 Link--secondary f5"
+                    aria-label="Return to menu"
+                    type="button"
+                    data-action="click:notifications-list-subscription-form#closeCustomDialog"
+                  >
+                    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-arrow-left">
+    <path fill-rule="evenodd" d="M7.78 12.53a.75.75 0 01-1.06 0L2.47 8.28a.75.75 0 010-1.06l4.25-4.25a.75.75 0 011.06 1.06L4.81 7h7.44a.75.75 0 010 1.5H4.81l2.97 2.97a.75.75 0 010 1.06z"></path>
+</svg>
+                  </button>
+                  Custom
+                </h1>
+              </header>
+
+              <header class="d-none d-sm-flex flex-items-start pt-1">
+                <button
+                  class="border-0 px-2 pt-1 m-0 Link--secondary f5"
+                  style="background-color: transparent;"
+                  aria-label="Return to menu"
+                  type="button"
+                  data-action="click:notifications-list-subscription-form#closeCustomDialog"
+                >
+                  <svg style="position: relative; left: 2px; top: 1px" aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-arrow-left">
+    <path fill-rule="evenodd" d="M7.78 12.53a.75.75 0 01-1.06 0L2.47 8.28a.75.75 0 010-1.06l4.25-4.25a.75.75 0 011.06 1.06L4.81 7h7.44a.75.75 0 010 1.5H4.81l2.97 2.97a.75.75 0 010 1.06z"></path>
+</svg>
+                </button>
+
+                <h1 class="pt-1 pr-4 pb-0 pl-0 f5 text-bold">
+                  Custom
+                </h1>
+              </header>
+
+              <fieldset>
+                <legend>
+                  <div class="text-small color-fg-muted pt-0 pr-3 pb-3 pl-6 pl-sm-5 border-bottom mb-3">
+                    Select events you want to be notified of in addition to participating and @mentions.
+                  </div>
+                </legend>
+                <div data-target="notifications-list-subscription-form.labelInputs">
+                </div>
+                  <div class="form-checkbox mr-3 ml-6 ml-sm-5 mb-2 mt-0">
+                    <label class="f5 text-normal">
+                      <input
+                        type="checkbox"
+                        name="thread_types[]"
+                        value="Issue"
+                        data-targets="notifications-list-subscription-form.threadTypeCheckboxes"
+                        data-action="change:notifications-list-subscription-form#threadTypeCheckboxesUpdated"
+                        
+                      >
+                      Issues
+                    </label>
+
+                      <span
+                        class="tooltipped tooltipped-nw mr-2 p-1 float-right"
+                        
+                        aria-label="Issues are not enabled for this repo">
+                        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-info color-fg-muted">
+    <path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg>
+                      </span>
+                  </div>
+                  <div class="form-checkbox mr-3 ml-6 ml-sm-5 mb-2 mt-0">
+                    <label class="f5 text-normal">
+                      <input
+                        type="checkbox"
+                        name="thread_types[]"
+                        value="PullRequest"
+                        data-targets="notifications-list-subscription-form.threadTypeCheckboxes"
+                        data-action="change:notifications-list-subscription-form#threadTypeCheckboxesUpdated"
+                        
+                      >
+                      Pull requests
+                    </label>
+
+                  </div>
+                  <div class="form-checkbox mr-3 ml-6 ml-sm-5 mb-2 mt-0">
+                    <label class="f5 text-normal">
+                      <input
+                        type="checkbox"
+                        name="thread_types[]"
+                        value="Release"
+                        data-targets="notifications-list-subscription-form.threadTypeCheckboxes"
+                        data-action="change:notifications-list-subscription-form#threadTypeCheckboxesUpdated"
+                        
+                      >
+                      Releases
+                    </label>
+
+                  </div>
+                  <div class="form-checkbox mr-3 ml-6 ml-sm-5 mb-2 mt-0">
+                    <label class="f5 text-normal">
+                      <input
+                        type="checkbox"
+                        name="thread_types[]"
+                        value="Discussion"
+                        data-targets="notifications-list-subscription-form.threadTypeCheckboxes"
+                        data-action="change:notifications-list-subscription-form#threadTypeCheckboxesUpdated"
+                        
+                      >
+                      Discussions
+                    </label>
+
+                      <span
+                        class="tooltipped tooltipped-nw mr-2 p-1 float-right"
+                        
+                        aria-label="Discussions are not enabled for this repo">
+                        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-info color-fg-muted">
+    <path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg>
+                      </span>
+                  </div>
+                  <div class="form-checkbox mr-3 ml-6 ml-sm-5 mb-2 mt-0">
+                    <label class="f5 text-normal">
+                      <input
+                        type="checkbox"
+                        name="thread_types[]"
+                        value="SecurityAlert"
+                        data-targets="notifications-list-subscription-form.threadTypeCheckboxes"
+                        data-action="change:notifications-list-subscription-form#threadTypeCheckboxesUpdated"
+                        
+                      >
+                      Security alerts
+                    </label>
+
+                  </div>
+              </fieldset>
+              <div class="pt-2 pb-3 px-3 d-flex flex-justify-start flex-row-reverse">
+                <button name="do" value="custom" data-target="notifications-list-subscription-form.customSubmit" disabled="disabled" type="submit" data-view-component="true" class="btn-primary btn-sm btn ml-2">  Apply
+  
+</button>
+
+                <button data-action="click:notifications-list-subscription-form#resetForm" data-close-dialog="" type="button" data-view-component="true" class="btn-sm btn">  Cancel
+  
+</button>
+              </div>
+</form>          </div>
+        </details-dialog>
+
+
+        <div class="notifications-component-dialog-overlay"></div>
+      </details>
+    </notifications-list-subscription-form>
+
+
+
+  </li>
+
+  <li>
+      
+  <div data-view-component="true" class="BtnGroup">
+      <button aria-label="Cannot fork because you own this repository and are not a member of any organizations." disabled="disabled" type="button" data-view-component="true" class="tooltipped tooltipped-s btn-sm btn BtnGroup-item">  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo-forked mr-2">
+    <path fill-rule="evenodd" d="M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.122a2.25 2.25 0 10-1.5 0v.878A2.25 2.25 0 005.75 8.5h1.5v2.128a2.251 2.251 0 101.5 0V8.5h1.5a2.25 2.25 0 002.25-2.25v-.878a2.25 2.25 0 10-1.5 0v.878a.75.75 0 01-.75.75h-4.5A.75.75 0 015 6.25v-.878zm3.75 7.378a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm3-8.75a.75.75 0 100-1.5.75.75 0 000 1.5z"></path>
+</svg>Fork
+        <span id="repo-network-counter" data-pjax-replace="true" title="21" data-view-component="true" class="Counter">21</span>
+  
+</button>
+    <details group_item="true" id="my-forks-menu-459564828" data-view-component="true" class="details-reset details-overlay BtnGroup-parent d-inline-block position-relative">
+          <summary aria-label="See your forks of this repository" data-view-component="true" class="btn-sm btn BtnGroup-item px-2 float-none">  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-triangle-down">
+    <path d="M4.427 7.427l3.396 3.396a.25.25 0 00.354 0l3.396-3.396A.25.25 0 0011.396 7H4.604a.25.25 0 00-.177.427z"></path>
+</svg>
+  
+</summary>
+  <details-menu
+    class="SelectMenu right-0"
+      src="/ohle64/ioBroker.spotify-premium/my_forks_menu_content?can_fork=false"
+      
+      role="menu"
+      
+>
+    <div class="SelectMenu-modal">
+        <button class="SelectMenu-closeButton position-absolute right-0 m-2" type="button" aria-label="Close menu" data-toggle-for="details-c81010">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+    <path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z"></path>
+</svg>
+        </button>
+      <div
+        id="filter-menu-c81010"
+        class="d-flex flex-column flex-1 overflow-hidden"
+>
+        <div
+          class="SelectMenu-list"
+          >
+
+            <include-fragment class="SelectMenu-loading" aria-label="Loading">
+              <svg style="box-sizing: content-box; color: var(--color-icon-primary);" width="32" height="32" viewBox="0 0 16 16" fill="none" data-view-component="true" class="anim-rotate">
+  <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke" />
+  <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+</svg>
+            </include-fragment>
+        </div>
+        
+      </div>
+    </div>
+  </details-menu>
+</details></div>
+  </li>
+
+  <li>
+        <template class="js-unstar-confirmation-dialog-template">
+  <div class="Box-header">
+    <h2 class="Box-title">Unstar this repository?</h2>
+  </div>
+  <div class="Box-body">
+    <p class="mb-3">
+      This will remove {{ repoNameWithOwner }} from the {{ listsWithCount }} that it's been added to.
+    </p>
+    <div class="form-actions">
+      <form class="js-social-confirmation-form" data-turbo="false" action="{{ confirmUrl }}" accept-charset="UTF-8" method="post">
+        <input type="hidden" name="authenticity_token" value="{{ confirmCsrfToken }}">
+        <input type="hidden" name="confirm" value="true">
+        <button data-close-dialog="true" type="submit" data-view-component="true" class="btn-danger btn width-full">  Unstar
+  
+</button>
+</form>    </div>
+  </div>
+</template>
+
+  <div data-view-component="true" class="js-toggler-container js-social-container starring-container BtnGroup d-flex">
+    <form class="starred js-social-form BtnGroup-parent flex-auto js-deferred-toggler-target" data-turbo="false" action="/ohle64/ioBroker.spotify-premium/unstar" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="V6_eS81aIaf6uN-Nm5XAVdMWHeTM9ySQ8_LTmJdMMN7I-wNhRMiACGm4hkHBGLaOJ1dZHllBpgGDtj-qKD2Qjw" autocomplete="off" />
+        <input type="hidden" value="alYaPb95XxxP8NkwrbYlPmQcFLPmwXi3dJ26RiPAxgL1AscXNuv-s9zwgPz3O1PlkF1QSXN3-iYE2VZ0nLFmUw" data-csrf="true" class="js-confirm-csrf-token" />
+      <input type="hidden" name="context" value="repository">
+      <button data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;UNSTAR_BUTTON&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="e1bf042e466f1075a8db93987b2bca587e653594707bdd84b90e19e31bd40578" data-ga-click="Repository, click unstar button, action:blob#show; text:Unstar" aria-label="Unstar this repository" type="submit" data-view-component="true" class="rounded-left-2 border-right-0 btn-sm btn BtnGroup-item">  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star-fill starred-button-icon d-inline-block mr-2">
+    <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"></path>
+</svg><span data-view-component="true" class="d-inline">
+          Starred
+</span>          <span id="repo-stars-counter-unstar" aria-label="0 users starred this repository" data-singular-suffix="user starred this repository" data-plural-suffix="users starred this repository" data-pjax-replace="true" data-turbo-replace="true" title="0" data-view-component="true" class="Counter js-social-count">0</span>
+  
+</button></form>
+    <form class="unstarred js-social-form BtnGroup-parent flex-auto" data-turbo="false" action="/ohle64/ioBroker.spotify-premium/star" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="8nAcidLTxLVmogVB9rReiuZexmG27RtIQ2WX9shlyJ8BrUtOqyJu4XNyY_NFGrs8P3prsJmXR1WzSHBnq5JXyA" autocomplete="off" />
+      <input type="hidden" name="context" value="repository">
+      <button data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;STAR_BUTTON&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="b1552846e4be4e771988b6b63924bdb769a022480a9bcb4823fb29e4dd18c4b6" data-ga-click="Repository, click star button, action:blob#show; text:Star" aria-label="Star this repository" type="submit" data-view-component="true" class="js-toggler-target rounded-left-2 btn-sm btn BtnGroup-item">  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star d-inline-block mr-2">
+    <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z"></path>
+</svg><span data-view-component="true" class="d-inline">
+          Star
+</span>          <span id="repo-stars-counter-star" aria-label="0 users starred this repository" data-singular-suffix="user starred this repository" data-plural-suffix="users starred this repository" data-pjax-replace="true" data-turbo-replace="true" title="0" data-view-component="true" class="Counter js-social-count">0</span>
+  
+</button></form>
+      <details id="details-user-list-459564828" data-view-component="true" class="details-reset details-overlay BtnGroup-parent js-user-list-menu d-inline-block position-relative">
+      <summary aria-label="Add this repository to a list" data-view-component="true" class="btn-sm btn BtnGroup-item px-2 float-none">  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-triangle-down">
+    <path d="M4.427 7.427l3.396 3.396a.25.25 0 00.354 0l3.396-3.396A.25.25 0 0011.396 7H4.604a.25.25 0 00-.177.427z"></path>
+</svg>
+  
+</summary>
+  <details-menu
+    class="SelectMenu right-0"
+      src="/ohle64/ioBroker.spotify-premium/lists"
+      
+      role="menu"
+      
+>
+    <div class="SelectMenu-modal">
+        <button class="SelectMenu-closeButton position-absolute right-0 m-2" type="button" aria-label="Close menu" data-toggle-for="details-2b1a5e">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+    <path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z"></path>
+</svg>
+        </button>
+      <div
+        id="filter-menu-2b1a5e"
+        class="d-flex flex-column flex-1 overflow-hidden"
+>
+        <div
+          class="SelectMenu-list"
+          >
+
+            <include-fragment class="SelectMenu-loading" aria-label="Loading">
+              <svg style="box-sizing: content-box; color: var(--color-icon-primary);" width="32" height="32" viewBox="0 0 16 16" fill="none" data-view-component="true" class="anim-rotate">
+  <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke" />
+  <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+</svg>
+            </include-fragment>
+        </div>
+        
+      </div>
+    </div>
+  </details-menu>
+</details>
+</div>
+  </li>
+
+  
+
+</ul>
+
+      </div>
+
+      <div id="responsive-meta-container" data-pjax-replace data-turbo-replace>
+</div>
+
+
+        
+<nav data-pjax="#js-repo-pjax-container" aria-label="Repository" data-view-component="true" class="js-repo-nav js-sidenav-container-pjax js-responsive-underlinenav overflow-hidden UnderlineNav px-3 px-md-4 px-lg-5">
+
+  <ul data-view-component="true" class="UnderlineNav-body list-style-none">
+      <li data-view-component="true" class="d-inline-flex">
+  <a id="code-tab" href="/ohle64/ioBroker.spotify-premium" data-tab-item="i0code-tab" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches repo_packages repo_deployments /ohle64/ioBroker.spotify-premium" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g c" data-ga-click="Repository, Navigation click, Code tab" aria-current="page" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item selected">
+    
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-code UnderlineNav-octicon d-none d-sm-inline">
+    <path fill-rule="evenodd" d="M4.72 3.22a.75.75 0 011.06 1.06L2.06 8l3.72 3.72a.75.75 0 11-1.06 1.06L.47 8.53a.75.75 0 010-1.06l4.25-4.25zm6.56 0a.75.75 0 10-1.06 1.06L13.94 8l-3.72 3.72a.75.75 0 101.06 1.06l4.25-4.25a.75.75 0 000-1.06l-4.25-4.25z"></path>
+</svg>
+          <span data-content="Code">Code</span>
+            <span id="code-repo-tab-count" data-pjax-replace="" title="Not available" data-view-component="true" class="Counter"></span>
+
+
+    
+</a></li>
+      <li data-view-component="true" class="d-inline-flex">
+  <a id="pull-requests-tab" href="/ohle64/ioBroker.spotify-premium/pulls" data-tab-item="i1pull-requests-tab" data-selected-links="repo_pulls checks /ohle64/ioBroker.spotify-premium/pulls" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g p" data-ga-click="Repository, Navigation click, Pull requests tab" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
+    
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-git-pull-request UnderlineNav-octicon d-none d-sm-inline">
+    <path fill-rule="evenodd" d="M7.177 3.073L9.573.677A.25.25 0 0110 .854v4.792a.25.25 0 01-.427.177L7.177 3.427a.25.25 0 010-.354zM3.75 2.5a.75.75 0 100 1.5.75.75 0 000-1.5zm-2.25.75a2.25 2.25 0 113 2.122v5.256a2.251 2.251 0 11-1.5 0V5.372A2.25 2.25 0 011.5 3.25zM11 2.5h-1V4h1a1 1 0 011 1v5.628a2.251 2.251 0 101.5 0V5A2.5 2.5 0 0011 2.5zm1 10.25a.75.75 0 111.5 0 .75.75 0 01-1.5 0zM3.75 12a.75.75 0 100 1.5.75.75 0 000-1.5z"></path>
+</svg>
+          <span data-content="Pull requests">Pull requests</span>
+            <span id="pull-requests-repo-tab-count" data-pjax-replace="" title="0" hidden="hidden" data-view-component="true" class="Counter">0</span>
+
+
+    
+</a></li>
+      <li data-view-component="true" class="d-inline-flex">
+  <a id="actions-tab" href="/ohle64/ioBroker.spotify-premium/actions" data-tab-item="i2actions-tab" data-selected-links="repo_actions /ohle64/ioBroker.spotify-premium/actions" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g a" data-analytics-event="{&quot;category&quot;:&quot;Actions&quot;,&quot;action&quot;:&quot;clicked&quot;,&quot;label&quot;:&quot;ref_cta:Actions;ref_loc:navigation_helper&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
+    
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-play UnderlineNav-octicon d-none d-sm-inline">
+    <path fill-rule="evenodd" d="M1.5 8a6.5 6.5 0 1113 0 6.5 6.5 0 01-13 0zM8 0a8 8 0 100 16A8 8 0 008 0zM6.379 5.227A.25.25 0 006 5.442v5.117a.25.25 0 00.379.214l4.264-2.559a.25.25 0 000-.428L6.379 5.227z"></path>
+</svg>
+          <span data-content="Actions">Actions</span>
+            <span id="actions-repo-tab-count" data-pjax-replace="" title="Not available" data-view-component="true" class="Counter"></span>
+
+
+    
+</a></li>
+      <li data-view-component="true" class="d-inline-flex">
+  <a id="projects-tab" href="/ohle64/ioBroker.spotify-premium/projects?type=new" data-tab-item="i3projects-tab" data-selected-links="repo_projects new_repo_project repo_project /ohle64/ioBroker.spotify-premium/projects?type=new" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g b" data-ga-click="Repository, Navigation click, Projects tab" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
+    
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-table UnderlineNav-octicon d-none d-sm-inline">
+    <path fill-rule="evenodd" d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v3.585a.746.746 0 010 .83v8.085A1.75 1.75 0 0114.25 16H6.309a.748.748 0 01-1.118 0H1.75A1.75 1.75 0 010 14.25V6.165a.746.746 0 010-.83V1.75zM1.5 6.5v7.75c0 .138.112.25.25.25H5v-8H1.5zM5 5H1.5V1.75a.25.25 0 01.25-.25H5V5zm1.5 1.5v8h7.75a.25.25 0 00.25-.25V6.5h-8zm8-1.5h-8V1.5h7.75a.25.25 0 01.25.25V5z"></path>
+</svg>
+          <span data-content="Projects">Projects</span>
+            <span id="projects-repo-tab-count" data-pjax-replace="" title="0" hidden="hidden" data-view-component="true" class="Counter">0</span>
+
+
+    
+</a></li>
+      <li data-view-component="true" class="d-inline-flex">
+  <a id="wiki-tab" href="/ohle64/ioBroker.spotify-premium/wiki" data-tab-item="i4wiki-tab" data-selected-links="repo_wiki /ohle64/ioBroker.spotify-premium/wiki" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g w" data-ga-click="Repository, Navigation click, Wikis tab" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
+    
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-book UnderlineNav-octicon d-none d-sm-inline">
+    <path fill-rule="evenodd" d="M0 1.75A.75.75 0 01.75 1h4.253c1.227 0 2.317.59 3 1.501A3.744 3.744 0 0111.006 1h4.245a.75.75 0 01.75.75v10.5a.75.75 0 01-.75.75h-4.507a2.25 2.25 0 00-1.591.659l-.622.621a.75.75 0 01-1.06 0l-.622-.621A2.25 2.25 0 005.258 13H.75a.75.75 0 01-.75-.75V1.75zm8.755 3a2.25 2.25 0 012.25-2.25H14.5v9h-3.757c-.71 0-1.4.201-1.992.572l.004-7.322zm-1.504 7.324l.004-5.073-.002-2.253A2.25 2.25 0 005.003 2.5H1.5v9h3.757a3.75 3.75 0 011.994.574z"></path>
+</svg>
+          <span data-content="Wiki">Wiki</span>
+            <span id="wiki-repo-tab-count" data-pjax-replace="" title="Not available" data-view-component="true" class="Counter"></span>
+
+
+    
+</a></li>
+      <li data-view-component="true" class="d-inline-flex">
+  <a id="security-tab" href="/ohle64/ioBroker.spotify-premium/security" data-tab-item="i5security-tab" data-selected-links="security overview alerts policy token_scanning code_scanning /ohle64/ioBroker.spotify-premium/security" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g s" data-ga-click="Repository, Navigation click, Security tab" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
+    
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-shield UnderlineNav-octicon d-none d-sm-inline">
+    <path fill-rule="evenodd" d="M7.467.133a1.75 1.75 0 011.066 0l5.25 1.68A1.75 1.75 0 0115 3.48V7c0 1.566-.32 3.182-1.303 4.682-.983 1.498-2.585 2.813-5.032 3.855a1.7 1.7 0 01-1.33 0c-2.447-1.042-4.049-2.357-5.032-3.855C1.32 10.182 1 8.566 1 7V3.48a1.75 1.75 0 011.217-1.667l5.25-1.68zm.61 1.429a.25.25 0 00-.153 0l-5.25 1.68a.25.25 0 00-.174.238V7c0 1.358.275 2.666 1.057 3.86.784 1.194 2.121 2.34 4.366 3.297a.2.2 0 00.154 0c2.245-.956 3.582-2.104 4.366-3.298C13.225 9.666 13.5 8.36 13.5 7V3.48a.25.25 0 00-.174-.237l-5.25-1.68zM9 10.5a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.75a.75.75 0 10-1.5 0v3a.75.75 0 001.5 0v-3z"></path>
+</svg>
+          <span data-content="Security">Security</span>
+            <include-fragment src="/ohle64/ioBroker.spotify-premium/security/overall-count" accept="text/fragment+html"></include-fragment>
+
+    
+</a></li>
+      <li data-view-component="true" class="d-inline-flex">
+  <a id="insights-tab" href="/ohle64/ioBroker.spotify-premium/pulse" data-tab-item="i6insights-tab" data-selected-links="repo_graphs repo_contributors dependency_graph dependabot_updates pulse people community /ohle64/ioBroker.spotify-premium/pulse" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-ga-click="Repository, Navigation click, Insights tab" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
+    
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-graph UnderlineNav-octicon d-none d-sm-inline">
+    <path fill-rule="evenodd" d="M1.5 1.75a.75.75 0 00-1.5 0v12.5c0 .414.336.75.75.75h14.5a.75.75 0 000-1.5H1.5V1.75zm14.28 2.53a.75.75 0 00-1.06-1.06L10 7.94 7.53 5.47a.75.75 0 00-1.06 0L3.22 8.72a.75.75 0 001.06 1.06L7 7.06l2.47 2.47a.75.75 0 001.06 0l5.25-5.25z"></path>
+</svg>
+          <span data-content="Insights">Insights</span>
+            <span id="insights-repo-tab-count" data-pjax-replace="" title="Not available" data-view-component="true" class="Counter"></span>
+
+
+    
+</a></li>
+      <li data-view-component="true" class="d-inline-flex">
+  <a id="settings-tab" href="/ohle64/ioBroker.spotify-premium/settings" data-tab-item="i7settings-tab" data-selected-links="repo_settings repo_branch_settings collaborators hooks integration_installations repo_keys_settings issue_template_editor secrets_settings_actions secrets_settings_codespaces secrets_settings_dependabot security_analysis key_links_settings repo_actions_settings notifications repository_actions_settings_runners repository_environments interaction_limits repository_actions_settings_general repository_actions_settings_add_new_runner repo_pages_settings /ohle64/ioBroker.spotify-premium/settings" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-ga-click="Repository, Navigation click, Settings tab" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
+    
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-gear UnderlineNav-octicon d-none d-sm-inline">
+    <path fill-rule="evenodd" d="M7.429 1.525a6.593 6.593 0 011.142 0c.036.003.108.036.137.146l.289 1.105c.147.56.55.967.997 1.189.174.086.341.183.501.29.417.278.97.423 1.53.27l1.102-.303c.11-.03.175.016.195.046.219.31.41.641.573.989.014.031.022.11-.059.19l-.815.806c-.411.406-.562.957-.53 1.456a4.588 4.588 0 010 .582c-.032.499.119 1.05.53 1.456l.815.806c.08.08.073.159.059.19a6.494 6.494 0 01-.573.99c-.02.029-.086.074-.195.045l-1.103-.303c-.559-.153-1.112-.008-1.529.27-.16.107-.327.204-.5.29-.449.222-.851.628-.998 1.189l-.289 1.105c-.029.11-.101.143-.137.146a6.613 6.613 0 01-1.142 0c-.036-.003-.108-.037-.137-.146l-.289-1.105c-.147-.56-.55-.967-.997-1.189a4.502 4.502 0 01-.501-.29c-.417-.278-.97-.423-1.53-.27l-1.102.303c-.11.03-.175-.016-.195-.046a6.492 6.492 0 01-.573-.989c-.014-.031-.022-.11.059-.19l.815-.806c.411-.406.562-.957.53-1.456a4.587 4.587 0 010-.582c.032-.499-.119-1.05-.53-1.456l-.815-.806c-.08-.08-.073-.159-.059-.19a6.44 6.44 0 01.573-.99c.02-.029.086-.075.195-.045l1.103.303c.559.153 1.112.008 1.529-.27.16-.107.327-.204.5-.29.449-.222.851-.628.998-1.189l.289-1.105c.029-.11.101-.143.137-.146zM8 0c-.236 0-.47.01-.701.03-.743.065-1.29.615-1.458 1.261l-.29 1.106c-.017.066-.078.158-.211.224a5.994 5.994 0 00-.668.386c-.123.082-.233.09-.3.071L3.27 2.776c-.644-.177-1.392.02-1.82.63a7.977 7.977 0 00-.704 1.217c-.315.675-.111 1.422.363 1.891l.815.806c.05.048.098.147.088.294a6.084 6.084 0 000 .772c.01.147-.038.246-.088.294l-.815.806c-.474.469-.678 1.216-.363 1.891.2.428.436.835.704 1.218.428.609 1.176.806 1.82.63l1.103-.303c.066-.019.176-.011.299.071.213.143.436.272.668.386.133.066.194.158.212.224l.289 1.106c.169.646.715 1.196 1.458 1.26a8.094 8.094 0 001.402 0c.743-.064 1.29-.614 1.458-1.26l.29-1.106c.017-.066.078-.158.211-.224a5.98 5.98 0 00.668-.386c.123-.082.233-.09.3-.071l1.102.302c.644.177 1.392-.02 1.82-.63.268-.382.505-.789.704-1.217.315-.675.111-1.422-.364-1.891l-.814-.806c-.05-.048-.098-.147-.088-.294a6.1 6.1 0 000-.772c-.01-.147.039-.246.088-.294l.814-.806c.475-.469.679-1.216.364-1.891a7.992 7.992 0 00-.704-1.218c-.428-.609-1.176-.806-1.82-.63l-1.103.303c-.066.019-.176.011-.299-.071a5.991 5.991 0 00-.668-.386c-.133-.066-.194-.158-.212-.224L10.16 1.29C9.99.645 9.444.095 8.701.031A8.094 8.094 0 008 0zm1.5 8a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM11 8a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+          <span data-content="Settings">Settings</span>
+            <span id="settings-repo-tab-count" data-pjax-replace="" title="Not available" data-view-component="true" class="Counter"></span>
+
+
+    
+</a></li>
+</ul>
+    <div style="visibility:hidden;" data-view-component="true" class="UnderlineNav-actions js-responsive-underlinenav-overflow position-absolute pr-3 pr-md-4 pr-lg-5 right-0">      <details data-view-component="true" class="details-overlay details-reset position-relative">
+  <summary role="button" data-view-component="true">          <div class="UnderlineNav-item mr-0 border-0">
+            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-kebab-horizontal">
+    <path d="M8 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM1.5 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm13 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
+</svg>
+            <span class="sr-only">More</span>
+          </div>
+</summary>
+  <div data-view-component="true">          <details-menu role="menu" data-view-component="true" class="dropdown-menu dropdown-menu-sw">
+  
+            <ul>
+                <li data-menu-item="i0code-tab" hidden>
+                  <a role="menuitem" class="js-selected-navigation-item selected dropdown-item" aria-current="page" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches repo_packages repo_deployments /ohle64/ioBroker.spotify-premium" href="/ohle64/ioBroker.spotify-premium">
+                    Code
+</a>                </li>
+                <li data-menu-item="i1pull-requests-tab" hidden>
+                  <a role="menuitem" class="js-selected-navigation-item dropdown-item" data-selected-links="repo_pulls checks /ohle64/ioBroker.spotify-premium/pulls" href="/ohle64/ioBroker.spotify-premium/pulls">
+                    Pull requests
+</a>                </li>
+                <li data-menu-item="i2actions-tab" hidden>
+                  <a role="menuitem" class="js-selected-navigation-item dropdown-item" data-selected-links="repo_actions /ohle64/ioBroker.spotify-premium/actions" href="/ohle64/ioBroker.spotify-premium/actions">
+                    Actions
+</a>                </li>
+                <li data-menu-item="i3projects-tab" hidden>
+                  <a role="menuitem" class="js-selected-navigation-item dropdown-item" data-selected-links="repo_projects new_repo_project repo_project /ohle64/ioBroker.spotify-premium/projects?type=new" href="/ohle64/ioBroker.spotify-premium/projects?type=new">
+                    Projects
+</a>                </li>
+                <li data-menu-item="i4wiki-tab" hidden>
+                  <a role="menuitem" class="js-selected-navigation-item dropdown-item" data-selected-links="repo_wiki /ohle64/ioBroker.spotify-premium/wiki" href="/ohle64/ioBroker.spotify-premium/wiki">
+                    Wiki
+</a>                </li>
+                <li data-menu-item="i5security-tab" hidden>
+                  <a role="menuitem" class="js-selected-navigation-item dropdown-item" data-selected-links="security overview alerts policy token_scanning code_scanning /ohle64/ioBroker.spotify-premium/security" href="/ohle64/ioBroker.spotify-premium/security">
+                    Security
+</a>                </li>
+                <li data-menu-item="i6insights-tab" hidden>
+                  <a role="menuitem" class="js-selected-navigation-item dropdown-item" data-selected-links="repo_graphs repo_contributors dependency_graph dependabot_updates pulse people community /ohle64/ioBroker.spotify-premium/pulse" href="/ohle64/ioBroker.spotify-premium/pulse">
+                    Insights
+</a>                </li>
+                <li data-menu-item="i7settings-tab" hidden>
+                  <a role="menuitem" class="js-selected-navigation-item dropdown-item" data-selected-links="repo_settings repo_branch_settings collaborators hooks integration_installations repo_keys_settings issue_template_editor secrets_settings_actions secrets_settings_codespaces secrets_settings_dependabot security_analysis key_links_settings repo_actions_settings notifications repository_actions_settings_runners repository_environments interaction_limits repository_actions_settings_general repository_actions_settings_add_new_runner repo_pages_settings /ohle64/ioBroker.spotify-premium/settings" href="/ohle64/ioBroker.spotify-premium/settings">
+                    Settings
+</a>                </li>
+            </ul>
+
+</details-menu></div>
+</details></div>
+</nav>
+  </div>
+
+
+
+
+  <turbo-frame id="repo-content-turbo-frame" target="_top" data-turbo-action="advance" class="">
+      <div id="repo-content-pjax-container" class="repository-content " >
+      <a href="https://github.dev/" class="d-none js-github-dev-shortcut" data-hotkey=".">Open in github.dev</a>
+  <a href="https://github.dev/" class="d-none js-github-dev-new-tab-shortcut" data-hotkey="Shift+.,Shift+&gt;,&gt;" target="_blank">Open in a new github.dev tab</a>
+
+    
+
+
+    
+      
+  <div class="clearfix container-xl px-3 px-md-4 px-lg-5 mt-4">
+    
+    
+<div data-test-selector="blob-container">
+  
+
+  
+
+
+
+
+    
+<a class="d-none js-permalink-shortcut" data-hotkey="y" href="/ohle64/ioBroker.spotify-premium/blob/55cdae432cc8782e8933dd62a5d9322187b6369a/README.md">Permalink</a>
+
+<div class="d-flex flex-items-start flex-shrink-0 pb-3 flex-wrap flex-md-nowrap flex-justify-between flex-md-justify-start">
+  
+<div class="position-relative">
+  <details class="details-reset details-overlay mr-0 mb-0 " id="branch-select-menu">
+    <summary class="btn css-truncate"
+            data-hotkey="w"
+            title="Switch branches or tags">
+      <svg text="gray" aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-git-branch">
+    <path fill-rule="evenodd" d="M11.75 2.5a.75.75 0 100 1.5.75.75 0 000-1.5zm-2.25.75a2.25 2.25 0 113 2.122V6A2.5 2.5 0 0110 8.5H6a1 1 0 00-1 1v1.128a2.251 2.251 0 11-1.5 0V5.372a2.25 2.25 0 111.5 0v1.836A2.492 2.492 0 016 7h4a1 1 0 001-1v-.628A2.25 2.25 0 019.5 3.25zM4.25 12a.75.75 0 100 1.5.75.75 0 000-1.5zM3.5 3.25a.75.75 0 111.5 0 .75.75 0 01-1.5 0z"></path>
+</svg>
+      <span class="css-truncate-target" data-menu-button>master</span>
+      <span class="dropdown-caret"></span>
+    </summary>
+
+    
+<div class="SelectMenu">
+  <div class="SelectMenu-modal">
+    <header class="SelectMenu-header">
+      <span class="SelectMenu-title">Switch branches/tags</span>
+      <button class="SelectMenu-closeButton" type="button" data-toggle-for="branch-select-menu"><svg aria-label="Close menu" aria-hidden="false" role="img" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+    <path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z"></path>
+</svg></button>
+    </header>
+
+    <input-demux data-action="tab-container-change:input-demux#storeInput tab-container-changed:input-demux#updateInput">
+      <tab-container class="d-flex flex-column js-branches-tags-tabs" style="min-height: 0;">
+        <div class="SelectMenu-filter">
+          <input data-target="input-demux.source"
+                 id="context-commitish-filter-field"
+                 class="SelectMenu-input form-control"
+                 aria-owns="ref-list-branches"
+                 data-controls-ref-menu-id="ref-list-branches"
+                 autofocus
+                 autocomplete="off"
+                 aria-label="Find or create a branch…"
+                 placeholder="Find or create a branch…"
+                 type="text"
+          >
+        </div>
+
+        <div class="SelectMenu-tabs" role="tablist" data-target="input-demux.control" >
+          <button class="SelectMenu-tab" type="button" role="tab" aria-selected="true">Branches</button>
+          <button class="SelectMenu-tab" type="button" role="tab">Tags</button>
+        </div>
+
+        <div role="tabpanel" id="ref-list-branches" data-filter-placeholder="Find or create a branch…" tabindex="" class="d-flex flex-column flex-auto overflow-auto">
+          <ref-selector
+            type="branch"
+            data-targets="input-demux.sinks"
+            data-action="
+              input-entered:ref-selector#inputEntered
+              tab-selected:ref-selector#tabSelected
+              focus-list:ref-selector#focusFirstListMember
+            "
+            query-endpoint="/ohle64/ioBroker.spotify-premium/refs"
+            can-create
+            cache-key="v0:1659339723.460927"
+            current-committish="bWFzdGVy"
+            default-branch="bWFzdGVy"
+            name-with-owner="b2hsZTY0L2lvQnJva2VyLnNwb3RpZnktcHJlbWl1bQ=="
+            prefetch-on-mouseover
+          >
+
+            <template data-target="ref-selector.fetchFailedTemplate">
+              <div class="SelectMenu-message" data-index="{{ index }}">Could not load branches</div>
+            </template>
+
+              <template data-target="ref-selector.noMatchTemplate">
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form data-turbo="false" action="/ohle64/ioBroker.spotify-premium/branches" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="faY0pOz1iwkpfGIF2Imqh8xR39TbTR5U977WZtPefTC_waopMvG-CTZsQR15CUjtCA2TCzYaazrSn5Emk-hA7A" />
+      <input type="hidden" name="name" value="{{ refName }}">
+      <input type="hidden" name="branch"  value="master">
+      <input type="hidden" name="path_binary" value="UkVBRE1FLm1k">
+
+      <button class="SelectMenu-item wb-break-word" type="submit" role="menuitem" data-index="{{ index }}">
+        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-git-branch SelectMenu-icon flex-self-baseline">
+    <path fill-rule="evenodd" d="M11.75 2.5a.75.75 0 100 1.5.75.75 0 000-1.5zm-2.25.75a2.25 2.25 0 113 2.122V6A2.5 2.5 0 0110 8.5H6a1 1 0 00-1 1v1.128a2.251 2.251 0 11-1.5 0V5.372a2.25 2.25 0 111.5 0v1.836A2.492 2.492 0 016 7h4a1 1 0 001-1v-.628A2.25 2.25 0 019.5 3.25zM4.25 12a.75.75 0 100 1.5.75.75 0 000-1.5zM3.5 3.25a.75.75 0 111.5 0 .75.75 0 01-1.5 0z"></path>
+</svg>
+        <div>
+          <span class="text-bold">Create branch: {{ refName }}</span>
+          <span class="color-fg-muted">from ‘master’</span>
+        </div>
+      </button>
+</form></template>
+
+
+            <div data-target="ref-selector.listContainer" role="menu" class="SelectMenu-list " data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame">
+              <div class="SelectMenu-loading pt-3 pb-0 overflow-hidden" aria-label="Menu is loading">
+                <svg style="box-sizing: content-box; color: var(--color-icon-primary);" width="32" height="32" viewBox="0 0 16 16" fill="none" data-view-component="true" class="anim-rotate">
+  <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke" />
+  <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+</svg>
+              </div>
+            </div>
+
+              <template data-target="ref-selector.itemTemplate">
+  <a href="https://github.com/ohle64/ioBroker.spotify-premium/blob/{{ urlEncodedRefName }}/README.md" class="SelectMenu-item" role="menuitemradio" rel="nofollow" aria-checked="{{ isCurrent }}" data-index="{{ index }}">
+    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check SelectMenu-icon SelectMenu-icon--check">
+    <path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path>
+</svg>
+    <span class="flex-1 css-truncate css-truncate-overflow {{ isFilteringClass }}">{{ refName }}</span>
+    <span hidden="{{ isNotDefault }}" class="Label Label--secondary flex-self-start">default</span>
+  </a>
+</template>
+
+
+              <footer class="SelectMenu-footer"><a href="/ohle64/ioBroker.spotify-premium/branches">View all branches</a></footer>
+          </ref-selector>
+
+        </div>
+
+        <div role="tabpanel" id="tags-menu" data-filter-placeholder="Find a tag" tabindex="" hidden class="d-flex flex-column flex-auto overflow-auto">
+          <ref-selector
+            type="tag"
+            data-action="
+              input-entered:ref-selector#inputEntered
+              tab-selected:ref-selector#tabSelected
+              focus-list:ref-selector#focusFirstListMember
+            "
+            data-targets="input-demux.sinks"
+            query-endpoint="/ohle64/ioBroker.spotify-premium/refs"
+            cache-key="v0:1659339723.460927"
+            current-committish="bWFzdGVy"
+            default-branch="bWFzdGVy"
+            name-with-owner="b2hsZTY0L2lvQnJva2VyLnNwb3RpZnktcHJlbWl1bQ=="
+          >
+
+            <template data-target="ref-selector.fetchFailedTemplate">
+              <div class="SelectMenu-message" data-index="{{ index }}">Could not load tags</div>
+            </template>
+
+            <template data-target="ref-selector.noMatchTemplate">
+              <div class="SelectMenu-message" data-index="{{ index }}">Nothing to show</div>
+            </template>
+
+              <template data-target="ref-selector.itemTemplate">
+  <a href="https://github.com/ohle64/ioBroker.spotify-premium/blob/{{ urlEncodedRefName }}/README.md" class="SelectMenu-item" role="menuitemradio" rel="nofollow" aria-checked="{{ isCurrent }}" data-index="{{ index }}">
+    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check SelectMenu-icon SelectMenu-icon--check">
+    <path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path>
+</svg>
+    <span class="flex-1 css-truncate css-truncate-overflow {{ isFilteringClass }}">{{ refName }}</span>
+    <span hidden="{{ isNotDefault }}" class="Label Label--secondary flex-self-start">default</span>
+  </a>
+</template>
+
+
+            <div data-target="ref-selector.listContainer" role="menu" class="SelectMenu-list" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame">
+              <div class="SelectMenu-loading pt-3 pb-0 overflow-hidden" aria-label="Menu is loading">
+                <svg style="box-sizing: content-box; color: var(--color-icon-primary);" width="32" height="32" viewBox="0 0 16 16" fill="none" data-view-component="true" class="anim-rotate">
+  <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke" />
+  <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+</svg>
+              </div>
+            </div>
+              <footer class="SelectMenu-footer"><a href="/ohle64/ioBroker.spotify-premium/tags">View all tags</a></footer>
+          </ref-selector>
+        </div>
+      </tab-container>
+    </input-demux>
+  </div>
+</div>
+
+  </details>
+
+</div>
+
+  <h2 id="blob-path" class="breadcrumb flex-auto flex-self-center min-width-0 text-normal mx-2 width-full width-md-auto flex-order-1 flex-md-order-none mt-3 mt-md-0">
+    <span class="js-repo-root text-bold"><span class="js-path-segment d-inline-block wb-break-all"><a data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" href="/ohle64/ioBroker.spotify-premium"><span>ioBroker.spotify-premium</span></a></span></span><span class="separator">/</span><strong class="final-path">README.md</strong>
+  </h2>
+  <a href="/ohle64/ioBroker.spotify-premium/find/master" data-pjax="" data-hotkey="t" data-view-component="true" class="btn mr-2 d-none d-md-block">  Go to file
+  
+</a>
+  <details id="blob-more-options-details" data-view-component="true" class="details-overlay details-reset position-relative">
+  <summary role="button" data-view-component="true" class="btn">  <svg aria-label="More options" role="img" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-kebab-horizontal">
+    <path d="M8 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM1.5 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm13 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
+</svg>
+  
+</summary>
+  <div data-view-component="true">      <ul class="dropdown-menu dropdown-menu-sw">
+        <li class="d-block d-md-none">
+          <a class="dropdown-item d-flex flex-items-baseline" data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;FIND_FILE_BUTTON&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="373966986712de65d9157dce6ad785230a916fff0215f61519b3dde5fa61b5f9" data-ga-click="Repository, find file, location:repo overview" data-hotkey="t" data-pjax="true" href="/ohle64/ioBroker.spotify-premium/find/master">
+            <span class="flex-auto">Go to file</span>
+            <span class="text-small color-fg-muted" aria-hidden="true">T</span>
+</a>        </li>
+        <li data-toggle-for="blob-more-options-details">
+          <button data-toggle-for="jumpto-line-details-dialog" type="button" data-view-component="true" class="dropdown-item btn-link">  <span class="d-flex flex-items-baseline">
+              <span class="flex-auto">Go to line</span>
+              <span class="text-small color-fg-muted" aria-hidden="true">L</span>
+            </span>
+  
+</button>        </li>
+        <li class="dropdown-divider" role="none"></li>
+        <li>
+          <clipboard-copy data-toggle-for="blob-more-options-details" aria-label="Copy path" value="README.md" data-view-component="true" class="dropdown-item cursor-pointer">
+    
+            Copy path
+
+</clipboard-copy>        </li>
+        <li>
+          <clipboard-copy data-toggle-for="blob-more-options-details" aria-label="Copy permalink" value="https://github.com/ohle64/ioBroker.spotify-premium/blob/55cdae432cc8782e8933dd62a5d9322187b6369a/README.md" data-view-component="true" class="dropdown-item cursor-pointer">
+    
+            <span class="d-flex flex-items-baseline">
+              <span class="flex-auto">Copy permalink</span>
+            </span>
+
+</clipboard-copy>        </li>
+      </ul>
+</div>
+</details></div>
+
+
+
+
+
+    <div id="spoof-warning" class="mt-0 pb-3" hidden aria-hidden>
+  <div data-view-component="true" class="flash flash-warn mt-0 clearfix">
+  
+  
+    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert float-left mt-1">
+    <path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path>
+</svg>
+
+      <div class="overflow-hidden">This commit does not belong to any branch on this repository, and may belong to a fork outside of the repository.</div>
+
+
+  
+</div></div>
+
+    <include-fragment src="/ohle64/ioBroker.spotify-premium/spoofed_commit_check/55cdae432cc8782e8933dd62a5d9322187b6369a" data-test-selector="spoofed-commit-check"></include-fragment>
+
+    <div class="Box d-flex flex-column flex-shrink-0 mb-3">
+  <include-fragment src="/ohle64/ioBroker.spotify-premium/contributors/master/README.md" class="commit-loader">
+    <div class="Box-header d-flex flex-items-center">
+      <div class="Skeleton avatar avatar-user flex-shrink-0 ml-n1 mr-n1 mt-n1 mb-n1" style="width:24px;height:24px;"></div>
+      <div class="Skeleton Skeleton--text col-5 ml-2">&nbsp;</div>
+    </div>
+
+    <div class="Box-body d-flex flex-items-center" >
+      <div class="Skeleton Skeleton--text col-1">&nbsp;</div>
+      <span class="color-fg-danger h6 loader-error">Cannot retrieve contributors at this time</span>
+    </div>
+</include-fragment></div>
+
+
+
+      
+
+
+
+
+
+
+
+
+    <readme-toc>
+
+    <div data-target="readme-toc.content" class="Box mt-3 position-relative">
+      
+  <div
+    class="Box-header js-blob-header blob-header js-sticky js-position-sticky top-0 p-2 d-flex flex-shrink-0 flex-md-row flex-items-center"
+    style="position: sticky; z-index: 1;"
+  >
+
+      <details
+  data-target="readme-toc.trigger"
+  data-menu-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;trigger&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}"
+  data-menu-hydro-click-hmac="760af5fc6921e870416a037cc144fc631da4f8724c2e30020b21a625323ffbe0"
+  class="dropdown details-reset details-overlay"
+>
+  <summary
+    class="btn btn-octicon m-0 mr-2 p-2"
+    aria-haspopup="true"
+    aria-label="Table of Contents">
+    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-list-unordered">
+    <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg>
+  </summary>
+
+
+  <details-menu class="SelectMenu" role="menu">
+    <div class="SelectMenu-modal rounded-3 mt-1" style="max-height:340px;">
+
+        <div class="SelectMenu-filter">
+          <input
+            class="SelectMenu-input form-control js-filterable-field"
+            id="toc-filter-field"
+            type="text"
+            autocomplete="off"
+            spellcheck="false"
+            autofocus
+            placeholder="Filter headings"
+            aria-label="Filter headings">
+        </div>
+
+      <div class="SelectMenu-list SelectMenu-list--borderless p-2" style="overscroll-behavior: contain;" data-filterable-for="toc-filter-field" data-filterable-type="substring">
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 text-emphasized" style="-webkit-box-orient: vertical; padding-left: 12px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#iobrokerspotify-premium">ioBroker.spotify-premium</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 24px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#documentation">Documentation</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#setup--authorization">Setup / Authorization</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 48px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#video-tutorial">Video tutorial</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#states">States</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#vis-usage-examples">VIS usage examples</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 24px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#changelog">Changelog</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#122-2022-07-30">1.2.2 (2022-07-30)</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#122-2022-06-17">1.2.2 (2022-06-17)</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#121-2022-05-12">1.2.1 (2022-05-12)</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#120-2022-05-11">1.2.0 (2022-05-11)</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#119-2021-11-21">1.1.9 (2021-11-21)</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#118-2021-11-18">1.1.8 (2021-11-18)</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#114-2021-11-17">1.1.4 (2021-11-17)</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#113-2021-07-22">1.1.3 (2021-07-22)</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#111-2021-07-22">1.1.1 (2021-07-22)</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#110-in-dev">1.1.0 (in dev)</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#100-20181218">1.0.0 (2018.12.18)</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#031-20180620">0.3.1 (2018.06.20)</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#030-20180531">0.3.0 (2018.05.31)</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#025-20180524">0.2.5 (2018.05.24)</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#024-20180517">0.2.4 (2018.05.17)</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#023-20180517">0.2.3 (2018.05.17)</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#022-20180516">0.2.2 (2018.05.16)</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#021-20180514">0.2.1 (2018.05.14)</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#020-20180513">0.2.0 (2018.05.13)</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#013-20180428">0.1.3 (2018.04.28)</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#012-20180410">0.1.2 (2018.04.10)</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#011-20180303">0.1.1 (2018.03.03)</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#010-20180223">0.1.0 (2018.02.23)</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#009-20180221">0.0.9 (2018.02.21)</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#008-20180220">0.0.8 (2018.02.20)</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#007-20180216">0.0.7 (2018.02.16)</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#006-20180216">0.0.6 (2018.02.16)</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#005-20180216">0.0.5 (2018.02.16)</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#004-20180216">0.0.4 (2018.02.16)</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#003-20180215">0.0.3 (2018.02.15)</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#002-20180211">0.0.2 (2018.02.11)</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#001-20180207">0.0.1 (2018.02.07)</a>
+          <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-webkit-box-orient: vertical; padding-left: 24px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:459564828,&quot;originating_url&quot;:&quot;https://github.com/ohle64/ioBroker.spotify-premium/blob/master/README.md&quot;,&quot;user_id&quot;:7418761}}" data-hydro-click-hmac="4dfca308a10637b0b9cd3833c2e12990a873fc6ae105fe848c5ba00f746a58c3" href="#license">License</a>
+      </div>
+    </div>
+  </details-menu>
+</details>
+
+
+  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1">
+
+      251 lines (205 sloc)
+      <span class="file-info-divider"></span>
+    27.7 KB
+  </div>
+
+  <div class="d-flex py-1 py-md-0 flex-auto flex-order-1 flex-md-order-2 flex-sm-grow-0 flex-justify-between hide-sm hide-md">
+        <div class="BtnGroup">
+    <a href="/ohle64/ioBroker.spotify-premium/blob/master/README.md?plain=1" data-permalink-href="/ohle64/ioBroker.spotify-premium/blob/55cdae432cc8782e8933dd62a5d9322187b6369a/README.md?plain=1" aria-label="Display the source blob" data-view-component="true" class="source tooltipped tooltipped tooltipped-n  js-permalink-replaceable-link btn-sm btn BtnGroup-item">  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-code">
+    <path fill-rule="evenodd" d="M4.72 3.22a.75.75 0 011.06 1.06L2.06 8l3.72 3.72a.75.75 0 11-1.06 1.06L.47 8.53a.75.75 0 010-1.06l4.25-4.25zm6.56 0a.75.75 0 10-1.06 1.06L13.94 8l-3.72 3.72a.75.75 0 101.06 1.06l4.25-4.25a.75.75 0 000-1.06l-4.25-4.25z"></path>
+</svg>
+  
+</a>    <a href="/ohle64/ioBroker.spotify-premium/blob/master/README.md" data-permalink-href="/ohle64/ioBroker.spotify-premium/blob/55cdae432cc8782e8933dd62a5d9322187b6369a/README.md" aria-label="Display the rendered blob" data-view-component="true" class="rendered tooltipped tooltipped tooltipped-n selected js-permalink-replaceable-link btn-sm btn BtnGroup-item">  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-file">
+    <path fill-rule="evenodd" d="M3.75 1.5a.25.25 0 00-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 00.25-.25V6h-2.75A1.75 1.75 0 019 4.25V1.5H3.75zm6.75.062V4.25c0 .138.112.25.25.25h2.688a.252.252 0 00-.011-.013l-2.914-2.914a.272.272 0 00-.013-.011zM2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0113.25 16h-9.5A1.75 1.75 0 012 14.25V1.75z"></path>
+</svg>
+  
+</a>  </div>
+
+
+    <div class="BtnGroup">
+      <a data-permalink-href="/ohle64/ioBroker.spotify-premium/raw/55cdae432cc8782e8933dd62a5d9322187b6369a/README.md" href="/ohle64/ioBroker.spotify-premium/raw/master/README.md" id="raw-url" data-view-component="true" class="js-permalink-replaceable-link btn-sm btn BtnGroup-item">  Raw
+  
+</a>        <a data-permalink-href="/ohle64/ioBroker.spotify-premium/blame/55cdae432cc8782e8933dd62a5d9322187b6369a/README.md" href="/ohle64/ioBroker.spotify-premium/blame/master/README.md" data-hotkey="b" data-view-component="true" class="js-update-url-with-hash js-permalink-replaceable-link btn-sm btn BtnGroup-item">  Blame
+  
+</a>    </div>
+
+    <div class="d-flex">
+        
+<div class="ml-1" data-test-selector="edit-dropdown-menu-component">
+  <form class="BtnGroup-parent js-update-url-with-hash " data-turbo="false" action="/ohle64/ioBroker.spotify-premium/edit/master/README.md" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="TueD1VzyUW03GBgp3CgryCHLEGveck-2JfzGJLCxgFAzlgX4TdZ1lRYbZCb_t2KPMYcYQ9z5terBPuHM-bndXQ" autocomplete="off" />
+    <button title="Edit this file" data-hotkey="e" data-disable-with="" data-test-selector="edit-icon-button" type="submit" data-view-component="true" class="btn-sm BtnGroup-item btn">  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-pencil">
+    <path fill-rule="evenodd" d="M11.013 1.427a1.75 1.75 0 012.474 0l1.086 1.086a1.75 1.75 0 010 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 01-.927-.928l.929-3.25a1.75 1.75 0 01.445-.758l8.61-8.61zm1.414 1.06a.25.25 0 00-.354 0L10.811 3.75l1.439 1.44 1.263-1.263a.25.25 0 000-.354l-1.086-1.086zM11.189 6.25L9.75 4.81l-6.286 6.287a.25.25 0 00-.064.108l-.558 1.953 1.953-.558a.249.249 0 00.108-.064l6.286-6.286z"></path>
+</svg>
+  
+</button></form>
+  <details class="details-reset details-overlay select-menu BtnGroup-parent d-inline-block position-relative">
+    <summary data-disable-invalid="" data-disable-with="" data-dropdown-tracking="{&quot;type&quot;:&quot;blob_edit_dropdown.more_options_click&quot;,&quot;context&quot;:{&quot;repository_id&quot;:459564828,&quot;actor_id&quot;:7418761,&quot;github_dev_enabled&quot;:true,&quot;edit_enabled&quot;:true,&quot;small_screen&quot;:false}}" aria-label="Select additional options" data-view-component="true" class="js-blob-dropdown-click select-menu-button btn-sm btn BtnGroup-item float-none px-2">
+</summary>    <div class="SelectMenu right-0">
+      <div class="SelectMenu-modal width-full">
+        <div class="SelectMenu-list SelectMenu-list--borderless py-2">
+          <form class="SelectMenu-item js-update-url-with-hash " data-turbo="false" action="/ohle64/ioBroker.spotify-premium/edit/master/README.md" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="sDqhKd8ZWC-MNw1OyfKp6cuEhY1geLEAwjA88lJ5uq3NSycEzj181600cUHqbeCu28iNpWLzS1wm8hsaG3HnoA" autocomplete="off" />
+            <button title="Edit this file" data-test-selector="edit-text-button" type="submit" data-view-component="true" class="btn-invisible btn width-full d-flex flex-justify-between color-fg-default text-normal p-0">  <div class="mr-5">Edit this file</div>
+              <div class="color-fg-muted">E</div>
+  
+</button></form>
+            <a aria-label="Open this file in github.dev" data-test-selector="github-dev-link" data-dropdown-tracking="{&quot;type&quot;:&quot;blob_edit_dropdown.dev_link_click&quot;,&quot;context&quot;:{&quot;repository_id&quot;:459564828,&quot;actor_id&quot;:7418761,&quot;edit_enabled&quot;:true,&quot;small_screen&quot;:false}}" href="https://github.dev/" data-view-component="true" class="SelectMenu-item js-github-dev-shortcut js-blob-dropdown-click width-full d-flex flex-justify-between color-fg-default f5 text-normal">
+              <div class="mr-5 no-wrap">Open in github.dev</div>
+              <div class="color-fg-muted">.</div>
+</a>
+            <a data-platforms="windows,mac" data-test-selector="github-desktop-link" aria-label="Open this file in GitHub Desktop" href="https://desktop.github.com" data-view-component="true" class="SelectMenu-item no-wrap js-remove-unless-platform width-full text-normal color-fg-default f5">
+              Open in GitHub Desktop
+</a>        </div>
+      </div>
+    </div>
+  </details>
+</div>
+
+
+        
+<div data-test-selector="remote-clipboard-copy">
+  </div>
+
+
+          <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="inline-form" data-turbo="false" action="/ohle64/ioBroker.spotify-premium/delete/master/README.md" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="chEhBJIUoK8I7f_Id8hNgg65A0QZ-UzWT31gHXsl45YhbSm-EfH3Vus52lzv72SRYiWKgiaWXb_ORLxiuWBbcw" />
+            <button class="btn-octicon btn-octicon-danger tooltipped tooltipped-nw" type="submit"
+              aria-label="Delete this file" data-disable-with>
+              <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-trash">
+    <path fill-rule="evenodd" d="M6.5 1.75a.25.25 0 01.25-.25h2.5a.25.25 0 01.25.25V3h-3V1.75zm4.5 0V3h2.25a.75.75 0 010 1.5H2.75a.75.75 0 010-1.5H5V1.75C5 .784 5.784 0 6.75 0h2.5C10.216 0 11 .784 11 1.75zM4.496 6.675a.75.75 0 10-1.492.15l.66 6.6A1.75 1.75 0 005.405 15h5.19c.9 0 1.652-.681 1.741-1.576l.66-6.6a.75.75 0 00-1.492-.149l-.66 6.6a.25.25 0 01-.249.225h-5.19a.25.25 0 01-.249-.225l-.66-6.6z"></path>
+</svg>
+            </button>
+</form>    </div>
+  </div>
+
+    <div class="d-flex hide-lg hide-xl flex-order-2 flex-grow-0">
+      <details class="dropdown details-reset details-overlay d-inline-block">
+        <summary
+          class="js-blob-dropdown-click btn-octicon p-2"
+          aria-haspopup="true"
+          aria-label="possible actions"
+          data-test-selector="small-screen-more-options"
+          data-dropdown-tracking="{&quot;type&quot;:&quot;blob_edit_dropdown.more_options_click&quot;,&quot;context&quot;:{&quot;repository_id&quot;:459564828,&quot;actor_id&quot;:7418761,&quot;github_dev_enabled&quot;:true,&quot;edit_enabled&quot;:true,&quot;small_screen&quot;:true}}"
+        >
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-kebab-horizontal">
+    <path d="M8 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM1.5 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm13 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
+</svg>
+        </summary>
+
+        <ul class="dropdown-menu dropdown-menu-sw" style="width: 175px">
+            <li>
+                <a class="dropdown-item tooltipped tooltipped-nw js-remove-unless-platform"
+                   data-platforms="windows,mac"
+                   href="https://desktop.github.com">
+                  Open with Desktop
+                </a>
+            </li>
+          <li>
+            <a class="dropdown-item" href="/ohle64/ioBroker.spotify-premium/raw/master/README.md">
+              View raw
+            </a>
+          </li>
+            <li>
+                          </li>
+            <li>
+              <a class="dropdown-item" href="/ohle64/ioBroker.spotify-premium/blame/master/README.md">
+                View blame
+              </a>
+            </li>
+
+              <li class="dropdown-divider" role="none"></li>
+              <li>
+                <a class="dropdown-item" href="/ohle64/ioBroker.spotify-premium/edit/master/README.md">Edit file</a>
+              </li>
+                <li>
+                  <a class="dropdown-item js-github-dev-shortcut js-blob-dropdown-click" data-test-selector="small-screen-github-dev-link" data-dropdown-tracking="{&quot;type&quot;:&quot;blob_edit_dropdown.dev_link_click&quot;,&quot;context&quot;:{&quot;repository_id&quot;:459564828,&quot;actor_id&quot;:7418761,&quot;edit_enabled&quot;:true,&quot;small_screen&quot;:true}}" href="https://github.dev/">Open with github.dev</a>
+                </li>
+              <li>
+                <a class="dropdown-item menu-item-danger" href="/ohle64/ioBroker.spotify-premium/delete/master/README.md">Delete file</a>
+              </li>
+        </ul>
+      </details>
+    </div>
+</div>
+
+
+        <div id="readme" class="Box-body readme blob js-code-block-container p-5 p-xl-6 gist-border-0">
+    <article class="markdown-body entry-content container-lg" itemprop="text"><p dir="auto"><a target="_blank" rel="noopener noreferrer" href="/ohle64/ioBroker.spotify-premium/blob/master/admin/spotify-premium.png"><img src="/ohle64/ioBroker.spotify-premium/raw/master/admin/spotify-premium.png" alt="Logo" style="max-width: 100%;"></a></p>
+<h1 dir="auto"><a id="user-content-iobrokerspotify-premium" class="anchor" aria-hidden="true" href="#iobrokerspotify-premium"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>ioBroker.spotify-premium</h1>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://camo.githubusercontent.com/6af6b52d13c20468e05afa37fdb1c854b3a2c98b9fa72c24d58382593200d344/687474703a2f2f696f62726f6b65722e6c6976652f6261646765732f73706f746966792d7072656d69756d2d696e7374616c6c65642e737667"><img src="https://camo.githubusercontent.com/6af6b52d13c20468e05afa37fdb1c854b3a2c98b9fa72c24d58382593200d344/687474703a2f2f696f62726f6b65722e6c6976652f6261646765732f73706f746966792d7072656d69756d2d696e7374616c6c65642e737667" alt="Number of Installations" data-canonical-src="http://iobroker.live/badges/spotify-premium-installed.svg" style="max-width: 100%;"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://camo.githubusercontent.com/86566458298dd53f45c2509346f28262d29079832483ad40c6f8c0f809d5c192/687474703a2f2f696f62726f6b65722e6c6976652f6261646765732f73706f746966792d7072656d69756d2d737461626c652e737667"><img src="https://camo.githubusercontent.com/86566458298dd53f45c2509346f28262d29079832483ad40c6f8c0f809d5c192/687474703a2f2f696f62726f6b65722e6c6976652f6261646765732f73706f746966792d7072656d69756d2d737461626c652e737667" alt="Number of Installations" data-canonical-src="http://iobroker.live/badges/spotify-premium-stable.svg" style="max-width: 100%;"></a>
+<a href="https://www.npmjs.com/package/iobroker.spotify-premium" rel="nofollow"><img src="https://camo.githubusercontent.com/c7d97b0a4a50ac6c9f6b8c8b8b2c4036982b134a434f091c869f22ef00c04049/687474703a2f2f696d672e736869656c64732e696f2f6e706d2f762f696f62726f6b65722e73706f746966792d7072656d69756d2e737667" alt="NPM version" data-canonical-src="http://img.shields.io/npm/v/iobroker.spotify-premium.svg" style="max-width: 100%;"></a></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://github.com/iobroker-community-adapters/iobroker.spotify-premium/workflows/Test%20and%20Release/badge.svg"><img src="https://github.com/iobroker-community-adapters/iobroker.spotify-premium/workflows/Test%20and%20Release/badge.svg" alt="Test and Release" style="max-width: 100%;"></a>
+<a href="https://weblate.iobroker.net/engage/adapters/?utm_source=widget" rel="nofollow"><img src="https://camo.githubusercontent.com/04a436afbdfadd51d80dfe8e9e66673c8f6458d23dd0d36790c785c86f04f98b/68747470733a2f2f7765626c6174652e696f62726f6b65722e6e65742f776964676574732f61646170746572732f2d2f73706f746966792d7072656d69756d2f7376672d62616467652e737667" alt="Translation status" data-canonical-src="https://weblate.iobroker.net/widgets/adapters/-/spotify-premium/svg-badge.svg" style="max-width: 100%;"></a>
+<a href="https://www.npmjs.com/package/iobroker.spotify-premium" rel="nofollow"><img src="https://camo.githubusercontent.com/161c9c4ad3330d0b7094b3c3ec35b93b95dd45d10860d8b53e6958f263dd2942/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f646d2f696f62726f6b65722e73706f746966792d7072656d69756d2e737667" alt="Downloads" data-canonical-src="https://img.shields.io/npm/dm/iobroker.spotify-premium.svg" style="max-width: 100%;"></a></p>
+<p dir="auto"><strong>This adapter uses Sentry libraries to automatically report exceptions and code errors to the developers.</strong> For more details and for information how to disable the error reporting see <a href="https://github.com/ioBroker/plugin-sentry#plugin-sentry">Sentry-Plugin Documentation</a>! Sentry reporting is used starting with js-controller 3.0.</p>
+<p dir="auto">Adapter to access spotify playback controls. Because of the spotify API a premium account is necessary.</p>
+<p dir="auto">Connection to <a href="https://www.spotify.com/" rel="nofollow">Spotify Premium API</a>.</p>
+<h2 dir="auto"><a id="user-content-documentation" class="anchor" aria-hidden="true" href="#documentation"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Documentation</h2>
+<p dir="auto">See also the <a href="https://developer.spotify.com/" rel="nofollow">Spotify Developer API Documentation</a>.</p>
+<h3 dir="auto"><a id="user-content-setup--authorization" class="anchor" aria-hidden="true" href="#setup--authorization"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Setup / Authorization</h3>
+<ol dir="auto">
+<li>Sign in on <a href="https://developer.spotify.com/dashboard/" rel="nofollow">https://developer.spotify.com/dashboard/</a></li>
+<li>Create an application, you get a Client ID and a Client Secret</li>
+<li>Set the redirect URIs to <code>http://localhost</code> in your app settings at your created spotify application</li>
+<li>Put the Client ID and Client Secret in the fields down below</li>
+<li>Start the instance</li>
+<li>Switch to the objects tab and push the button getAuthorization at <code>spotify-premium.0.authorization</code></li>
+<li>Copy the appearing URL from <code>spotify-premium.0.authorization.authorizationUrl</code> to your webbrowser and call it</li>
+<li>You maybe need to sign in to spotify and grant access</li>
+<li>The browser will be redirected to an invalid URL. If the error <code>invalid redirect uri</code> occurs please verify step 3</li>
+<li>Copy that url and put it to <code>spotify-premium.0.authorization.authorizationReturnUri</code></li>
+<li>The value in <code>spotify-premium.0.authorization.authorized</code> turns to true if everything was successful</li>
+</ol>
+<h4 dir="auto"><a id="user-content-video-tutorial" class="anchor" aria-hidden="true" href="#video-tutorial"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a><a href="https://www.youtube.com/watch?v=n0m9201qABU" rel="nofollow">Video tutorial</a></h4>
+<p dir="auto"><a href="https://www.youtube.com/watch?v=n0m9201qABU" rel="nofollow"><img src="https://camo.githubusercontent.com/7b77ddc5d1c29751e8a00f5dcbe0fad6338fd9d57c9fb261751a3cb7094fbf7b/68747470733a2f2f696d672e796f75747562652e636f6d2f76692f6e306d39323031714142552f302e6a7067" alt="How to authorize" title="https://www.youtube.com/watch?v=n0m9201qABU" data-canonical-src="https://img.youtube.com/vi/n0m9201qABU/0.jpg" style="max-width: 100%;"></a></p>
+<h3 dir="auto"><a id="user-content-states" class="anchor" aria-hidden="true" href="#states"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>States</h3>
+<p dir="auto">All states are described in admin.</p>
+<h3 dir="auto"><a id="user-content-vis-usage-examples" class="anchor" aria-hidden="true" href="#vis-usage-examples"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>VIS usage examples</h3>
+<p dir="auto">Click for widget source.</p>
+<details>
+  <summary>Start one specific playlist<br><a target="_blank" rel="noopener noreferrer" href="/ohle64/ioBroker.spotify-premium/blob/master/docs/en/img/choose_playlist.png"><img src="/ohle64/ioBroker.spotify-premium/raw/master/docs/en/img/choose_playlist.png" style="max-width: 100%;"></a></summary>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="[{&quot;tpl&quot;:&quot;tplJquiButtonState&quot;,&quot;data&quot;:{&quot;oid&quot;:&quot;spotify-premium.0.playlists.YourPlaylistName.playThisList&quot;,&quot;g_fixed&quot;:false,&quot;g_visibility&quot;:false,&quot;g_css_font_text&quot;:false,&quot;g_css_background&quot;:false,&quot;g_css_shadow_padding&quot;:false,&quot;g_css_border&quot;:false,&quot;g_gestures&quot;:false,&quot;g_signals&quot;:false,&quot;g_last_change&quot;:false,&quot;visibility-cond&quot;:&quot;==&quot;,&quot;visibility-val&quot;:1,&quot;visibility-groups-action&quot;:&quot;hide&quot;,&quot;buttontext&quot;:&quot;Choose Playlist&quot;,&quot;signals-cond-0&quot;:&quot;==&quot;,&quot;signals-val-0&quot;:true,&quot;signals-icon-0&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-0&quot;:0,&quot;signals-blink-0&quot;:false,&quot;signals-horz-0&quot;:0,&quot;signals-vert-0&quot;:0,&quot;signals-hide-edit-0&quot;:false,&quot;signals-cond-1&quot;:&quot;==&quot;,&quot;signals-val-1&quot;:true,&quot;signals-icon-1&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-1&quot;:0,&quot;signals-blink-1&quot;:false,&quot;signals-horz-1&quot;:0,&quot;signals-vert-1&quot;:0,&quot;signals-hide-edit-1&quot;:false,&quot;signals-cond-2&quot;:&quot;==&quot;,&quot;signals-val-2&quot;:true,&quot;signals-icon-2&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-2&quot;:0,&quot;signals-blink-2&quot;:false,&quot;signals-horz-2&quot;:0,&quot;signals-vert-2&quot;:0,&quot;signals-hide-edit-2&quot;:false,&quot;lc-type&quot;:&quot;last-change&quot;,&quot;lc-is-interval&quot;:true,&quot;lc-is-moment&quot;:false,&quot;lc-format&quot;:&quot;&quot;,&quot;lc-position-vert&quot;:&quot;top&quot;,&quot;lc-position-horz&quot;:&quot;right&quot;,&quot;lc-offset-vert&quot;:0,&quot;lc-offset-horz&quot;:0,&quot;lc-font-size&quot;:&quot;12px&quot;,&quot;lc-font-family&quot;:&quot;&quot;,&quot;lc-font-style&quot;:&quot;&quot;,&quot;lc-bkg-color&quot;:&quot;&quot;,&quot;lc-color&quot;:&quot;&quot;,&quot;lc-border-width&quot;:&quot;0&quot;,&quot;lc-border-style&quot;:&quot;&quot;,&quot;lc-border-color&quot;:&quot;&quot;,&quot;lc-border-radius&quot;:10,&quot;lc-zindex&quot;:0,&quot;value&quot;:&quot;true&quot;,&quot;no_style&quot;:false},&quot;style&quot;:{&quot;left&quot;:&quot;549px&quot;,&quot;top&quot;:&quot;364px&quot;},&quot;widgetSet&quot;:&quot;jqui&quot;}]"><pre class="notranslate"><code>[{"tpl":"tplJquiButtonState","data":{"oid":"spotify-premium.0.playlists.YourPlaylistName.playThisList","g_fixed":false,"g_visibility":false,"g_css_font_text":false,"g_css_background":false,"g_css_shadow_padding":false,"g_css_border":false,"g_gestures":false,"g_signals":false,"g_last_change":false,"visibility-cond":"==","visibility-val":1,"visibility-groups-action":"hide","buttontext":"Choose Playlist","signals-cond-0":"==","signals-val-0":true,"signals-icon-0":"/vis/signals/lowbattery.png","signals-icon-size-0":0,"signals-blink-0":false,"signals-horz-0":0,"signals-vert-0":0,"signals-hide-edit-0":false,"signals-cond-1":"==","signals-val-1":true,"signals-icon-1":"/vis/signals/lowbattery.png","signals-icon-size-1":0,"signals-blink-1":false,"signals-horz-1":0,"signals-vert-1":0,"signals-hide-edit-1":false,"signals-cond-2":"==","signals-val-2":true,"signals-icon-2":"/vis/signals/lowbattery.png","signals-icon-size-2":0,"signals-blink-2":false,"signals-horz-2":0,"signals-vert-2":0,"signals-hide-edit-2":false,"lc-type":"last-change","lc-is-interval":true,"lc-is-moment":false,"lc-format":"","lc-position-vert":"top","lc-position-horz":"right","lc-offset-vert":0,"lc-offset-horz":0,"lc-font-size":"12px","lc-font-family":"","lc-font-style":"","lc-bkg-color":"","lc-color":"","lc-border-width":"0","lc-border-style":"","lc-border-color":"","lc-border-radius":10,"lc-zindex":0,"value":"true","no_style":false},"style":{"left":"549px","top":"364px"},"widgetSet":"jqui"}]</code></pre></div>
+</details>
+<details>
+  <summary>Start one specific device<br><a target="_blank" rel="noopener noreferrer" href="/ohle64/ioBroker.spotify-premium/blob/master/docs/en/img/choose_device.png"><img src="/ohle64/ioBroker.spotify-premium/raw/master/docs/en/img/choose_device.png" style="max-width: 100%;"></a></summary>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="[{&quot;tpl&quot;:&quot;tplJquiButtonState&quot;,&quot;data&quot;:{&quot;oid&quot;:&quot;spotify-premium.0.devices.YourDeviceName.useForPlayback&quot;,&quot;g_fixed&quot;:false,&quot;g_visibility&quot;:false,&quot;g_css_font_text&quot;:false,&quot;g_css_background&quot;:false,&quot;g_css_shadow_padding&quot;:false,&quot;g_css_border&quot;:false,&quot;g_gestures&quot;:false,&quot;g_signals&quot;:false,&quot;g_last_change&quot;:false,&quot;visibility-cond&quot;:&quot;==&quot;,&quot;visibility-val&quot;:1,&quot;visibility-groups-action&quot;:&quot;hide&quot;,&quot;buttontext&quot;:&quot;Choose Device&quot;,&quot;signals-cond-0&quot;:&quot;==&quot;,&quot;signals-val-0&quot;:true,&quot;signals-icon-0&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-0&quot;:0,&quot;signals-blink-0&quot;:false,&quot;signals-horz-0&quot;:0,&quot;signals-vert-0&quot;:0,&quot;signals-hide-edit-0&quot;:false,&quot;signals-cond-1&quot;:&quot;==&quot;,&quot;signals-val-1&quot;:true,&quot;signals-icon-1&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-1&quot;:0,&quot;signals-blink-1&quot;:false,&quot;signals-horz-1&quot;:0,&quot;signals-vert-1&quot;:0,&quot;signals-hide-edit-1&quot;:false,&quot;signals-cond-2&quot;:&quot;==&quot;,&quot;signals-val-2&quot;:true,&quot;signals-icon-2&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-2&quot;:0,&quot;signals-blink-2&quot;:false,&quot;signals-horz-2&quot;:0,&quot;signals-vert-2&quot;:0,&quot;signals-hide-edit-2&quot;:false,&quot;lc-type&quot;:&quot;last-change&quot;,&quot;lc-is-interval&quot;:true,&quot;lc-is-moment&quot;:false,&quot;lc-format&quot;:&quot;&quot;,&quot;lc-position-vert&quot;:&quot;top&quot;,&quot;lc-position-horz&quot;:&quot;right&quot;,&quot;lc-offset-vert&quot;:0,&quot;lc-offset-horz&quot;:0,&quot;lc-font-size&quot;:&quot;12px&quot;,&quot;lc-font-family&quot;:&quot;&quot;,&quot;lc-font-style&quot;:&quot;&quot;,&quot;lc-bkg-color&quot;:&quot;&quot;,&quot;lc-color&quot;:&quot;&quot;,&quot;lc-border-width&quot;:&quot;0&quot;,&quot;lc-border-style&quot;:&quot;&quot;,&quot;lc-border-color&quot;:&quot;&quot;,&quot;lc-border-radius&quot;:10,&quot;lc-zindex&quot;:0,&quot;value&quot;:&quot;true&quot;,&quot;no_style&quot;:false},&quot;style&quot;:{&quot;left&quot;:&quot;549px&quot;,&quot;top&quot;:&quot;364px&quot;},&quot;widgetSet&quot;:&quot;jqui&quot;}]"><pre class="notranslate"><code>[{"tpl":"tplJquiButtonState","data":{"oid":"spotify-premium.0.devices.YourDeviceName.useForPlayback","g_fixed":false,"g_visibility":false,"g_css_font_text":false,"g_css_background":false,"g_css_shadow_padding":false,"g_css_border":false,"g_gestures":false,"g_signals":false,"g_last_change":false,"visibility-cond":"==","visibility-val":1,"visibility-groups-action":"hide","buttontext":"Choose Device","signals-cond-0":"==","signals-val-0":true,"signals-icon-0":"/vis/signals/lowbattery.png","signals-icon-size-0":0,"signals-blink-0":false,"signals-horz-0":0,"signals-vert-0":0,"signals-hide-edit-0":false,"signals-cond-1":"==","signals-val-1":true,"signals-icon-1":"/vis/signals/lowbattery.png","signals-icon-size-1":0,"signals-blink-1":false,"signals-horz-1":0,"signals-vert-1":0,"signals-hide-edit-1":false,"signals-cond-2":"==","signals-val-2":true,"signals-icon-2":"/vis/signals/lowbattery.png","signals-icon-size-2":0,"signals-blink-2":false,"signals-horz-2":0,"signals-vert-2":0,"signals-hide-edit-2":false,"lc-type":"last-change","lc-is-interval":true,"lc-is-moment":false,"lc-format":"","lc-position-vert":"top","lc-position-horz":"right","lc-offset-vert":0,"lc-offset-horz":0,"lc-font-size":"12px","lc-font-family":"","lc-font-style":"","lc-bkg-color":"","lc-color":"","lc-border-width":"0","lc-border-style":"","lc-border-color":"","lc-border-radius":10,"lc-zindex":0,"value":"true","no_style":false},"style":{"left":"549px","top":"364px"},"widgetSet":"jqui"}]</code></pre></div>
+</details>
+<details>
+  <summary>Start playing<br><a target="_blank" rel="noopener noreferrer" href="/ohle64/ioBroker.spotify-premium/blob/master/docs/en/img/play_pause.gif"><img src="/ohle64/ioBroker.spotify-premium/raw/master/docs/en/img/play_pause.gif" data-animated-image="" style="max-width: 100%;"></a></summary>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="[{&quot;tpl&quot;:&quot;tplSpotifyPlayButton&quot;,&quot;data&quot;:{&quot;g_fixed&quot;:false,&quot;g_visibility&quot;:false,&quot;g_css_font_text&quot;:false,&quot;g_css_background&quot;:false,&quot;g_css_shadow_padding&quot;:false,&quot;g_css_border&quot;:false,&quot;g_gestures&quot;:false,&quot;g_signals&quot;:false,&quot;g_last_change&quot;:false,&quot;visibility-cond&quot;:&quot;==&quot;,&quot;visibility-val&quot;:1,&quot;visibility-groups-action&quot;:&quot;hide&quot;,&quot;oidplay&quot;:&quot;spotify-premium.0.player.play&quot;,&quot;oidpause&quot;:&quot;spotify-premium.0.player.pause&quot;,&quot;oidstate&quot;:&quot;spotify-premium.0.player.isPlaying&quot;,&quot;colorplay&quot;:&quot;green&quot;,&quot;colorpause&quot;:&quot;green&quot;,&quot;signals-cond-0&quot;:&quot;==&quot;,&quot;signals-val-0&quot;:true,&quot;signals-icon-0&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-0&quot;:0,&quot;signals-blink-0&quot;:false,&quot;signals-horz-0&quot;:0,&quot;signals-vert-0&quot;:0,&quot;signals-hide-edit-0&quot;:false,&quot;signals-cond-1&quot;:&quot;==&quot;,&quot;signals-val-1&quot;:true,&quot;signals-icon-1&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-1&quot;:0,&quot;signals-blink-1&quot;:false,&quot;signals-horz-1&quot;:0,&quot;signals-vert-1&quot;:0,&quot;signals-hide-edit-1&quot;:false,&quot;signals-cond-2&quot;:&quot;==&quot;,&quot;signals-val-2&quot;:true,&quot;signals-icon-2&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-2&quot;:0,&quot;signals-blink-2&quot;:false,&quot;signals-horz-2&quot;:0,&quot;signals-vert-2&quot;:0,&quot;signals-hide-edit-2&quot;:false,&quot;lc-type&quot;:&quot;last-change&quot;,&quot;lc-is-interval&quot;:true,&quot;lc-is-moment&quot;:false,&quot;lc-format&quot;:&quot;&quot;,&quot;lc-position-vert&quot;:&quot;top&quot;,&quot;lc-position-horz&quot;:&quot;right&quot;,&quot;lc-offset-vert&quot;:0,&quot;lc-offset-horz&quot;:0,&quot;lc-font-size&quot;:&quot;12px&quot;,&quot;lc-font-family&quot;:&quot;&quot;,&quot;lc-font-style&quot;:&quot;&quot;,&quot;lc-bkg-color&quot;:&quot;&quot;,&quot;lc-color&quot;:&quot;&quot;,&quot;lc-border-width&quot;:&quot;0&quot;,&quot;lc-border-style&quot;:&quot;&quot;,&quot;lc-border-color&quot;:&quot;&quot;,&quot;lc-border-radius&quot;:10,&quot;lc-zindex&quot;:0},&quot;style&quot;:{&quot;left&quot;:&quot;487px&quot;,&quot;top&quot;:&quot;604px&quot;},&quot;widgetSet&quot;:&quot;spotify-premium&quot;}]"><pre class="notranslate"><code>[{"tpl":"tplSpotifyPlayButton","data":{"g_fixed":false,"g_visibility":false,"g_css_font_text":false,"g_css_background":false,"g_css_shadow_padding":false,"g_css_border":false,"g_gestures":false,"g_signals":false,"g_last_change":false,"visibility-cond":"==","visibility-val":1,"visibility-groups-action":"hide","oidplay":"spotify-premium.0.player.play","oidpause":"spotify-premium.0.player.pause","oidstate":"spotify-premium.0.player.isPlaying","colorplay":"green","colorpause":"green","signals-cond-0":"==","signals-val-0":true,"signals-icon-0":"/vis/signals/lowbattery.png","signals-icon-size-0":0,"signals-blink-0":false,"signals-horz-0":0,"signals-vert-0":0,"signals-hide-edit-0":false,"signals-cond-1":"==","signals-val-1":true,"signals-icon-1":"/vis/signals/lowbattery.png","signals-icon-size-1":0,"signals-blink-1":false,"signals-horz-1":0,"signals-vert-1":0,"signals-hide-edit-1":false,"signals-cond-2":"==","signals-val-2":true,"signals-icon-2":"/vis/signals/lowbattery.png","signals-icon-size-2":0,"signals-blink-2":false,"signals-horz-2":0,"signals-vert-2":0,"signals-hide-edit-2":false,"lc-type":"last-change","lc-is-interval":true,"lc-is-moment":false,"lc-format":"","lc-position-vert":"top","lc-position-horz":"right","lc-offset-vert":0,"lc-offset-horz":0,"lc-font-size":"12px","lc-font-family":"","lc-font-style":"","lc-bkg-color":"","lc-color":"","lc-border-width":"0","lc-border-style":"","lc-border-color":"","lc-border-radius":10,"lc-zindex":0},"style":{"left":"487px","top":"604px"},"widgetSet":"spotify-premium"}]</code></pre></div>
+</details>
+<details>
+  <summary>Play previous track<br><a target="_blank" rel="noopener noreferrer" href="/ohle64/ioBroker.spotify-premium/blob/master/docs/en/img/previous.png"><img src="/ohle64/ioBroker.spotify-premium/raw/master/docs/en/img/previous.png" style="max-width: 100%;"></a></summary>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="[{&quot;tpl&quot;:&quot;tplSpotifyPreviousButton&quot;,&quot;data&quot;:{&quot;g_fixed&quot;:false,&quot;g_visibility&quot;:false,&quot;g_css_font_text&quot;:false,&quot;g_css_background&quot;:false,&quot;g_css_shadow_padding&quot;:false,&quot;g_css_border&quot;:false,&quot;g_gestures&quot;:false,&quot;g_signals&quot;:false,&quot;g_last_change&quot;:false,&quot;visibility-cond&quot;:&quot;==&quot;,&quot;visibility-val&quot;:1,&quot;visibility-groups-action&quot;:&quot;hide&quot;,&quot;oid&quot;:&quot;spotify-premium.0.player.skipMinus&quot;,&quot;colorbox&quot;:&quot;green&quot;,&quot;signals-cond-0&quot;:&quot;==&quot;,&quot;signals-val-0&quot;:true,&quot;signals-icon-0&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-0&quot;:0,&quot;signals-blink-0&quot;:false,&quot;signals-horz-0&quot;:0,&quot;signals-vert-0&quot;:0,&quot;signals-hide-edit-0&quot;:false,&quot;signals-cond-1&quot;:&quot;==&quot;,&quot;signals-val-1&quot;:true,&quot;signals-icon-1&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-1&quot;:0,&quot;signals-blink-1&quot;:false,&quot;signals-horz-1&quot;:0,&quot;signals-vert-1&quot;:0,&quot;signals-hide-edit-1&quot;:false,&quot;signals-cond-2&quot;:&quot;==&quot;,&quot;signals-val-2&quot;:true,&quot;signals-icon-2&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-2&quot;:0,&quot;signals-blink-2&quot;:false,&quot;signals-horz-2&quot;:0,&quot;signals-vert-2&quot;:0,&quot;signals-hide-edit-2&quot;:false,&quot;lc-type&quot;:&quot;last-change&quot;,&quot;lc-is-interval&quot;:true,&quot;lc-is-moment&quot;:false,&quot;lc-format&quot;:&quot;&quot;,&quot;lc-position-vert&quot;:&quot;top&quot;,&quot;lc-position-horz&quot;:&quot;right&quot;,&quot;lc-offset-vert&quot;:0,&quot;lc-offset-horz&quot;:0,&quot;lc-font-size&quot;:&quot;12px&quot;,&quot;lc-font-family&quot;:&quot;&quot;,&quot;lc-font-style&quot;:&quot;&quot;,&quot;lc-bkg-color&quot;:&quot;&quot;,&quot;lc-color&quot;:&quot;&quot;,&quot;lc-border-width&quot;:&quot;0&quot;,&quot;lc-border-style&quot;:&quot;&quot;,&quot;lc-border-color&quot;:&quot;&quot;,&quot;lc-border-radius&quot;:10,&quot;lc-zindex&quot;:0},&quot;style&quot;:{&quot;left&quot;:&quot;386px&quot;,&quot;top&quot;:&quot;604px&quot;},&quot;widgetSet&quot;:&quot;spotify-premium&quot;}]"><pre class="notranslate"><code>[{"tpl":"tplSpotifyPreviousButton","data":{"g_fixed":false,"g_visibility":false,"g_css_font_text":false,"g_css_background":false,"g_css_shadow_padding":false,"g_css_border":false,"g_gestures":false,"g_signals":false,"g_last_change":false,"visibility-cond":"==","visibility-val":1,"visibility-groups-action":"hide","oid":"spotify-premium.0.player.skipMinus","colorbox":"green","signals-cond-0":"==","signals-val-0":true,"signals-icon-0":"/vis/signals/lowbattery.png","signals-icon-size-0":0,"signals-blink-0":false,"signals-horz-0":0,"signals-vert-0":0,"signals-hide-edit-0":false,"signals-cond-1":"==","signals-val-1":true,"signals-icon-1":"/vis/signals/lowbattery.png","signals-icon-size-1":0,"signals-blink-1":false,"signals-horz-1":0,"signals-vert-1":0,"signals-hide-edit-1":false,"signals-cond-2":"==","signals-val-2":true,"signals-icon-2":"/vis/signals/lowbattery.png","signals-icon-size-2":0,"signals-blink-2":false,"signals-horz-2":0,"signals-vert-2":0,"signals-hide-edit-2":false,"lc-type":"last-change","lc-is-interval":true,"lc-is-moment":false,"lc-format":"","lc-position-vert":"top","lc-position-horz":"right","lc-offset-vert":0,"lc-offset-horz":0,"lc-font-size":"12px","lc-font-family":"","lc-font-style":"","lc-bkg-color":"","lc-color":"","lc-border-width":"0","lc-border-style":"","lc-border-color":"","lc-border-radius":10,"lc-zindex":0},"style":{"left":"386px","top":"604px"},"widgetSet":"spotify-premium"}]</code></pre></div>
+</details>
+<details>
+  <summary>Play next track<br><a target="_blank" rel="noopener noreferrer" href="/ohle64/ioBroker.spotify-premium/blob/master/docs/en/img/next.png"><img src="/ohle64/ioBroker.spotify-premium/raw/master/docs/en/img/next.png" style="max-width: 100%;"></a></summary>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="[{&quot;tpl&quot;:&quot;tplSpotifyNextButton&quot;,&quot;data&quot;:{&quot;g_fixed&quot;:false,&quot;g_visibility&quot;:false,&quot;g_css_font_text&quot;:false,&quot;g_css_background&quot;:false,&quot;g_css_shadow_padding&quot;:false,&quot;g_css_border&quot;:false,&quot;g_gestures&quot;:false,&quot;g_signals&quot;:false,&quot;g_last_change&quot;:false,&quot;visibility-cond&quot;:&quot;==&quot;,&quot;visibility-val&quot;:1,&quot;visibility-groups-action&quot;:&quot;hide&quot;,&quot;oid&quot;:&quot;spotify-premium.0.player.skipPlus&quot;,&quot;colorbox&quot;:&quot;green&quot;,&quot;signals-cond-0&quot;:&quot;==&quot;,&quot;signals-val-0&quot;:true,&quot;signals-icon-0&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-0&quot;:0,&quot;signals-blink-0&quot;:false,&quot;signals-horz-0&quot;:0,&quot;signals-vert-0&quot;:0,&quot;signals-hide-edit-0&quot;:false,&quot;signals-cond-1&quot;:&quot;==&quot;,&quot;signals-val-1&quot;:true,&quot;signals-icon-1&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-1&quot;:0,&quot;signals-blink-1&quot;:false,&quot;signals-horz-1&quot;:0,&quot;signals-vert-1&quot;:0,&quot;signals-hide-edit-1&quot;:false,&quot;signals-cond-2&quot;:&quot;==&quot;,&quot;signals-val-2&quot;:true,&quot;signals-icon-2&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-2&quot;:0,&quot;signals-blink-2&quot;:false,&quot;signals-horz-2&quot;:0,&quot;signals-vert-2&quot;:0,&quot;signals-hide-edit-2&quot;:false,&quot;lc-type&quot;:&quot;last-change&quot;,&quot;lc-is-interval&quot;:true,&quot;lc-is-moment&quot;:false,&quot;lc-format&quot;:&quot;&quot;,&quot;lc-position-vert&quot;:&quot;top&quot;,&quot;lc-position-horz&quot;:&quot;right&quot;,&quot;lc-offset-vert&quot;:0,&quot;lc-offset-horz&quot;:0,&quot;lc-font-size&quot;:&quot;12px&quot;,&quot;lc-font-family&quot;:&quot;&quot;,&quot;lc-font-style&quot;:&quot;&quot;,&quot;lc-bkg-color&quot;:&quot;&quot;,&quot;lc-color&quot;:&quot;&quot;,&quot;lc-border-width&quot;:&quot;0&quot;,&quot;lc-border-style&quot;:&quot;&quot;,&quot;lc-border-color&quot;:&quot;&quot;,&quot;lc-border-radius&quot;:10,&quot;lc-zindex&quot;:0},&quot;style&quot;:{&quot;left&quot;:&quot;588px&quot;,&quot;top&quot;:&quot;604px&quot;},&quot;widgetSet&quot;:&quot;spotify-premium&quot;}]"><pre class="notranslate"><code>[{"tpl":"tplSpotifyNextButton","data":{"g_fixed":false,"g_visibility":false,"g_css_font_text":false,"g_css_background":false,"g_css_shadow_padding":false,"g_css_border":false,"g_gestures":false,"g_signals":false,"g_last_change":false,"visibility-cond":"==","visibility-val":1,"visibility-groups-action":"hide","oid":"spotify-premium.0.player.skipPlus","colorbox":"green","signals-cond-0":"==","signals-val-0":true,"signals-icon-0":"/vis/signals/lowbattery.png","signals-icon-size-0":0,"signals-blink-0":false,"signals-horz-0":0,"signals-vert-0":0,"signals-hide-edit-0":false,"signals-cond-1":"==","signals-val-1":true,"signals-icon-1":"/vis/signals/lowbattery.png","signals-icon-size-1":0,"signals-blink-1":false,"signals-horz-1":0,"signals-vert-1":0,"signals-hide-edit-1":false,"signals-cond-2":"==","signals-val-2":true,"signals-icon-2":"/vis/signals/lowbattery.png","signals-icon-size-2":0,"signals-blink-2":false,"signals-horz-2":0,"signals-vert-2":0,"signals-hide-edit-2":false,"lc-type":"last-change","lc-is-interval":true,"lc-is-moment":false,"lc-format":"","lc-position-vert":"top","lc-position-horz":"right","lc-offset-vert":0,"lc-offset-horz":0,"lc-font-size":"12px","lc-font-family":"","lc-font-style":"","lc-bkg-color":"","lc-color":"","lc-border-width":"0","lc-border-style":"","lc-border-color":"","lc-border-radius":10,"lc-zindex":0},"style":{"left":"588px","top":"604px"},"widgetSet":"spotify-premium"}]</code></pre></div>
+</details>
+<details>
+  <summary>Control repeat<br><a target="_blank" rel="noopener noreferrer" href="/ohle64/ioBroker.spotify-premium/blob/master/docs/en/img/repeat.gif"><img src="/ohle64/ioBroker.spotify-premium/raw/master/docs/en/img/repeat.gif" data-animated-image="" style="max-width: 100%;"></a></summary>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="[{&quot;tpl&quot;:&quot;tplSpotifyRepeatButton&quot;,&quot;data&quot;:{&quot;g_fixed&quot;:false,&quot;g_visibility&quot;:false,&quot;g_css_font_text&quot;:false,&quot;g_css_background&quot;:false,&quot;g_css_shadow_padding&quot;:false,&quot;g_css_border&quot;:false,&quot;g_gestures&quot;:false,&quot;g_signals&quot;:false,&quot;g_last_change&quot;:false,&quot;visibility-cond&quot;:&quot;==&quot;,&quot;visibility-val&quot;:1,&quot;visibility-groups-action&quot;:&quot;hide&quot;,&quot;oidall&quot;:&quot;spotify-premium.0.player.repeatContext&quot;,&quot;oidoff&quot;:&quot;spotify-premium.0.player.repeatOff&quot;,&quot;oidone&quot;:&quot;spotify-premium.0.player.repeatTrack&quot;,&quot;oidstate&quot;:&quot;spotify-premium.0.player.repeat&quot;,&quot;coloroff&quot;:&quot;white&quot;,&quot;colorall&quot;:&quot;green&quot;,&quot;colorone&quot;:&quot;green&quot;,&quot;signals-cond-0&quot;:&quot;==&quot;,&quot;signals-val-0&quot;:true,&quot;signals-icon-0&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-0&quot;:0,&quot;signals-blink-0&quot;:false,&quot;signals-horz-0&quot;:0,&quot;signals-vert-0&quot;:0,&quot;signals-hide-edit-0&quot;:false,&quot;signals-cond-1&quot;:&quot;==&quot;,&quot;signals-val-1&quot;:true,&quot;signals-icon-1&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-1&quot;:0,&quot;signals-blink-1&quot;:false,&quot;signals-horz-1&quot;:0,&quot;signals-vert-1&quot;:0,&quot;signals-hide-edit-1&quot;:false,&quot;signals-cond-2&quot;:&quot;==&quot;,&quot;signals-val-2&quot;:true,&quot;signals-icon-2&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-2&quot;:0,&quot;signals-blink-2&quot;:false,&quot;signals-horz-2&quot;:0,&quot;signals-vert-2&quot;:0,&quot;signals-hide-edit-2&quot;:false,&quot;lc-type&quot;:&quot;last-change&quot;,&quot;lc-is-interval&quot;:true,&quot;lc-is-moment&quot;:false,&quot;lc-format&quot;:&quot;&quot;,&quot;lc-position-vert&quot;:&quot;top&quot;,&quot;lc-position-horz&quot;:&quot;right&quot;,&quot;lc-offset-vert&quot;:0,&quot;lc-offset-horz&quot;:0,&quot;lc-font-size&quot;:&quot;12px&quot;,&quot;lc-font-family&quot;:&quot;&quot;,&quot;lc-font-style&quot;:&quot;&quot;,&quot;lc-bkg-color&quot;:&quot;&quot;,&quot;lc-color&quot;:&quot;&quot;,&quot;lc-border-width&quot;:&quot;0&quot;,&quot;lc-border-style&quot;:&quot;&quot;,&quot;lc-border-color&quot;:&quot;&quot;,&quot;lc-border-radius&quot;:10,&quot;lc-zindex&quot;:0},&quot;style&quot;:{&quot;left&quot;:&quot;689px&quot;,&quot;top&quot;:&quot;614px&quot;,&quot;width&quot;:&quot;48px&quot;,&quot;height&quot;:&quot;56px&quot;},&quot;widgetSet&quot;:&quot;spotify-premium&quot;}]"><pre class="notranslate"><code>[{"tpl":"tplSpotifyRepeatButton","data":{"g_fixed":false,"g_visibility":false,"g_css_font_text":false,"g_css_background":false,"g_css_shadow_padding":false,"g_css_border":false,"g_gestures":false,"g_signals":false,"g_last_change":false,"visibility-cond":"==","visibility-val":1,"visibility-groups-action":"hide","oidall":"spotify-premium.0.player.repeatContext","oidoff":"spotify-premium.0.player.repeatOff","oidone":"spotify-premium.0.player.repeatTrack","oidstate":"spotify-premium.0.player.repeat","coloroff":"white","colorall":"green","colorone":"green","signals-cond-0":"==","signals-val-0":true,"signals-icon-0":"/vis/signals/lowbattery.png","signals-icon-size-0":0,"signals-blink-0":false,"signals-horz-0":0,"signals-vert-0":0,"signals-hide-edit-0":false,"signals-cond-1":"==","signals-val-1":true,"signals-icon-1":"/vis/signals/lowbattery.png","signals-icon-size-1":0,"signals-blink-1":false,"signals-horz-1":0,"signals-vert-1":0,"signals-hide-edit-1":false,"signals-cond-2":"==","signals-val-2":true,"signals-icon-2":"/vis/signals/lowbattery.png","signals-icon-size-2":0,"signals-blink-2":false,"signals-horz-2":0,"signals-vert-2":0,"signals-hide-edit-2":false,"lc-type":"last-change","lc-is-interval":true,"lc-is-moment":false,"lc-format":"","lc-position-vert":"top","lc-position-horz":"right","lc-offset-vert":0,"lc-offset-horz":0,"lc-font-size":"12px","lc-font-family":"","lc-font-style":"","lc-bkg-color":"","lc-color":"","lc-border-width":"0","lc-border-style":"","lc-border-color":"","lc-border-radius":10,"lc-zindex":0},"style":{"left":"689px","top":"614px","width":"48px","height":"56px"},"widgetSet":"spotify-premium"}]</code></pre></div>
+</details>
+<details>
+  <summary>Control shuffle<br><a target="_blank" rel="noopener noreferrer" href="/ohle64/ioBroker.spotify-premium/blob/master/docs/en/img/shuffle.gif"><img src="/ohle64/ioBroker.spotify-premium/raw/master/docs/en/img/shuffle.gif" data-animated-image="" style="max-width: 100%;"></a></summary>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="[{&quot;tpl&quot;:&quot;tplSpotifyShuffleButton&quot;,&quot;data&quot;:{&quot;g_fixed&quot;:false,&quot;g_visibility&quot;:false,&quot;g_css_font_text&quot;:false,&quot;g_css_background&quot;:false,&quot;g_css_shadow_padding&quot;:false,&quot;g_css_border&quot;:false,&quot;g_gestures&quot;:false,&quot;g_signals&quot;:false,&quot;g_last_change&quot;:false,&quot;visibility-cond&quot;:&quot;==&quot;,&quot;visibility-val&quot;:1,&quot;visibility-groups-action&quot;:&quot;hide&quot;,&quot;oidon&quot;:&quot;spotify-premium.0.player.shuffleOn&quot;,&quot;oidoff&quot;:&quot;spotify-premium.0.player.shuffleOff&quot;,&quot;oidstate&quot;:&quot;spotify-premium.0.player.shuffle&quot;,&quot;coloroff&quot;:&quot;white&quot;,&quot;coloron&quot;:&quot;green&quot;,&quot;signals-cond-0&quot;:&quot;==&quot;,&quot;signals-val-0&quot;:true,&quot;signals-icon-0&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-0&quot;:0,&quot;signals-blink-0&quot;:false,&quot;signals-horz-0&quot;:0,&quot;signals-vert-0&quot;:0,&quot;signals-hide-edit-0&quot;:false,&quot;signals-cond-1&quot;:&quot;==&quot;,&quot;signals-val-1&quot;:true,&quot;signals-icon-1&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-1&quot;:0,&quot;signals-blink-1&quot;:false,&quot;signals-horz-1&quot;:0,&quot;signals-vert-1&quot;:0,&quot;signals-hide-edit-1&quot;:false,&quot;signals-cond-2&quot;:&quot;==&quot;,&quot;signals-val-2&quot;:true,&quot;signals-icon-2&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-2&quot;:0,&quot;signals-blink-2&quot;:false,&quot;signals-horz-2&quot;:0,&quot;signals-vert-2&quot;:0,&quot;signals-hide-edit-2&quot;:false,&quot;lc-type&quot;:&quot;last-change&quot;,&quot;lc-is-interval&quot;:true,&quot;lc-is-moment&quot;:false,&quot;lc-format&quot;:&quot;&quot;,&quot;lc-position-vert&quot;:&quot;top&quot;,&quot;lc-position-horz&quot;:&quot;right&quot;,&quot;lc-offset-vert&quot;:0,&quot;lc-offset-horz&quot;:0,&quot;lc-font-size&quot;:&quot;12px&quot;,&quot;lc-font-family&quot;:&quot;&quot;,&quot;lc-font-style&quot;:&quot;&quot;,&quot;lc-bkg-color&quot;:&quot;&quot;,&quot;lc-color&quot;:&quot;&quot;,&quot;lc-border-width&quot;:&quot;0&quot;,&quot;lc-border-style&quot;:&quot;&quot;,&quot;lc-border-color&quot;:&quot;&quot;,&quot;lc-border-radius&quot;:10,&quot;lc-zindex&quot;:0},&quot;style&quot;:{&quot;left&quot;:&quot;319px&quot;,&quot;top&quot;:&quot;622px&quot;,&quot;width&quot;:&quot;38px&quot;,&quot;height&quot;:&quot;40px&quot;},&quot;widgetSet&quot;:&quot;spotify-premium&quot;}]"><pre class="notranslate"><code>[{"tpl":"tplSpotifyShuffleButton","data":{"g_fixed":false,"g_visibility":false,"g_css_font_text":false,"g_css_background":false,"g_css_shadow_padding":false,"g_css_border":false,"g_gestures":false,"g_signals":false,"g_last_change":false,"visibility-cond":"==","visibility-val":1,"visibility-groups-action":"hide","oidon":"spotify-premium.0.player.shuffleOn","oidoff":"spotify-premium.0.player.shuffleOff","oidstate":"spotify-premium.0.player.shuffle","coloroff":"white","coloron":"green","signals-cond-0":"==","signals-val-0":true,"signals-icon-0":"/vis/signals/lowbattery.png","signals-icon-size-0":0,"signals-blink-0":false,"signals-horz-0":0,"signals-vert-0":0,"signals-hide-edit-0":false,"signals-cond-1":"==","signals-val-1":true,"signals-icon-1":"/vis/signals/lowbattery.png","signals-icon-size-1":0,"signals-blink-1":false,"signals-horz-1":0,"signals-vert-1":0,"signals-hide-edit-1":false,"signals-cond-2":"==","signals-val-2":true,"signals-icon-2":"/vis/signals/lowbattery.png","signals-icon-size-2":0,"signals-blink-2":false,"signals-horz-2":0,"signals-vert-2":0,"signals-hide-edit-2":false,"lc-type":"last-change","lc-is-interval":true,"lc-is-moment":false,"lc-format":"","lc-position-vert":"top","lc-position-horz":"right","lc-offset-vert":0,"lc-offset-horz":0,"lc-font-size":"12px","lc-font-family":"","lc-font-style":"","lc-bkg-color":"","lc-color":"","lc-border-width":"0","lc-border-style":"","lc-border-color":"","lc-border-radius":10,"lc-zindex":0},"style":{"left":"319px","top":"622px","width":"38px","height":"40px"},"widgetSet":"spotify-premium"}]</code></pre></div>
+</details>
+<details>
+  <summary>Context image<br><a target="_blank" rel="noopener noreferrer" href="/ohle64/ioBroker.spotify-premium/blob/master/docs/en/img/context_image.png"><img src="/ohle64/ioBroker.spotify-premium/raw/master/docs/en/img/context_image.png" style="max-width: 100%;"></a></summary>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="[{&quot;tpl&quot;:&quot;tplValueStringImg&quot;,&quot;data&quot;:{&quot;oid&quot;:&quot;spotify-premium.0.player.contextImageUrl&quot;,&quot;g_fixed&quot;:false,&quot;g_visibility&quot;:false,&quot;g_css_font_text&quot;:false,&quot;g_css_background&quot;:false,&quot;g_css_shadow_padding&quot;:false,&quot;g_css_border&quot;:false,&quot;g_gestures&quot;:false,&quot;g_signals&quot;:false,&quot;g_last_change&quot;:false,&quot;visibility-cond&quot;:&quot;==&quot;,&quot;visibility-val&quot;:1,&quot;visibility-groups-action&quot;:&quot;hide&quot;,&quot;refreshInterval&quot;:&quot;0&quot;,&quot;signals-cond-0&quot;:&quot;==&quot;,&quot;signals-val-0&quot;:true,&quot;signals-icon-0&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-0&quot;:0,&quot;signals-blink-0&quot;:false,&quot;signals-horz-0&quot;:0,&quot;signals-vert-0&quot;:0,&quot;signals-hide-edit-0&quot;:false,&quot;signals-cond-1&quot;:&quot;==&quot;,&quot;signals-val-1&quot;:true,&quot;signals-icon-1&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-1&quot;:0,&quot;signals-blink-1&quot;:false,&quot;signals-horz-1&quot;:0,&quot;signals-vert-1&quot;:0,&quot;signals-hide-edit-1&quot;:false,&quot;signals-cond-2&quot;:&quot;==&quot;,&quot;signals-val-2&quot;:true,&quot;signals-icon-2&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-2&quot;:0,&quot;signals-blink-2&quot;:false,&quot;signals-horz-2&quot;:0,&quot;signals-vert-2&quot;:0,&quot;signals-hide-edit-2&quot;:false,&quot;lc-type&quot;:&quot;last-change&quot;,&quot;lc-is-interval&quot;:true,&quot;lc-is-moment&quot;:false,&quot;lc-format&quot;:&quot;&quot;,&quot;lc-position-vert&quot;:&quot;top&quot;,&quot;lc-position-horz&quot;:&quot;right&quot;,&quot;lc-offset-vert&quot;:0,&quot;lc-offset-horz&quot;:0,&quot;lc-font-size&quot;:&quot;12px&quot;,&quot;lc-font-family&quot;:&quot;&quot;,&quot;lc-font-style&quot;:&quot;&quot;,&quot;lc-bkg-color&quot;:&quot;&quot;,&quot;lc-color&quot;:&quot;&quot;,&quot;lc-border-width&quot;:&quot;0&quot;,&quot;lc-border-style&quot;:&quot;&quot;,&quot;lc-border-color&quot;:&quot;&quot;,&quot;lc-border-radius&quot;:10,&quot;lc-zindex&quot;:0},&quot;style&quot;:{&quot;left&quot;:&quot;338px&quot;,&quot;top&quot;:&quot;131px&quot;,&quot;width&quot;:&quot;122px&quot;,&quot;height&quot;:&quot;122px&quot;},&quot;widgetSet&quot;:&quot;basic&quot;}]"><pre class="notranslate"><code>[{"tpl":"tplValueStringImg","data":{"oid":"spotify-premium.0.player.contextImageUrl","g_fixed":false,"g_visibility":false,"g_css_font_text":false,"g_css_background":false,"g_css_shadow_padding":false,"g_css_border":false,"g_gestures":false,"g_signals":false,"g_last_change":false,"visibility-cond":"==","visibility-val":1,"visibility-groups-action":"hide","refreshInterval":"0","signals-cond-0":"==","signals-val-0":true,"signals-icon-0":"/vis/signals/lowbattery.png","signals-icon-size-0":0,"signals-blink-0":false,"signals-horz-0":0,"signals-vert-0":0,"signals-hide-edit-0":false,"signals-cond-1":"==","signals-val-1":true,"signals-icon-1":"/vis/signals/lowbattery.png","signals-icon-size-1":0,"signals-blink-1":false,"signals-horz-1":0,"signals-vert-1":0,"signals-hide-edit-1":false,"signals-cond-2":"==","signals-val-2":true,"signals-icon-2":"/vis/signals/lowbattery.png","signals-icon-size-2":0,"signals-blink-2":false,"signals-horz-2":0,"signals-vert-2":0,"signals-hide-edit-2":false,"lc-type":"last-change","lc-is-interval":true,"lc-is-moment":false,"lc-format":"","lc-position-vert":"top","lc-position-horz":"right","lc-offset-vert":0,"lc-offset-horz":0,"lc-font-size":"12px","lc-font-family":"","lc-font-style":"","lc-bkg-color":"","lc-color":"","lc-border-width":"0","lc-border-style":"","lc-border-color":"","lc-border-radius":10,"lc-zindex":0},"style":{"left":"338px","top":"131px","width":"122px","height":"122px"},"widgetSet":"basic"}]</code></pre></div>
+</details>
+<details>
+  <summary>Choose track of current playlist<br><a target="_blank" rel="noopener noreferrer" href="/ohle64/ioBroker.spotify-premium/blob/master/docs/en/img/choose_track.gif"><img src="/ohle64/ioBroker.spotify-premium/raw/master/docs/en/img/choose_track.gif" data-animated-image="" style="max-width: 100%;"></a></summary>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="[{&quot;tpl&quot;:&quot;tplJquiSelectList&quot;,&quot;data&quot;:{&quot;oid&quot;:&quot;spotify-premium.0.player.playlist.trackList&quot;,&quot;g_fixed&quot;:false,&quot;g_visibility&quot;:false,&quot;g_css_font_text&quot;:false,&quot;g_css_background&quot;:false,&quot;g_css_shadow_padding&quot;:false,&quot;g_css_border&quot;:false,&quot;g_gestures&quot;:false,&quot;g_signals&quot;:false,&quot;g_last_change&quot;:false,&quot;visibility-cond&quot;:&quot;==&quot;,&quot;visibility-val&quot;:1,&quot;visibility-groups-action&quot;:&quot;hide&quot;,&quot;values&quot;:&quot;{spotify-premium.0.player.playlist.trackListNumber}&quot;,&quot;texts&quot;:&quot;{spotify-premium.0.player.playlist.trackListString}&quot;,&quot;height&quot;:&quot;100&quot;,&quot;signals-cond-0&quot;:&quot;==&quot;,&quot;signals-val-0&quot;:true,&quot;signals-icon-0&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-0&quot;:0,&quot;signals-blink-0&quot;:false,&quot;signals-horz-0&quot;:0,&quot;signals-vert-0&quot;:0,&quot;signals-hide-edit-0&quot;:false,&quot;signals-cond-1&quot;:&quot;==&quot;,&quot;signals-val-1&quot;:true,&quot;signals-icon-1&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-1&quot;:0,&quot;signals-blink-1&quot;:false,&quot;signals-horz-1&quot;:0,&quot;signals-vert-1&quot;:0,&quot;signals-hide-edit-1&quot;:false,&quot;signals-cond-2&quot;:&quot;==&quot;,&quot;signals-val-2&quot;:true,&quot;signals-icon-2&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-2&quot;:0,&quot;signals-blink-2&quot;:false,&quot;signals-horz-2&quot;:0,&quot;signals-vert-2&quot;:0,&quot;signals-hide-edit-2&quot;:false,&quot;lc-type&quot;:&quot;last-change&quot;,&quot;lc-is-interval&quot;:true,&quot;lc-is-moment&quot;:false,&quot;lc-format&quot;:&quot;&quot;,&quot;lc-position-vert&quot;:&quot;top&quot;,&quot;lc-position-horz&quot;:&quot;right&quot;,&quot;lc-offset-vert&quot;:0,&quot;lc-offset-horz&quot;:0,&quot;lc-font-size&quot;:&quot;12px&quot;,&quot;lc-font-family&quot;:&quot;&quot;,&quot;lc-font-style&quot;:&quot;&quot;,&quot;lc-bkg-color&quot;:&quot;&quot;,&quot;lc-color&quot;:&quot;&quot;,&quot;lc-border-width&quot;:&quot;0&quot;,&quot;lc-border-style&quot;:&quot;&quot;,&quot;lc-border-color&quot;:&quot;&quot;,&quot;lc-border-radius&quot;:10,&quot;lc-zindex&quot;:0},&quot;style&quot;:{&quot;left&quot;:&quot;505px&quot;,&quot;top&quot;:&quot;369px&quot;},&quot;widgetSet&quot;:&quot;jqui&quot;}]"><pre class="notranslate"><code>[{"tpl":"tplJquiSelectList","data":{"oid":"spotify-premium.0.player.playlist.trackList","g_fixed":false,"g_visibility":false,"g_css_font_text":false,"g_css_background":false,"g_css_shadow_padding":false,"g_css_border":false,"g_gestures":false,"g_signals":false,"g_last_change":false,"visibility-cond":"==","visibility-val":1,"visibility-groups-action":"hide","values":"{spotify-premium.0.player.playlist.trackListNumber}","texts":"{spotify-premium.0.player.playlist.trackListString}","height":"100","signals-cond-0":"==","signals-val-0":true,"signals-icon-0":"/vis/signals/lowbattery.png","signals-icon-size-0":0,"signals-blink-0":false,"signals-horz-0":0,"signals-vert-0":0,"signals-hide-edit-0":false,"signals-cond-1":"==","signals-val-1":true,"signals-icon-1":"/vis/signals/lowbattery.png","signals-icon-size-1":0,"signals-blink-1":false,"signals-horz-1":0,"signals-vert-1":0,"signals-hide-edit-1":false,"signals-cond-2":"==","signals-val-2":true,"signals-icon-2":"/vis/signals/lowbattery.png","signals-icon-size-2":0,"signals-blink-2":false,"signals-horz-2":0,"signals-vert-2":0,"signals-hide-edit-2":false,"lc-type":"last-change","lc-is-interval":true,"lc-is-moment":false,"lc-format":"","lc-position-vert":"top","lc-position-horz":"right","lc-offset-vert":0,"lc-offset-horz":0,"lc-font-size":"12px","lc-font-family":"","lc-font-style":"","lc-bkg-color":"","lc-color":"","lc-border-width":"0","lc-border-style":"","lc-border-color":"","lc-border-radius":10,"lc-zindex":0},"style":{"left":"505px","top":"369px"},"widgetSet":"jqui"}]</code></pre></div>
+</details>
+<details>
+  <summary>Switch device<br><a target="_blank" rel="noopener noreferrer" href="/ohle64/ioBroker.spotify-premium/blob/master/docs/en/img/choose_device.gif"><img src="/ohle64/ioBroker.spotify-premium/raw/master/docs/en/img/choose_device.gif" data-animated-image="" style="max-width: 100%;"></a></summary>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="[{&quot;tpl&quot;:&quot;tplJquiSelectList&quot;,&quot;data&quot;:{&quot;oid&quot;:&quot;spotify-premium.0.devices.deviceList&quot;,&quot;g_fixed&quot;:false,&quot;g_visibility&quot;:false,&quot;g_css_font_text&quot;:false,&quot;g_css_background&quot;:false,&quot;g_css_shadow_padding&quot;:false,&quot;g_css_border&quot;:false,&quot;g_gestures&quot;:false,&quot;g_signals&quot;:false,&quot;g_last_change&quot;:false,&quot;visibility-cond&quot;:&quot;==&quot;,&quot;visibility-val&quot;:1,&quot;visibility-groups-action&quot;:&quot;hide&quot;,&quot;values&quot;:&quot;{spotify-premium.0.devices.availableDeviceListIds}&quot;,&quot;texts&quot;:&quot;{spotify-premium.0.devices.availableDeviceListString}&quot;,&quot;height&quot;:&quot;100&quot;,&quot;signals-cond-0&quot;:&quot;==&quot;,&quot;signals-val-0&quot;:true,&quot;signals-icon-0&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-0&quot;:0,&quot;signals-blink-0&quot;:false,&quot;signals-horz-0&quot;:0,&quot;signals-vert-0&quot;:0,&quot;signals-hide-edit-0&quot;:false,&quot;signals-cond-1&quot;:&quot;==&quot;,&quot;signals-val-1&quot;:true,&quot;signals-icon-1&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-1&quot;:0,&quot;signals-blink-1&quot;:false,&quot;signals-horz-1&quot;:0,&quot;signals-vert-1&quot;:0,&quot;signals-hide-edit-1&quot;:false,&quot;signals-cond-2&quot;:&quot;==&quot;,&quot;signals-val-2&quot;:true,&quot;signals-icon-2&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-2&quot;:0,&quot;signals-blink-2&quot;:false,&quot;signals-horz-2&quot;:0,&quot;signals-vert-2&quot;:0,&quot;signals-hide-edit-2&quot;:false,&quot;lc-type&quot;:&quot;last-change&quot;,&quot;lc-is-interval&quot;:true,&quot;lc-is-moment&quot;:false,&quot;lc-format&quot;:&quot;&quot;,&quot;lc-position-vert&quot;:&quot;top&quot;,&quot;lc-position-horz&quot;:&quot;right&quot;,&quot;lc-offset-vert&quot;:0,&quot;lc-offset-horz&quot;:0,&quot;lc-font-size&quot;:&quot;12px&quot;,&quot;lc-font-family&quot;:&quot;&quot;,&quot;lc-font-style&quot;:&quot;&quot;,&quot;lc-bkg-color&quot;:&quot;&quot;,&quot;lc-color&quot;:&quot;&quot;,&quot;lc-border-width&quot;:&quot;0&quot;,&quot;lc-border-style&quot;:&quot;&quot;,&quot;lc-border-color&quot;:&quot;&quot;,&quot;lc-border-radius&quot;:10,&quot;lc-zindex&quot;:0},&quot;style&quot;:{&quot;left&quot;:&quot;578px&quot;,&quot;top&quot;:&quot;378px&quot;},&quot;widgetSet&quot;:&quot;jqui&quot;}]"><pre class="notranslate"><code>[{"tpl":"tplJquiSelectList","data":{"oid":"spotify-premium.0.devices.deviceList","g_fixed":false,"g_visibility":false,"g_css_font_text":false,"g_css_background":false,"g_css_shadow_padding":false,"g_css_border":false,"g_gestures":false,"g_signals":false,"g_last_change":false,"visibility-cond":"==","visibility-val":1,"visibility-groups-action":"hide","values":"{spotify-premium.0.devices.availableDeviceListIds}","texts":"{spotify-premium.0.devices.availableDeviceListString}","height":"100","signals-cond-0":"==","signals-val-0":true,"signals-icon-0":"/vis/signals/lowbattery.png","signals-icon-size-0":0,"signals-blink-0":false,"signals-horz-0":0,"signals-vert-0":0,"signals-hide-edit-0":false,"signals-cond-1":"==","signals-val-1":true,"signals-icon-1":"/vis/signals/lowbattery.png","signals-icon-size-1":0,"signals-blink-1":false,"signals-horz-1":0,"signals-vert-1":0,"signals-hide-edit-1":false,"signals-cond-2":"==","signals-val-2":true,"signals-icon-2":"/vis/signals/lowbattery.png","signals-icon-size-2":0,"signals-blink-2":false,"signals-horz-2":0,"signals-vert-2":0,"signals-hide-edit-2":false,"lc-type":"last-change","lc-is-interval":true,"lc-is-moment":false,"lc-format":"","lc-position-vert":"top","lc-position-horz":"right","lc-offset-vert":0,"lc-offset-horz":0,"lc-font-size":"12px","lc-font-family":"","lc-font-style":"","lc-bkg-color":"","lc-color":"","lc-border-width":"0","lc-border-style":"","lc-border-color":"","lc-border-radius":10,"lc-zindex":0},"style":{"left":"578px","top":"378px"},"widgetSet":"jqui"}]</code></pre></div>
+</details>
+<details>
+  <summary>Switch playlist<br><a target="_blank" rel="noopener noreferrer" href="/ohle64/ioBroker.spotify-premium/blob/master/docs/en/img/choose_playlist.gif"><img src="/ohle64/ioBroker.spotify-premium/raw/master/docs/en/img/choose_playlist.gif" data-animated-image="" style="max-width: 100%;"></a></summary>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="[{&quot;tpl&quot;:&quot;tplJquiSelectList&quot;,&quot;data&quot;:{&quot;oid&quot;:&quot;spotify-premium.0.playlists.playlistList&quot;,&quot;g_fixed&quot;:false,&quot;g_visibility&quot;:false,&quot;g_css_font_text&quot;:false,&quot;g_css_background&quot;:false,&quot;g_css_shadow_padding&quot;:false,&quot;g_css_border&quot;:false,&quot;g_gestures&quot;:false,&quot;g_signals&quot;:false,&quot;g_last_change&quot;:false,&quot;visibility-cond&quot;:&quot;==&quot;,&quot;visibility-val&quot;:1,&quot;visibility-groups-action&quot;:&quot;hide&quot;,&quot;values&quot;:&quot;{spotify-premium.0.playlists.playlistListIds}&quot;,&quot;texts&quot;:&quot;{spotify-premium.0.playlists.playlistListString}&quot;,&quot;height&quot;:&quot;100&quot;,&quot;signals-cond-0&quot;:&quot;==&quot;,&quot;signals-val-0&quot;:true,&quot;signals-icon-0&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-0&quot;:0,&quot;signals-blink-0&quot;:false,&quot;signals-horz-0&quot;:0,&quot;signals-vert-0&quot;:0,&quot;signals-hide-edit-0&quot;:false,&quot;signals-cond-1&quot;:&quot;==&quot;,&quot;signals-val-1&quot;:true,&quot;signals-icon-1&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-1&quot;:0,&quot;signals-blink-1&quot;:false,&quot;signals-horz-1&quot;:0,&quot;signals-vert-1&quot;:0,&quot;signals-hide-edit-1&quot;:false,&quot;signals-cond-2&quot;:&quot;==&quot;,&quot;signals-val-2&quot;:true,&quot;signals-icon-2&quot;:&quot;/vis/signals/lowbattery.png&quot;,&quot;signals-icon-size-2&quot;:0,&quot;signals-blink-2&quot;:false,&quot;signals-horz-2&quot;:0,&quot;signals-vert-2&quot;:0,&quot;signals-hide-edit-2&quot;:false,&quot;lc-type&quot;:&quot;last-change&quot;,&quot;lc-is-interval&quot;:true,&quot;lc-is-moment&quot;:false,&quot;lc-format&quot;:&quot;&quot;,&quot;lc-position-vert&quot;:&quot;top&quot;,&quot;lc-position-horz&quot;:&quot;right&quot;,&quot;lc-offset-vert&quot;:0,&quot;lc-offset-horz&quot;:0,&quot;lc-font-size&quot;:&quot;12px&quot;,&quot;lc-font-family&quot;:&quot;&quot;,&quot;lc-font-style&quot;:&quot;&quot;,&quot;lc-bkg-color&quot;:&quot;&quot;,&quot;lc-color&quot;:&quot;&quot;,&quot;lc-border-width&quot;:&quot;0&quot;,&quot;lc-border-style&quot;:&quot;&quot;,&quot;lc-border-color&quot;:&quot;&quot;,&quot;lc-border-radius&quot;:10,&quot;lc-zindex&quot;:0},&quot;style&quot;:{&quot;left&quot;:&quot;571px&quot;,&quot;top&quot;:&quot;509px&quot;},&quot;widgetSet&quot;:&quot;jqui&quot;}]"><pre class="notranslate"><code>[{"tpl":"tplJquiSelectList","data":{"oid":"spotify-premium.0.playlists.playlistList","g_fixed":false,"g_visibility":false,"g_css_font_text":false,"g_css_background":false,"g_css_shadow_padding":false,"g_css_border":false,"g_gestures":false,"g_signals":false,"g_last_change":false,"visibility-cond":"==","visibility-val":1,"visibility-groups-action":"hide","values":"{spotify-premium.0.playlists.playlistListIds}","texts":"{spotify-premium.0.playlists.playlistListString}","height":"100","signals-cond-0":"==","signals-val-0":true,"signals-icon-0":"/vis/signals/lowbattery.png","signals-icon-size-0":0,"signals-blink-0":false,"signals-horz-0":0,"signals-vert-0":0,"signals-hide-edit-0":false,"signals-cond-1":"==","signals-val-1":true,"signals-icon-1":"/vis/signals/lowbattery.png","signals-icon-size-1":0,"signals-blink-1":false,"signals-horz-1":0,"signals-vert-1":0,"signals-hide-edit-1":false,"signals-cond-2":"==","signals-val-2":true,"signals-icon-2":"/vis/signals/lowbattery.png","signals-icon-size-2":0,"signals-blink-2":false,"signals-horz-2":0,"signals-vert-2":0,"signals-hide-edit-2":false,"lc-type":"last-change","lc-is-interval":true,"lc-is-moment":false,"lc-format":"","lc-position-vert":"top","lc-position-horz":"right","lc-offset-vert":0,"lc-offset-horz":0,"lc-font-size":"12px","lc-font-family":"","lc-font-style":"","lc-bkg-color":"","lc-color":"","lc-border-width":"0","lc-border-style":"","lc-border-color":"","lc-border-radius":10,"lc-zindex":0},"style":{"left":"571px","top":"509px"},"widgetSet":"jqui"}]</code></pre></div>
+</details>
+
+<h2 dir="auto"><a id="user-content-changelog" class="anchor" aria-hidden="true" href="#changelog"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Changelog</h2>
+<h3 dir="auto"><a id="user-content-122-2022-07-30" class="anchor" aria-hidden="true" href="#122-2022-07-30"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>1.2.2 (2022-07-30)</h3>
+<ul dir="auto">
+<li>(ohle64) many changes with playlist, album, shows(episodes), collection (like tracks)</li>
+<li>(ohle64) prevent to many requests - use snapshot_id for playlist-refresh</li>
+<li>(ohle64) repair timer-functions (add play-polling, non-play-polling to prevent request)</li>
+<li>(ohle64) add some buttons: refresh current playlist(only currently playing), getShows, getAlbums, getCollection, check Track in collection, refresh application cache for playlists</li>
+<li>(ohle64) visualisation of playlist_found, playlist_notFound, requests/min</li>
+<li>(ohle64) catch err 408 geo location</li>
+</ul>
+<h3 dir="auto"><a id="user-content-122-2022-06-17" class="anchor" aria-hidden="true" href="#122-2022-06-17"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>1.2.2 (2022-06-17)</h3>
+<ul dir="auto">
+<li>(Apollon77) Fix potential crash cases reported by Sentry</li>
+<li>(Apollon77) Optimize adapter stop behaviour</li>
+</ul>
+<h3 dir="auto"><a id="user-content-121-2022-05-12" class="anchor" aria-hidden="true" href="#121-2022-05-12"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>1.2.1 (2022-05-12)</h3>
+<ul dir="auto">
+<li>(Apollon77) Prevent js-controller warnings</li>
+</ul>
+<h3 dir="auto"><a id="user-content-120-2022-05-11" class="anchor" aria-hidden="true" href="#120-2022-05-11"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>1.2.0 (2022-05-11)</h3>
+<ul dir="auto">
+<li>(duczz) Fix tracklist request issues</li>
+<li>(Apollon77) Fix several potential crash cases and object warnings</li>
+<li>(Apollon77) Add Sentry for crash reporting</li>
+</ul>
+<h3 dir="auto"><a id="user-content-119-2021-11-21" class="anchor" aria-hidden="true" href="#119-2021-11-21"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>1.1.9 (2021-11-21)</h3>
+<ul dir="auto">
+<li>(bluefox) Tried to catch 403 error</li>
+</ul>
+<h3 dir="auto"><a id="user-content-118-2021-11-18" class="anchor" aria-hidden="true" href="#118-2021-11-18"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>1.1.8 (2021-11-18)</h3>
+<ul dir="auto">
+<li>(ohle64) Fixed the shuffle behaviour</li>
+<li>(bluefox) Allowed to set the default shuffle value</li>
+<li>(bluefox) The type of trackNo corrected</li>
+</ul>
+<h3 dir="auto"><a id="user-content-114-2021-11-17" class="anchor" aria-hidden="true" href="#114-2021-11-17"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>1.1.4 (2021-11-17)</h3>
+<ul dir="auto">
+<li>(bluefox) Fix errors</li>
+</ul>
+<h3 dir="auto"><a id="user-content-113-2021-07-22" class="anchor" aria-hidden="true" href="#113-2021-07-22"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>1.1.3 (2021-07-22)</h3>
+<ul dir="auto">
+<li>(bluefox) Improved authorization process</li>
+</ul>
+<h3 dir="auto"><a id="user-content-111-2021-07-22" class="anchor" aria-hidden="true" href="#111-2021-07-22"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>1.1.1 (2021-07-22)</h3>
+<ul dir="auto">
+<li>(bluefox) removed warnings for js-controller 3.x</li>
+</ul>
+<h3 dir="auto"><a id="user-content-110-in-dev" class="anchor" aria-hidden="true" href="#110-in-dev"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>1.1.0 (in dev)</h3>
+<ul dir="auto">
+<li>IMPORTANT: js-controller 2.0.0 is now required at least</li>
+<li>(twonky) added control widgets</li>
+<li>(twonky) added compact mode</li>
+<li>(Apollon77) Core Files/Testing Update and introduce adapter-core</li>
+<li>(twonky) added state <code>player.playUri</code> to support user defined input</li>
+<li>(Apollon77) Fix js-controller 3.3 warnings</li>
+<li>(Xyolyp) Listen on <code>player.volume</code> instead of player.device.volume as the latter is readonly</li>
+<li>(bellerG) fix player.playUri</li>
+</ul>
+<h3 dir="auto"><a id="user-content-100-20181218" class="anchor" aria-hidden="true" href="#100-20181218"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>1.0.0 (2018.12.18)</h3>
+<ul dir="auto">
+<li>(twonky) <code>playbackInfo</code> and <code>player</code> merged together to <code>player</code></li>
+<li>(twonky) <code>player.volume</code> moved to <code>player.device.volume</code></li>
+<li>(twonky) The <code>duration</code> format of <code>player.playlist.trackListArray</code> and <code>playlists.[playListName].trackListArray</code> was changed from milliseconds to time (MM:SS) and a new one was created for this <code>durationMs</code>.</li>
+<li>(twonky) The <code>album</code> of <code>player.playlist.trackListArray</code> and <code>playlists.[playListName].trackListArray</code> was changed to <code>artistName</code> and <code>artistArray</code>.</li>
+<li>(twonky) Several data was added to <code>player.playlist.trackListArray</code> and <code>playlists.[playListName].trackListArray</code>: <code>album</code>, <code>addedAt</code>, <code>addedBy</code>, <code>discNumber</code>, <code>episode</code>, <code>explicit</code> and <code>popularity</code></li>
+<li>(twonky) change <code>player.playlist.trackNo</code> to start with 1 (0-based before)</li>
+<li>(twonky) performance optimization (states/objects are only set on change)</li>
+<li>(twonky) html lists added: <code>html.devices</code>, <code>html.playlists</code> and <code>html.tracks</code></li>
+<li>(twonky) new icons</li>
+</ul>
+<h3 dir="auto"><a id="user-content-031-20180620" class="anchor" aria-hidden="true" href="#031-20180620"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>0.3.1 (2018.06.20)</h3>
+<ul dir="auto">
+<li>(twonky) Fix: state playlists.playlistList doesn't refresh after the playlist changed via app</li>
+</ul>
+<h3 dir="auto"><a id="user-content-030-20180531" class="anchor" aria-hidden="true" href="#030-20180531"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>0.3.0 (2018.05.31)</h3>
+<ul dir="auto">
+<li>(twonky) Change playlist and device state names from name to id</li>
+<li>(twonky) New states for device selection: <code>devices.deviceList</code>, <code>devices.deviceListIds</code>, <code>devices.deviceListString</code>, <code>devices.availableDeviceListIds</code>, <code>devices.availableDeviceListString</code></li>
+<li>(twonky) New states for playlist selection: <code>playlists.playlistList</code>, <code>playlists.playlistListIds</code>, <code>playlists.playlistListString</code>, <code>playlists.yourPlaylistListIds</code>, <code>playlists.yourPlaylistListString</code></li>
+<li>(twonky) Add option to avoid shuffle state reset on some devices after starting a playlist</li>
+</ul>
+<h3 dir="auto"><a id="user-content-025-20180524" class="anchor" aria-hidden="true" href="#025-20180524"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>0.2.5 (2018.05.24)</h3>
+<ul dir="auto">
+<li>(twonky) Fix: <code>playlists.YourPlaylistName.playThisList</code> starts always with second track</li>
+</ul>
+<h3 dir="auto"><a id="user-content-024-20180517" class="anchor" aria-hidden="true" href="#024-20180517"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>0.2.4 (2018.05.17)</h3>
+<ul dir="auto">
+<li>(twonky) remove special character ("'*) from device and playlist state names</li>
+</ul>
+<h3 dir="auto"><a id="user-content-023-20180517" class="anchor" aria-hidden="true" href="#023-20180517"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>0.2.3 (2018.05.17)</h3>
+<ul dir="auto">
+<li>(twonky) remove special character (,?[]) from device and playlist state names</li>
+</ul>
+<h3 dir="auto"><a id="user-content-022-20180516" class="anchor" aria-hidden="true" href="#022-20180516"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>0.2.2 (2018.05.16)</h3>
+<ul dir="auto">
+<li>(twonky) <code>playbackInfo.playlist.track*</code> States are only reset when changed; stop flickering of tracks SelectList (example "Choose track of current playlist")</li>
+</ul>
+<h3 dir="auto"><a id="user-content-021-20180514" class="anchor" aria-hidden="true" href="#021-20180514"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>0.2.1 (2018.05.14)</h3>
+<ul dir="auto">
+<li>(twonky) change state <code>player.shuffle</code> to string with possible values "on" and "off"</li>
+</ul>
+<h3 dir="auto"><a id="user-content-020-20180513" class="anchor" aria-hidden="true" href="#020-20180513"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>0.2.0 (2018.05.13)</h3>
+<ul dir="auto">
+<li>(twonky) removed support for deprecated state <code>PlaybackInfo.image_url</code></li>
+<li>(twonky) all states improved and proper descriptions added</li>
+</ul>
+<h3 dir="auto"><a id="user-content-013-20180428" class="anchor" aria-hidden="true" href="#013-20180428"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>0.1.3 (2018.04.28)</h3>
+<ul dir="auto">
+<li>(twonky) fix spotify api change</li>
+</ul>
+<h3 dir="auto"><a id="user-content-012-20180410" class="anchor" aria-hidden="true" href="#012-20180410"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>0.1.2 (2018.04.10)</h3>
+<ul dir="auto">
+<li>(twonky) automatic updating of devices and playlists (configurable in the adapter)</li>
+<li>(twonky) new state <code>Devices.DEVICE.is_available</code> indicates if a device is available</li>
+<li>(twonky) shows warning message http 202 only as debug and only one time</li>
+<li>(twonky) the States <code>Player.Shuffle</code>,<code> Player.Playlist_ID</code>, <code>Player.TrackId</code> and<code> Player.Volume</code> also show the current value</li>
+<li>(twonky) new states <code>Playlists.PLAYLISTNAME.image_url</code>,<code> PlaybackInfo.Playlist_image_url</code>, <code>PlaybackInfo.Album_image_url</code></li>
+<li>(twonky) marks the state <code>PlaybackInfo.image_url</code> as deprecated. Will not be included in a new installation and will not be updated in future versions</li>
+<li>(twonky) changing the State <code>Playlists.PLAYLISTNAME.Track_ID</code> now works like in Lucky's script</li>
+</ul>
+<h3 dir="auto"><a id="user-content-011-20180303" class="anchor" aria-hidden="true" href="#011-20180303"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>0.1.1 (2018.03.03)</h3>
+<ul dir="auto">
+<li>(twonky) fix several small issues</li>
+</ul>
+<h3 dir="auto"><a id="user-content-010-20180223" class="anchor" aria-hidden="true" href="#010-20180223"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>0.1.0 (2018.02.23)</h3>
+<ul dir="auto">
+<li>(twonky) rework api polling mechanism</li>
+</ul>
+<h3 dir="auto"><a id="user-content-009-20180221" class="anchor" aria-hidden="true" href="#009-20180221"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>0.0.9 (2018.02.21)</h3>
+<ul dir="auto">
+<li>(twonky) new state <code>PlaybackInfo.repeat</code> with possible values: off, context, track</li>
+<li>(twonky) new state <code>PlaybackInfo.shuffle</code> with possible values: true, false</li>
+<li>(twonky) states for the playing device will also updated in 5s intervals</li>
+<li>(twonky) states in <code>PlaybackInfo</code> are now updated also if no device is active playing</li>
+<li>(twonky) states in <code>PlaybackInfo</code> are now cleared if no device is available</li>
+<li>(twonky) loading new playlists if playing the first time</li>
+</ul>
+<h3 dir="auto"><a id="user-content-008-20180220" class="anchor" aria-hidden="true" href="#008-20180220"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>0.0.8 (2018.02.20)</h3>
+<ul dir="auto">
+<li>(twonky) new adapter option to delete no longer existing devices and playlists</li>
+<li>(twonky) load complete playlists (limitation of 100 first tracks was removed)</li>
+</ul>
+<h3 dir="auto"><a id="user-content-007-20180216" class="anchor" aria-hidden="true" href="#007-20180216"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>0.0.7 (2018.02.16)</h3>
+<ul dir="auto">
+<li>(twonky) fix: auto refresh token</li>
+</ul>
+<h3 dir="auto"><a id="user-content-006-20180216" class="anchor" aria-hidden="true" href="#006-20180216"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>0.0.6 (2018.02.16)</h3>
+<ul dir="auto">
+<li>(twonky) fix: playlist loading</li>
+</ul>
+<h3 dir="auto"><a id="user-content-005-20180216" class="anchor" aria-hidden="true" href="#005-20180216"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>0.0.5 (2018.02.16)</h3>
+<ul dir="auto">
+<li>(twonky) fix: fatal error if no open player</li>
+</ul>
+<h3 dir="auto"><a id="user-content-004-20180216" class="anchor" aria-hidden="true" href="#004-20180216"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>0.0.4 (2018.02.16)</h3>
+<ul dir="auto">
+<li>(twonky) check configuration</li>
+<li>(twonky) fix: adapter configuration in admin2</li>
+<li>(twonky) fix: restart after authorization need</li>
+</ul>
+<h3 dir="auto"><a id="user-content-003-20180215" class="anchor" aria-hidden="true" href="#003-20180215"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>0.0.3 (2018.02.15)</h3>
+<ul dir="auto">
+<li>(wendy2702) improved manual</li>
+</ul>
+<h3 dir="auto"><a id="user-content-002-20180211" class="anchor" aria-hidden="true" href="#002-20180211"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>0.0.2 (2018.02.11)</h3>
+<ul dir="auto">
+<li>(twonky) merge original script v0.5.3 by <a href="http://forum.iobroker.net/viewtopic.php?f=21&amp;t=8173" rel="nofollow">Lucky</a></li>
+</ul>
+<h3 dir="auto"><a id="user-content-001-20180207" class="anchor" aria-hidden="true" href="#001-20180207"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>0.0.1 (2018.02.07)</h3>
+<ul dir="auto">
+<li>(twonky) initial adapter, original script v0.5.1 by <a href="http://forum.iobroker.net/viewtopic.php?f=21&amp;t=8173" rel="nofollow">Lucky</a></li>
+</ul>
+<h2 dir="auto"><a id="user-content-license" class="anchor" aria-hidden="true" href="#license"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>License</h2>
+<p dir="auto">The MIT License (MIT)</p>
+<p dir="auto">Copyright (c) 2019-2022 Alexander Kose <a href="mailto:twonky4@gmx.de">twonky4@gmx.de</a></p>
+<p dir="auto">Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+<p dir="auto">The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.</p>
+<p dir="auto">THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</p>
+</article>
+  </div>
+
+    </div>
+
+  </readme-toc>
+
+  
+
+  <details class="details-reset details-overlay details-overlay-dark" id="jumpto-line-details-dialog">
+    <summary data-hotkey="l" aria-label="Jump to line"></summary>
+    <details-dialog class="Box Box--overlay d-flex flex-column anim-fade-in fast linejump" aria-label="Jump to line">
+      <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="js-jump-to-line-form Box-body d-flex" data-turbo="false" action="" accept-charset="UTF-8" method="get">
+        <input class="form-control flex-auto mr-3 linejump-input js-jump-to-line-field" type="text" placeholder="Jump to line&hellip;" aria-label="Jump to line" autofocus>
+        <button data-close-dialog="" type="submit" data-view-component="true" class="btn">  Go
+  
+</button>
+</form>    </details-dialog>
+  </details>
+
+
+</div>
+
+  </div>
+
+
+  </div>
+
+  </turbo-frame>
+
+
+    </main>
+  </div>
+
+  </div>
+
+          <footer class="footer width-full container-xl p-responsive">
+  <h2 class='sr-only'>Footer</h2>
+
+  <div class="position-relative d-flex flex-items-center pb-2 f6 color-fg-muted border-top color-border-muted flex-column-reverse flex-lg-row flex-wrap flex-lg-nowrap mt-6 pt-6">
+    <div class="list-style-none d-flex flex-wrap col-0 col-lg-2 flex-justify-start flex-lg-justify-between mb-2 mb-lg-0">
+      <div class="mt-2 mt-lg-0 d-flex flex-items-center">
+        <a aria-label="Homepage" title="GitHub" class="footer-octicon mr-2" href="https://github.com">
+          <svg aria-hidden="true" height="24" viewBox="0 0 16 16" version="1.1" width="24" data-view-component="true" class="octicon octicon-mark-github">
+    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+</svg>
+</a>        <span>
+        &copy; 2022 GitHub, Inc.
+        </span>
+      </div>
+    </div>
+
+    <nav aria-label='footer' class="col-12 col-lg-8">
+      <h3 class='sr-only' id='sr-footer-heading'>Footer navigation</h3>
+      <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0" aria-labelledby='sr-footer-heading'>
+          <li class="mr-3 mr-lg-0"><a href="https://docs.github.com/en/github/site-policy/github-terms-of-service" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to terms&quot;,&quot;label&quot;:&quot;text:terms&quot;}">Terms</a></li>
+          <li class="mr-3 mr-lg-0"><a href="https://docs.github.com/en/github/site-policy/github-privacy-statement" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to privacy&quot;,&quot;label&quot;:&quot;text:privacy&quot;}">Privacy</a></li>
+          <li class="mr-3 mr-lg-0"><a data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to security&quot;,&quot;label&quot;:&quot;text:security&quot;}" href="https://github.com/security">Security</a></li>
+          <li class="mr-3 mr-lg-0"><a href="https://www.githubstatus.com/" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to status&quot;,&quot;label&quot;:&quot;text:status&quot;}">Status</a></li>
+          <li class="mr-3 mr-lg-0"><a data-ga-click="Footer, go to help, text:Docs" href="https://docs.github.com">Docs</a></li>
+          <li class="mr-3 mr-lg-0"><a href="https://support.github.com?tags=dotcom-footer" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to contact&quot;,&quot;label&quot;:&quot;text:contact&quot;}">Contact GitHub</a></li>
+          <li class="mr-3 mr-lg-0"><a href="https://github.com/pricing" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to Pricing&quot;,&quot;label&quot;:&quot;text:Pricing&quot;}">Pricing</a></li>
+        <li class="mr-3 mr-lg-0"><a href="https://docs.github.com" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to api&quot;,&quot;label&quot;:&quot;text:api&quot;}">API</a></li>
+        <li class="mr-3 mr-lg-0"><a href="https://services.github.com" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to training&quot;,&quot;label&quot;:&quot;text:training&quot;}">Training</a></li>
+          <li class="mr-3 mr-lg-0"><a href="https://github.blog" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to blog&quot;,&quot;label&quot;:&quot;text:blog&quot;}">Blog</a></li>
+          <li><a data-ga-click="Footer, go to about, text:about" href="https://github.com/about">About</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 color-fg-muted"></span>
+  </div>
+</footer>
+
+
+
+
+  <div id="ajax-error-message" class="ajax-error-message flash flash-error" hidden>
+    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
+    <path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path>
+</svg>
+    <button type="button" class="flash-close js-ajax-error-dismiss" aria-label="Dismiss error">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+    <path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z"></path>
+</svg>
+    </button>
+    You can’t perform that action at this time.
+  </div>
+
+  <div class="js-stale-session-flash flash flash-warn flash-banner" hidden
+    >
+    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
+    <path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path>
+</svg>
+    <span class="js-stale-session-flash-signed-in" hidden>You signed in with another tab or window. <a href="">Reload</a> to refresh your session.</span>
+    <span class="js-stale-session-flash-signed-out" hidden>You signed out in another tab or window. <a href="">Reload</a> to refresh your session.</span>
+  </div>
+    <template id="site-details-dialog">
+  <details class="details-reset details-overlay details-overlay-dark lh-default color-fg-default hx_rsm" open>
+    <summary role="button" aria-label="Close dialog"></summary>
+    <details-dialog class="Box Box--overlay d-flex flex-column anim-fade-in fast hx_rsm-dialog hx_rsm-modal">
+      <button class="Box-btn-octicon m-0 btn-octicon position-absolute right-0 top-0" type="button" aria-label="Close dialog" data-close-dialog>
+        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+    <path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z"></path>
+</svg>
+      </button>
+      <div class="octocat-spinner my-6 js-details-dialog-spinner"></div>
+    </details-dialog>
+  </details>
+</template>
+
+    <div class="Popover js-hovercard-content position-absolute" style="display: none; outline: none;" tabindex="0">
+  <div class="Popover-message Popover-message--bottom-left Popover-message--large Box color-shadow-large" style="width:360px;">
+  </div>
+</div>
+
+    <template id="snippet-clipboard-copy-button">
+  <div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path>
+</svg>
+    </clipboard-copy>
+  </div>
+</template>
+
+
+    <style>
+      .user-mention[href$="/ohle64"] {
+        color: var(--color-user-mention-fg);
+        background-color: var(--color-user-mention-bg);
+        border-radius: 2px;
+        margin-left: -2px;
+        margin-right: -2px;
+        padding: 0 2px;
+      }
+    </style>
+
+
+  </body>
+</html>
+
