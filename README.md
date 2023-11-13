@@ -89,7 +89,7 @@ Click for widget source.
 	### __WORK IN PROGRESS__
 -->
 ## Changelog
-### 1.2.2 (2022-07-30)
+### 4.2.2 (2022-07-30)
 * (ohle64) many changes with playlist, album, shows(episodes), collection (like tracks)
 * (ohle64) prevent to many requests - use snapshot_id for playlist-refresh
 * (ohle64) repair timer-functions (add play-polling, non-play-polling to prevent request)
