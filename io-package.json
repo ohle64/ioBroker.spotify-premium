@@ -1,9 +1,9 @@
 {
   "common": {
     "name": "spotify-premium",
-    "version": "2.2.2",
+    "version": "4.2.2",
     "news": {
-      "2.2.2": {
+      "4.2.2": {
         "en": "Fix potential crash cases reported by Sentry\nOptimize adapter stop behaviour",
         "de": "Behebt mögliche Crashfälle, die von Sentry gemeldet wurden\nOptimieren des Adapters",
         "ru": "Исправление потенциальных аварийных случаев, сообщенных Sentry\nОптимизируйте поведение остановки адаптера",
@@ -1300,6 +1300,54 @@
         "type": "string",
         "read": true,
         "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "getTrackInfoTrackId",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "insert a trackId to get Info for this track",
+        "type": "string",
+        "read": true,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "trackInfoTrackId",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "info about the track in getTrackInfoTrackId",
+        "type": "string",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "getArtistInfoArtistId",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "insert a artistId to get Info for this artist",
+        "type": "string",
+        "read": true,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "artistInfoArtistId",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "info about the artist in getArtistInfoArtistId",
+        "type": "string",
+        "read": true,
+        "write": false
       },
       "native": {}
     },

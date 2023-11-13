@@ -149,6 +149,8 @@ function startAdapter(options) {
             cache.on('unfollowPlaylistId', listenOnUnfollowPlaylist, true);
             cache.on('unfollowAlbumId', listenOnUnfollowAlbum, true);
             cache.on('unfollowShowId', listenOnUnfollowShow, true);
+            cache.on('getTrackInfoTrackId', listenOnGetTrackInfo, true);
+            cache.on('getArtistInfoArtistId', listenOnGetArtistInfo, true);
             cache.on('setToFavorite', listenOnSetToFavorite, true);
             cache.on('unsetFromFavorite', listenOnUnsetFromFavorite, true);
             cache.on('refreshThisPlaylist', refreshThisPlaylist, true);
@@ -2436,7 +2438,7 @@ function unfollowPlaylist(playlistId) {
                     .then(() => {
                         btnClearCache();
                         btnRefreshPlaylistList();
-                        cache.setValue('unfollowPlaylistId', {val: '', ack: true});
+                        cache.setValue('unfollowPlaylistId', {val: playlistId, ack: true});
                     });
                 }
             }
@@ -2472,7 +2474,7 @@ function unfollowAlbum(albumId) {
             btnClearCache();
             btnRefreshAlbumList();
             //löschen der alten Daten dann neu anlegen
-            cache.setValue('unfollowAlbumId', {val: '', ack: true});
+            cache.setValue('unfollowAlbumId', {val: albumId, ack: true});
         })
         .catch(err => adapter.log.warn('unfollowAlbum err: ' + err));
     } else {
@@ -2503,7 +2505,7 @@ function unfollowShow(showId) {
             btnClearCache();
             btnRefreshShowList();
             //löschen der alten Listen und neu anlegen
-            cache.setValue('unfollowShowId', {val: '', ack: true});
+            cache.setValue('unfollowShowId', {val: showId, ack: true});
         })
         .catch(err => adapter.log.warn('unfollowShow err: ' + err));
     } else {
@@ -3139,6 +3141,87 @@ async function getCollectionTracks() {
         }
     }
     return collectionObject;
+}
+
+async function getTrackInfo(trackId) {
+    if (isEmpty(trackId)) {
+        adapter.log.warn('error in getTrackInfo - no trackId');
+        return false;
+    }
+    try {
+        const data = await sendRequest(`/v1/tracks/${trackId}`, 'GET', '');
+        if (data) {
+            let albumId = loadOrDefault(data.album, 'id', '');
+            let albumName = loadOrDefault(data.album, 'name','');
+            let albumTotalTracks = loadOrDefault(data.album, 'total_tracks', 0);
+            let albumRelease = loadOrDefault(data.album, 'release_date', '');
+            let albumImgUrl = loadOrDefault(data.album.images[0], 'url', '');
+            let albumImg64Url = loadOrDefault(data.album.images[2], 'url', '');
+            let albumArtist = getArtistNamesOrDefault(data.album, 'artists');
+            let albumArtistArray = getArtistArrayOrDefault(data.album, 'artists');
+            let trackArtist = getArtistNamesOrDefault(data, 'artists');
+            let trackArtistArray = getArtistArrayOrDefault(data, 'artists');
+            let explicit = loadOrDefault(data, 'explicit', false);
+            let popularity = loadOrDefault(data, 'popularity', 0);
+            let trackName = loadOrDefault(data, 'name', '');
+            let trackNr = loadOrDefault(data, 'track_number', 0);
+            let trackDuration_ms = loadOrDefault(data, 'duration_ms', 0);
+            let trackDiscNr = loadOrDefault(data, 'disc_number', 0);
+            cache.setValue('trackInfoTrackId', {
+                val: {
+                    AlbumId: albumId,
+                    AlbumName: albumName,
+                    AlbumTracksTotal: albumTotalTracks,
+                    AlbumRelease: albumRelease,
+                    AlbumImgUrl: albumImgUrl,
+                    AlbumImg64Url: albumImg64Url,
+                    AlbumArtist: albumArtist,
+                    AlbumArtistArray: albumArtistArray,
+                    TrackName: trackName,
+                    TrackArtist: trackArtist,
+                    TrackArtistArray: trackArtistArray,
+                    TrackNr: trackNr,
+                    Duration_ms: trackDuration_ms,
+                    Explicit: explicit,
+                    Popularity: popularity,
+                    DiscNr: trackDiscNr
+                }, ack: true});
+        }
+    } catch(err) {
+        adapter.log.warn('error in function getTrackInfo: ' + err);
+        return false;
+    }
+    return true;
+}
+
+async function getArtistInfo(artistId) {
+    if (isEmpty(artistId)){
+        adapter.log.warn('error in getArtistInfo - no artistId');
+        return false;
+    }
+    try {
+        const data = await sendRequest(`/v1/artists/${artistId}`, 'GET', '');
+        //adapter.log.warn('data: ' + JSON.stringify(data));
+        if (data) {
+            let artistName = loadOrDefault(data, 'name', '');
+            let popularity = loadOrDefault(data, 'popularity', 0);
+            let genres = loadOrDefault(data, 'genres[0]' , '');
+            let imageUrl = loadOrDefault(data, 'images[0].url', '');
+            let image64Url = loadOrDefault(data, 'images[2].url', '');
+            cache.setValue('artistInfoArtistId', {
+                val: {
+                    ArtistName: artistName,
+                    Popularity: popularity,
+                    Genres: genres,
+                    ImageUrl: imageUrl,
+                    Image64Url: image64Url
+                }, ack: true});
+        }
+    } catch(err) {
+        adapter.log.warn('error in function getArtistInfo: ' + err);
+        return false;
+    }
+    return true;
 }
 
 function reloadDevices(data) {
@@ -4376,7 +4459,7 @@ function listenOnEpisodeList(obj) {
                 let ixList = eid.val.split(';');
                 let episodeId = ixList[eix];
                 if (episodeId && !isEmpty(episodeId)){
-                    adapter.log.warn('listenOnEpisodeList obj.slice... obj.state.val: ' + obj.state.val + ' episodeId: ' + episodeId);
+                    adapter.log.debug('listenOnEpisodeList obj.slice... obj.state.val: ' + obj.state.val + ' episodeId: ' + episodeId);
                     lastPlayingShow.lastShowId = showid.val;
                     lastPlayingShow.lastEpisodeNo = obj.state.val;
                     lastPlayingShow.lastEpisodeId = episodeId;
@@ -4615,10 +4698,38 @@ function listenOnUnfollowShow(obj) {
     }
 }
 
+function listenOnGetTrackInfo(obj) {
+    if (obj && obj.state && obj.state.val) {
+        if (!isEmpty(obj.state.val)) {
+            let ret = getTrackInfo(obj.state.val);
+            if (ret) {
+                cache.setValue('getTrackInfoTrackId', {val: obj.state.val, ack: true});
+            }
+        }
+    } else {
+        adapter.log.warn('listenOnGetTrackInfo no trackId');
+    }
+}
+
+function listenOnGetArtistInfo(obj) {
+    if (obj && obj.state && obj.state.val) {
+        if (!isEmpty(obj.state.val)) {
+            //adapter.log.warn('getArtistInfo: ' + obj.state.val);
+            let ret = getArtistInfo(obj.state.val);
+            if (ret) {
+                cache.setValue('getArtistInfoArtistId', {val: obj.state.val, ack: true});
+            }
+        }
+    } else {
+        adapter.log.warn('listenOnGetArtistInfo no artistId');
+    }
+}
+
 function listenOnSetToFavorite(obj) {
     if (obj && obj.state && obj.state.val) {
         if (!isEmpty(obj.state.val)) {
             addTrackToCollection(obj.state.val);
+            cache.setValue('setToFavorite', {val: obj.state.val, ack: true});
         }
     }
 }
@@ -4627,6 +4738,7 @@ function listenOnUnsetFromFavorite(obj) {
     if (obj && obj.state && obj.state.val) {
         if (!isEmpty(obj.state.val)) {
             deleteTrackInCollection(obj.state.val);
+            cache.setValue('unsetFromFavorite', {val: obj.state.val, ack: true});
         }
     }
 }
