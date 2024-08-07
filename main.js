@@ -277,7 +277,10 @@ function main() {
 function start() {
     clearCache();
     loadPlaylistAppCache();
-
+    let hasItems = false;
+    if (playlistAppCache.length > 0) {
+        hasItems = true;
+    }
     return readTokenStates()
         .then(tokenObj => {
             application.token = tokenObj.accessToken;
@@ -289,11 +292,27 @@ function start() {
             cache.setValue('authorization.authorized', true),
             cache.setValue('info.connection', true)
         ]))
+        //first start on startScheduledPolling (timer activation!)
+        /*.then(() => {
+            adapter.log.debug('hasItems in start: ' + hasItems.toString());
+            if (hasItems) {
+                startScheduledPolling();
+            } else {
+                return Promise.all([
+                    listenOnGetPlaybackInfo(),
+                    reloadUsersPlaylist(),
+                    reloadUsersAlbums(),
+                    reloadUsersShows(),
+                    getCollectionTracks(),
+                    listenOnGetDevices()
+                ])
+            }
+        })*/
         .then(() => listenOnGetPlaybackInfo().catch(() => {}))
+        .then(() => getCollectionTracks().catch(() => {}))
+        .then(() => reloadUsersShows().catch(() => {}))
         .then(() => reloadUsersPlaylist().catch(() => {}))
         .then(() => reloadUsersAlbums().catch(() => {}))
-        .then(() => reloadUsersShows().catch(() => {}))
-        .then(() => getCollectionTracks().catch(() => {}))
         .then(() => listenOnGetDevices().catch(() => {}))
         .catch(err => {
             adapter.log.warn(err);
@@ -1310,8 +1329,8 @@ function createPlaybackInfo(data) {
             }
         })           
         .then(() => Promise.all([
-            cache.setValue('player.contextImageUrl', contextImage),
-            cache.setValue('player.contextDescription', contextDescription)
+            cache.setValue('player.contextImageUrl', {val: contextImage, ack: true}),
+            cache.setValue('player.contextDescription', {val: contextDescription, ack: true})
         ]))
         .then(() => {
             if (progress && isPlaying && application.statusPlayPollingDelaySeconds > 0) {
@@ -1321,8 +1340,8 @@ function createPlaybackInfo(data) {
         .catch(err => adapter.log.warn('createPlaybackInfo error: ' + err));
     } else {
         clearTimeout(application.statusInternalTimer);
-        cache.setValue('player.isPlaying', isPlaying);
-        cache.setValue('player.type', type);
+        cache.setValue('player.isPlaying', {val: isPlaying, ack: true});
+        cache.setValue('player.type', {val: type, ack: true});
         if (application.statusPollingDelaySeconds > 0){
             scheduleStatusPolling();
         }
@@ -1443,7 +1462,7 @@ function reloadUsersPlaylist() {
         .then(() => {
             refreshPlaylistList();
             //btnRefreshPlaylistList();
-            cache.setValue('lastLoadPlaylist', Date.now());
+            cache.setValue('lastLoadPlaylist', {val: Date.now(), ack: true});
             if (playlistComplete) {
                 cache.setValue('getPlaylists', {val: false, ack: true});
             }
@@ -1464,7 +1483,7 @@ function reloadUsersShows() {
         .then(() => {
             refreshShowsList();
             //btnRefreshShowList();
-            cache.setValue('lastLoadShow', Date.now());
+            cache.setValue('lastLoadShow', {val: Date.now(), ack: true});
             if (showComplete) {
                 cache.setValue('getShows', {val: false, ack: true});
             }
@@ -1483,7 +1502,7 @@ function reloadUsersAlbums() {
             doNotTestAlbum = false;
             refreshAlbumList();
             //btnRefreshAlbumList();
-            cache.setValue('lastLoadAlbum', Date.now());
+            cache.setValue('lastLoadAlbum', {val: Date.now(), ack: true});
             if (albumComplete) {
                 cache.setValue('getAlbums', {val: false, ack: true});
             }
@@ -1799,7 +1818,8 @@ function createPlaylists(parseJson, autoContinue, addedList) {
     }
     let fn = function (item) {
         let playlistName = loadOrDefault(item, 'name', '');
-        if (!isEmpty(playlistName)) {
+        let plOwner = loadOrDefault(item, 'owner.id', '');
+        if (!isEmpty(playlistName) && !isEmpty(plOwner)) {
             //adapter.log.warn('empty playlist name');
             //return Promise.reject('empty playlist name');
         
@@ -1953,8 +1973,8 @@ function createPlaylists(parseJson, autoContinue, addedList) {
             adapter.log.debug('doNotTestSnapshotId: ' + doNotTestSnapshotId);
             if (!doNotTestSnapshotId) {
                 adapter.log.debug('pl_notFound: ' + pl_notFoundCount + ' /pl_found: ' + pl_foundCount);
-                cache.setValue('pl_notFound', pl_notFoundCount);
-                cache.setValue('pl_found', pl_foundCount);
+                cache.setValue('pl_notFound', {val: pl_notFoundCount, ack: true});
+                cache.setValue('pl_found', {val: pl_foundCount, ack: true});
             }
             playlistComplete = true;
             return addedList;
@@ -2232,7 +2252,7 @@ function createCollections() {
 function getUsersCollection(){
     if (!isEmpty(application.userId)) {
         createCollections();
-        cache.setValue('lastLoadCollection', Date.now());
+        cache.setValue('lastLoadCollection', {val: Date.now(), ack: true});
     } else {
         adapter.log.warn('no userId');
         return Promise.reject('no userId');
@@ -2295,7 +2315,7 @@ function loadPlaylistAppCache() {
                 playlistAppCache.push(plAppCache);
                 cnt++;
             }
-            cache.setValue('loadPlaylistCache', false);
+            cache.setValue('loadPlaylistCache', {val: false, ack: true});
             adapter.log.debug('loadPlaylistAppCache gestartet playlist-count: ' + cnt);
         }
     } catch(err) {
@@ -3166,6 +3186,7 @@ async function getTrackInfo(trackId) {
             let trackName = loadOrDefault(data, 'name', '');
             let trackNr = loadOrDefault(data, 'track_number', 0);
             let trackDuration_ms = loadOrDefault(data, 'duration_ms', 0);
+            let trackDurationStr = convertToDigiClock(trackDuration_ms);
             let trackDiscNr = loadOrDefault(data, 'disc_number', 0);
             cache.setValue('trackInfoTrackId', {
                 val: {
@@ -3182,6 +3203,7 @@ async function getTrackInfo(trackId) {
                     TrackArtistArray: trackArtistArray,
                     TrackNr: trackNr,
                     Duration_ms: trackDuration_ms,
+                    DurationStr:  trackDurationStr,
                     Explicit: explicit,
                     Popularity: popularity,
                     DiscNr: trackDiscNr
@@ -3486,11 +3508,13 @@ function refreshPlaylistList() {
         let normKey = removeNameSpace(key);
         let id = normKey.substring(10, normKey.length - 5);
         const owner = cache.getValue(`playlists.${id}.owner`);
-        a.push({
-            id: id,
-            name: states[key].val,
-            your: application.userId === owner.val ? owner.val : ''
-        });
+        if (owner && owner.val) {
+            a.push({
+                id: id,
+                name: states[key].val,
+                your: application.userId === owner.val ? owner.val : ''
+            });
+        }
     };
     return Promise.all(keys.map(fn))
         .then(() => {
@@ -4301,6 +4325,57 @@ function startCollection(trackId, trackNo, keepTrack) {
         });
 }
 
+function startScheduledPolling() {
+    scheduleRequestPolling(); // 1x/min !
+    scheduleStatusPolling();
+    scheduleDevicePolling();
+    let myAlTimeOut = null;
+    let myPlTimeOut = null;
+    let pl_poll = false;
+    let alb_poll = false;
+    
+    if (!isAuth) {
+        // first start of polling
+        if (application.playlistPollingDelaySeconds > 0) {
+            pl_poll = true;
+            schedulePlaylistPolling();
+        }
+        if (application.albumPollingDelaySeconds > 0) {
+            alb_poll = true;
+            if (pl_poll) {
+                // wait for 5 min playlist-polling
+                myPlTimeOut = setTimeout(() => !stopped && scheduleAlbumPolling(), 300 * 1000);
+            } else {
+                scheduleAlbumPolling();
+            }
+        }
+        if (application.showPollingDelaySeconds > 0) {
+            if (pl_poll || alb_poll) { 
+                if ((pl_poll && !alb_poll) || (!pl_poll && alb_poll)) {
+                    // wait for 5 min playlist or album polling
+                    myAlTimeOut = setTimeout(() => !stopped && scheduleShowPolling(), 300 * 1000);
+                } else if (pl_poll && alb_poll) {
+                    // wait for 10 min playlist & album polling is active
+                    myAlTimeOut = setTimeout(() => !stopped && scheduleShowPolling(), 600 * 1000);
+                }
+            } else {
+                scheduleShowPolling();
+            }
+        }   
+    } else {
+        //wenn die polling Zeit > 1h (refresh Authorisation)
+        if ('undefined' === typeof application.playlistPollingHandle) { // (application.playlistPollingHandle)
+            schedulePlaylistPolling();
+        }
+        if ('undefined' === typeof application.albumPollingHandle) {
+            scheduleAlbumPolling();
+        }
+        if ('undefined' === typeof application.showPollingHandle) {
+            scheduleShowPolling();
+        }
+    }
+    isAuth = true;
+}
 
 function listenOnAuthorizationReturnUri(obj) {
     let state = cache.getValue('authorization.state')
@@ -4356,32 +4431,7 @@ function listenOnAuthorized(obj) {
         
         if (!isAuth) {
             // first start of polling
-            if (application.playlistPollingDelaySeconds > 0) {
-                pl_poll = true;
-                schedulePlaylistPolling();
-            }
-            if (application.albumPollingDelaySeconds > 0) {
-                alb_poll = true;
-                if (pl_poll) {
-                    // wait for 5 min playlist-polling
-                    myPlTimeOut = setTimeout(() => !stopped && scheduleAlbumPolling(), 300 * 1000);
-                } else {
-                    scheduleAlbumPolling();
-                }
-            }
-            if (application.showPollingDelaySeconds > 0) {
-                if (pl_poll || alb_poll) { 
-                    if ((pl_poll && !alb_poll) || (!pl_poll && alb_poll)) {
-                        // wait for 5 min playlist or album polling
-                        myAlTimeOut = setTimeout(() => !stopped && scheduleShowPolling(), 300 * 1000);
-                    } else if (pl_poll && alb_poll) {
-                        // wait for 10 min playlist & album polling is active
-                        myAlTimeOut = setTimeout(() => !stopped && scheduleShowPolling(), 600 * 1000);
-                    }
-                } else {
-                    scheduleShowPolling();
-                }
-            }   
+            startScheduledPolling();
         } else {
             //wenn die polling Zeit > 1h (refresh Authorisation)
             if ('undefined' === typeof application.playlistPollingHandle) { // (application.playlistPollingHandle)
