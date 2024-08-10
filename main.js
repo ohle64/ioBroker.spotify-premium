@@ -9,6 +9,7 @@ const ownUtils = require('./lib/utils');
 
 const querystring = require('querystring');
 const _request = require('request');
+const {lookup} = require('dns-lookup-cache');
 const { time } = require('console');
 const { format } = require('path');
 
@@ -359,6 +360,7 @@ function sendRequest(endpoint, method, sendBody, delayAccepted) {
     let options = {
         url: application.baseUrl + endpoint,
         method,
+        lookup: lookup, //DNS caching
         headers: {
             Authorization: 'Bearer ' + application.token
         },
@@ -377,9 +379,7 @@ function sendRequest(endpoint, method, sendBody, delayAccepted) {
                 parsedBody = JSON.parse(body);
             } catch (e) {
                 parsedBody = {
-                    error: {
-                        message: 'no active device'
-                    }
+                    error: { message: e.message }
                 };
             }
             switch (response.statusCode) {
@@ -400,27 +400,18 @@ function sendRequest(endpoint, method, sendBody, delayAccepted) {
                     // OK, No Content
                     ret = null;
                     break;
-                case 400:
-                // Bad Request, message body will contain more
-                // information
-                case 500:
-                // Server Error
-                case 503:
-                // Service Unavailable
-                case 504:
-                // GatewayTimeout
-                case 404:
-                // Not Found
-                case 408:
-                //current geographical location missmatch
-                case 502:
-                    // Bad Gateway
+                case 400: // Bad Request, message body will contain more information
+                case 500: // Server Error
+                case 503: // Service Unavailable
+                case 504: // GatewayTimeout
+                case 404: // Not Found
+                case 408: //current geographical location missmatch
+                case 502: // Bad Gateway
                     ret = Promise.reject(response.statusCode);
                     break;
                 case 403:
-                case 401:
-                    // Unauthorized
-                    if (parsedBody.error.message === 'The access token expired') {
+                case 401: // Unauthorized
+                    if (parsedBody.error.message === 'The access token expired' || parsedBody.error.message === 'Unexpected end of JSON input') {
                         adapter.log.debug('access token expired!');
                         ret = Promise.all([
                             cache.setValue('authorization.authorized', false),
