@@ -1,6 +1,6 @@
 {
   "_from": "github:ohle64/ioBroker.spotify-premium#f38e6da5a96e3302edff0a263887fe40e35e821c",
-  "_id": "iobroker.spotify-premium@4.2.2",
+  "_id": "iobroker.spotify-premium@11.2.2",
   "_inBundle": false,
   "_integrity": "",
   "_location": "/iobroker.spotify-premium",
@@ -40,6 +40,7 @@
   "dependencies": {
     "@iobroker/adapter-core": "^3.1.6",
     "dns-lookup-cache": "^1.0.4",
+    "axios": "^1.8.4",
     "request": "^2.88.2"
   },
   "deprecated": false,
@@ -106,5 +107,5 @@
     "release-minor": "release-script minor --yes",
     "release-major": "release-script major --yes"
   },
-  "version": "4.2.2"
+  "version": "11.2.2"
 }
