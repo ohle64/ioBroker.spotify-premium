@@ -9,13 +9,19 @@ const ownUtils = require('./lib/utils');
 
 const querystring = require('querystring');
 const _request = require('request');
-const {lookup} = require('dns-lookup-cache');
+const { lookup } = require('dns-lookup-cache');
 const { time } = require('console');
 const { format } = require('path');
+const axios = require('axios');
 
 function request(options) {
     return new Promise((resolve, reject) =>
         _request(options, (error, status) => error ? reject(error) : resolve(status)));
+    /*return axios(options)
+    .then(response => response.status) // oder: response.data, je nach dem, was du brauchst
+    .catch(error => {
+        throw error;
+    });*/
 }
 
 let adapter;
@@ -27,7 +33,7 @@ let playlistInfoCache = {};
 let playlistAppCache = [];
 let plAppCacheReload = false; //nur 1x alle 15min (pollPlaylistApi)
 let albumCache = {};
-
+// old reirect: http://127.0.0.1:8000
 let application = {
     userId: '',
     baseUrl: 'https://api.spotify.com',
@@ -36,7 +42,7 @@ let application = {
     deleteDevices: false,
     deletePlaylists: false,
     keepShuffleState: true,
-    redirect_uri: 'http://localhost',
+    redirect_uri: 'https://oauth2.iobroker.in/spotify',
     token: '',
     refreshToken: '',
     code: '',
@@ -54,6 +60,8 @@ let application = {
     showPollingHandle: null,
     showPollingDelaySeconds: 900,
     error202shown: false,
+    tokenRefreshTimerSeconds: 3590,
+    tokenRefreshHandle: null,
     cacheClearHandle: null
 };
 
@@ -152,6 +160,7 @@ function startAdapter(options) {
             cache.on('unfollowShowId', listenOnUnfollowShow, true);
             cache.on('getTrackInfoTrackId', listenOnGetTrackInfo, true);
             cache.on('getArtistInfoArtistId', listenOnGetArtistInfo, true);
+            cache.on('deleteTrackFromPlaylistId', listenOnDeleteTrackInPlaylistId, true);
             cache.on('setToFavorite', listenOnSetToFavorite, true);
             cache.on('unsetFromFavorite', listenOnUnsetFromFavorite, true);
             cache.on('refreshThisPlaylist', refreshThisPlaylist, true);
@@ -186,6 +195,9 @@ function startAdapter(options) {
             }
             if ('undefined' !== typeof application.cacheClearHandle) {
                 clearTimeout(application.cacheClearHandle);
+            }
+            if ('undefined' !== typeof application.tokenRefreshHandle) {
+                clearTimeout(application.tokenRefreshHandle);
             }
             Promise.all([
                 /*cache.setValue('player.trackId', ''),
@@ -300,13 +312,13 @@ function start() {
                 startScheduledPolling();
             } else {
                 return Promise.all([
-                    listenOnGetPlaybackInfo(),
-                    reloadUsersPlaylist(),
-                    reloadUsersAlbums(),
-                    reloadUsersShows(),
-                    getCollectionTracks(),
-                    listenOnGetDevices()
+                    listenOnGetPlaybackInfo()
                 ])
+                .then(() => getCollectionTracks().catch(() => {}))
+                .then(() => reloadUsersShows().catch(() => {}))
+                .then(() => reloadUsersPlaylist().catch(() => {}))
+                .then(() => reloadUsersAlbums().catch(() => {}))
+                .then(() => listenOnGetDevices().catch(() => {}))
             }
         })*/
         .then(() => listenOnGetPlaybackInfo().catch(() => {}))
@@ -334,7 +346,7 @@ function readTokenStates() {
             try {
                 tokenObj = JSON.parse(tokenObj);
             } catch (e) {
-
+                this.log.info(`Error: ${e}`);
             }
         }
         let validAccessToken  = !isEmpty(loadOrDefault(tokenObj, 'accessToken', ''));
@@ -362,17 +374,18 @@ function sendRequest(endpoint, method, sendBody, delayAccepted) {
         method,
         lookup: lookup, //DNS caching
         headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
             Authorization: 'Bearer ' + application.token
         },
         form: sendBody
     };
     adapter.log.debug(`spotify api call... ${endpoint}; ${options.form}`);
-    let callStack = new Error().stack;
+    const callStack = new Error().stack;
     adapter.setState('authorization.error', '', true);
 
     return request(options)
         .then(response => {
-            let body = response.body;
+            const body = response.body;
             let ret;
             let parsedBody;
             try {
@@ -400,7 +413,7 @@ function sendRequest(endpoint, method, sendBody, delayAccepted) {
                     // OK, No Content
                     ret = null;
                     break;
-                case 400: // Bad Request, message body will contain more information
+                //case 400: // Bad Request, message body will contain more information
                 case 500: // Server Error
                 case 503: // Service Unavailable
                 case 504: // GatewayTimeout
@@ -409,10 +422,30 @@ function sendRequest(endpoint, method, sendBody, delayAccepted) {
                 case 502: // Bad Gateway
                     ret = Promise.reject(response.statusCode);
                     break;
-                case 403:
-                case 401: // Unauthorized
-                    if (parsedBody.error.message === 'The access token expired' || parsedBody.error.message === 'Unexpected end of JSON input') {
-                        adapter.log.debug('access token expired!');
+                case 400:
+                case 401:
+                case 403: // Unauthorized
+                    if (response.statusCode === 401 || (response.statusCode === 400 && parsedBody.error.message === 'invalid_grant')) {
+                        adapter.log.warn('err 401 access token expired!');
+                        clearTimeout(application.tokenRefreshHandle);
+                        refreshToken()
+                        .then(() => sendRequest(endpoint, method, sendBody))
+                            .then((data) => {
+                                // this Request get the data which requested with the old token
+                                adapter.log.debug('data with new token');
+                                return data;
+                            })
+                            .catch(err => {
+                                if (err === 202) {
+                                    adapter.log.debug(err + ' request accepted but no data, try again');
+                                } else {
+                                    adapter.log.error('error on request data again. ' + err);
+                                }
+                                return Promise.reject(err);
+                            });
+                    } else if (parsedBody.error.message === 'The access token expired' || parsedBody.error.message === 'Unexpected end of JSON input') {
+                        adapter.log.warn('access token expired!');
+                        
                         ret = Promise.all([
                             cache.setValue('authorization.authorized', false),
                             cache.setValue('info.connection', false)
@@ -1023,7 +1056,11 @@ function createPlaybackInfo(data) {
                                         ]);
                                     }
                                 } else {
-                                    adapter.log.warn('getPlaybackInfo(playlist) ids or num or trackid is empty');
+                                    if (isEmpty(ids) && isEmpty(num) && !isEmpty(trackId)) {
+                                        // do nothing is a spotify playlist (new Web-Api)
+                                    } else {
+                                        adapter.log.warn('createPlaybackInfo(playlist) ids:' + ids + ' or num: ' + num +  ' or trackid: ' + trackId + ' is empty');
+                                    }
                                 }
                             });
                         } else {
@@ -1332,6 +1369,7 @@ function createPlaybackInfo(data) {
     } else {
         clearTimeout(application.statusInternalTimer);
         cache.setValue('player.isPlaying', {val: isPlaying, ack: true});
+        cache.setValue('getPlaybackInfo', {val: false, ack: true});
         cache.setValue('player.type', {val: type, ack: true});
         if (application.statusPollingDelaySeconds > 0){
             scheduleStatusPolling();
@@ -1369,6 +1407,7 @@ function getCurrentPlaylist() {
     doNotTestSnapshotId = true;
     if (isPlaying && !isEmpty(userId) && !isEmpty(playlistStateId)) {
         return sendRequest(`/v1/users/${userId}/playlists/${playlistStateId}`, 'GET', '')
+        //return sendRequest(`/v1/me/playlists/${playlistStateId}`, 'GET', '')
             .then(data => createPlaylists({ items: [data]}))
             .then(() => {
                     copyState('playlists.' + prefix + '.trackListArray', 'player.playlist.trackListArray');
@@ -1392,23 +1431,29 @@ function getCurrentPlaylist() {
 function refreshThisPlaylist(obj) {
     if (obj && obj.state && obj.state.val){
         let userId = application.userId;
+        adapter.log.debug('refreshThisPlaylist: ' + obj.state.val);
         doNotTestSnapshotId = true;
-        let owner = loadOrDefault(cache.getValue('playlists.' + obj.state.val + '.owner'), 'val', '');
-        let playlistId = loadOrDefault(cache.getValue('playlists.' + obj.state.val + '.id', 'val', ''));
+        let tmpOwnerPlaylist = obj.state.val.split('-');
+        let owner = tmpOwnerPlaylist[0]; //loadOrDefault(cache.getValue('playlists.' + obj.state.val + '.owner'), 'val', '');
+        let playlistId = tmpOwnerPlaylist[1]; //loadOrDefault(cache.getValue('playlists.' + obj.state.val + '.id', 'val', ''));
         let prefix = shrinkStateName(owner + '-' + playlistId);
+        adapter.log.debug('userId: ' + userId + ' playlistId: ' + playlistId);
         if (!isEmpty(userId) && !isEmpty(playlistId)) {
             return sendRequest(`/v1/users/${userId}/playlists/${playlistId}`, 'GET', '')
+            //return sendRequest(`/v1/playlists/${playlistId}/tracks?offset=0`, 'GET', '')
                 .then(data => createPlaylists({ items: [data]}))
                 .then(() => {
-                        copyState('playlists.' + prefix + '.trackListArray', 'player.playlist.trackListArray');
+                        /*copyState('playlists.' + prefix + '.trackListArray', 'player.playlist.trackListArray');
                         copyState('playlists.' + prefix + '.snapshot_id', 'player.playlist.snapshot_id');
                         copyState('playlists.' + prefix + '.trackListNumber', 'player.playlist.trackListNumber');
                         copyState('playlists.' + prefix + '.trackListString', 'player.playlist.trackListString');
                         copyState('playlists.' + prefix + '.trackListStates', 'player.playlist.trackListStates');
                         copyObjectStates('playlists.' + prefix + '.trackList', 'player.playlist.trackList');
                         copyState('playlists.' + prefix + '.trackListIdMap', 'player.playlist.trackListIdMap');
-                        copyState('playlists.' + prefix + '.trackListIds', 'player.playlist.trackListIds');
+                        copyState('playlists.' + prefix + '.trackListIds', 'player.playlist.trackListIds');*/
+                        loadPlaylistAppCache();
                         doNotTestSnapshotId = false;
+                        cache.setValue('refreshThisPlaylist', {val: prefix, ack: true});
                 })
                 .catch(err => {
                     doNotTestSnapshotId = false;
@@ -1803,10 +1848,12 @@ function findPlaylistSnapshotId(owner, playlistId, snapIdToFind) {
 }
 
 function createPlaylists(parseJson, autoContinue, addedList) {
+    //adapter.log.debug('createPlaylist Item: ' + JSON.stringify(parseJson));
     if (isEmpty(parseJson) || isEmpty(parseJson.items)) {
         adapter.log.debug('no playlist content');
         return Promise.reject('no playlist content');
     }
+    
     let fn = function (item) {
         let playlistName = loadOrDefault(item, 'name', '');
         let plOwner = loadOrDefault(item, 'owner.id', '');
@@ -3749,6 +3796,7 @@ function getToken() {
         url: 'https://accounts.spotify.com/api/token',
         method: 'POST',
         headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
             Authorization: 'Basic ' + Buffer.from(`${application.clientId}:${application.clientSecret}`).toString('base64')
         },
         form: {
@@ -3773,6 +3821,7 @@ function getToken() {
         })
         .then(_tokenObj => {
             tokenObj = _tokenObj;
+            scheduleTokenRefresh();
             return Promise.all([
                 cache.setValue('authorization.authorizationUrl', ''),
                 cache.setValue('authorization.authorizationReturnUri', ''),
@@ -3794,6 +3843,7 @@ function refreshToken() {
         url: 'https://accounts.spotify.com/api/token',
         method: 'POST',
         headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
             Authorization: 'Basic ' + Buffer.from(`${application.clientId}:${application.clientSecret}`).toString('base64')
         },
         form: {
@@ -3820,7 +3870,7 @@ function refreshToken() {
                         parsedJson.refresh_token = application.refreshToken;
                     }
                     adapter.log.debug(JSON.stringify(parsedJson))
-
+                    scheduleTokenRefresh();
                     return saveToken(parsedJson)
                         .then(tokenObj => application.token = tokenObj.accessToken)
                         .catch(err => {
@@ -3894,6 +3944,17 @@ function pollRequestCount() {
     });
 }
 
+function pollTokenRefresh() {
+    adapter.log.debug('call pollTtokenRefresh active with(sec): ' + application.tokenRefreshTimerSeconds);
+    return refreshToken();
+}
+
+function scheduleTokenRefresh() {
+    clearTimeout(application.tokenRefreshHandle);
+    adapter.log.debug('tokenRefreshTimer active with(sec): ' + application.tokenRefreshTimerSeconds);
+    application.tokenRefreshHandle = setTimeout(() => !stopped && pollTokenRefresh(), application.tokenRefreshTimerSeconds * 1000);
+}
+
 function scheduleRequestPolling() {
     clearTimeout(application.requestPollingHandle);
     application.requestPollingHandle = setTimeout(() => !stopped && pollRequestCount(), 60000);
@@ -3911,7 +3972,7 @@ function scheduleStatusPolling() {
     }
 }
 
-function pollStatusApi(noReschedule) {
+function pollStatusApi(noReschedule = false) {
     if (!noReschedule) {
         clearTimeout(application.statusPollingHandle);
     }
@@ -3933,7 +3994,7 @@ function pollStatusApi(noReschedule) {
                 application.error202shown = false;
             }
             //if (err === 202 || err === 401 || err === 502) {
-            if (err === 202 || err === 401 || err === 408 || err === 500 || err === 502 || err === 503 || err === 504) {
+            if (err === 202 || err === 401 || err === 408 || err === 500 || err === 502 || err === 503 || err === 504 || err === 522 || err === 524) {
                 if (err === 202) {
                     if (!application.error202shown) {
                         adapter.log.debug(
@@ -3959,8 +4020,17 @@ function pollStatusApi(noReschedule) {
                     scheduleStatusPolling();
                 }
             } else {
-                // other errors stop the polling
-                adapter.log.error('spotify status polling stopped with error ' + err);
+                if (err.name === 'AggregateError') {
+                    adapter.log.warn('spotify status polling stopped with error: ' + err + '; check your network connection');
+                    if (!noReschedule) {
+                        scheduleStatusPolling();
+                    }
+                }
+                // other errors stop (restart) the polling
+                adapter.log.warn('spotify status polling stopped (restarted) with: ' + err);
+                if (!noReschedule) {
+                    scheduleStatusPolling();
+                }
             }
         });
 }
@@ -4412,6 +4482,7 @@ function listenOnGetAuthorization() {
 
 function listenOnAuthorized(obj) {
     if (obj.state.val === true) {
+        scheduleTokenRefresh();
         scheduleRequestPolling(); // 1x/min !
         scheduleStatusPolling();
         scheduleDevicePolling();
@@ -4452,6 +4523,38 @@ function listenOnUseForPlayback(obj) {
     return sendRequest('/v1/me/player', 'PUT', JSON.stringify(send), true)
         .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000))
         .catch(err => adapter.log.error('listenOnUseForPlayback could not execute command: ' + err + ' device_id: ' + deviceData.lastSelectDeviceId));
+}
+
+function listenOnDeleteTrackInPlaylistId(obj) {
+    //adapter.log.warn('delete Track: ' + obj.state.val);
+    if(obj && obj.state && obj.state.val) {
+        let delStringLstState = obj.state.val;
+        let delStringLst = delStringLstState.split(';');
+        let delTrackId = delStringLst[0];
+        let delPlaylistId = delStringLst[1];
+        let delSnapshotId = delStringLst[2];
+        adapter.log.debug('trackId: ' + delTrackId + ' delPlaylistId: ' + delPlaylistId + ' delSnapshotId: ' + delSnapshotId);
+        if (!isEmpty(delTrackId) && !isEmpty(delPlaylistId) && !isEmpty(delSnapshotId)) {
+            let send = {
+                "tracks":[
+                    {
+                        "uri": "spotify:track:" + delTrackId
+                    }
+                ] //,
+                // "snapshot_id": delSnapshotId
+            }
+            adapter.log.debug('delete Track: ' + JSON.stringify(send) + ' delPlaylistID: ' + delPlaylistId);
+            return sendRequest('/v1/playlists/' + delPlaylistId +'/tracks', 'DELETE', JSON.stringify(send), true)
+            .then((res) => {
+                adapter.log.warn('Playlist: ' + delPlaylistId + ' geändert - ' + JSON.stringify(res));
+                cache.setValue('deleteTrackFromPlaylistId', {val: obj.state.val, ack: true})
+            })
+            .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000))
+            .catch(err => adapter.log.error('listenOnDeleteTrackInPlaylistId: ' + err));
+        } else {
+            adapter.log.warn('Error deleteTrack: ' + JSON.stringify(send) + ' delPlaylistID: ' + delPlaylistId);
+        }
+    }
 }
 
 function listenOnTrackList(obj) {
@@ -4527,18 +4630,27 @@ function listenOnEpisodeList(obj) {
 //Funktion zum Reaktivieren des letzten Device mit play
 function transferPlayback(dev_id){
     if (!isEmpty(dev_id)){
-        let  devIdAmazn = [dev_id]; //(dev_id.indexOf('_amzn_1') >= 0) ? dev_id.split('_amzn_1', 1) : [dev_id];
+        let  devIdAmazn = (dev_id.indexOf('_amzn_1') >= 0) ? dev_id.split('_amzn_1', 1) : [dev_id]; // [dev_id];
         // [] bei device_ids wegnehmen
         let send = {
-            "device_ids": 
-                devIdAmazn
-            ,
+            "device_ids": [dev_id],
             "play": true
         };
-        adapter.log.debug('transferPlayback gestartet mit dev_id: ' + devIdAmazn);
+        adapter.log.debug('transferPlayback gestartet mit dev_id: ' + [dev_id]);
         return sendRequest('/v1/me/player', 'PUT', JSON.stringify(send), true)
             .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000))
-            .catch(err => adapter.log.error('transferPlayback could not execute command: ' + err + ' device_id: ' + devIdAmazn));  
+            .catch(err => {
+                if (err == 404) {
+                    send = {
+                        "device_ids": devIdAmazn,
+                        "play": true
+                    }
+                    adapter.log.warn('transferPlayback 2. Versuch gestartet mit dev_id: ' + [dev_id]);
+                    return sendRequest('/v1/me/player', 'PUT', JSON.stringify(send), true)
+                    .catch(err => adapter.log.error('transferPlayback 2.Versuch could not execute command: ' + err + ' device_id: ' + devIdAmazn));
+                }
+            })
+            .catch(err => adapter.log.error('transferPlayback could not execute command: ' + err + ' device_id: ' + devIdAmazn + ' original dev_id: ' + [dev_id]));  
     } else {
         adapter.log.debug('transferPlayback: dev_id is empty');
     }
@@ -4807,8 +4919,8 @@ function listenOnPlay() {
         };
         adapter.log.debug('lastSelect: ' + deviceData.lastSelectDeviceId + ' lastActive: ' + deviceData.lastActiveDeviceId);
         clearTimeout(application.statusPollingHandle);
-        //sendRequest('/v1/me/player/play?' + querystring.stringify(query), 'PUT', '', true)
-        sendRequest('/v1/me/player/play', 'PUT', '', true)
+        sendRequest('/v1/me/player/play?' + querystring.stringify(query), 'PUT', '', true)
+        //sendRequest('/v1/me/player/play', 'PUT', '', true)
             .catch(err => adapter.log.error('listenOnPlay could not execute command: ' + err))
             .then(() => setTimeout(() => !stopped && pollStatusApi(), 1000));
     }
